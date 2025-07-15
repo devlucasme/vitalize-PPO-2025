@@ -5,12 +5,9 @@ const About: FC = () => {
     return (
         <S.Section id="sobre">
             <S.Container>
-                <S.Title>Propósito</S.Title>
-                <S.Text> A <strong>Vitalize</strong> é uma plataforma gratuita criada para te ajudar a cuidar da sua saúde de forma simples e inteligente. Nosso objetivo é tornar a alimentação saudável acessível para todos, com ferramentas práticas e personalizadas.</S.Text>
-
-                <S.SubTitle>Criadores</S.SubTitle>
-                <S.Text>
-                    Desenvolvido com 💚 por estudantes apaixonados por tecnologia, bem-estar e nutrição.
+                <S.Title>Sobre Nós</S.Title>
+                <S.Text>Temos como objetivo promover a saúde entre as pessoas, de acordo com Governo Brasileiro em uma pesquisa feita em 2019 sobre obesidade, a população feminina teve um aumento de 14,5% para 30,2%, enquanto a masculina passou de 9,6% para 22,8%.
+                  Criado por Andrey C. O. Ferreira, Lucas G. Silva e José C. S. Costa o site conta com funcionalidades que auxilia com melhora da sua saúde com base no seu estado atual.  
                 </S.Text>
             </S.Container>
         </S.Section>

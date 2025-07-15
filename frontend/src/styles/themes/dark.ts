@@ -4,7 +4,7 @@ export default {
     background: "#1a1a1a",
     primary: "#38a169",
 
-    secundary: "#2d3748",   // cinza escuro para complementar o dark
+    secundary: "#2d3748",   
     text: "#f7fafc",
 
       

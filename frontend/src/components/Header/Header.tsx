@@ -2,34 +2,33 @@ import type { FC } from "react";
 import * as S from "./styles";
 import VitalizeLogo from "../../assets/vitalize-logo.png";
 import VitalizeDarkLogo from "../../assets/vitalize-logo-dark.png";
+import { Navbar } from "../Navbar/Navbar";
 import ReactSwitch from "react-switch";
-import { ThemeContext } from "styled-components";
-import { useContext } from "react";
+import { useTheme } from "../../contexts/ThemeContext";
 
-interface HeaderProps {
-    toggleTheme(): void;
-}
 
-const Header: FC<HeaderProps> = ({ toggleTheme }) => {
+const Header: FC = () => {
 
-    const theme = useContext(ThemeContext);
-
-    const logo = theme?.title == "dark" ? VitalizeDarkLogo : VitalizeLogo;
+    const { toggleTheme, theme } = useTheme();
+    const logo = theme.title == "dark" ? VitalizeDarkLogo : VitalizeLogo;
 
     return (
-        <S.Container>
-            <img src={logo} alt="Logo da vitalize" />
-            <ReactSwitch
-                onChange={toggleTheme}
-                checked={theme?.title == "dark"}
-                checkedIcon={false}
-                uncheckedIcon={false}
-                height={10}
-                width={40}
-                handleDiameter={20}
-                onColor={theme?.colors.secundary}
-            />
-        </S.Container>
+        <S.Header>
+            <S.Container>
+                <img src={logo} alt="Logo da vitalize" />
+                <Navbar />
+                <ReactSwitch
+                    onChange={toggleTheme}
+                    checked={theme.title == "dark"}
+                    checkedIcon={false}
+                    uncheckedIcon={false}
+                    height={10}
+                    width={40}
+                    handleDiameter={20}
+                    onColor={theme.colors.secundary}
+                />
+            </S.Container>
+        </S.Header>
     )
 }
 

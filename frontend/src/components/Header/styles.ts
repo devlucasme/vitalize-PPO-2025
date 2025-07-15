@@ -1,35 +1,26 @@
 import styled from "styled-components";
-// import { Apple } from "lucide-react";
 import { shade } from "polished";
 
+export const Header = styled.header`
+  width: 100%;
+  background: ${props => shade(0.04, props.theme.colors.background)};
+  display: flex;              
+  align-items: center;        
+  height: 75px;
+  
+  img {
+    width: 150px;
+  }
 
-export const Container = styled.header`
+`
+
+export const Container = styled.div`
+    width: 100%;   
+    max-width: 70%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 120px;
-    padding: 0 30px;
-    background: ${props => shade(0.04, props.theme.colors.background)};
-
-    img {
-        width: 200px;
-    }
+    flex-wrap: wrap;
+    padding: 8px 0;
 `
-
-
-// export const FoodIcon = styled(Apple)`
-//   width: 40px;
-//   height: 40px;
-//   stroke: #38a169;
-//   stroke-width: 1.5;
-//   fill: transparent;
-//   transition: fill 0.3s ease;
-
-//   &:hover {
-//     fill: #e53935;
-//     cursor: pointer;
-//   }
-// `;
-
-
-

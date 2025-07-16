@@ -1,6 +1,7 @@
 import * as S from "./styles";
+import type { FC } from "react";
 
-const Navbar = () => {
+const Navbar: FC = () => {
   return (
     <nav>
       <S.NavList>

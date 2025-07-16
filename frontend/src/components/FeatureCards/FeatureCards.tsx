@@ -1,14 +1,15 @@
-import CalculadoraImc from "../../assets/calculadora-imc.jpg";
+import CalculadoraImc from "../../assets/calculadora.jpg";
 import Dieta from "../../assets/dieta.jpg";
 import Treino from "../../assets/treino.jpg";
 import type { FC } from "react";
 import * as S from "./styles";
+import { Button } from "../Button/Button";
 
 const features = [
     {
         image: CalculadoraImc,
         title: "Calculadora",
-        description: "Calcule o seu IMC e gasto calórico total",
+        description: "Calcule o seu IMC e gasto calórico",
     },
     {
         image:  Dieta,
@@ -32,6 +33,7 @@ const FeatureCards: FC = () => {
                             <S.Image src={image} alt="imagens feature cards" />
                             <S.Title>{title}</S.Title>
                             <S.Description>{description}</S.Description>
+                            <Button backgroundColor={"#81c784"}>Acessar</Button>
                         </S.CardLink>
                     ))
                 }

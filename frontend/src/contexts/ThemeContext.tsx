@@ -2,7 +2,7 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 import light from "../styles/themes/light";
 import dark from "../styles/themes/dark";
 
-interface ThemeContextData {
+type ThemeContextData = {
   theme: typeof light;
   toggleTheme: () => void;
 }

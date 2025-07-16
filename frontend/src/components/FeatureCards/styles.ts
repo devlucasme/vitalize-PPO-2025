@@ -12,15 +12,27 @@ export const Container = styled.div`
   max-width: 70%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   gap: 2rem;
 `;
 
 export const CardLink = styled.div`
-  width: 200px;
+  width: 300px;
+  height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1.5rem 2.5rem;
+  border: 1px solid ${({ theme }) => theme.colors.text}33;
+  border-radius: 8px;
+
+  background-color: ${({ theme }) =>
+  theme.title === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.02)"};
+  
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
   transition: transform 0.3s ease;
   cursor: pointer;
 
@@ -54,5 +66,5 @@ export const Description = styled.p`
   font-size: 0.85rem;
   color: ${({ theme }) => theme.colors.text};
   text-align: center;
-  margin-top: 0.25rem;
+  margin-top: 0.60rem;
 `;

@@ -3,7 +3,7 @@ import * as S from "./styles";
 
 export type ButtonProps = {
     children: ReactNode;
-    backgroundColor: string;
+    backgroundColor?: string;
 }
 
 const Button: FC<ButtonProps> = ({ children, backgroundColor }) => {

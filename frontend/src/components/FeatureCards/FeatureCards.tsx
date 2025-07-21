@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CalculadoraImc from "../../assets/calculadora.jpg";
+import CalculadoraImc from "../../assets/pavol-stugel-MnHLe_eOtn0-unsplash.jpg";
 import Dieta from "../../assets/dieta.jpg";
 import Treino from "../../assets/treino.jpg";
 import * as S from "./styles";
@@ -9,19 +9,20 @@ const features = [
   {
     image: CalculadoraImc,
     title: "Calculadora",
-    description: "Calcule o seu IMC e gasto calórico",
+    description: "Calcule seu IMC e calorias",
   },
   {
     image: Dieta,
     title: "Alimentação",
-    description: "Veja a sua dieta personalizada",
+    description: "Confira sua dieta personalizada",
   },
   {
     image: Treino,
     title: "Treino",
-    description: "Acesse o seu treino personalizado",
+    description: "Veja seu treino personalizado",
   },
 ];
+
 
 const backgroundImages = [CalculadoraImc, Dieta, Treino];
 

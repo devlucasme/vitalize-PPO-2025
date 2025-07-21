@@ -4,6 +4,7 @@ import { shade } from "polished";
 export const Section = styled.section`
   padding: 4rem 2rem;
   background-color: ${({ theme }) => shade(0.04, theme.colors.background)};
+  scroll-margin-top: 80px;
 `;
 
 export const Container = styled.div`
@@ -15,18 +16,32 @@ export const Container = styled.div`
 export const Title = styled.h2`
   font-size: 2rem;
   margin-bottom: 1.5rem;
+
+  @media(max-width: 1360px) {
+    font-size: 1.8rem;
+  }
+
 `;
 
 export const Subtitle = styled.h3`
   font-size: 1.5rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
+
+  @media(max-width: 1360px) {
+    font-size: 1.3rem;
+  }
+
 `;
 
 export const Text = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+
+  @media(max-width: 1360px) {
+  }
+
 `;
 
 export const CardGrid = styled.div`

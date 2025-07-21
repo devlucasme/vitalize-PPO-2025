@@ -13,18 +13,20 @@ export const NavList = styled.ul`
     font-weight: 500;
     color: ${({ theme }) => theme.colors.text};
     padding-bottom: 8px;  
-    transition: color 0.3s ease;
+    position: relative;
 
     &::after {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: 0;    
-      height: 3px;  
-      width: 0;     
-      background-color: ${({ theme }) => theme.colors.primary};
-      transition: width 0.3s ease;
+      bottom: 0;
+      left: 50%;
+      height: 3px;
+      width: 0;
+      background-color: #246d52;
       border-radius: 2px 2px 0 0;
+      margin-top: 4px;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
     }
 
     &:hover {
@@ -32,7 +34,7 @@ export const NavList = styled.ul`
     }
 
     &:hover::after {
-      width: 100%; 
+      width: 100%;
     }
   }
 `;

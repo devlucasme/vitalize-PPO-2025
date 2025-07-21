@@ -70,20 +70,22 @@ export const CardLink = styled.div`
     width: 280px;
   }
 
-
 `;
-
 
 export const Image = styled.img`
   width: 160px;
   height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  filter: brightness(0.85);
+  
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: filter 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 
   ${CardLink}:hover & {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    filter: brightness(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transform: scale(1.08);
   }
 `;

@@ -18,7 +18,7 @@ const About: FC = () => {
           Pensando nisso, o <strong>Vitalize</strong> foi desenvolvido como um aplicativo completo de nutrição e acompanhamento alimentar. Acreditamos que alimentação saudável não precisa ser complicada nem inacessível.
         </S.Text>
 
-        <S.Subtitle>O que oferecemos:</S.Subtitle>
+        <S.Subtitle>Soluções para você</S.Subtitle>
         <S.CardGrid>
           <S.Card>
             <S.Icon as={BarChart2} />

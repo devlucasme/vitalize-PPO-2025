@@ -5,6 +5,7 @@ export const Section = styled.section`
   padding: 4rem 2rem;
   background-color: ${({ theme }) => shade(0.04, theme.colors.background)};
   scroll-margin-top: 80px;
+  text-align: justify;
 `;
 
 export const Container = styled.div`
@@ -39,9 +40,6 @@ export const Text = styled.p`
   line-height: 1.6;
   margin-bottom: 1rem;
 
-  @media(max-width: 1360px) {
-  }
-
 `;
 
 export const CardGrid = styled.div`
@@ -57,10 +55,13 @@ export const Card = styled.div`
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   transition: all 0.3s ease;
   cursor: pointer;
-
+  color: #f0fff4;
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -76,7 +77,7 @@ export const Card = styled.div`
 `;
 
 export const Icon = styled.svg`
-  color: #246d52;
+  color: #f0fff4;
   flex-shrink: 0;
   width: 28px;
   height: 28px;

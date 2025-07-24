@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { shade } from "polished";
 
 export const Footer = styled.footer`
   width: 100%;
   padding: 2rem 1rem;
-  background-color: ${({ theme }) => theme.colors.background};
-  border-top: 1px solid ${({ theme }) => theme.colors.text}33;
+  background: ${({ theme }) => shade(0.04, theme.colors.background)};
+  border-top: 1px solid ${({ theme }) => theme.colors.text}22;
 `;
 
 export const Container = styled.div`

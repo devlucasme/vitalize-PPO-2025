@@ -3,7 +3,7 @@ import { shade } from "polished";
 
 export const Section = styled.section`
   padding: 4rem 2rem;
-  background-color: ${({ theme }) => shade(0.04, theme.colors.background)};
+  background-color: ${({ theme }) => shade(0.06, theme.colors.background)};
   scroll-margin-top: 80px;
   text-align: justify;
 `;

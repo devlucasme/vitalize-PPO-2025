@@ -13,7 +13,7 @@ export const Header = styled.header`
   align-items: center;
   z-index: 1000;
 
-  border-bottom: 1px solid ${({ theme }) => theme.colors.text}22; /* borda leve */
+  border-bottom: 1px solid ${({ theme }) => theme.colors.text}22; 
 
   img {
     width: 120px;

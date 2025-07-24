@@ -16,7 +16,7 @@ export const Header = styled.header`
   border-bottom: 1px solid ${({ theme }) => theme.colors.text}22; /* borda leve */
 
   img {
-    width: 125px;
+    width: 120px;
   }
 `;
 

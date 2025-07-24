@@ -8,6 +8,7 @@ const Navbar: FC = () => {
         <li><a href="#">Início</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#">FAQ</a></li>
+        <li><a href="#">Feedback</a></li>
         <li><a href="#">Entrar</a></li>
       </S.NavList>
     </nav>

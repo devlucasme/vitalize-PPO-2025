@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavList = styled.ul`
   display: flex;
-  gap: 4.5rem;
+  gap: 4rem;
   
   li {
     position: relative;  

@@ -13,7 +13,7 @@ const About: FC = () => {
         </S.Text>
 
         <S.Text>
-          Diante disso, o <strong>Vitalize</strong> surge como uma solução prática e acessível para apoiar a transformação de hábitos alimentares de forma sustentável. Desenvolvemos um aplicativo completo de nutrição e acompanhamento alimentar que torna a alimentação saudável simples, personalizada e ao alcance de todos. Acreditamos que a tecnologia pode ser uma grande aliada na prevenção da obesidade e na construção de um estilo de vida mais equilibrado.
+          Diante disso, o <strong>Vitalize</strong> surge como uma solução prática e acessível para apoiar a transformação de hábitos alimentares de forma sustentável. Desenvolvemos uma plataforma web completa de nutrição e acompanhamento alimentar que torna a alimentação saudável simples, personalizada e ao alcance de todos. Acreditamos que a tecnologia pode ser uma grande aliada na prevenção da obesidade e na construção de um estilo de vida mais equilibrado.
         </S.Text>
 
         <S.Text>

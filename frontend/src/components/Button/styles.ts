@@ -4,20 +4,31 @@ import type { ButtonProps } from "./Button";
 type ContainerProps = Pick<ButtonProps, "backgroundColor">;
 
 export const Container = styled.button<ContainerProps>`
-  background-color: #246d52;
-  color: #f0fff4;
+  background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.secundary};
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-top: 1rem;
-  padding: 0.45rem 1rem;
-  font-weight: 500;
+  padding: 0.60rem 1rem;
+  font-weight: 600;
+  font-size: 0.85rem;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+  transition: 
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.3s ease;
 
   &:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   }
 
   &::after {
@@ -30,11 +41,10 @@ export const Container = styled.button<ContainerProps>`
     background: linear-gradient(
       120deg,
       transparent,
-      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.3),
       transparent
     );
     transform: skewX(-20deg);
-    transition: none;
   }
 
   &:hover::after {
@@ -50,4 +60,3 @@ export const Container = styled.button<ContainerProps>`
     }
   }
 `;
-

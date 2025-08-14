@@ -37,7 +37,7 @@ const FeatureCards = () => {
   }, []);
 
   return (
-    <S.Main>
+    <S.Main id="cards">
       {backgroundImages.map((img, i) => (
         <S.BackgroundImage
           key={i}

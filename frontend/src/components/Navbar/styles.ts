@@ -14,6 +14,7 @@ export const NavList = styled.ul`
     color: ${({ theme }) => theme.colors.text};
     padding-bottom: 8px;  
     position: relative;
+    text-decoration: none;
 
     &::after {
       content: "";
@@ -24,13 +25,12 @@ export const NavList = styled.ul`
       width: 0;
       background-color: #246d52;
       border-radius: 2px 2px 0 0;
-      margin-top: 4px;
       transform: translateX(-50%);
       transition: width 0.3s ease;
     }
 
     &:hover {
-      color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.text};
     }
 
     &:hover::after {

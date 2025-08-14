@@ -5,6 +5,7 @@ import VitalizeDarkLogo from "../../assets/vitalize-logo-dark.png";
 import { Navbar } from "../Navbar/Navbar";
 import ReactSwitch from "react-switch";
 import { useTheme } from "../../contexts/ThemeContext";
+import { Link } from "react-router-dom";
 
 const Header: FC = () => {
     const { toggleTheme, theme } = useTheme();
@@ -13,7 +14,7 @@ const Header: FC = () => {
     return (
         <S.Header>
             <S.Container>
-                <img src={logo} alt="Logo da vitalize" />
+                <Link to={"/"}><S.VitalizeLogo src={logo} alt="Logo do vitalize" /></Link>
                 <Navbar />
                 <ReactSwitch
                     onChange={toggleTheme}

@@ -9,17 +9,20 @@ export const Header = styled.header`
   right: 0;
   height: 70px;
   background: ${({ theme }) => shade(0.04, theme.colors.background)};
-  display: flex;              
+  display: flex;
   align-items: center;
   z-index: 1000;
-
   border-bottom: 1px solid ${({ theme }) => theme.colors.text}22; 
-
-  img {
-    width: 120px;
-  }
 `;
 
+export const VitalizeLogo = styled.img`
+  width: 110px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1); 
+  }
+`;
 
 export const Container = styled.div`
   width: 100%;   
@@ -54,4 +57,3 @@ export const SunIcon = styled(Sun)`
 export const MoonIcon = styled(Moon)`
   color: #f4effa;
 `;
-

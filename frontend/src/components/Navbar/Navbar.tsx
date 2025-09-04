@@ -1,20 +1,34 @@
 import * as S from "./styles";
 import type { FC } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Navbar: FC = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleInicioClick = (e: React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, id?: string) => {
     e.preventDefault();
 
-    if (location.pathname !== "/") {
-      navigate("/");
+    if (location.pathname === path) {
+      // Se já estamos na mesma página, apenas rola para o id ou topo
+      if (id) {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" }); // sobe até o topo
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" }); // sobe até o topo
+      }
     } else {
-      const section = document.getElementById("cards");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+      // Se não estamos na página, navega e depois rola
+      navigate(path);
+      if (id) {
+        setTimeout(() => {
+          const element = document.getElementById(id);
+          if (element) element.scrollIntoView({ behavior: "smooth" });
+        }, 50);
       }
     }
   };
@@ -22,11 +36,21 @@ const Navbar: FC = () => {
   return (
     <nav>
       <S.NavList>
-        <li><a href="/" onClick={handleInicioClick}>Início</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><Link to="/login">Entrar</Link></li>
-        <li><a href="#">Cadastrar</a></li>
+        <li>
+          <a href="#inicio" onClick={(e) => handleClick(e, "/", "inicio")}>Início</a>
+        </li>
+        <li>
+          <a href="#sobre" onClick={(e) => handleClick(e, "/", "sobre")}>Sobre</a>
+        </li>
+        <li>
+          <Link to={"/faq"}>FAQ</Link>
+        </li>
+        <li>
+          <Link to="/login">Entrar</Link>
+        </li>
+        <li>
+          <Link to="/cadastro">Cadastrar</Link>
+        </li>
       </S.NavList>
     </nav>
   );

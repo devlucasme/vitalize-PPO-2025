@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import { User, Mail, Lock } from "lucide-react";
 import { shade } from "polished";
-import { Mail, Lock } from "lucide-react";
 
 type FieldContainerProps = {
   hasError?: boolean;
@@ -13,11 +13,10 @@ export const Container = styled.div`
     height: 95vh;
 `
 
-export const LoginForm = styled.form`
+export const RegisterForm = styled.form`
     background: ${({ theme }) => shade(0.04, theme.colors.background)};
     width: 100%;
-    height: 65%;
-    max-width: 450px;
+    max-width: 550px;
     border-radius: 5px;
     border: 1px solid ${({ theme }) => shade(0.15, theme.colors.background)};
     padding: 24px 32px;
@@ -37,6 +36,7 @@ export const LoginForm = styled.form`
         border-radius: 50%;
         margin: 0 auto;
     }
+
 `
 
 export const FieldWrapper = styled.div`
@@ -49,7 +49,7 @@ export const Label = styled.label`
   font-size: 0.9rem;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.text};
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 `;
 
 export const FieldContainer = styled.div<FieldContainerProps>`
@@ -64,7 +64,6 @@ export const FieldContainer = styled.div<FieldContainerProps>`
     &:focus-within {
     border-color: ${({ hasError, theme }) => (hasError ? "#e57373" : theme.colors.primary)};
   }  
-    
 `
 
 export const MailIcon = styled(Mail).attrs({ size: 20 })`
@@ -72,6 +71,7 @@ export const MailIcon = styled(Mail).attrs({ size: 20 })`
     flex-shrink: 0;
 `
 
+export const UserIcon = styled(MailIcon).attrs({ as: User })``;
 export const LockIcon = styled(MailIcon).attrs({ as: Lock })``;
 
 export const Input = styled.input`
@@ -99,17 +99,18 @@ export const Input = styled.input`
 
 export const ContainerCheckbox = styled.div`
     display: flex;
-    justify-content: space-between;
-    align-items: center; 
+    justify-content: flex-start;
     font-size: 1rem;   
-    margin-top: 8px;
+    margin-top: 4px;
+    padding-left: 4px;
 `;
 
-export const RememberLabel = styled.label`
+export const TermsLabel = styled.label`
     display: flex;
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    font-size: 0.90rem;
 
     input {
       accent-color: ${( { theme } ) => theme.colors.primary};
@@ -118,7 +119,7 @@ export const RememberLabel = styled.label`
 
 `
 
-export const ForgotPasswordLink = styled.a`
+export const TermsOfUseLink = styled.a`
     color: ${( { theme } ) => theme.colors.primary};
     transition: color .3s ease;
 
@@ -129,7 +130,7 @@ export const ForgotPasswordLink = styled.a`
 
 `
 
-export const SignUpLink = styled.p`
+export const LoginLink = styled.p`
     margin-top: 10px;
     text-align: center;
     font-size: 0.9rem;
@@ -149,6 +150,6 @@ export const SignUpLink = styled.p`
 
 export const ErrorMessage = styled.p`
   color: #e57373;
-  font-size: 0.875rem;
+  font-size: 0.80rem;
   margin-top: 2px;
 `;

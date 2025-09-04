@@ -6,6 +6,7 @@ import * as S from "./styles";
 import { useTheme } from "../../../contexts/ThemeContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchemaType } from "../../../schemas/loginSchema";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
 
@@ -23,6 +24,7 @@ const LoginForm = () => {
                 <img src={logo} alt="Logo do vitalize" />
                 <h2>Entrar no Vitalize</h2>
                 <S.FieldWrapper>
+                    <S.Label>E-mail</S.Label>
                     <S.FieldContainer hasError={!!errors.email}>
                         <S.MailIcon />
                         <S.Input type="email" {...register('email')} placeholder="seu@gmail.com"/>
@@ -30,6 +32,7 @@ const LoginForm = () => {
                     {errors.email?.message && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
                 </S.FieldWrapper>
                 <S.FieldWrapper>
+                    <S.Label>Senha</S.Label>
                     <S.FieldContainer hasError={!!errors.password}>
                         <S.LockIcon />
                         <S.Input type="password" {...register('password')} placeholder="Sua senha" />
@@ -44,7 +47,7 @@ const LoginForm = () => {
                     <S.ForgotPasswordLink href="#">Esqueci minha senha</S.ForgotPasswordLink>
                 </S.ContainerCheckbox>
                 <Button>Entrar</Button>
-                <S.SignUpLink>Não tem uma conta? <a href="#">Cadastra-se aqui</a></S.SignUpLink>
+                <S.SignUpLink>Não tem uma conta? <Link to={"/cadastro"}>Cadastra-se aqui</Link></S.SignUpLink>
             </S.LoginForm>
         </S.Container>
     )

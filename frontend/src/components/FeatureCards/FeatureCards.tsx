@@ -32,7 +32,7 @@ const FeatureCards = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import SaladImage from "../../assets/salad.jpg";
-import OrangeImage from "../../assets/orange.jpg";
-import ChickenImage from "../../assets/chicken.jpg";
+import SaladImage from "../../../assets/salad.jpg";
+import OrangeImage from "../../../assets/orange.jpg";
+import ChickenImage from "../../../assets/chicken.jpg";
 import * as S from "./styles";
 
 const imagesWrapper = [SaladImage, OrangeImage, ChickenImage];

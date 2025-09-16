@@ -1,17 +1,18 @@
 import { useForm } from "react-hook-form";
-import { Button } from "../../Button/Button";
+import { Button } from "../../ui/Button/Button";
 import VitalizeLogo from "../../../assets/vitalize-logo-menor.png";
 import VitalizeDarkLogo from "../../../assets/vitalize-logo-menor-dark.png";
 import * as S from "./styles";
 import { useTheme } from "../../../contexts/ThemeContext";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, type LoginSchemaType } from "../../../schemas/loginSchema";
+import { loginValidation } from "../../../validations/validators/login.validation";
+import type { LoginValidationType } from "../../../validations/protocols/login";
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {
 
-    const { handleSubmit, register, formState: { errors } } = useForm<LoginSchemaType>({
-        resolver: zodResolver(loginSchema),
+    const { handleSubmit, register, formState: { errors } } = useForm<LoginValidationType>({
+        resolver: zodResolver(loginValidation),
         mode: "all"
     });
 
@@ -20,7 +21,7 @@ const LoginForm = () => {
 
     return (
         <S.Container>
-            <S.LoginForm onSubmit={handleSubmit((data: LoginSchemaType) => console.log(data))}>
+            <S.LoginForm onSubmit={handleSubmit((data: LoginValidationType) => console.log(data))}>
                 <img src={logo} alt="Logo do vitalize" />
                 <h2>Entrar no Vitalize</h2>
                 <S.FieldWrapper>

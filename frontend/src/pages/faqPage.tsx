@@ -1,4 +1,4 @@
-import { Faq } from "../components/Faq/Faq";
+import { Faq } from "../components/sections/Faq/Faq";
 
 const FaqPage = () => {
     return (

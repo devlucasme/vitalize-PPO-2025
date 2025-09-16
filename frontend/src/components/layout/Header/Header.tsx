@@ -1,10 +1,10 @@
 import type { FC } from "react";
 import * as S from "./styles";
-import VitalizeLogo from "../../assets/vitalize-logo.png";
-import VitalizeDarkLogo from "../../assets/vitalize-logo-dark.png";
+import VitalizeLogo from "../../../assets/vitalize-logo.png";
+import VitalizeDarkLogo from "../../../assets/vitalize-logo-dark.png";
 import { Navbar } from "../Navbar/Navbar";
 import ReactSwitch from "react-switch";
-import { useTheme } from "../../contexts/ThemeContext";
+import { useTheme } from "../../../contexts/ThemeContext";
 import { Link } from "react-router-dom";
 
 const Header: FC = () => {

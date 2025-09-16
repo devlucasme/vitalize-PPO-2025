@@ -1,16 +1,17 @@
 import { useForm } from "react-hook-form";
-import { Button } from "../../Button/Button";
+import { Button } from "../../ui/Button/Button";
 import VitalizeLogo from "../../../assets/vitalize-logo-menor.png";
 import VitalizeLogoDark from "../../../assets/vitalize-logo-menor-dark.png";
 import { useTheme } from "../../../contexts/ThemeContext";
-import { registerSchema, type RegisterSchemaType } from "../../../schemas/registerSchema";
+import { registerValidation } from "../../../validations/validators/register.validation";
+import type { RegisterValidationType } from "../../../validations/protocols/register";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as S from "./styles";
 
 const RegisterForm = () => {
 
-    const { handleSubmit, register, formState: { errors } } = useForm<RegisterSchemaType>({
-        resolver: zodResolver(registerSchema),
+    const { handleSubmit, register, formState: { errors } } = useForm<RegisterValidationType>({
+        resolver: zodResolver(registerValidation),
         mode: "all",
     });
     const { theme } = useTheme();
@@ -18,7 +19,7 @@ const RegisterForm = () => {
 
     return (
         <S.Container>
-            <S.RegisterForm onSubmit={handleSubmit(data => console.log(data))}>
+            <S.RegisterForm onSubmit={handleSubmit((data: RegisterValidationType) => console.log(data))}>
                 <img src={logo} alt="Logo do vitalize" />
                 <h2>Criar conta no Vitalize</h2>
                 <S.FieldWrapper>

@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const registerSchema = z.object({
+export const registerValidation = z.object({
     name: z
         .string()
         .nonempty("Nome é obrigatório")
@@ -22,4 +22,3 @@ export const registerSchema = z.object({
         message: "As senhas precisam ser iguais"
     })
 
-export type RegisterSchemaType = z.infer<typeof registerSchema>;

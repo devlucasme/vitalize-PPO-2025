@@ -9,7 +9,7 @@ function ThemeApp() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <AppRoutes />
+      <AppRoutes />      
     </ThemeProvider>
   )
 

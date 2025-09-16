@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import CalculadoraImc from "../../assets/pavol-stugel-MnHLe_eOtn0-unsplash.jpg";
-import Dieta from "../../assets/dieta.jpg";
-import Treino from "../../assets/treino.jpg";
+import CalculadoraImc from "../../../assets/pavol-stugel-MnHLe_eOtn0-unsplash.jpg";
+import Dieta from "../../../assets/dieta.jpg";
+import Treino from "../../../assets/treino.jpg";
 import * as S from "./styles";
-import { Button } from "../Button/Button";
+import { Button } from "../../ui/Button/Button";
 
 const features = [
   {

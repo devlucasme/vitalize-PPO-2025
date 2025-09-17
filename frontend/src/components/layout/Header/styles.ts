@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, User } from "lucide-react";
 import { shade } from "polished";
 
 export const Header = styled.header`
@@ -35,6 +35,12 @@ export const Container = styled.div`
   padding: 8px 0;
 `;
 
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+`;
+
 export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -56,4 +62,27 @@ export const SunIcon = styled(Sun)`
 
 export const MoonIcon = styled(Moon)`
   color: #f4effa;
+`;
+
+export const ProfileButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${({ theme }) => theme.colors.secundary};
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  opacity: 0.85;
+  transition: opacity .3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export const UserIcon = styled(User)`
+  color: #fff;
+  width: 20px;
+  height: 20px;
 `;

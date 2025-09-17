@@ -10,19 +10,17 @@ const Navbar: FC = () => {
     e.preventDefault();
 
     if (location.pathname === path) {
-      // Se já estamos na mesma página, apenas rola para o id ou topo
       if (id) {
         const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         } else {
-          window.scrollTo({ top: 0, behavior: "smooth" }); // sobe até o topo
+          window.scrollTo({ top: 0, behavior: "smooth" }); 
         }
       } else {
-        window.scrollTo({ top: 0, behavior: "smooth" }); // sobe até o topo
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } else {
-      // Se não estamos na página, navega e depois rola
       navigate(path);
       if (id) {
         setTimeout(() => {

@@ -10,13 +10,12 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 95vh;
+    height: 90vh;
 `
 
 export const LoginForm = styled.form`
     background: ${({ theme }) => shade(0.04, theme.colors.background)};
     width: 100%;
-    height: 65%;
     max-width: 450px;
     border-radius: 5px;
     border: 1px solid ${({ theme }) => shade(0.15, theme.colors.background)};
@@ -29,7 +28,7 @@ export const LoginForm = styled.form`
     h2 {
         text-align: center;
         font-size: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
 
     img {

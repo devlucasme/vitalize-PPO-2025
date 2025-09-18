@@ -7,7 +7,7 @@ export const Container = styled.button<ContainerProps>`
   background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.secundary};
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   margin-top: 1rem;
   padding: 0.60rem 1rem;
   font-weight: 600;

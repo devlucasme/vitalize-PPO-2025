@@ -36,5 +36,10 @@ export const NavList = styled.ul`
     &:hover::after {
       width: 100%;
     }
+
+    @media (max-width: 1366px) {
+      font-size: 1rem;
+    }
+
   }
 `;

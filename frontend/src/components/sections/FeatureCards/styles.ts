@@ -76,17 +76,12 @@ export const CardLink = styled.div`
     transform: scale(1.05);
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1366px) {
     width: 280px;
     min-height: 320px;
     padding: 1.3rem 2rem;
   }
 
-  @media (max-width: 1024px) {
-    width: 240px;
-    min-height: 300px;
-    padding: 1.2rem 1.8rem;
-  }
 `;
 
 export const Image = styled.img`

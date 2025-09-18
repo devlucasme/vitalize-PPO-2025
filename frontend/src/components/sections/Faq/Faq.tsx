@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import SaladImage from "../../../assets/salad.jpg";
-import OrangeImage from "../../../assets/orange.jpg";
-import ChickenImage from "../../../assets/chicken.jpg";
+import Vitalli from "../../../assets/vitalii.jpg";
 import * as S from "./styles";
-
-const imagesWrapper = [SaladImage, OrangeImage, ChickenImage];
 
 const faqs = [
   {
@@ -43,7 +39,7 @@ const faqs = [
 
 
 const Faq = () => {
-  
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -66,12 +62,9 @@ const Faq = () => {
               dia.
             </S.Text>
           </S.TextContainer>
-
-          <S.ImagesContainer>
-            {imagesWrapper.map((image, index) => (
-              <S.Image key={index} src={image} alt={`imagem ${index}`} />
-            ))}
-          </S.ImagesContainer>
+          <S.ImageContainer>
+            <S.Image src={Vitalli} alt="ad" />
+          </S.ImageContainer>
         </S.TopContainer>
       </S.WrapperTop>
 

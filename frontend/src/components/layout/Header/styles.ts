@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Sun, Moon, User } from "lucide-react";
+import { Sun, Moon, User2 } from "lucide-react";
 import { shade } from "polished";
 
 export const Header = styled.header`
@@ -12,7 +12,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   z-index: 1000;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.text}22; 
+  border-bottom: 1px solid ${({ theme }) => theme.colors.text}22;
 `;
 
 export const VitalizeLogo = styled.img`
@@ -22,6 +22,11 @@ export const VitalizeLogo = styled.img`
   &:hover {
     transform: scale(1.1); 
   }
+
+  @media (max-width: 1366px) {
+    width: 100px;
+  }
+
 `;
 
 export const Container = styled.div`
@@ -79,10 +84,16 @@ export const ProfileButton = styled.button`
   &:hover {
     opacity: 1;
   }
+
+  @media (max-width: 1366px) {
+    width: 34px;
+    height: 34px;
+  }
+
 `;
 
-export const UserIcon = styled(User)`
+export const UserIcon = styled(User2)`
   color: #fff;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 `;

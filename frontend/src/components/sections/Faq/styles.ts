@@ -6,16 +6,20 @@ export const WrapperTop = styled.section`
   justify-content: center;  
   align-items: center;      
   background-color: ${({ theme }) => shade(0.08, theme.colors.background)};
-  padding: 6rem 2rem 4rem;
+  padding: 2.8rem;
+
+  @media (max-width: 1366px) {
+    padding: 2rem;
+  }
+
 `;
 
 export const TopContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;    
-  gap: 80px;
+  gap: 95px;
   max-width: 70%;
-  width: 100%;
 `;
 
 
@@ -26,31 +30,39 @@ export const TextContainer = styled.div`
   flex: 1;
 `;
 
-export const ImagesContainer = styled.div`
+export const ImageContainer = styled.div`
   display: flex;
   gap: 20px;
   justify-content: flex-end;
-  flex: 1; 
   height: 300px;
 `;
 
 export const Image = styled.img`
   width: 100%;
-  height: 100%;
   object-fit: cover;
   border-radius: 12px;
   transition: transform 0.3s ease, filter 0.3s ease;
 
   &:hover {
     transform: scale(1.05) rotate(-2deg);
-    filter: brightness(1.1);
+    filter: brightness(1.2);
   }
+
+  @media (max-width: 1366px) {
+    width: 95%;
+  }
+
 `;
 
 export const Title = styled.h2`
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 1366px) {
+    font-size: 1.6rem;
+  }
+
 `;
 
 export const Text = styled.p`
@@ -63,12 +75,21 @@ export const Text = styled.p`
     color: ${({ theme }) => theme.colors.primary};
   }
 
+  @media (max-width: 1366px) {
+    font-size: 0.95rem;
+  }
+
 `;
 
 export const WrapperFaq = styled.section`
   display: flex;
   justify-content: center;
   padding: 3rem 2rem;
+
+  @media (max-width: 1366px) {
+    padding: 2rem 1rem;
+  }
+
 `;
 
 export const FaqContainer = styled.div`
@@ -89,16 +110,26 @@ export const Question = styled.h3<{ isOpen: boolean }>`
   justify-content: space-between;
   align-items: center;
   color: ${({ theme }) => theme.colors.text};
-
   transition: color 0.3s ease;
+
+  @media (max-width: 1366px) {
+    font-size: 1.1rem;
+  }
+
 `;
 
 export const Answer = styled.p`
   margin-top: 0.5rem;
   font-size: 1rem;
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.primary};
   line-height: 1.5;
   padding-right: 1rem;
+
+  @media (max-width: 1366px) {
+    font-size: 0.95rem;
+  }
+
 `;
 
 export const IconWrapper = styled.div<{ isOpen: boolean }>`
@@ -117,4 +148,10 @@ export const IconWrapper = styled.div<{ isOpen: boolean }>`
     background: ${theme.colors.secundary};
     color: #fff;
   `}
+
+  @media (max-width: 1366px) {
+    width: 22px;
+    height: 22px;
+  }
+
 `;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Sun, Moon, User2 } from "lucide-react";
-import { shade } from "polished";
 
 export const Header = styled.header`
   position: fixed;
@@ -8,11 +7,11 @@ export const Header = styled.header`
   left: 0;
   right: 0;
   height: 70px;
-  background: ${({ theme }) => shade(0.04, theme.colors.background)};
+  background: ${({ theme }) => theme.colors.backgroundShade};
   display: flex;
   align-items: center;
   z-index: 1000;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.text}22;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
 `;
 
 export const VitalizeLogo = styled.img`
@@ -26,7 +25,6 @@ export const VitalizeLogo = styled.img`
   @media (max-width: 1366px) {
     width: 100px;
   }
-
 `;
 
 export const Container = styled.div`
@@ -73,7 +71,7 @@ export const ProfileButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.secundary};
+  background: ${({ theme }) => theme.colors.secondary};
   border: none;
   border-radius: 50%;
   width: 38px;
@@ -89,10 +87,12 @@ export const ProfileButton = styled.button`
     width: 34px;
     height: 34px;
   }
-
 `;
 
 export const UserIcon = styled(User2)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   width: 18px;
   height: 18px;

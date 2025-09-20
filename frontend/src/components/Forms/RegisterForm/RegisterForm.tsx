@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../../ui/Button/Button";
 import VitalizeLogo from "../../../assets/vitalize-logo-menor.png";
@@ -8,12 +9,13 @@ import type { RegisterValidationType } from "../../../validations/protocols/regi
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as S from "./styles";
 
-const RegisterForm = () => {
+const RegisterForm: FC = () => {
 
     const { handleSubmit, register, formState: { errors } } = useForm<RegisterValidationType>({
         resolver: zodResolver(registerValidation),
         mode: "all",
     });
+    
     const { theme } = useTheme();
     const logo = theme.title === "dark" ? VitalizeLogoDark : VitalizeLogo;
 

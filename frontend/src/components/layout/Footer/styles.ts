@@ -1,17 +1,15 @@
 import styled from "styled-components";
-import { shade } from "polished";
 
 export const Footer = styled.footer`
   width: 100%;
   padding: 1.8rem 1rem;
-  background: ${({ theme }) => shade(0.04, theme.colors.background)};
-  border-top: 1px solid ${({ theme }) => theme.colors.text}22;
+  background: ${({ theme }) => theme.colors.backgroundShade};
+  border-top: 1px solid ${({ theme }) => theme.colors.borderColor};
   text-align: center;
 
   @media (max-width: 1366px) {
     padding: 1.5rem 0.8rem;
   }  
-
 `;
 
 export const Container = styled.div`
@@ -26,5 +24,4 @@ export const Text = styled.p`
   strong {
     color: ${({ theme }) => theme.colors.primary};
   }
-
 `;

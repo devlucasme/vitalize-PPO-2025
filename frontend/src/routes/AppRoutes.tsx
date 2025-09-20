@@ -3,18 +3,17 @@ import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { Cadastro } from "../pages/Cadastro";
 import { FaqPage } from "../pages/faqPage";
+import { UserPage } from "../pages/userProfile";
 
 const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />}/>
-                <Route path="/login" element={<Login />}/>
-                <Route path="/cadastro" element={<Cadastro />}/>
-                <Route path="/faq" element={<FaqPage />}/>
-                {/* <Route path="/calculadora" element={<FeatureCards />}/> */}
-                {/* <Route path="/dieta" element={<FeatureCards />}/> */}
-                {/* <Route path="/perfil" element={<FeatureCards />}/> */}
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/cadastro" element={<Cadastro />} />
+                <Route path="/faq" element={<FaqPage />} />
+                <Route path="/user" element={<UserPage />} />
             </Routes>
         </BrowserRouter>
     )

@@ -42,11 +42,6 @@ export const Container = styled.div`
   @media (max-width: 1440px) {
     max-width: 85%;
   }
-
-  @media (max-width: 1024px) {
-    max-width: 95%;
-    gap: 1rem;
-  }
 `;
 
 export const CardLink = styled.div`
@@ -57,7 +52,7 @@ export const CardLink = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 1.5rem 2.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.text}33;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 8px;
 
   background-color: ${({ theme }) =>
@@ -81,7 +76,6 @@ export const CardLink = styled.div`
     min-height: 320px;
     padding: 1.3rem 2rem;
   }
-
 `;
 
 export const Image = styled.img`
@@ -89,9 +83,7 @@ export const Image = styled.img`
   height: 160px;
   border-radius: 50%;
   object-fit: cover;
-
   filter: brightness(0.85);
-
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: filter 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 
@@ -105,11 +97,6 @@ export const Image = styled.img`
     width: 140px;
     height: 140px;
   }
-
-  @media (max-width: 1024px) {
-    width: 120px;
-    height: 120px;
-  }
 `;
 
 export const Title = styled.h3`
@@ -122,11 +109,6 @@ export const Title = styled.h3`
     font-size: 1.1rem;
     margin-top: 0.9rem;
   }
-
-  @media (max-width: 1024px) {
-    font-size: 1rem;
-    margin-top: 0.8rem;
-  }
 `;
 
 export const Description = styled.p`
@@ -138,10 +120,5 @@ export const Description = styled.p`
   @media (max-width: 1400px) {
     font-size: 0.8rem;
     margin-top: 0.5rem;
-  }
-
-  @media (max-width: 1024px) {
-    font-size: 0.75rem;
-    margin-top: 0.4rem;
   }
 `;

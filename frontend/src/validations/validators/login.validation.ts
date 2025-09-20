@@ -10,4 +10,3 @@ export const loginValidation = z.object({
     .nonempty("Senha é obrigatória")
     .min(6, "A senha deve ter ao menos 6 caracteres"),
 });
-

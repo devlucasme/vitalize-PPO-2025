@@ -20,5 +20,4 @@ export const registerValidation = z.object({
     .refine((fields) => fields.password === fields.confirmPassword, {
         path: ["confirmPassword"],
         message: "As senhas precisam ser iguais"
-    })
-
+    });

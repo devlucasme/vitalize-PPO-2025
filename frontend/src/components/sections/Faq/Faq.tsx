@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
@@ -37,8 +38,7 @@ const faqs = [
   },
 ];
 
-
-const Faq = () => {
+const Faq: FC = () => {
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -67,7 +67,6 @@ const Faq = () => {
           </S.ImageContainer>
         </S.TopContainer>
       </S.WrapperTop>
-
       <S.WrapperFaq>
         <S.FaqContainer>
           {faqs.map((faq, index) => {
@@ -81,7 +80,6 @@ const Faq = () => {
                     {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                   </S.IconWrapper>
                 </S.Question>
-
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div

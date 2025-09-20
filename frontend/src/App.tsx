@@ -3,22 +3,23 @@ import { ThemeProvider } from "styled-components";
 import { ThemeProviderApp, useTheme } from "./contexts/ThemeContext";
 import { AppRoutes } from "./routes/AppRoutes";
 
-function ThemeApp() {
+const ThemeApp = () => {
+
   const { theme } = useTheme();
-  
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <AppRoutes />      
+      <AppRoutes />
     </ThemeProvider>
   )
 
 }
 
-function App() {
+const App = () => {
   return (
     <ThemeProviderApp>
-        <ThemeApp />
+      <ThemeApp />
     </ThemeProviderApp>
   )
 }

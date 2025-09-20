@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useEffect, useState } from "react";
 import CalculadoraImc from "../../../assets/pavol-stugel-MnHLe_eOtn0-unsplash.jpg";
 import Dieta from "../../../assets/dieta.jpg";
@@ -26,7 +27,7 @@ const features = [
 
 const backgroundImages = [CalculadoraImc, Dieta, Treino];
 
-const FeatureCards = () => {
+const FeatureCards: FC = () => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
   useEffect(() => {

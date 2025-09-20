@@ -11,14 +11,14 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     height: 90vh;
-`
+`;
 
 export const RegisterForm = styled.form`
-    background: ${({ theme }) => shade(0.04, theme.colors.background)};
+    background: ${({ theme }) => theme.colors.backgroundShade};
     width: 100%;
     max-width: 550px;
     border-radius: 5px;
-    border: 1px solid ${({ theme }) => shade(0.15, theme.colors.background)};
+    border: 1px solid ${({ theme }) => theme.colors.borderColor};
     padding: 24px 32px;
     display: flex;
     justify-content: center;
@@ -37,7 +37,7 @@ export const RegisterForm = styled.form`
         margin: 0 auto;
     }
 
-`
+`;
 
 export const FieldWrapper = styled.div`
   display: flex;
@@ -64,12 +64,12 @@ export const FieldContainer = styled.div<FieldContainerProps>`
     &:focus-within {
     border-color: ${({ hasError, theme }) => (hasError ? "#e57373" : theme.colors.primary)};
   }  
-`
+`;
 
 export const MailIcon = styled(Mail).attrs({ size: 20 })`
     color: ${({ theme }) => theme.colors.text};
     flex-shrink: 0;
-`
+`;
 
 export const UserIcon = styled(MailIcon).attrs({ as: User })``;
 export const LockIcon = styled(MailIcon).attrs({ as: Lock })``;
@@ -113,22 +113,20 @@ export const TermsLabel = styled.label`
     font-size: 0.90rem;
 
     input {
-      accent-color: ${( { theme } ) => theme.colors.primary};
+      accent-color: ${({ theme }) => theme.colors.primary};
       margin-right: 3px;
   }
-
-`
+`;
 
 export const TermsOfUseLink = styled.a`
-    color: ${( { theme } ) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     transition: color .3s ease;
 
     &:hover {
       text-decoration: underline;
-      color: ${( { theme } ) => shade(0.2, theme.colors.primary)};
+      color: ${({ theme }) => shade(0.2, theme.colors.primary)};
     }
-
-`
+`;
 
 export const LoginLink = styled.p`
     margin-top: 10px;
@@ -137,15 +135,15 @@ export const LoginLink = styled.p`
     text-decoration: none;
 
       a {
-        color: ${( { theme } ) => theme.colors.primary};
+        color: ${({ theme }) => theme.colors.primary};
         margin-left: 2px;
         
         &:hover {
-        text-decoration: underline;
-        color: ${( { theme } ) => shade(0.2, theme.colors.primary)};
-    }
+          text-decoration: underline;
+          color: ${({ theme }) => shade(0.2, theme.colors.primary)};
+        }
 
-    }
+      }
 `;
 
 export const ErrorMessage = styled.p`

@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { shade } from "polished";
 
 export const Section = styled.section`
   padding: 5rem 2rem;
-  background-color: ${({ theme }) => shade(0.08, theme.colors.background)};
+  background-color: ${({ theme }) => theme.colors.backgroundDarkShade};
   scroll-margin-top: 80px;   
 `;
 
@@ -29,7 +28,6 @@ export const TopAbout = styled.div`
     @media (max-width: 1366px) {
       font-size: 1.7rem;
     }
-
   }
 
   p {
@@ -47,9 +45,7 @@ export const TopAbout = styled.div`
     @media (max-width: 1366px) {
       font-size: 1.1rem;
     }
-
   }
-
 `;
 
 export const GridCards = styled.div`
@@ -60,7 +56,7 @@ export const GridCards = styled.div`
 `;
 
 export const Card = styled.div`
-  background-color: ${({ theme }) => theme.colors.secundary};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 1.2rem;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
@@ -84,7 +80,6 @@ export const Card = styled.div`
       width: 25px;
       height: 25px;
     }
-
   }
 
   p {
@@ -95,14 +90,11 @@ export const Card = styled.div`
     @media (max-width: 1366px) {
       font-size: 0.9rem;
     }
-
   }
-
 
   @media (max-width: 1366px) {
     padding: 1rem;
   }
-
 `;
 
 export const Icon = styled.svg`

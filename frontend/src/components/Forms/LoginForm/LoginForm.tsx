@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../../ui/Button/Button";
 import VitalizeLogo from "../../../assets/vitalize-logo-menor.png";
@@ -9,7 +10,7 @@ import { loginValidation } from "../../../validations/validators/login.validatio
 import type { LoginValidationType } from "../../../validations/protocols/login";
 import { Link } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm: FC = () => {
 
     const { handleSubmit, register, formState: { errors } } = useForm<LoginValidationType>({
         resolver: zodResolver(loginValidation),
@@ -28,7 +29,7 @@ const LoginForm = () => {
                     <S.Label>E-mail</S.Label>
                     <S.FieldContainer hasError={!!errors.email}>
                         <S.MailIcon />
-                        <S.Input type="email" {...register('email')} placeholder="seu@gmail.com"/>
+                        <S.Input type="email" {...register('email')} placeholder="seu@gmail.com" />
                     </S.FieldContainer>
                     {errors.email?.message && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
                 </S.FieldWrapper>

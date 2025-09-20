@@ -4,7 +4,7 @@ import type { ButtonProps } from "./Button";
 type ContainerProps = Pick<ButtonProps, "backgroundColor">;
 
 export const Container = styled.button<ContainerProps>`
-  background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.secundary};
+  background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.secondary};
   color: #fff;
   border: none;
   border-radius: 5px;

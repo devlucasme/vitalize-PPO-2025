@@ -23,7 +23,7 @@ export const NavList = styled.ul`
       left: 50%;
       height: 3px;
       width: 0;
-      background-color: #246d52;
+      background: ${({ theme }) => theme.colors.primary};
       border-radius: 2px 2px 0 0;
       transform: translateX(-50%);
       transition: width 0.3s ease;
@@ -40,6 +40,5 @@ export const NavList = styled.ul`
     @media (max-width: 1366px) {
       font-size: 1rem;
     }
-
   }
 `;

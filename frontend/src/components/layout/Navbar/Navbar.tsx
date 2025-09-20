@@ -15,7 +15,7 @@ const Navbar: FC = () => {
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         } else {
-          window.scrollTo({ top: 0, behavior: "smooth" }); 
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       } else {
         window.scrollTo({ top: 0, behavior: "smooth" });

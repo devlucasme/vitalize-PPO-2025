@@ -8,7 +8,7 @@ type ContentWrapperProps = {
 const ContentWrapper: FC<ContentWrapperProps> = ({ children }) => {
     return (
         <S.Wrapper>
-            { children }
+            {children}
         </S.Wrapper>
     )
 }

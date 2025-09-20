@@ -1,17 +1,15 @@
 import styled from "styled-components";
-import { shade } from "polished";
 
 export const WrapperTop = styled.section`
   display: flex;
   justify-content: center;  
   align-items: center;      
-  background-color: ${({ theme }) => shade(0.08, theme.colors.background)};
+  background-color: ${({ theme }) => theme.colors.backgroundDarkShade};
   padding: 2.8rem;
 
   @media (max-width: 1366px) {
     padding: 2rem;
   }
-
 `;
 
 export const TopContainer = styled.div`
@@ -51,7 +49,6 @@ export const Image = styled.img`
   @media (max-width: 1366px) {
     width: 95%;
   }
-
 `;
 
 export const Title = styled.h2`
@@ -62,7 +59,6 @@ export const Title = styled.h2`
   @media (max-width: 1366px) {
     font-size: 1.6rem;
   }
-
 `;
 
 export const Text = styled.p`
@@ -78,7 +74,6 @@ export const Text = styled.p`
   @media (max-width: 1366px) {
     font-size: 0.95rem;
   }
-
 `;
 
 export const WrapperFaq = styled.section`
@@ -89,7 +84,6 @@ export const WrapperFaq = styled.section`
   @media (max-width: 1366px) {
     padding: 2rem 1rem;
   }
-
 `;
 
 export const FaqContainer = styled.div`
@@ -115,7 +109,6 @@ export const Question = styled.h3<{ isOpen: boolean }>`
   @media (max-width: 1366px) {
     font-size: 1.1rem;
   }
-
 `;
 
 export const Answer = styled.p`
@@ -129,14 +122,13 @@ export const Answer = styled.p`
   @media (max-width: 1366px) {
     font-size: 0.95rem;
   }
-
 `;
 
 export const IconWrapper = styled.div<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid ${({ theme }) => theme.colors.secundary};
+  border: 2px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -145,7 +137,7 @@ export const IconWrapper = styled.div<{ isOpen: boolean }>`
   ${({ isOpen, theme }) =>
     isOpen &&
     `
-    background: ${theme.colors.secundary};
+    background: ${theme.colors.secondary};
     color: #fff;
   `}
 
@@ -153,5 +145,4 @@ export const IconWrapper = styled.div<{ isOpen: boolean }>`
     width: 22px;
     height: 22px;
   }
-
 `;

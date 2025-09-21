@@ -8,7 +8,13 @@ export class UserRepository implements IUserRepository {
                 name, email, password
             }
         });
-
         return createUser;
+    }
+
+    async findByEmail(email: string): Promise<IUser | null> {
+        const verifyIfExistsEmail = prisma.user.findUnique({
+            where: { email }
+        });
+        return verifyIfExistsEmail;
     }
 }

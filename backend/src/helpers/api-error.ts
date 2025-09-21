@@ -9,7 +9,7 @@ export class ApiError extends Error {
 }
 
 export class BadRequestError extends ApiError {
-    constructor(message: string, statusCode: number) {
+    constructor(message: string) {
         super(message, 400);
     }
 }

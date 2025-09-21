@@ -13,6 +13,12 @@ export interface ICreateUser {
     password: string;
 }
 
+export interface ILoginUser {
+    email: string;
+    password: string;
+}
+
 export interface IUserRepository {
     create(data: ICreateUser): Promise<IUser>;
+    findByEmail(email: string): Promise<IUser | null>;
 }

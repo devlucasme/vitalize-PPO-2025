@@ -15,4 +15,7 @@ export class UserUseCase {
         });
     }
 
+    async findByEmail(email: string): Promise<IUser | null> {
+        return await this.userUseCase.findByEmail(email);
+    }
 }

@@ -1,19 +1,19 @@
 import type { Request, Response } from "express";
 import { UserUseCase } from "../../../usecases/user.usercase";
 import type { ICreateUser } from "../../../interfaces/user.interface";
-import { BadRequestError } from "../../../helpers/api-error";
+import { BadRequestError } from "../../../helpers/apiError";
 import bcrypt from "bcrypt";
 
-export class RegisterController {
+export class UserSignUpController {
 
-    private userUseCase: UserUseCase
+    private userUseCase: UserUseCase;
 
     constructor() {
         this.userUseCase = new UserUseCase();
     }
 
     async create(req: Request<{}, {}, ICreateUser>, res: Response) {
-        
+
         const { name, email, password } = req.body;
         if (!name || !email || !password) throw new BadRequestError("Preencha todos os campos");
 

@@ -1,5 +1,5 @@
-import type { ICreateUser, IUser, IUserRepository } from "../../interfaces/user.interface";
-import { prisma } from "../../database/prisma-client";
+import type { ICreateUser, IUpdateUser, IUser, IUserRepository } from "../../interfaces/user.interface";
+import { prisma } from "../../database/prismaClient";
 
 export class UserRepository implements IUserRepository {
     async create({ name, email, password }: ICreateUser): Promise<IUser> {
@@ -16,5 +16,28 @@ export class UserRepository implements IUserRepository {
             where: { email }
         });
         return verifyIfExistsEmail;
+    }
+
+    async findById(id: number): Promise<IUser | null> {
+        const verifyIfExistsId = prisma.user.findUnique({
+            where: { id }
+        });
+        return verifyIfExistsId;
+    }
+
+    async update(id: number, data: IUpdateUser): Promise<IUser> {
+        const updateUser = await prisma.user.update({
+            where: {
+                id
+            },
+            data
+        });
+        return updateUser;
+    }
+
+    async delete(id: number): Promise<void> {
+        await prisma.user.delete({
+            where: { id }
+        });
     }
 }

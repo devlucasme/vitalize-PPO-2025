@@ -1,11 +1,11 @@
 import type { Request, Response } from "express";
 import { UserUseCase } from "../../../usecases/user.usercase";
 import type { ILoginUser } from "../../../interfaces/user.interface";
-import { BadRequestError } from "../../../helpers/api-error";
+import { BadRequestError } from "../../../helpers/apiError";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export class LoginController {
+export class UserSignInController {
 
     private userUseCase: UserUseCase;
 
@@ -24,12 +24,13 @@ export class LoginController {
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) throw new BadRequestError("Email ou senha incorretos");
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_PASS ?? "", { expiresIn: "1d"});
+        const token = jwt.sign({ id: user.id }, process.env.JWT_PASS ?? "", { expiresIn: "1d" });
 
         const { password: _, ...userLogin } = user;
-        return res.json({ 
+
+        return res.status(200).json({
             user: userLogin,
             token: token
-         });
+        });
     }
 }

@@ -1,4 +1,4 @@
-import { UserRepository } from "../adapters/repositories/user.repository";
+import { UserRepository } from "../adapters/repositories/User.repository";
 import type { ICreateUser, IUpdateUser, IUser, IUserRepository } from "../interfaces/user.interface";
 
 export class UserUseCase {

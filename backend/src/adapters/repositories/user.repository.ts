@@ -12,14 +12,14 @@ export class UserRepository implements IUserRepository {
     }
 
     async findByEmail(email: string): Promise<IUser | null> {
-        const verifyIfExistsEmail = prisma.user.findUnique({
+        const verifyIfExistsEmail = await prisma.user.findUnique({
             where: { email }
         });
         return verifyIfExistsEmail;
     }
 
     async findById(id: number): Promise<IUser | null> {
-        const verifyIfExistsId = prisma.user.findUnique({
+        const verifyIfExistsId = await prisma.user.findUnique({
             where: { id }
         });
         return verifyIfExistsId;

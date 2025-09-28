@@ -3,6 +3,8 @@ export interface IUser {
     name: string;
     email: string;
     password: string;
+    resetToken?: string | null;
+    resetTokenExpires?: Date | null;
     createAt: Date;
     updateAt: Date;
 }
@@ -20,8 +22,6 @@ export interface ILoginUser {
 
 export interface IUpdateUser {
     name?: string;
-    email?: string;
-    password?: string;
 }
 
 export interface IUserRepository {

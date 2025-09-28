@@ -13,6 +13,7 @@
     "esModuleInterop": true,
     "types": [],
     "typeRoots": ["@types"],
+    "forceConsistentCasingInFileNames": true,
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],

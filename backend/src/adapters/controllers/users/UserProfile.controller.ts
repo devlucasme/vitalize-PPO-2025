@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { UnauthorizedError } from "../../../helpers/apiError";
+import { UnauthorizedError } from "../../../helpers/ApiError";
 
 export class UserProfileController {
     async getProfile(req: Request, res: Response) {

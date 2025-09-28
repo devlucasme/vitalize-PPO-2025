@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import { UserUseCase } from "../../../usecases/user.usercase";
+import { UserUseCase } from "../../../usecases/User.usecase";
 import type { ICreateUser } from "../../../interfaces/user.interface";
-import { BadRequestError } from "../../../helpers/apiError";
+import { BadRequestError } from "../../../helpers/ApiError";
 import bcrypt from "bcrypt";
 
 export class UserSignUpController {

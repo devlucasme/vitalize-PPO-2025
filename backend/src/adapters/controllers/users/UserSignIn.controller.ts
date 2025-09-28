@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import { UserUseCase } from "../../../usecases/user.usercase";
+import { UserUseCase } from "../../../usecases/User.usecase";
 import type { ILoginUser } from "../../../interfaces/user.interface";
-import { BadRequestError } from "../../../helpers/apiError";
+import { BadRequestError } from "../../../helpers/ApiError";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -26,7 +26,7 @@ export class UserSignInController {
 
         const token = jwt.sign({ id: user.id }, process.env.JWT_PASS ?? "", { expiresIn: "1d" });
 
-        const { password: _, ...userLogin } = user;
+        const { password: _, resetToken, resetTokenExpires, ...userLogin } = user;
 
         return res.status(200).json({
             user: userLogin,

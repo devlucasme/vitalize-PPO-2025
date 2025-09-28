@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { User } from "lucide-react";
 
 export const PageWrapper = styled.div`
   max-width: 85%;
@@ -43,19 +44,16 @@ export const ProfileHeader = styled.div`
 export const UserInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  background: ${({ theme }) => theme.colors.backgroundDarkShade};
+  padding: 1.5rem;
+  border-radius: 10px;
+`;
 
-  img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+export const UserContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 
     h2 {
       font-size: 1.7rem;
@@ -66,8 +64,16 @@ export const UserInfo = styled.div`
       font-size: 1rem;
       color: ${({ theme }) => theme.colors.text};
     }
-  }
-`;
+`
+
+export const UserIcon = styled(User)`
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.secondary};
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  color: #fff;
+`
 
 export const EditButtonWrapper = styled.div`
   button {

@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import type { ButtonProps } from "./Button";
 
-type ContainerProps = Pick<ButtonProps, "backgroundColor">;
+type ContainerProps = Pick<ButtonProps, "backgroundColor" | "width">;
 
 export const Container = styled.button<ContainerProps>`
+  width: ${({ width }) => width || "auto"};
   background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.secondary};
   color: #fff;
   border: none;
@@ -14,21 +15,21 @@ export const Container = styled.button<ContainerProps>`
   font-size: 0.85rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 
-  transition: 
+  transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
     background-color 0.3s ease;
 
   &:hover {
     transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
   }
 
   &:active {
     transform: translateY(0) scale(0.98);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
   }
 
   &::after {
@@ -41,7 +42,7 @@ export const Container = styled.button<ContainerProps>`
     background: linear-gradient(
       120deg,
       transparent,
-      rgba(255, 255, 255, 0.3),
+      rgba(255,255,255,0.3),
       transparent
     );
     transform: skewX(-20deg);
@@ -52,11 +53,7 @@ export const Container = styled.button<ContainerProps>`
   }
 
   @keyframes shine {
-    0% {
-      left: -75%;
-    }
-    100% {
-      left: 125%;
-    }
+    0% { left: -75%; }
+    100% { left: 125%; }
   }
 `;

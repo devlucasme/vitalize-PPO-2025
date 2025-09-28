@@ -5,22 +5,26 @@ import Dieta from "../../../assets/dieta.jpg";
 import Treino from "../../../assets/treino.jpg";
 import * as S from "./styles";
 import { Button } from "../../ui/Button/Button";
+import { Link } from "react-router-dom";
 
 const features = [
   {
     image: CalculadoraImc,
     title: "Calculadora",
     description: "Calcule seu IMC e calorias",
+    route: "/calculator"
   },
   {
     image: Dieta,
     title: "Alimentação",
     description: "Confira sua dieta personalizada",
+    route: "/diet"
   },
   {
     image: Treino,
     title: "Treino",
     description: "Veja seu treino personalizado",
+    route: "/training"
   },
 ];
 
@@ -49,13 +53,15 @@ const FeatureCards: FC = () => {
       ))}
       <S.Overlay />
       <S.Container>
-        {features.map(({ image, title, description }) => (
-          <S.CardLink key={title}>
-            <S.Image src={image} alt={title} />
-            <S.Title>{title}</S.Title>
-            <S.Description>{description}</S.Description>
-            <Button>Acessar</Button>
-          </S.CardLink>
+        {features.map(({ image, title, description, route }) => (
+          <Link key={title} to={route}>
+            <S.CardLink>
+              <S.Image src={image} alt={title} />
+              <S.Title>{title}</S.Title>
+              <S.Description>{description}</S.Description>
+              <Button>Acessar</Button>
+            </S.CardLink>
+          </Link>
         ))}
       </S.Container>
     </S.Main>

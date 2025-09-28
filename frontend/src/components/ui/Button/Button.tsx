@@ -1,18 +1,18 @@
-import type { FC, MouseEventHandler, ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 import * as S from "./styles";
 
 export type ButtonProps = {
-    children: ReactNode;
-    backgroundColor?: string;
-    onClick?: MouseEventHandler<HTMLButtonElement>;
-}
+  children: ReactNode;
+  backgroundColor?: string;
+  width?: string;
+};
 
-const Button: FC<ButtonProps> = ({ children, backgroundColor }) => {
-    return (
-        <S.Container backgroundColor={backgroundColor}>
-            { children }
-        </S.Container>
-    )
-}
+const Button: FC<ButtonProps> = ({ children, backgroundColor, width }) => {
+  return (
+    <S.Container backgroundColor={backgroundColor} width={width}>
+      {children}
+    </S.Container>
+  );
+};
 
-export { Button }
+export { Button };

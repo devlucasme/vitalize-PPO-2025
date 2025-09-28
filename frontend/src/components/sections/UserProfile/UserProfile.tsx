@@ -1,21 +1,20 @@
 import type { FC } from "react";
 import * as S from "./styles";
 import { Button } from "../../ui/Button/Button";
-import UserImage from "../../../assets/alexander-hipp-iEEBWgY_6lA-unsplash.jpg";
 import { Edit2, RotateCcw, LogOut, Droplets, Dumbbell, BedDouble, Apple } from "lucide-react";
 
-const UserProfile: FC = () => {    
+const UserProfile: FC = () => {
     return (
         <S.PageWrapper>
             <S.LeftColumn>
                 <S.ProfileContainer>
                     <S.ProfileHeader>
                         <S.UserInfo>
-                            <img src={UserImage} alt="Foto do usuário" />
-                            <div>
+                            <S.UserIcon />
+                            <S.UserContent>
                                 <h2>Nome do Usuário</h2>
                                 <p>usuario@email.com</p>
-                            </div>
+                            </S.UserContent>
                         </S.UserInfo>
                         <S.EditButtonWrapper>
                             <Button>
@@ -34,10 +33,10 @@ const UserProfile: FC = () => {
 
                     <S.ButtonWrapper>
                         <Button>
-                            <RotateCcw size={16}/> Atualizar Dados
+                            <RotateCcw size={16} /> Atualizar Dados
                         </Button>
                         <Button backgroundColor="#c75d56">
-                            <LogOut size={16}/> Sair da Conta
+                            <LogOut size={16} /> Sair da Conta
                         </Button>
                     </S.ButtonWrapper>
                 </S.ProfileContainer>

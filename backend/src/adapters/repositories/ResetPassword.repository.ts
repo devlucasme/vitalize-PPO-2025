@@ -1,5 +1,5 @@
 import { prisma } from "../../database/prismaClient";
-import type { IResetPassword, IResetPasswordRepository, IResetPasswordToken } from "../../interfaces/resetPassword.interface";
+import type { IResetPasswordRepository, IResetPasswordToken } from "../../interfaces/resetPassword.interface";
 import type { IUser } from "../../interfaces/user.interface";
 
 

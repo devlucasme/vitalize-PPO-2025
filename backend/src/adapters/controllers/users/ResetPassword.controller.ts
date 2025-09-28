@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import { ResetPasswordUseCase } from "../../../usecases/ResetPassword.usecase";
-import { BadRequestError, UnauthorizedError } from "../../../helpers/ApiError";
+import { BadRequestError } from "../../../helpers/ApiError";
 import crypto from "crypto";
 import type { IResetPassword } from "../../../interfaces/resetPassword.interface";
 

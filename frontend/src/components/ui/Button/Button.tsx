@@ -5,11 +5,12 @@ export type ButtonProps = {
   children: ReactNode;
   backgroundColor?: string;
   width?: string;
+  buttonColor?: string;
 };
 
-const Button: FC<ButtonProps> = ({ children, backgroundColor, width }) => {
+const Button: FC<ButtonProps> = ({ children, backgroundColor, width, buttonColor }) => {
   return (
-    <S.Container backgroundColor={backgroundColor} width={width}>
+    <S.Container backgroundColor={backgroundColor} width={width} buttonColor={buttonColor}>
       {children}
     </S.Container>
   );

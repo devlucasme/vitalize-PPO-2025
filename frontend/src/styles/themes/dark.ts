@@ -10,5 +10,7 @@ export default {
     secondary: "#2d3748",
     text: "#f7fafc",
     borderColor: "#f7fafc22",
-  },
+    buttonBackgroundColor: "#FCFCFC",
+    buttonColor: "#303030"
+  },  
 };

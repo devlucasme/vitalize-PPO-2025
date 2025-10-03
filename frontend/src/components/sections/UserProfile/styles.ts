@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { User } from "lucide-react";
 
 export const PageWrapper = styled.div`
-  max-width: 85%;
+  max-width: 70%;
   margin: 4rem auto;
   display: flex;
   gap: 2rem;
@@ -24,6 +24,7 @@ export const RightColumn = styled.div`
 
 export const ProfileContainer = styled.div`
   padding: 2rem;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.backgroundShade};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -130,6 +131,7 @@ export const ButtonWrapper = styled.div`
 
 export const TipsContainer = styled.div`
   padding: 1.5rem;
+   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.backgroundShade};
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -151,6 +153,7 @@ export const TipCard = styled.div`
   align-items: center;
   gap: 0.8rem;
   padding: 1rem;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.backgroundDarkShade};
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);

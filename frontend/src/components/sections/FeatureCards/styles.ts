@@ -25,7 +25,7 @@ export const BackgroundImage = styled.img<{ isVisible: boolean }>`
 export const Overlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.50);
+  background: rgba(0, 0, 0, 0.30);
   z-index: 1;
 `;
 

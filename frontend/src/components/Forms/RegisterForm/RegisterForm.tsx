@@ -7,6 +7,7 @@ import { useTheme } from "../../../contexts/ThemeContext";
 import { registerValidation } from "../../../validations/validators/register.validation";
 import type { RegisterValidationType } from "../../../validations/protocols/register";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
 import * as S from "./styles";
 
 const RegisterForm: FC = () => {
@@ -63,7 +64,7 @@ const RegisterForm: FC = () => {
                     </S.TermsLabel>
                 </S.ContainerCheckbox>
                 <Button>Criar Conta</Button>
-                <S.LoginLink>Já tem uma conta? <a href="#">Faça login aqui</a></S.LoginLink>
+                <S.LoginLink>Já tem uma conta? <Link to={"/login"}>Faça login aqui</Link></S.LoginLink>
             </S.RegisterForm>
         </S.Container>
     )

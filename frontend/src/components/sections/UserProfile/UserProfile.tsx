@@ -32,7 +32,7 @@ const UserProfile: FC = () => {
                     </S.ProfileSection>
 
                     <S.ButtonWrapper>
-                        <Button>
+                        <Button backgroundColor="#599e6d">
                             <RotateCcw size={16} /> Atualizar Dados
                         </Button>
                         <Button backgroundColor="#c75d56">
@@ -48,7 +48,7 @@ const UserProfile: FC = () => {
                     <S.ProfileItem><span>Último treino:</span> <p>—</p></S.ProfileItem>
                     <S.ProfileItem><span>Status:</span> <p>—</p></S.ProfileItem>
                     <S.ButtonWrapper>
-                        <Button>
+                        <Button backgroundColor="#599e6d">
                             <RotateCcw size={16} /> Atualizar Progresso
                         </Button>
                     </S.ButtonWrapper>

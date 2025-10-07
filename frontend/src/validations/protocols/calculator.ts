@@ -1,4 +1,4 @@
 import z from "zod";
 import { dietTrainingCalculatorValidation } from "../validators/calculator";
 
-export type dietTrainingCalculatorValidationType = z.infer<typeof dietTrainingCalculatorValidation>;
+export type DietTrainingCalculatorValidationType = z.infer<typeof dietTrainingCalculatorValidation>;

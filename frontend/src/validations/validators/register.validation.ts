@@ -16,7 +16,7 @@ export const registerValidation = z.object({
     confirmPassword: z
         .string()
         .nonempty("Confirmar sua senha")
-    })
+})
     .refine((fields) => fields.password === fields.confirmPassword, {
         path: ["confirmPassword"],
         message: "As senhas precisam ser iguais"

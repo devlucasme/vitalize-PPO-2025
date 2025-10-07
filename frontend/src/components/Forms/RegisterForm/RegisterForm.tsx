@@ -1,29 +1,51 @@
 import type { FC } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate, Link } from "react-router-dom";
+import { registerUser } from "../../../services/register.services";
 import { Button } from "../../ui/Button/Button";
 import VitalizeLogo from "../../../assets/vitalize-logo-menor.png";
 import VitalizeLogoDark from "../../../assets/vitalize-logo-menor-dark.png";
 import { useTheme } from "../../../contexts/ThemeContext";
 import { registerValidation } from "../../../validations/validators/register.validation";
 import type { RegisterValidationType } from "../../../validations/protocols/register";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router-dom";
 import * as S from "./styles";
 
 const RegisterForm: FC = () => {
-
-    const { handleSubmit, register, formState: { errors } } = useForm<RegisterValidationType>({
-        resolver: zodResolver(registerValidation),
-        mode: "all",
-    });
-    
+    const navigate = useNavigate();
     const { theme } = useTheme();
     const logo = theme.title === "dark" ? VitalizeLogoDark : VitalizeLogo;
 
+    const { handleSubmit, register, formState: { errors, isSubmitting }, setError } = useForm<RegisterValidationType>({
+        resolver: zodResolver(registerValidation),
+        mode: "all",
+    });
+
+    const onSubmit = async (data: RegisterValidationType) => {
+        
+        try {
+            await registerUser(data);
+            navigate("/login", { state: { message: "Cadastro realizado com sucesso! Faça login." } });
+        
+        } catch (error: any) {
+            if (error.response?.data?.errors) {
+                const backendErrors = error.response.data.errors;
+                Object.keys(backendErrors).forEach((field) => {
+                    setError(field as keyof RegisterValidationType, {
+                        type: "manual",
+                        message: backendErrors[field],
+                    });
+                });
+            } else {
+                alert(error.response?.data?.message || "Erro ao cadastrar");
+            }
+        }
+    };
+
     return (
         <S.Container>
-            <S.RegisterForm onSubmit={handleSubmit((data: RegisterValidationType) => console.log(data))}>
-                <img src={logo} alt="Logo do vitalize" />
+            <S.RegisterForm onSubmit={handleSubmit(onSubmit)}>
+                <img src={logo} alt="Logo do Vitalize" />
                 <h2>Criar conta no Vitalize</h2>
                 <S.FieldWrapper>
                     <S.Label>Nome Completo</S.Label>
@@ -58,16 +80,18 @@ const RegisterForm: FC = () => {
                     {errors.confirmPassword?.message && <S.ErrorMessage>{errors.confirmPassword.message}</S.ErrorMessage>}
                 </S.FieldWrapper>
                 <S.ContainerCheckbox>
-                    <S.TermsLabel htmlFor="terms of use">
-                        <S.Input type="checkbox" id="terms of use" />
-                        Concordo com os <S.TermsOfUseLink href="#">Termos de Uso</S.TermsOfUseLink> e <S.TermsOfUseLink href="#">Política de Privacidade</S.TermsOfUseLink>
-                    </S.TermsLabel>
-                </S.ContainerCheckbox>
-                <Button>Criar Conta</Button>
-                <S.LoginLink>Já tem uma conta? <Link to={"/login"}>Faça login aqui</Link></S.LoginLink>
+                    <S.TermsLabel htmlFor="terms of use"> <S.Input type="checkbox" id="terms of use" /> Concordo com os
+                        <S.TermsOfUseLink href="#">Termos de Uso</S.TermsOfUseLink> e
+                        <S.TermsOfUseLink href="#">Política de Privacidade</S.TermsOfUseLink> </S.TermsLabel> </S.ContainerCheckbox>
+                <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Cadastrando..." : "Criar Conta"}
+                </Button>
+                <S.LoginLink>
+                    Já tem uma conta? <Link to={"/login"}>Faça login aqui</Link>
+                </S.LoginLink>
             </S.RegisterForm>
         </S.Container>
-    )
-}
+    );
+};
 
-export { RegisterForm }
+export { RegisterForm };

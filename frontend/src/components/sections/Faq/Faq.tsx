@@ -71,7 +71,6 @@ const Faq: FC = () => {
         <S.FaqContainer>
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
-
             return (
               <S.QAItem key={index} onClick={() => toggleFAQ(index)}>
                 <S.Question isOpen={isOpen}>

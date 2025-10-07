@@ -9,32 +9,36 @@ export const FormContainer = styled.form`
   align-items: center;
   justify-content: center;
   height: 92vh;
-  gap: 3rem;
   max-width: 70%;
   margin: 0 auto;
 `;
 
 export const CalculatorCard = styled.div`
-  flex: 3.5;
+  width: 70%;
   background: ${({ theme }) => theme.colors.backgroundShade};
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 2.5rem;
+  border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+  }
 
   img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     object-fit: cover;
     border-radius: 50%;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
   }
 
   h2 {
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
     text-align: center;
     color: ${({ theme }) => theme.colors.text};
   }
@@ -44,7 +48,7 @@ export const InputRow = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 `;
 
@@ -58,19 +62,29 @@ export const Label = styled.label`
   margin-bottom: 0.7rem;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 `;
 
 export const FieldContainer = styled.div<FieldContainerProps>`
   display: flex;
   align-items: center;
   border: 1px solid ${({ hasError, theme }) => hasError ? "#e57373" : theme.colors.borderColor};
-  border-radius: 0.5rem;
-  padding: 0.4rem;
-  transition: border-color 0.2s;
+  border-radius: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  background: ${({ theme }) =>
+    theme.title === "dark"
+      ? "rgba(255, 255, 255, 0.05)"
+      : "rgba(0, 0, 0, 0.05)"};
+`;
 
-  &:focus-within {
-    border-color: ${({ hasError, theme }) => hasError ? "#e57373" : theme.colors.primary};
-  }
+export const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.4rem;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const Input = styled.input`
@@ -84,6 +98,7 @@ export const Input = styled.input`
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.text};
+    opacity: 0.7;
   }
 `;
 
@@ -102,77 +117,14 @@ export const Select = styled.select`
   }
 `;
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+`;
+
 export const ErrorMessage = styled.span`
   color: #e57373;
   font-size: 0.8rem;
-  margin-top: 0.30rem;
-`;
-
-export const ResultCard = styled.div`
-  flex: 2;
-  background: ${({ theme }) => theme.colors.backgroundShade};
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-
-  h2 {
-    margin-bottom: 1.5rem;
-    color: ${({ theme }) => theme.colors.text};
-  }
-
-  h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-`;
-
-export const ResultBox = styled.div`
-  background: ${({ theme }) => theme.colors.secondary};
-  padding: 1rem;
-  border-radius: 3px;
-  margin-bottom: 0.8rem;
-
-  p {
-    margin: 0.3rem 0;
-    color: #eee;
-  }
-`;
-
-export const ViewDiet = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-`;
-
-export const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  color: #333;
-
-  th, td {
-    padding: 0.8rem;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
-    text-align: left;
-  }
-
-  th {
-    background: ${({ theme }) => theme.colors.secondary};
-    color: #eee;
-  }
-
-  tr.above-0 { background-color: #cce5ff; }      
-  tr.normal { background-color: #d4edda; }       
-  tr.overweight { background-color: #fff3cd; }   
-  tr.obesity-1 { background-color: #ffe5b4; }    
-  tr.obesity-2 { background-color: #ffcc99; }    
-  tr.obesity-3 { background-color: #eb9aa1ff; }    
-
-  tr.active {
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: #fff;
-    font-weight: 600;
-  }
+  margin-top: 0.3rem;
 `;

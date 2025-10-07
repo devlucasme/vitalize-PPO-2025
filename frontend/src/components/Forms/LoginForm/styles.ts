@@ -16,14 +16,14 @@ export const Container = styled.div`
 export const LoginForm = styled.form`
     background: ${({ theme }) => theme.colors.backgroundShade};
     width: 100%;
-    max-width: 450px;
+    max-width: 520px;
     border-radius: 5px;
     border: 1px solid ${({ theme }) => theme.colors.borderColor};
-    padding: 24px 32px;
+    padding: 40px 48px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px; 
 
     h2 {
         text-align: center;
@@ -145,4 +145,11 @@ export const ErrorMessage = styled.p`
   color: #e57373;
   font-size: 0.875rem;
   margin-top: 2px;
+`;
+
+export const SuccessMessage = styled.p`
+  color: #38bd90;
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
 `;

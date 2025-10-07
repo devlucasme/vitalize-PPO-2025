@@ -15,14 +15,11 @@ export const auth = (userUseCase: UserUseCase) => {
 
         const { id } = jwt.verify(token, process.env.JWT_PASS ?? "") as JwtPayload;
 
-
-
         const user = await userUseCase.findById(id);
         if (!user) throw new UnauthorizedError("Não autorizado");
 
         const { password, ...loggedUser } = user;
         req.user = loggedUser;
-
         next();
     }
 }

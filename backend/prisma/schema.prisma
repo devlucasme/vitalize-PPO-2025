@@ -8,15 +8,54 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  name     String
-  email    String   @unique
-  password String
-  resetToken String? @map("reset_token")
-  resetTokenExpires DateTime? @map("reset_token_expires")
-  createAt DateTime @default(now()) @map("create_at")
-  updateAt DateTime @updatedAt @map("update_at")
+  id                Int        @id @default(autoincrement())
+  name              String
+  email             String     @unique
+  password          String
+  resetToken        String?    @map("reset_token")
+  resetTokenExpires DateTime?  @map("reset_token_expires")
+  createAt          DateTime   @default(now()) @map("create_at")
+  updateAt          DateTime   @updatedAt @map("update_at")
+  Diet              Diet[]
+  Training          Training[]
 
   @@map("users")
 }
 
+model Diet {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+  age           Int
+  sex           String
+  weightKg      Float    @map("weight_kg")
+  heightCm      Float    @map("height_cm")
+  activityLevel String   @map("activity_level")
+  objective     String
+  trainingPlace String   @map("training_place")
+  frequency     String
+  plan          String
+  createAt      DateTime @default(now()) @map("create_at")
+  updateAt      DateTime @updatedAt @map("update_at")
+
+  @@map("diets")
+}
+
+model Training {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+  age           Int
+  sex           String
+  weightKg      Float    @map("weight_kg")
+  heightCm      Float    @map("height_cm")
+  activityLevel String   @map("activity_level")
+  objective     String
+  trainingPlace String   @map("training_place")
+  frequency     String
+  plan          String
+  createAt      DateTime @default(now()) @map("create_at")
+  updateAt      DateTime @updatedAt @map("update_at")
+
+  @@map("trainings")
+}

@@ -7,6 +7,8 @@ export interface IUser {
     resetTokenExpires?: Date | null;
     createAt: Date;
     updateAt: Date;
+    lastDiet?: string | null;       
+    lastTraining?: string | null;   
 }
 
 export interface ICreateUser {

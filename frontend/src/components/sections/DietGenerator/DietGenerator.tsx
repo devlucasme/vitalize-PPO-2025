@@ -24,7 +24,6 @@ const backgroundImages = [
 ];
 
 const DietGenerator: FC = () => {
-  
   const { theme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -37,10 +36,7 @@ const DietGenerator: FC = () => {
   const controllerRef = useRef<AbortController | null>(null);
 
   const startStreaming = async () => {
-    if (!stateData) {
-      setOutput("Erro: Nenhum dado recebido.");
-      return;
-    }
+    if (!stateData) return;
 
     const controller = new AbortController();
     controllerRef.current = controller;
@@ -52,7 +48,6 @@ const DietGenerator: FC = () => {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
-        alert("Você precisa estar logado para gerar a dieta.");
         navigate("/login");
         return;
       }
@@ -65,17 +60,20 @@ const DietGenerator: FC = () => {
         activityLevel: stateData.activity_level,
         objective: stateData.objective,
         trainingPlace: stateData.training_place,
-        frequency: stateData.frequency,
+        budGetLevel: stateData.budGet_level,
+        healthConditions: stateData.health_conditions,
       };
 
       const response = await generateDiet(requestData, token ?? undefined, controller.signal);
       setOutput(response.plan);
 
       setFeedback(
-        <S.FeedbackBox>
-          <CheckCircle size={20} color={theme.colors.primary} />
-          <span>Dieta gerada com sucesso! Veja no perfil.</span>
-        </S.FeedbackBox>
+        <S.FeedbackWrapper>
+          <S.FeedbackBox>
+            <CheckCircle size={20} color={theme.colors.primary} />
+            <span>Dieta gerada com sucesso! Veja no perfil.</span>
+          </S.FeedbackBox>
+        </S.FeedbackWrapper>
       );
     } catch (err: any) {
       if (err.name === "AbortError") {
@@ -91,8 +89,8 @@ const DietGenerator: FC = () => {
   };
 
   const handleGenerate = async () => {
-
     setHasGenerated(true);
+
     if (!stateData) return;
 
     if (isStreaming) {
@@ -114,17 +112,32 @@ const DietGenerator: FC = () => {
   return (
     <S.Main>
       {backgroundImages.map((img, index) => (
-        <S.BackgroundImage
-          key={index}
-          src={img}
-          alt=""
-          isVisible={index === currentBgIndex}
-        />
+        <S.BackgroundImage key={index} src={img} alt="" isVisible={index === currentBgIndex} />
       ))}
       <S.Overlay />
+
       <S.Container>
-        <S.Card>
-          {!(hasGenerated && !stateData) && (
+        {hasGenerated && !stateData && (
+          <S.Modal>
+            <S.ModalTitle>Atenção!</S.ModalTitle>
+            <S.ModalText>
+              Parece que você ainda não preencheu o formulário.<br />
+              Por favor, complete seus dados para gerar a dieta.
+            </S.ModalText>
+            <S.ModalButtons>
+              <Button
+                className="confirm"
+                onClick={() => navigate("/", { replace: true })}
+                backgroundColor={theme.colors.buttonBackgroundColor}
+              >
+                Ir para o formulário
+              </Button>
+            </S.ModalButtons>
+          </S.Modal>
+        )}
+
+        {!hasGenerated || (hasGenerated && stateData) ? (
+          <S.Card>
             <S.ButtonContainer>
               <Button
                 type="button"
@@ -139,52 +152,33 @@ const DietGenerator: FC = () => {
                 ) : (
                   <Sparkles size={16} />
                 )}
-                {isStreaming ? "Parar" : "Gerar dieta"}
+                {isStreaming ? "Cancelar" : "Gerar dieta"}
               </Button>
             </S.ButtonContainer>
-          )}
 
-          {hasGenerated && !stateData && (
-            <S.WarningBox>
-              <h2>
-                <S.WarningIcon /> Ops!
-              </h2>
-              <p>
-                Parece que você ainda não preencheu o formulário.<br />
-                Por favor, volte e complete seus dados para gerar sua dieta.
-              </p>
-              <Button
-                type="button"
-                backgroundColor={theme.colors.buttonBackgroundColor}
-                buttonColor={theme.colors.buttonColor}
-                onClick={() => navigate("/calculator")}
-              >
-                Voltar ao Formulário
-              </Button>
-            </S.WarningBox>
-          )}
+            {stateData && (
+              <>
+                <S.Box>
+                  <S.ContentBox>
+                    <ReactMarkdown
+                      children={output}
+                      components={{
+                        h1: ({ children }) => <S.PlanTitle>{children}</S.PlanTitle>,
+                        h2: ({ children }) => <S.DayCard>{children}</S.DayCard>,
+                        h3: ({ children }) => <S.MealTitle>{children}</S.MealTitle>,
+                        ul: ({ children }) => <S.MealList>{children}</S.MealList>,
+                        li: ({ children }) => <S.MealItem>{children}</S.MealItem>,
+                        p: ({ children }) => <S.Paragraph>{children}</S.Paragraph>,
+                      }}
+                    />
+                  </S.ContentBox>
+                </S.Box>
 
-          {hasGenerated && stateData && (
-            <>
-              <S.Box>
-                <S.ContentBox>
-                  <ReactMarkdown
-                    children={output}
-                    components={{
-                      h1: ({ children }) => <S.PlanTitle>{children}</S.PlanTitle>,
-                      h2: ({ children }) => <S.DayCard>{children}</S.DayCard>,
-                      h3: ({ children }) => <S.MealTitle>{children}</S.MealTitle>,
-                      ul: ({ children }) => <S.MealList>{children}</S.MealList>,
-                      li: ({ children }) => <S.MealItem>{children}</S.MealItem>,
-                      p: ({ children }) => <S.Paragraph>{children}</S.Paragraph>,
-                    }}
-                  />
-                </S.ContentBox>
-              </S.Box>
-              {feedback && feedback}
-            </>
-          )}
-        </S.Card>
+                {feedback}
+              </>
+            )}
+          </S.Card>
+        ) : null}
       </S.Container>
     </S.Main>
   );

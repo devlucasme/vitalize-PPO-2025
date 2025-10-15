@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { Button } from "../../ui/Button/Button";
 import VitalizeLogo from "../../../assets/vitalize-logo-menor.png";
 import VitalizeDarkLogo from "../../../assets/vitalize-logo-menor-dark.png";
-import { Citrus, Dumbbell, User, Calendar, Scale, Ruler, Goal, MapPin, Activity, Repeat } from "lucide-react";
+import { Citrus, Dumbbell, User, Calendar, Scale, Ruler, Goal, MapPin, Activity } from "lucide-react";
 import { useTheme } from "../../../contexts/ThemeContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,13 +13,14 @@ import type { IDietAndTrainingData } from "../../../interfaces/DietAndTraining.i
 import { useNavigate } from "react-router-dom";
 
 const Calculator: FC = () => {
+  
   const { theme } = useTheme();
   const logo = theme.title === "dark" ? VitalizeDarkLogo : VitalizeLogo;
   const navigate = useNavigate();
 
   const { handleSubmit, register, formState: { errors } } = useForm<DietTrainingCalculatorValidationType>({
-    resolver: zodResolver(dietTrainingCalculatorValidation),
-    mode: "all"
+    resolver: zodResolver(dietTrainingCalculatorValidation) as any,
+    mode: "all",
   });
 
   const handleFormSubmit = (data: DietTrainingCalculatorValidationType, path: string) => {
@@ -31,7 +32,8 @@ const Calculator: FC = () => {
       activity_level: data.activity_level,
       objective: data.objective,
       training_place: data.training_place,
-      frequency: data.frequency
+      budGet_level: data.budGet_level,
+      health_conditions: data.health_conditions ?? ["Nenhuma"]
     };
 
     navigate(path, { state: typedData });
@@ -123,17 +125,34 @@ const Calculator: FC = () => {
             {errors.activity_level && <S.ErrorMessage>{errors.activity_level.message}</S.ErrorMessage>}
           </S.InputGroup>
           <S.InputGroup>
-            <S.Label><Repeat size={14} /> Frequência semanal</S.Label>
-            <S.FieldContainer hasError={!!errors.frequency}>
-              <S.Select {...register("frequency")}>
+            <S.Label><Scale size={14} /> Orçamento</S.Label>
+            <S.FieldContainer hasError={!!errors.budGet_level}>
+              <S.Select {...register("budGet_level")}>
                 <option value="">Selecione</option>
-                <option value="2x por semana">2x por semana</option>
-                <option value="3x por semana">3x por semana</option>
-                <option value="4x por semana">4x por semana</option>
-                <option value="5x por semana">5x por semana</option>
+                <option value="Baixo">Baixo</option>
+                <option value="Médio">Médio</option>
+                <option value="Alto">Alto</option>
               </S.Select>
             </S.FieldContainer>
-            {errors.frequency && <S.ErrorMessage>{errors.frequency.message}</S.ErrorMessage>}
+            {errors.budGet_level && <S.ErrorMessage>{errors.budGet_level.message}</S.ErrorMessage>}
+          </S.InputGroup>
+        </S.InputRow>
+        <S.InputRow>
+          <S.InputGroup>
+            <S.Label>Condições de saúde</S.Label>
+            <S.FieldContainer hasError={!!errors.health_conditions}>
+              <S.Select {...register("health_conditions")}>
+                <option value="">Selecione</option>
+                <option value="Nenhuma">Nenhuma</option>
+                <option value="Diabetes">Diabetes</option>
+                <option value="Hipertensão">Hipertensão</option>
+                <option value="Intolerância à lactose">Intolerância à lactose</option>
+                <option value="Doença celíaca (sem glúten)">Doença celíaca (sem glúten)</option>
+              </S.Select>
+            </S.FieldContainer>
+            {errors.health_conditions && (
+              <S.ErrorMessage>{errors.health_conditions.message}</S.ErrorMessage>
+            )}
           </S.InputGroup>
         </S.InputRow>
         <S.ButtonContainer>

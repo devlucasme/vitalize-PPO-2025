@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import * as S from "./styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginUser } from "../../../services/login.services";
@@ -11,85 +11,147 @@ import VitalizeDarkLogo from "../../../assets/vitalize-logo-menor-dark.png";
 import { useTheme } from "../../../contexts/ThemeContext";
 import { loginValidation } from "../../../validations/validators/login.validation";
 import type { LoginValidationType } from "../../../validations/protocols/login";
+import { Eye, EyeOff } from "lucide-react";
 
 const LoginForm: FC = () => {
+  
   const navigate = useNavigate();
   const location = useLocation() as { state: { message?: string } };
   const { theme } = useTheme();
   const logo = theme.title === "dark" ? VitalizeDarkLogo : VitalizeLogo;
+  const [generalError, setGeneralError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) navigate("/user", { replace: true });
   }, [navigate]);
 
-  const { handleSubmit, register, formState: { errors, isSubmitting }, setError, } = useForm<LoginValidationType>({
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+
+    if (isLoading) {
+      setLoadingProgress(0);
+      interval = setInterval(() => {
+        setLoadingProgress((prev) => {
+          if (prev < 90) return prev + 10;
+          return prev;
+        });
+      }, 180);
+    } else {
+      setTimeout(() => setLoadingProgress(0), 500);
+    }
+
+    return () => clearInterval(interval);
+  }, [isLoading]);
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm<LoginValidationType>({
     resolver: zodResolver(loginValidation),
     mode: "all",
   });
 
   const onSubmit = async (data: LoginValidationType) => {
-    
-    try {  
+    setGeneralError(null);
+    setIsLoading(true);
+
+    try {
       const response = await loginUser(data);
+      setLoadingProgress(100);
 
-      localStorage.setItem("token", response.token);
-      localStorage.setItem("user", JSON.stringify(response.user));
-      navigate("/user");
-
+      setTimeout(() => {
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("user", JSON.stringify(response.user));
+        navigate("/user");
+      }, 500);
     } catch (error: any) {
-      if (error.errors) {
-        const backendErrors = error.errors;
-        Object.keys(backendErrors).forEach((field) => {
-          setError(field as keyof LoginValidationType, {
-            type: "manual",
-            message: backendErrors[field],
+      setLoadingProgress(100);
+      setTimeout(() => {
+        setIsLoading(false);
+        if (error.errors) {
+          const backendErrors = error.errors;
+          Object.keys(backendErrors).forEach((field) => {
+            setError(field as keyof LoginValidationType, {
+              type: "manual",
+              message: backendErrors[field],
+            });
           });
-        });
-      } else {
-        alert(error.message || "Erro ao fazer login");
-      }
+        } else {
+          setGeneralError(
+            "Não foi possível realizar o login. Verifique suas credenciais e tente novamente."
+          );
+        }
+      }, 800);
+    } finally {
+      setTimeout(() => setIsLoading(false), 1200);
     }
   };
 
   return (
     <S.Container>
       <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
-        <img src={logo} alt="Logo do vitalize" />
+        {isLoading && <S.LoadingBar progress={loadingProgress} visible={isLoading} />}
+        <img src={logo} alt="Logo do Vitalize" />
         <h2>Entrar no Vitalize</h2>
-
         {location.state?.message && (
           <S.SuccessMessage>{location.state.message}</S.SuccessMessage>
         )}
-
+        {generalError && <S.ErrorAlert>{generalError}</S.ErrorAlert>}
         <S.FieldWrapper>
           <S.Label>E-mail</S.Label>
           <S.FieldContainer hasError={!!errors.email}>
             <S.MailIcon />
-            <S.Input type="email" {...register("email")} placeholder="seu@gmail.com" />
+            <S.Input
+              type="email"
+              {...register("email")}
+              placeholder="seu@gmail.com"
+            />
           </S.FieldContainer>
-          {errors.email?.message && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
+          {errors.email?.message && (
+            <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>
+          )}
         </S.FieldWrapper>
         <S.FieldWrapper>
           <S.Label>Senha</S.Label>
           <S.FieldContainer hasError={!!errors.password}>
             <S.LockIcon />
-            <S.Input type="password" {...register("password")} placeholder="Sua senha" />
+            <S.Input
+              type={showPassword ? "text" : "password"}
+              {...register("password")}
+              placeholder="Sua senha"
+            />
+            <S.TogglePasswordButton
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </S.TogglePasswordButton>
           </S.FieldContainer>
-          {errors.password?.message && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
+          {errors.password?.message && (
+            <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>
+          )}
         </S.FieldWrapper>
         <S.ContainerCheckbox>
           <S.RememberLabel htmlFor="remember-me">
             <S.Input type="checkbox" id="remember-me" />
             Lembrar de mim
           </S.RememberLabel>
-          <S.ForgotPasswordLink href="#">Esqueci minha senha</S.ForgotPasswordLink>
+          <S.ForgotPasswordLink href="#">
+            Esqueci minha senha
+          </S.ForgotPasswordLink>
         </S.ContainerCheckbox>
-        <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Entrando..." : "Entrar"}
+        <Button type="submit" disabled={isSubmitting || isLoading}>
+          Entrar
         </Button>
         <S.SignUpLink>
-          Não tem uma conta? <Link to={"/cadastro"}>Cadastra-se aqui</Link>
+          Não tem uma conta? <Link to={"/cadastro"}>Cadastre-se aqui</Link>
         </S.SignUpLink>
       </S.LoginForm>
     </S.Container>

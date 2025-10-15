@@ -8,6 +8,7 @@ import { UserPage } from "../pages/UserProfile";
 import { CalculatorPage } from "../pages/Calculator";
 import { DietGeneratorPage } from "../pages/DietGenerator";
 import { TrainingGeneratorPage } from "../pages/TrainingGenerator";
+import { DeleteAccountPage } from "../pages/DeleteAccount";
 
 const AppRoutes = () => {
   return (
@@ -49,6 +50,14 @@ const AppRoutes = () => {
           element={
             <PrivateRoutes>
               <TrainingGeneratorPage />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/delete-account"
+          element={
+            <PrivateRoutes>
+              <DeleteAccountPage />
             </PrivateRoutes>
           }
         />

@@ -34,11 +34,6 @@ export const Container = styled.button<ContainerProps>`
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
   }
 
-  &:active {
-    transform: translateY(0) scale(0.98);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-  }
-
   &::after {
     content: '';
     position: absolute;

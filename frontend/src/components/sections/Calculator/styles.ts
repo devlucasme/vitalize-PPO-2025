@@ -6,39 +6,38 @@ type FieldContainerProps = {
 
 export const FormContainer = styled.form`
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 92vh;
-  max-width: 70%;
-  margin: 0 auto;
+  align-items: center;
+  padding: 1rem 2rem; 
+  width: 100%;
+  height: 85vh;
+  box-sizing: border-box;
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 export const CalculatorCard = styled.div`
-  width: 70%;
+  width: 100%;
+  max-width: 900px;
   background: ${({ theme }) => theme.colors.backgroundShade};
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 8px 22px rgba(0,0,0,0.25);
-  }
+  box-sizing: border-box;
 
   img {
     width: 70px;
     height: 70px;
     object-fit: cover;
     border-radius: 50%;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1.5rem;
   }
 
   h2 {
     margin-bottom: 2rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-align: center;
     color: ${({ theme }) => theme.colors.text};
   }
@@ -46,10 +45,9 @@ export const CalculatorCard = styled.div`
 
 export const InputRow = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
 `;
 
 export const InputGroup = styled.div`
@@ -59,8 +57,9 @@ export const InputGroup = styled.div`
 `;
 
 export const Label = styled.label`
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
   font-weight: 600;
+  font-size: 0.95rem;
   color: ${({ theme }) => theme.colors.text};
   display: flex;
   align-items: center;
@@ -119,8 +118,13 @@ export const Select = styled.select`
 
 export const ButtonContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+
+  button {
+    flex: 1 1 220px;
+  }
 `;
 
 export const ErrorMessage = styled.span`

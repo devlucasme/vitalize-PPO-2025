@@ -14,8 +14,9 @@ export const dietTrainingCalculatorValidation = z.object({
     "Campo obrigatório"
   ),
   training_place: z.enum(["Academia", "Casa", "Parque"], "Campo obrigatório"),
-  frequency: z.enum(
-    ["2x por semana", "3x por semana", "4x por semana", "5x por semana"],
+  budGet_level: z.enum(["Baixo", "Médio", "Alto"], "Campo obrigatório"),
+  health_conditions: z.enum(
+    ["Nenhuma", "Diabetes", "Hipertensão", "Intolerância à lactose", "Doença celíaca (sem glúten)"],
     "Campo obrigatório"
   ),
 });

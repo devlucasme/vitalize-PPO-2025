@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { User } from "lucide-react";
+import styled, { css } from "styled-components";
+import { User, Mail } from "lucide-react";
 
 export const PageWrapper = styled.div`
   max-width: 70%;
@@ -43,7 +43,6 @@ export const Card = styled(ProfileContainer)`
   h3 {
     font-size: 1.2rem;
   }
-
 `;
 
 export const ScrollBox = styled.div`
@@ -68,60 +67,61 @@ export const ScrollBox = styled.div`
   }
 `;
 
-export const ProfileHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-`;
-
-export const UserInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
 export const UserContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.6rem;
+  border-radius: 8px;
+  padding: 0.8rem;
+  background: ${({ theme }) => theme.colors.backgroundDarkShade};
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+  h2, p {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+  }
 
   h2 {
     font-size: 1.5rem;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.text};
+    font-weight: 500;
   }
 
   p {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     color: ${({ theme }) => theme.colors.text};
+    font-weight: 500;
   }
+`;
+
+const IconStyle = css`
+  width: 35px;
+  height: 35px;
+  padding: 6px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.secondary};
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  color: #fff;
+  margin-right: 1.5rem;
 `;
 
 export const UserIcon = styled(User)`
-  border-radius: 50%;
-  background: ${({ theme }) => theme.colors.secondary};
-  width: 36px;
-  height: 36px;
-  padding: 7px;
-  color: #fff;
+  ${IconStyle}
 `;
 
-export const EditButtonWrapper = styled.div`
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    gap: 0.5rem;
-    padding: 0.5rem 0.8rem;
-    font-size: 0.85rem;
-  }
+export const MailIcon = styled(Mail)`
+  ${IconStyle}
 `;
 
 export const ProfileSection = styled.section`
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+
   h3 {
     font-size: 1.15rem;
-    margin-bottom: 0.7rem;
+    margin-bottom: 1rem;
     color: ${({ theme }) => theme.colors.primary};
   }
 `;
@@ -138,24 +138,14 @@ export const ProfileItem = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 0.8rem;
-  margin-top: 1rem;
-
-  button {
-    margin: 0 auto;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    gap: 0.5rem;
-  }
+  margin-top: 0.8rem;
 `;
 
 export const TipsContainer = styled(ProfileContainer)`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
 
   h3 {
     text-align: center;
@@ -169,8 +159,8 @@ export const TipsContainer = styled(ProfileContainer)`
 export const TipCard = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: 0.7rem;
+  gap: 1rem;
+  padding: 0.9rem;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.backgroundDarkShade};
@@ -198,8 +188,7 @@ export const DayCard = styled.h2`
   font-size: 1.25rem;
   font-weight: 600;
   margin: 1.8rem 0 1rem 0;
-  color: ${({ theme }) =>
-    theme.title === "light" ? "#3f6ed3ff" : "#60a5fa"};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const MealTitle = styled.h3`
@@ -225,7 +214,7 @@ export const MealItem = styled.li`
   background-color: ${({ theme }) =>
     theme.title === "dark"
       ? "rgba(255, 255, 255, 0.08)"
-      : "rgba(255, 255, 255, 0.15)"}; 
+      : "rgba(255, 255, 255, 0.15)"};
 
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -239,3 +228,21 @@ export const Paragraph = styled.p`
   line-height: 1.6;
   color: ${({ theme }) => theme.colors.text};
 `;
+
+export const DataNotFound = styled.p`
+  margin-top: 0.5rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ce5138ff;
+`
+
+export const DataGenerate = styled.h3`
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+`

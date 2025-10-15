@@ -60,7 +60,7 @@ export const IconWrapper = styled.div`
 `;
 
 export const SunIcon = styled(Sun)`
-  color: #FFD700;
+ color: #e0a61dff;
 `;
 
 export const MoonIcon = styled(Moon)`

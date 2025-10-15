@@ -1,22 +1,43 @@
-import styled from "styled-components";
-import { User, Mail, Lock } from "lucide-react";
+import styled, { keyframes } from "styled-components";
+import { User, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { shade } from "polished";
 
 type FieldContainerProps = {
   hasError?: boolean;
 };
 
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 90vh;
 `;
 
+export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: ${({ type }) => (type === "success" ? "#38bd90" : "#e57373")};
+  background-color: ${({ type }) => (type === "success" ? "rgba(56,189,144,0.1)" : "rgba(229,115,115,0.1)")};
+  border: 1px solid ${({ type }) => (type === "success" ? "#38bd90" : "#e57373")};
+  animation: ${fadeIn} 0.3s ease forwards;
+  text-align: center;
+  width: 100%;
+  max-width: 650px;
+`;
+
 export const RegisterForm = styled.form`
   background: ${({ theme }) => theme.colors.backgroundShade};
   width: 100%;
-  max-width: 650px; 
+  max-width: 650px;
   border-radius: 5px;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   padding: 28px 40px;
@@ -58,11 +79,27 @@ export const FieldContainer = styled.div<FieldContainerProps>`
   border-radius: 10px;
   border: 1px solid ${({ hasError }) => (hasError ? "#e57373" : "#ccc")};
   gap: 8px;
-  width: 100%; 
+  width: 100%;
+  position: relative;
 
   &:focus-within {
     border-color: ${({ hasError, theme }) =>
       hasError ? "#e57373" : theme.colors.primary};
+  }
+`;
+
+export const EyeButton = styled.button`
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme.colors.text};
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: ${({ theme }) => shade(0.2, theme.colors.text)};
   }
 `;
 
@@ -71,15 +108,25 @@ export const MailIcon = styled(Mail).attrs({ size: 20 })`
   flex-shrink: 0;
 `;
 
-export const UserIcon = styled(MailIcon).attrs({ as: User })``;
-export const LockIcon = styled(MailIcon).attrs({ as: Lock })``;
+export const UserIcon = styled(User).attrs({ size: 20 })`
+  color: ${({ theme }) => theme.colors.text};
+  flex-shrink: 0;
+`;
+
+export const LockIcon = styled(Lock).attrs({ size: 20 })`
+  color: ${({ theme }) => theme.colors.text};
+  flex-shrink: 0;
+`;
+
+export const EyeIcon = styled(Eye).attrs({ size: 20 })``;
+export const EyeOffIcon = styled(EyeOff).attrs({ size: 20 })``;
 
 export const Input = styled.input`
   border: none;
   outline: none;
   font-size: 1rem;
   flex: 1;
-  width: 100%; 
+  width: 100%;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.text};
 
@@ -88,16 +135,10 @@ export const Input = styled.input`
     color: ${({ theme }) => theme.colors.text};
   }
 
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
+  &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px
       ${({ theme }) => shade(0.04, theme.colors.background)} inset !important;
-    box-shadow: 0 0 0 1000px
-      ${({ theme }) => shade(0.04, theme.colors.background)} inset !important;
-    -webkit-text-fill-color: ${({ theme }) =>
-      theme.colors.text} !important;
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.text} !important;
   }
 `;
 
@@ -136,7 +177,6 @@ export const LoginLink = styled.p`
   margin-top: 10px;
   text-align: center;
   font-size: 0.9rem;
-  text-decoration: none;
 
   a {
     color: ${({ theme }) => theme.colors.primary};

@@ -79,7 +79,9 @@ export const Text = styled.p`
 export const WrapperFaq = styled.section`
   display: flex;
   justify-content: center;
+  margin: 0 auto;
   padding: 3rem 2rem;
+  width: 80%;
 
   @media (max-width: 1366px) {
     padding: 2rem 1rem;

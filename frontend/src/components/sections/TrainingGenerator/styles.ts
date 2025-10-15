@@ -1,5 +1,9 @@
 import styled, { keyframes } from "styled-components";
-import { AlertCircle } from "lucide-react";
+
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
 
 export const Main = styled.main`
   position: relative;
@@ -25,7 +29,7 @@ export const BackgroundImage = styled.img<{ isVisible: boolean }>`
 export const Overlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0,0,0,0.3);
   z-index: 1;
 `;
 
@@ -35,7 +39,8 @@ export const Container = styled.div`
   width: 100%;
   max-width: 70%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Card = styled.div`
@@ -47,16 +52,10 @@ export const Card = styled.div`
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   background-color: ${({ theme }) =>
-    theme.title === "dark"
-      ? "rgba(255, 255, 255, 0.08)"
-      : "rgba(255, 255, 255, 0.6)"};
+    theme.title === "dark" ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.6)"};
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.03);
-  }
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 `;
 
 export const ButtonContainer = styled.div`
@@ -72,22 +71,8 @@ export const Box = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   max-height: 400px;
   overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) =>
-      theme.title === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.2)"};
-    border-radius: 10px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.text};
-    border-radius: 10px;
-    border: 2px solid
-      ${({ theme }) =>
-        theme.title === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.15)"};
-  }
+  background-color: ${({ theme }) =>
+    theme.title === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.6)"};
 `;
 
 export const ContentBox = styled.div`
@@ -95,11 +80,6 @@ export const ContentBox = styled.div`
   font-size: 0.9rem;
   line-height: 1.6;
   color: ${({ theme }) => theme.colors.text};
-`;
-
-const spin = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 `;
 
 export const LoadingIcon = styled.div`
@@ -116,6 +96,80 @@ export const LoadingIcon = styled.div`
   }
 `;
 
+export const FeedbackWrapper = styled.div`
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+export const FeedbackBox = styled.div`
+  display: flex;
+  width: 100%; /* ocupa toda a largura do container */
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: ${({ theme }) =>
+    theme.title === "dark"
+      ? "rgba(255, 255, 255, 0.1)"
+      : "rgba(0, 255, 0, 0.1)"};
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: 500;
+`;
+
+
+export const Modal = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: ${({ theme }) => (theme.title === "dark" ? "#1e1e1e" : "#fff")};
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 100%;
+  width: 550px;
+
+  /* Transição suave de entrada */
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeIn 0.3s forwards;
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  button {
+    color: ${({ theme }) => theme.colors.buttonColor};
+  }
+`;
+
+export const ModalTitle = styled.h2`
+  font-size: 1.5rem;
+  color: #ce5244ff;
+`;
+
+export const ModalText = styled.p`
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.text};
+  text-align: center;
+  margin: 1rem 0 0.5rem 0;
+`;
+
+export const ModalButtons = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+`;
+
 export const PlanTitle = styled.h1`
   text-align: center;
   font-size: 1.5rem;
@@ -123,7 +177,9 @@ export const PlanTitle = styled.h1`
   margin-bottom: 2rem;
   color: ${({ theme }) => theme.colors.primary};
   background: ${({ theme }) =>
-    theme.title === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.7)"};
+    theme.title === "dark"
+      ? "rgba(255,255,255,0.05)"
+      : "rgba(255,255,255,0.7)"};
   padding: 1rem;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
@@ -131,7 +187,9 @@ export const PlanTitle = styled.h1`
 
 export const DayCard = styled.h2`
   background: ${({ theme }) =>
-    theme.title === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.6)"};
+    theme.title === "dark"
+      ? "rgba(255,255,255,0.05)"
+      : "rgba(255,255,255,0.6)"};
   padding: 1.2rem;
   border-radius: 5px;
   color: ${({ theme }) => theme.colors.text};
@@ -173,57 +231,4 @@ export const Paragraph = styled.p`
   color: ${({ theme }) => theme.colors.text};
   margin: 0.6rem 0 1rem;
   text-align: justify;
-`;
-
-export const WarningBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-  padding: 2rem;
-  border-radius: 10px;
-  background: ${({ theme }) =>
-    theme.title === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.8)"};
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #e74c3c;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #e74c3c;
-    margin-bottom: 1rem;
-  }
-
-  button {
-    margin-top: 0.5rem;
-  }
-`;
-
-export const WarningIcon = styled(AlertCircle)`
-  color: #e74c3c;
-  width: 1.8rem;
-  height: 1.8rem;
-`;
-
-export const FeedbackBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  background: ${({ theme }) =>
-    theme.title === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 255, 0, 0.1)"};
-  color: ${({ theme }) => theme.colors.text};
-  font-weight: 500;
 `;

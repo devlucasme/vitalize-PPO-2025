@@ -17,7 +17,6 @@ export class TrainingPlanController {
       throw new BadRequestError("Dados do usuário incorretos");
     }
 
-    // Gera e salva o treino completo
     const training = await this.trainingUseCase.generateAndSaveTraining(req.user.id, parsed.data);
     res.status(200).json({ plan: training.plan });
   }

@@ -17,9 +17,7 @@ export class DietPlanController {
       throw new BadRequestError("Dados do usuário incorretos");
     }
 
-    // Gera e salva a dieta completa
     const diet = await this.dietUseCase.generateAndSaveDiet(req.user.id, parsed.data);
-
     res.status(200).json({ plan: diet.plan });
   }
 }

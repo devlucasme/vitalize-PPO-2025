@@ -1,192 +1,148 @@
-# 📘 Documento Técnico: Diretrizes de Dieta e Treino
+# 📘 Documento Técnico: Diretrizes de Dieta Personalizada (Orçamento + Condições de Saúde)
 
-Este documento serve como base de conhecimento técnico para o assistente especializado em **nutrição e treinamento físico**.  
-As recomendações abaixo devem sempre ser usadas como referência para gerar **planos alimentares e de treino personalizados**, conforme os dados, objetivo e rotina do usuário.
+Este documento serve como referência técnica para gerar **planos alimentares semanais completos e personalizados**, considerando:
 
----
+- Objetivo do usuário (Perda de peso, Hipertrofia, Manter massa muscular)  
+- Nível de atividade física  
+- Local de treino (Academia, Casa, Parque)  
+- **Orçamento disponível** (Baixo, Médio, Alto) – fundamental para selecionar alimentos de acordo com recursos financeiros  
+- Condições de saúde: **Nenhuma, Diabetes, Hipertensão, Intolerância à lactose, Doença celíaca**  
 
-## 1. Nutrição (Baseada no Objetivo)
-
-### 1.1 Hipertrofia (Ganho de Massa Muscular)
-
-- **Proteína:** 1,6 – 2,2 g/kg corporal/dia  
-- **Carboidrato:** 4 – 6 g/kg corporal/dia  
-- **Gordura:** 0,8 – 1,2 g/kg corporal/dia  
-- **Calorias:** Superávit de +300 a +500 kcal/dia sobre o TDEE  
-
-**Pontos-chave:**  
-- Proteínas simples e acessíveis: **frango, carne moída, carne bovina, carne de porco magra, ovos, peixe, proteína de soja, queijo coalho, requeijão light**.  
-- Carboidratos variados: **arroz, feijão preto ou carioca, macarrão, batata inglesa, batata-doce, macaxeira, cuscuz, tapioca, milho, pão francês ou integral**.  
-- Frutas: **banana, maçã, mamão, melancia, manga, uva, laranja, pera**.  
-- Vegetais: **cenoura, abobrinha, chuchu, couve, brócolis, tomate, pepino, alface**.  
-- Distribuir proteínas em 4–6 refeições.  
-- Incluir pequenas quantidades de laticínios: **queijo coalho, requeijão light, iogurte natural**.  
+Todas as quantidades de alimentos são apresentadas em **gramas (g)**, sem usar xícaras.
 
 ---
 
-### 1.2 Emagrecimento (Déficit Calórico)
+## 1. Princípios Gerais da Dieta
 
-- **Proteína:** 1,8 – 2,4 g/kg corporal/dia  
-- **Carboidrato:** 2 – 4 g/kg corporal/dia  
-- **Gordura:** 0,8 – 1,0 g/kg corporal/dia  
-- **Calorias:** Déficit de –300 a –500 kcal/dia sobre o TDEE  
-
-**Pontos-chave:**  
-- Proteínas magras e vegetais: **frango, carne moída magra, peixe, ovos, proteína de soja, feijão, lentilha, grão-de-bico**.  
-- Carboidratos moderados: **batata-doce, macaxeira, arroz integral, cuscuz, tapioca, milho, pão integral**.  
-- Frutas leves: **mamão, maçã, melancia, laranja, pera**.  
-- Evitar frituras, molhos prontos e excesso de industrializados.  
-- Pequenas quantidades de gordura de fontes naturais (sem manteiga ou azeite industrializado).
+- Alimentação variada, equilibrada e baseada em alimentos naturais ou minimamente processados.  
+- Distribuição diária de macronutrientes adaptada ao objetivo do usuário.  
+- Refeições regulares (4 por dia) para controle de fome e glicemia.  
+- Boa hidratação (~30 mL/kg/dia).  
+- Atenção à qualidade dos carboidratos, proteínas e gorduras.  
+- Ajuste de calorias conforme objetivo: déficit, manutenção ou superávit.  
+- **O orçamento deve guiar a escolha dos alimentos**, garantindo que a dieta seja acessível e sustentável.
 
 ---
 
-### 1.3 Manutenção (Equilíbrio Energético)
+## 2. Faixas de Orçamento Alimentar
 
-- **Proteína:** 1,4 – 2,0 g/kg corporal/dia  
-- **Carboidrato:** 3 – 5 g/kg corporal/dia  
-- **Gordura:** 0,8 – 1,0 g/kg corporal/dia  
-- **Calorias:** Igual ao TDEE  
+**O orçamento impacta diretamente na escolha dos alimentos**. Cada faixa deve priorizar opções que respeitem o custo sem comprometer o valor nutricional.
 
-**Pontos-chave:**  
-- Alternar fontes de proteína: **frango, carne de boi, carne de porco magra, ovos, peixe, proteína de soja**.  
-- Carboidratos variados: **arroz, batata, batata-doce, macaxeira, cuscuz, macarrão, pão integral ou francês, milho, tapioca**.  
-- Frutas e vegetais variados diariamente.  
-- Pequenas porções de **queijo coalho, requeijão light ou iogurte natural**.
+| Faixa de Orçamento | Estratégias de Seleção de Alimentos |
+|---|---|
+| **Alto** | Alimentos premium, variedade ampla, frutas exóticas, verduras diversas, cortes nobres de carne, peixes gordurosos, ovos orgânicos, grãos integrais e macarrão integral de qualidade. Maior foco em alimentos ricos em nutrientes e mais sofisticados. |
+| **Médio** | Alimentos de bom custo-benefício: arroz integral ou mistura integral/branco, batata, mandioca, feijão, macarrão simples, frango, carne magra, ovos, frutas e vegetais da estação. Garantir variedade e qualidade sem exagerar nos custos. |
+| **Baixo** | Alimentos simples, baratos e acessíveis: arroz branco, feijão, batata comum, mandioca, macarrão comum, ovos, legumes e verduras locais, frutas regionais. Evitar produtos industrializados caros; priorizar alimentos básicos, nutritivos e econômicos. |
 
----
-
-### 1.4 Performance Esportiva (Alto Rendimento)
-
-- **Proteína:** 1,6 – 2,0 g/kg corporal/dia  
-- **Carboidrato:** 6 – 10 g/kg corporal/dia  
-- **Gordura:** 0,8 – 1,2 g/kg corporal/dia  
-- **Calorias:** Ajustar conforme fase de treino ou competição  
-
-**Pontos-chave:**  
-- Pré-treino: carboidratos de digestão rápida + proteína leve (ex: 100g cuscuz + 60g ovo ou 50g pão + 80g frango).  
-- Pós-treino: carboidrato rápido + proteína (ex: 120g arroz + 100g frango, ou 100g batata-doce + 100g carne moída).  
-- Frutas ricas em água: **melancia, mamão, laranja, abacaxi**.  
-- Hidratação: 35–40 ml/kg corporal/dia.
+> ⚠️ Sempre respeitar a faixa de orçamento do usuário. Se for baixo, a dieta deve buscar **fontes mais simples e econômicas**, sem comprometer proteínas, carboidratos complexos e vegetais.
 
 ---
 
-## 2. Estrutura da Dieta
+## 3. Diretrizes Nutricionais por Condição de Saúde
 
-### 2.1 Regras Gerais
+### 3.1 Nenhuma condição específica
 
-1. Calcular **TDEE** antes de definir o plano.  
-2. Ajustar calorias conforme objetivo (superávit, déficit ou manutenção).  
-3. Definir **proteínas primeiro**, depois carboidratos e gorduras.  
-4. Dividir ingestão em **4 a 6 refeições diárias**.  
-5. Basear cardápio em **alimentos simples, acessíveis e variados**.  
-6. Evitar industrializados, ultraprocessados e bebidas açucaradas.
+- Seguir recomendações gerais de calorias e macronutrientes.  
+- Refeições balanceadas: proteína, carboidrato de baixo índice glicêmico, vegetais/frutas.  
 
----
-
-### 2.2 Tabela de Alimentos (Variedade Acessível)
-
-#### Proteínas
-| Alimento | Porção (g) | Proteína (g) |
-|-----------|------------|--------------|
-| Frango cozido | 100g | 32g |
-| Carne moída magra | 100g | 26g |
-| Carne de boi magra | 100g | 27g |
-| Carne de porco magra | 100g | 27g |
-| Peixe | 100g | 22g |
-| Ovos | 60g (1 unid.) | 6g |
-| Proteína de soja | 100g | 16g |
-| Queijo coalho | 50g | 9g |
-| Requeijão light | 30g | 2g |
-| Iogurte natural | 100g | 5g |
-
-#### Carboidratos
-| Alimento | Porção (g) | Carboidrato (g) |
-|-----------|------------|-----------------|
-| Arroz cozido | 100g | 28g |
-| Feijão preto/carioca | 100g | 14g |
-| Macarrão cozido | 100g | 25g |
-| Batata inglesa | 100g | 20g |
-| Batata-doce | 100g | 23g |
-| Macaxeira (aipim) | 100g | 31g |
-| Cuscuz de milho | 100g | 22g |
-| Tapioca | 100g | 25g |
-| Milho cozido | 100g | 19g |
-| Pão francês | 50g | 27g |
-| Pão integral | 50g | 24g |
-
-#### Frutas
-| Alimento | Porção (g) | Carboidrato (g) |
-|-----------|------------|-----------------|
-| Banana | 100g | 23g |
-| Maçã | 100g | 14g |
-| Mamão | 100g | 10g |
-| Melancia | 100g | 8g |
-| Manga | 100g | 14g |
-| Uva | 100g | 17g |
-| Laranja | 100g | 12g |
-| Pera | 100g | 12g |
-| Abacaxi | 100g | 13g |
-
-#### Vegetais
-| Alimento | Porção (g) |
-|-----------|------------|
-| Cenoura | 100g |
-| Abobrinha | 100g |
-| Chuchu | 100g |
-| Couve | 100g |
-| Brócolis | 100g |
-| Tomate | 100g |
-| Pepino | 100g |
-| Alface | 100g |
+**Exemplo de refeições (g):**  
+- Café da manhã: 100 g de ovos mexidos + 50 g de macarrão integral + 100 g de frutas  
+- Almoço: 150 g de arroz integral + 120 g de frango grelhado + 100 g de legumes  
+- Lanche da tarde: 50 g de iogurte natural + 30 g de castanhas  
+- Jantar: 150 g de peixe assado + 120 g de batata-doce + 100 g de salada  
 
 ---
 
-## 3. Distribuição de Macronutrientes (Exemplo Geral)
+### 3.2 Diabetes
 
-| Objetivo | Proteína (g/kg) | Carboidrato (g/kg) | Gordura (g/kg) | Calorias |
-|-----------|----------------|--------------------|----------------|-----------|
-| Hipertrofia | 2,0 | 5,0 | 1,0 | TDEE + 400 |
-| Emagrecimento | 2,2 | 3,0 | 0,8 | TDEE – 400 |
-| Manutenção | 1,8 | 4,0 | 0,9 | TDEE |
-| Performance | 2,0 | 7,0 | 1,0 | TDEE + variável |
+- Reduzir açúcares simples e carboidratos refinados.  
+- Priorizar carboidratos complexos e alimentos ricos em fibras.  
+- Monitorar IG/CG dos alimentos.  
 
----
-
-## 4. Exemplos de Refeições Simples (Variedade)
-
-### Café da Manhã
-- 100g de cuscuz ou 50g de pão integral  
-- 2 ovos mexidos (120g)  
-- 30g de requeijão light ou queijo coalho  
-- 1 banana ou mamão (100g)  
-
-### Almoço
-- 120g de arroz ou 100g de macarrão  
-- 100g de feijão ou lentilha  
-- 100g de frango, carne moída, carne de porco ou peixe  
-- 80–100g de legumes variados (cenoura, abobrinha, brócolis)  
-
-### Lanche
-- 2 fatias de pão integral ou francês (50g)  
-- 1 ovo cozido (60g)  
-- 100g de fruta (maçã, laranja, uva ou mamão)  
-
-### Jantar
-- 150g de batata-doce, macaxeira ou cuscuz  
-- 100g de frango, carne moída, peixe ou proteína de soja  
-- 50–80g de legumes cozidos  
+**Exemplo de refeições (g):**  
+- Café da manhã: 100 g de ovos mexidos + 50 g de aveia + 100 g de morango  
+- Almoço: 150 g de arroz integral + 120 g de peito de frango + 100 g de brócolis  
+- Lanche: 50 g de iogurte sem lactose + 20 g de nozes  
+- Jantar: 150 g de peixe + 100 g de abóbora + 100 g de couve  
 
 ---
 
-### 4.1 Observações Gerais
+### 3.3 Hipertensão
 
-- Priorizar preparos **cozidos, assados ou grelhados**.  
-- Evitar frituras e molhos gordurosos.  
-- Ajustar quantidades conforme o cálculo energético do usuário.  
-- Garantir ingestão adequada de **água (35–40 ml/kg corporal)**.  
-- As porções podem ser aumentadas ou reduzidas conforme o objetivo (ganho, perda ou manutenção).  
-- Variar alimentos simples garante adesão e equilíbrio nutricional.
+- Reduzir sal e alimentos industrializados.  
+- Priorizar vegetais frescos, frutas e proteínas magras.  
+
+**Exemplo de refeições (g):**  
+- Café da manhã: 100 g de ovos cozidos + 50 g de pão integral sem sal + 100 g de mamão  
+- Almoço: 150 g de arroz integral + 120 g de peito de frango grelhado sem sal + 100 g de legumes cozidos  
+- Lanche: 50 g de iogurte natural sem açúcar + 30 g de amêndoas  
+- Jantar: 150 g de filé de peixe + 100 g de abobrinha + 100 g de cenoura  
 
 ---
 
-**Este documento técnico é a base para geração automática de planos de dieta e treino personalizados, usando alimentos simples, variados e acessíveis, com medidas em gramas para maior precisão.**
+### 3.4 Intolerância à lactose
+
+- Substituir laticínios por versões sem lactose ou alternativas vegetais (leite de soja, amêndoas, coco).  
+
+**Exemplo de refeições (g):**  
+- Café da manhã: 100 g de ovos mexidos + 50 g de aveia + 100 g de fruta + 150 mL de leite vegetal  
+- Almoço: 150 g de arroz integral + 120 g de carne magra + 100 g de legumes  
+- Lanche: 50 g de iogurte vegetal + 30 g de castanhas  
+- Jantar: 150 g de frango grelhado + 100 g de batata-doce + 100 g de salada  
+
+---
+
+### 3.5 Doença celíaca (sem glúten)
+
+- Evitar trigo, cevada, centeio e produtos que contenham glúten.  
+- Usar arroz, milho, mandioca, batata, quinoa e macarrão sem glúten.  
+
+**Exemplo de refeições (g):**  
+- Café da manhã: 100 g de ovos mexidos + 50 g de macarrão sem glúten + 100 g de frutas  
+- Almoço: 150 g de arroz + 120 g de frango + 100 g de legumes  
+- Lanche: 50 g de iogurte sem lactose + 30 g de castanhas  
+- Jantar: 150 g de peixe + 100 g de batata-doce + 100 g de abobrinha  
+
+---
+
+## 4. Estrutura de Refeições
+
+Cada plano deve conter **4 refeições fixas por dia**:  
+
+1. **Café da manhã** – proteína + carboidrato + fruta  
+2. **Almoço** – proteína + carboidrato + legumes/verduras  
+3. **Lanche da tarde** – fruta ou vegetal + proteína leve  
+4. **Jantar** – similar ao almoço, com atenção ao controle glicêmico  
+
+> ⚠️ O orçamento do usuário deve guiar a escolha dos alimentos em todas as refeições.
+
+---
+
+## 5. Diretrizes Gerais de Macronutrientes
+
+| Macronutriente | Diretrizes Gerais | Ajustes Específicos |
+|---|---|---|
+| Proteínas | 1–1,5 g/kg/dia | Ajustar conforme objetivo e condição de saúde |
+| Carboidratos | 45–65% do VET; priorizar complexos | Reduzir refinados; usar IG/CG para diabetes |
+| Fibras | ≥ 25 g/dia ou 14 g/1000 kcal | Aumentar gradualmente para evitar desconforto intestinal |
+| Gorduras | Priorizar mono- e poli-insaturadas | Limitar saturadas; considerar efeito sobre glicemia pós-prandial |
+
+---
+
+## 6. Notas Finais
+
+- Todas as quantidades estão em **gramas**.  
+- Ajustar calorias e macros conforme objetivo: emagrecimento, manutenção ou hipertrofia.  
+- Revisar periodicamente o plano para adaptar peso, controle glicêmico e resposta ao treinamento.  
+- **Respeitar rigorosamente o orçamento** para garantir que o plano seja sustentável e acessível.  
+- Considerar restrições médicas e preferências individuais.  
+
+---
+
+## 7. Fontes Confiáveis
+
+1. Sociedade Brasileira de Diabetes. *Diretriz Terapia Nutricional no Pré-Diabetes e no Diabetes Mellitus tipo 2*, 2024.  
+2. Sociedade Brasileira de Diabetes. *Diretriz Terapia Nutricional no Diabetes tipo 1*, 2024.  
+3. Diretrizes da Associação Médica Brasileira / Conselho Federal de Medicina em Diabetes.  
+4. Projeto Diretrizes – Diabetes Mellitus: Recomendações Nutricionais.  
+5. Ministério da Saúde. *Guia Alimentar para a População Brasileira*, 2014.  

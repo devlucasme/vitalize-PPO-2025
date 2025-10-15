@@ -1,7 +1,9 @@
 import { UserRepository } from "../adapters/repositories/User.repository";
 import { DietRepository } from "../adapters/repositories/Diet.repository";
 import { TrainingRepository } from "../adapters/repositories/Training.repository";
-import type { ICreateUser, IUpdateUser, IUser, IUserRepository } from "../interfaces/user.interface";
+import type { ICreateUser, IUser, IUserRepository } from "../interfaces/user.interface";
+import { BadRequestError, UnauthorizedError } from "../helpers/ApiError";
+import bcrypt from "bcrypt";
 
 export class UserUseCase {
     
@@ -38,11 +40,14 @@ export class UserUseCase {
         };
     }
 
-    async update(id: number, data: IUpdateUser): Promise<IUser> {
-        return await this.userRepository.update(id, data);
-    }
+    async deleteWithPassword(id: number, password: string): Promise<boolean> {
+        const user = await this.userRepository.findById(id);
+        if (!user) throw new BadRequestError("Usuário não encontrado");
 
-    async delete(id: number): Promise<void> {
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) throw new UnauthorizedError("Senha incorreta");
+
         await this.userRepository.delete(id);
+        return true;
     }
 }

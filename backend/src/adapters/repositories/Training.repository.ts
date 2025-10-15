@@ -8,7 +8,6 @@ export class TrainingRepository implements ITrainingRepository {
       where: { userId: data.userId },
     });
 
-    // Cria o novo treino
     const createdTraining = await prisma.training.create({ data });
 
     return {
@@ -29,11 +28,8 @@ export class TrainingRepository implements ITrainingRepository {
         | "Hipertrofia"
         | "Manter massa muscular",
       trainingPlace: createdTraining.trainingPlace as "Academia" | "Casa" | "Parque",
-      frequency: createdTraining.frequency as
-        | "2x por semana"
-        | "3x por semana"
-        | "4x por semana"
-        | "5x por semana",
+      budGetLevel: createdTraining.budGetLevel as "Baixo" | "Médio" | "Alto",
+      healthConditions: createdTraining.healthConditions as ("Nenhuma" | "Diabetes" | "Hipertensão" | "Intolerância à lactose" | "Doença celíaca (sem glúten)"),
       plan: createdTraining.plan,
       createAt: createdTraining.createAt,
       updateAt: createdTraining.updateAt,
@@ -66,11 +62,8 @@ export class TrainingRepository implements ITrainingRepository {
         | "Hipertrofia"
         | "Manter massa muscular",
       trainingPlace: latestTraining.trainingPlace as "Academia" | "Casa" | "Parque",
-      frequency: latestTraining.frequency as
-        | "2x por semana"
-        | "3x por semana"
-        | "4x por semana"
-        | "5x por semana",
+      budGetLevel: latestTraining.budGetLevel as "Baixo" | "Médio" | "Alto", // novo campo
+      healthConditions: latestTraining.healthConditions as ("Nenhuma" | "Diabetes" | "Hipertensão" | "Intolerância à lactose" | "Doença celíaca (sem glúten)"),
       plan: latestTraining.plan,
       createAt: latestTraining.createAt,
       updateAt: latestTraining.updateAt,

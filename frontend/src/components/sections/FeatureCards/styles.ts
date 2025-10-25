@@ -7,6 +7,15 @@ export const Main = styled.main`
   align-items: center;
   height: 92vh;
   overflow: hidden;
+
+  @media (max-width: 990px) {
+    height: 110vh;
+  }
+
+  @media (max-width: 390px) {
+    height: 150vh;
+  }
+
 `;
 
 export const BackgroundImage = styled.img<{ isVisible: boolean }>`
@@ -40,17 +49,34 @@ export const Container = styled.div`
   gap: 2rem;
 
   @media (max-width: 1440px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 1280px) {
     max-width: 85%;
+  }
+
+
+  button {
+    
+    @media (max-width: 570px) {
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 450px) {
+      font-size: 0.7rem;
+    }
+
   }
 `;
 
 export const CardLink = styled.div`
   width: 300px;
-  height: auto;
   min-height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   padding: 1.5rem 2.5rem;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 8px;
@@ -63,7 +89,6 @@ export const CardLink = styled.div`
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
   transition: transform 0.3s ease;
   cursor: pointer;
 
@@ -73,10 +98,47 @@ export const CardLink = styled.div`
 
   @media (max-width: 1366px) {
     width: 280px;
-    min-height: 320px;
     padding: 1.3rem 2rem;
   }
+
+  @media (max-width: 1170px) {
+    width: 260px;
+  }
+
+  @media (max-width: 660px) {
+    width: 240px;
+  }
+
+  @media (max-width: 620px) {
+    width: 220px;
+  }
+
+  @media (max-width: 570px) {
+    width: 210px;
+    min-height: 290px;
+  }
+
+  @media (max-width: 535px) {
+    width: 200px;
+    min-height: 270px;
+  }
+
+  @media (max-width: 495px) {
+    width: 195px;
+  }
+
+  /* TELA MUITO PEQUENA */
+  @media (max-width: 425px) {
+    width: 185px;
+    height: 140px;
+    padding: 1rem 1.2rem;
+  }
+
+  @media (max-width: 380px) {
+    width: 175px;
+  }
 `;
+
 
 export const Image = styled.img`
   width: 160px;
@@ -97,6 +159,18 @@ export const Image = styled.img`
     width: 140px;
     height: 140px;
   }
+
+  @media (max-width: 660px) {
+    width: 125px;
+    height: 125px;
+    margin-top: 1rem;
+  }
+
+  @media(max-width: 570px) {
+    width: 105px;
+    height: 105px;
+  }
+  
 `;
 
 export const Title = styled.h3`
@@ -107,8 +181,18 @@ export const Title = styled.h3`
 
   @media (max-width: 1400px) {
     font-size: 1.1rem;
-    margin-top: 0.9rem;
+    margin-bottom: 0.5rem;
   }
+
+  @media (max-width: 660px) {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  @media (max-width: 570px) {
+    font-size: 0.85rem;
+  }
+
 `;
 
 export const Description = styled.p`
@@ -119,6 +203,11 @@ export const Description = styled.p`
 
   @media (max-width: 1400px) {
     font-size: 0.8rem;
-    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
   }
+
+  @media (max-width: 570px) {
+    font-size: 0.75rem;
+  }
+
 `;

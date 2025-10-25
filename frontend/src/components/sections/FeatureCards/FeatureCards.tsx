@@ -17,13 +17,13 @@ const features = [
   {
     image: Dieta,
     title: "Alimentação",
-    description: "Confira sua dieta personalizada",
+    description: "Sua dieta personalizada",
     route: "/diet"
   },
   {
     image: Treino,
     title: "Treino",
-    description: "Confira seu treino personalizado",
+    description: "Seu treino personalizado",
     route: "/training"
   },
 ];

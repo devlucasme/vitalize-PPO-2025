@@ -1,7 +1,7 @@
 import type { FC } from "react";
+import * as S from "./styles";
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import * as S from "./styles";
 import { Dumbbell, Loader, CheckCircle } from "lucide-react";
 import { Button } from "../../ui/Button/Button";
 import { useTheme } from "../../../contexts/ThemeContext";
@@ -24,6 +24,7 @@ const backgroundImages = [
 ];
 
 const TrainingGenerator: FC = () => {
+  
   const { theme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,9 +32,35 @@ const TrainingGenerator: FC = () => {
   const [output, setOutput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
-  const [hasGenerated, setHasGenerated] = useState(false);
   const [feedback, setFeedback] = useState<React.ReactNode>(null);
+  const [showTrainingModal, setShowTrainingModal] = useState(false);
+  const [dontShowAgain, setDontShowAgain] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
   const controllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    const hideTrainingModal = localStorage.getItem("hideTrainingModal") === "true";
+
+    if (!stateData) {
+      setShowFormModal(true);
+    } else if (!hideTrainingModal) {
+      setShowTrainingModal(true);
+    }
+  }, [stateData]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const checked = e.target.checked;
+    setDontShowAgain(checked);
+    if (checked) localStorage.setItem("hideTrainingModal", "true");
+    setShowTrainingModal(!checked);
+  };
 
   const startStreaming = async () => {
     if (!stateData) return;
@@ -71,7 +98,7 @@ const TrainingGenerator: FC = () => {
         <S.FeedbackWrapper>
           <S.FeedbackBox>
             <CheckCircle size={20} color={theme.colors.primary} />
-            <span>Treino gerado co! Veja no perfil.</span>
+            <span>Treino gerado com sucesso! Veja no perfil.</span>
           </S.FeedbackBox>
         </S.FeedbackWrapper>
       );
@@ -89,35 +116,24 @@ const TrainingGenerator: FC = () => {
   };
 
   const handleGenerate = async () => {
-    setHasGenerated(true);
-
-    if (!stateData) return;
-
     if (isStreaming) {
       controllerRef.current?.abort();
       setIsStreaming(false);
       return;
     }
 
+    setShowTrainingModal(false);
+    setShowFormModal(false);
     await startStreaming();
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <S.Main>
       {backgroundImages.map((img, index) => (
         <S.BackgroundImage key={index} src={img} alt="" isVisible={index === currentBgIndex} />
       ))}
       <S.Overlay />
-
       <S.Container>
-        {hasGenerated && !stateData && (
+        {showFormModal && (
           <S.Modal>
             <S.ModalTitle>Atenção!</S.ModalTitle>
             <S.ModalText>
@@ -126,17 +142,41 @@ const TrainingGenerator: FC = () => {
             </S.ModalText>
             <S.ModalButtons>
               <Button
-                className="confirm"
-                onClick={() => navigate("/calculator", { replace: true })}
+                onClick={() => navigate("/", { replace: true })}
                 backgroundColor={theme.colors.buttonBackgroundColor}
+                buttonColor={theme.colors.buttonColor}
               >
                 Ir para o formulário
               </Button>
             </S.ModalButtons>
           </S.Modal>
         )}
-
-        {!hasGenerated || (hasGenerated && stateData) ? (
+        {showTrainingModal && (
+          <S.Modal>
+            <S.ModalTitle>Atenção!</S.ModalTitle>
+            <S.ModalText>
+              Você já possui um treino gerado. Gerar um novo irá substituir o anterior.
+            </S.ModalText>
+            <S.ModalCheckbox>
+              <input
+                type="checkbox"
+                id="dontShowTraining"
+                checked={dontShowAgain}
+                onChange={handleCheckboxChange}
+              />
+              <label htmlFor="dontShowTraining">Não mostrar novamente</label>
+            </S.ModalCheckbox>
+            <S.ModalButtons>
+              <Button onClick={() => setShowTrainingModal(false)} backgroundColor={theme.colors.buttonBackgroundColor} buttonColor={theme.colors.buttonColor}>
+                Cancelar
+              </Button>
+              <Button onClick={handleGenerate} backgroundColor="#68b957">
+                Gerar novo treino
+              </Button>
+            </S.ModalButtons>
+          </S.Modal>
+        )}
+        {!showFormModal && !showTrainingModal && (
           <S.Card>
             <S.ButtonContainer>
               <Button
@@ -155,30 +195,26 @@ const TrainingGenerator: FC = () => {
                 {isStreaming ? "Cancelar" : "Gerar treino"}
               </Button>
             </S.ButtonContainer>
-
-            {stateData && (
-              <>
-                <S.Box>
-                  <S.ContentBox>
-                    <ReactMarkdown
-                      children={output}
-                      components={{
-                        h1: ({ children }) => <S.PlanTitle>{children}</S.PlanTitle>,
-                        h2: ({ children }) => <S.DayCard>{children}</S.DayCard>,
-                        h3: ({ children }) => <S.MealTitle>{children}</S.MealTitle>,
-                        ul: ({ children }) => <S.MealList>{children}</S.MealList>,
-                        li: ({ children }) => <S.MealItem>{children}</S.MealItem>,
-                        p: ({ children }) => <S.Paragraph>{children}</S.Paragraph>,
-                      }}
-                    />
-                  </S.ContentBox>
-                </S.Box>
-
-                {feedback}
-              </>
+            {stateData && output && (
+              <S.Box>
+                <S.ContentBox>
+                  <ReactMarkdown
+                    children={output}
+                    components={{
+                      h1: ({ children }) => <S.PlanTitle>{children}</S.PlanTitle>,
+                      h2: ({ children }) => <S.DayCard>{children}</S.DayCard>,
+                      h3: ({ children }) => <S.MealTitle>{children}</S.MealTitle>,
+                      ul: ({ children }) => <S.MealList>{children}</S.MealList>,
+                      li: ({ children }) => <S.MealItem>{children}</S.MealItem>,
+                      p: ({ children }) => <S.Paragraph>{children}</S.Paragraph>,
+                    }}
+                  />
+                </S.ContentBox>
+              </S.Box>
             )}
+            {feedback}
           </S.Card>
-        ) : null}
+        )}
       </S.Container>
     </S.Main>
   );

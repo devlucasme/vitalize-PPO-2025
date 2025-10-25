@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../../../services/register.services";
 import { Button } from "../../ui/Button/Button";
 import VitalizeLogo from "../../../assets/vitalize-logo-menor.png";
@@ -15,7 +15,6 @@ import * as S from "./styles";
 type FeedbackType = "success" | "error";
 
 const RegisterForm: FC = () => {
-
   const navigate = useNavigate();
   const { theme } = useTheme();
   const logo = theme.title === "dark" ? VitalizeLogoDark : VitalizeLogo;
@@ -47,16 +46,12 @@ const RegisterForm: FC = () => {
       }
 
       setFeedback({ type: "success", message: "Cadastro realizado com sucesso!" });
-
       setTimeout(() => navigate("/"), 1500);
     } catch (error: any) {
-
       const msg = error.response?.data?.message;
-      
       if (msg) {
         setFeedback({ type: "error", message: "Erro ao cadastrar. Tente novamente." });
       }
-      
     } finally {
       setIsLoading(false);
     }
@@ -67,6 +62,7 @@ const RegisterForm: FC = () => {
       <S.RegisterForm onSubmit={handleSubmit(onSubmit)}>
         <img src={logo} alt="Logo do Vitalize" />
         <h2>Criar conta no Vitalize</h2>
+
         <S.FieldWrapper>
           <S.Label>Nome Completo</S.Label>
           <S.FieldContainer hasError={!!errors.name}>
@@ -75,14 +71,16 @@ const RegisterForm: FC = () => {
           </S.FieldContainer>
           {errors.name?.message && <S.ErrorMessage>{errors.name.message}</S.ErrorMessage>}
         </S.FieldWrapper>
+
         <S.FieldWrapper>
           <S.Label>E-mail</S.Label>
           <S.FieldContainer hasError={!!errors.email}>
             <S.MailIcon />
-            <S.Input type="email" {...register("email")} placeholder="Seu@gmail.com" />
+            <S.Input type="email" {...register("email")} placeholder="seu@gmail.com" />
           </S.FieldContainer>
           {errors.email?.message && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
         </S.FieldWrapper>
+
         <S.FieldWrapper>
           <S.Label>Senha</S.Label>
           <S.FieldContainer hasError={!!errors.password}>
@@ -98,6 +96,7 @@ const RegisterForm: FC = () => {
           </S.FieldContainer>
           {errors.password?.message && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
         </S.FieldWrapper>
+
         <S.FieldWrapper>
           <S.Label>Confirmar Senha</S.Label>
           <S.FieldContainer hasError={!!errors.confirmPassword}>
@@ -111,20 +110,23 @@ const RegisterForm: FC = () => {
               {showConfirmPassword ? <S.EyeOffIcon /> : <S.EyeIcon />}
             </S.EyeButton>
           </S.FieldContainer>
-          {errors.confirmPassword?.message && <S.ErrorMessage>{errors.confirmPassword.message}</S.ErrorMessage>}
+          {errors.confirmPassword?.message && (
+            <S.ErrorMessage>{errors.confirmPassword.message}</S.ErrorMessage>
+          )}
         </S.FieldWrapper>
-        <S.ContainerCheckbox>
-          <S.TermsLabel htmlFor="terms of use">
-            <S.Input type="checkbox" id="terms of use" /> Concordo com os{" "}
-            <S.TermsOfUseLink href="#">Termos de Uso</S.TermsOfUseLink> e{" "}
-            <S.TermsOfUseLink href="#">Política de Privacidade</S.TermsOfUseLink>
-          </S.TermsLabel>
-        </S.ContainerCheckbox>
+
         <Button type="submit" disabled={isLoading}>
           Criar Conta
         </Button>
+
+        <S.LoginLink>
+          Já tem uma conta? <Link to="/login">Entrar</Link>
+        </S.LoginLink>
       </S.RegisterForm>
-      {feedback && <S.FeedbackMessage type={feedback.type}>{feedback.message}</S.FeedbackMessage>}
+
+      {feedback && (
+        <S.FeedbackMessage type={feedback.type}>{feedback.message}</S.FeedbackMessage>
+      )}
     </S.Container>
   );
 };

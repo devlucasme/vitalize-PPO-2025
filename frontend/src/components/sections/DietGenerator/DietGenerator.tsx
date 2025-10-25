@@ -24,6 +24,7 @@ const backgroundImages = [
 ];
 
 const DietGenerator: FC = () => {
+  
   const { theme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,9 +32,35 @@ const DietGenerator: FC = () => {
   const [output, setOutput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
-  const [hasGenerated, setHasGenerated] = useState(false);
   const [feedback, setFeedback] = useState<React.ReactNode>(null);
+  const [showDietModal, setShowDietModal] = useState(false);
+  const [dontShowAgain, setDontShowAgain] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
   const controllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    const hideDietModal = localStorage.getItem("hideDietModal") === "true";
+
+    if (!stateData) {
+      setShowFormModal(true);
+    } else if (!hideDietModal) {
+      setShowDietModal(true);
+    }
+  }, [stateData]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const checked = e.target.checked;
+    setDontShowAgain(checked);
+    if (checked) localStorage.setItem("hideDietModal", "true");
+    setShowDietModal(!checked);
+  };
 
   const startStreaming = async () => {
     if (!stateData) return;
@@ -89,25 +116,16 @@ const DietGenerator: FC = () => {
   };
 
   const handleGenerate = async () => {
-    setHasGenerated(true);
-
-    if (!stateData) return;
-
     if (isStreaming) {
       controllerRef.current?.abort();
       setIsStreaming(false);
       return;
     }
 
+    setShowDietModal(false);
+    setShowFormModal(false);
     await startStreaming();
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <S.Main>
@@ -115,9 +133,8 @@ const DietGenerator: FC = () => {
         <S.BackgroundImage key={index} src={img} alt="" isVisible={index === currentBgIndex} />
       ))}
       <S.Overlay />
-
       <S.Container>
-        {hasGenerated && !stateData && (
+        {showFormModal && (
           <S.Modal>
             <S.ModalTitle>Atenção!</S.ModalTitle>
             <S.ModalText>
@@ -126,9 +143,9 @@ const DietGenerator: FC = () => {
             </S.ModalText>
             <S.ModalButtons>
               <Button
-                className="confirm"
                 onClick={() => navigate("/", { replace: true })}
                 backgroundColor={theme.colors.buttonBackgroundColor}
+                buttonColor={theme.colors.buttonColor}
               >
                 Ir para o formulário
               </Button>
@@ -136,7 +153,36 @@ const DietGenerator: FC = () => {
           </S.Modal>
         )}
 
-        {!hasGenerated || (hasGenerated && stateData) ? (
+        {showDietModal   && (
+          <S.Modal>
+            <S.ModalTitle>Atenção!</S.ModalTitle>
+            <S.ModalText>
+              Você já possui uma dieta gerada. Gerar uma nova irá substituir a anterior.
+            </S.ModalText>
+            <S.ModalCheckbox>
+              <input
+                type="checkbox"
+                id="dontShow"
+                checked={dontShowAgain}
+                onChange={handleCheckboxChange}
+              />
+              <label htmlFor="dontShow">
+                Não mostrar novamente
+              </label>
+            </S.ModalCheckbox>
+            <S.ModalButtons>
+              <Button onClick={() => setShowDietModal(false)} backgroundColor={theme.colors.buttonBackgroundColor} buttonColor={theme.colors.buttonColor}>
+                Cancelar
+              </Button>
+              <Button onClick={handleGenerate} backgroundColor="#68b957">
+                Gerar nova dieta
+              </Button>
+            </S.ModalButtons>
+          </S.Modal>
+
+        )}
+
+        {!showFormModal && !showDietModal && (
           <S.Card>
             <S.ButtonContainer>
               <Button
@@ -155,30 +201,26 @@ const DietGenerator: FC = () => {
                 {isStreaming ? "Cancelar" : "Gerar dieta"}
               </Button>
             </S.ButtonContainer>
-
-            {stateData && (
-              <>
-                <S.Box>
-                  <S.ContentBox>
-                    <ReactMarkdown
-                      children={output}
-                      components={{
-                        h1: ({ children }) => <S.PlanTitle>{children}</S.PlanTitle>,
-                        h2: ({ children }) => <S.DayCard>{children}</S.DayCard>,
-                        h3: ({ children }) => <S.MealTitle>{children}</S.MealTitle>,
-                        ul: ({ children }) => <S.MealList>{children}</S.MealList>,
-                        li: ({ children }) => <S.MealItem>{children}</S.MealItem>,
-                        p: ({ children }) => <S.Paragraph>{children}</S.Paragraph>,
-                      }}
-                    />
-                  </S.ContentBox>
-                </S.Box>
-
-                {feedback}
-              </>
+            {stateData && output && (
+              <S.Box>
+                <S.ContentBox>
+                  <ReactMarkdown
+                    children={output}
+                    components={{
+                      h1: ({ children }) => <S.PlanTitle>{children}</S.PlanTitle>,
+                      h2: ({ children }) => <S.DayCard>{children}</S.DayCard>,
+                      h3: ({ children }) => <S.MealTitle>{children}</S.MealTitle>,
+                      ul: ({ children }) => <S.MealList>{children}</S.MealList>,
+                      li: ({ children }) => <S.MealItem>{children}</S.MealItem>,
+                      p: ({ children }) => <S.Paragraph>{children}</S.Paragraph>,
+                    }}
+                  />
+                </S.ContentBox>
+              </S.Box>
             )}
+            {feedback}
           </S.Card>
-        ) : null}
+        )}
       </S.Container>
     </S.Main>
   );

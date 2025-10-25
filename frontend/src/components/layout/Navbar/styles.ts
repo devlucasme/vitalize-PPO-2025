@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavList = styled.ul`
   display: flex;
   gap: 4rem;
-  
+
   li {
     position: relative;  
   }
@@ -36,9 +36,30 @@ export const NavList = styled.ul`
     &:hover::after {
       width: 100%;
     }
+  }
 
-    @media (max-width: 1366px) {
+  /* Responsivo */
+  @media (max-width: 1440px) {
+    gap: 3rem;
+
+    li a {
       font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 1366px) {
+    gap: 2.5rem;
+
+    li a {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    gap: 2rem;
+
+    li a {
+      font-size: 0.9rem;
     }
   }
 `;

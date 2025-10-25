@@ -19,7 +19,7 @@ export const BackgroundImage = styled.img<{ isVisible: boolean }>`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: ${({ isVisible }) => (isVisible ? 0.3 : 0)};
+  opacity: ${({ isVisible }) => (isVisible ? 0.5 : 0)};
   transition: opacity 1.5s ease-in-out;
   pointer-events: none;
   user-select: none;
@@ -120,16 +120,16 @@ export const FeedbackBox = styled.div`
   font-weight: 500;
 `;
 
-
 export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50%;
   background: ${({ theme }) => (theme.title === "dark" ? "#1e1e1e" : "#fff")};
   padding: 2rem;
   border-radius: 12px;
-  text-align: center;
+  gap: 0.5rem;
 
   opacity: 0;
   transform: translateY(-20px);
@@ -140,10 +140,6 @@ export const Modal = styled.div`
       opacity: 1;
       transform: translateY(0);
     }
-  }
-
-  button {
-    color: ${({ theme }) => theme.colors.buttonColor};
   }
 `;
 
@@ -165,6 +161,25 @@ export const ModalButtons = styled.div`
   gap: 1rem;
   width: 100%;
   justify-content: center;
+`;
+
+export const ModalCheckbox = styled.div`
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  input {
+    width: 16px;
+    height: 16px;
+    accent-color: #68b957;
+  }
+
+  label {
+    font-size: 0.9rem;
+    color: ${({ theme }) => theme.colors.text};
+    cursor: pointer;
+  }
 `;
 
 export const PlanTitle = styled.h1`

@@ -4,6 +4,11 @@ export const Section = styled.section`
   padding: 5rem 2rem;
   background-color: ${({ theme }) => theme.colors.backgroundDarkShade};
   scroll-margin-top: 80px;   
+
+  @media (max-width: 570px) {
+    padding: 2rem 1rem;
+  }
+
 `;
 
 export const Container = styled.div`
@@ -28,6 +33,15 @@ export const TopAbout = styled.div`
     @media (max-width: 1366px) {
       font-size: 1.7rem;
     }
+
+    @media (max-width: 1200px) {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 960px) {
+      font-size: 1.2rem;
+    }
+
   }
 
   p {
@@ -45,6 +59,16 @@ export const TopAbout = styled.div`
     @media (max-width: 1366px) {
       font-size: 1.1rem;
     }
+
+    @media (max-width: 1200px) {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 960px) {
+      font-size: 0.9rem;
+      width: 70%;
+    }
+
   }
 `;
 
@@ -53,6 +77,25 @@ export const GridCards = styled.div`
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+
+  @media (max-width: 960px) {
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    flex-wrap: wrap;
+    width: 380px;
+    padding: 0.8rem;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 720px) {
+    width: 340px;
+  }
+
+  @media (max-width: 360px) {
+    width: 300px;
+  }
+
 `;
 
 export const Card = styled.div`
@@ -61,6 +104,7 @@ export const Card = styled.div`
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
   color: #f0fff4;
@@ -80,6 +124,18 @@ export const Card = styled.div`
       width: 25px;
       height: 25px;
     }
+
+    @media (max-width: 1200px) {
+      width: 18px;
+      height: 18px;
+    }
+
+    @media (max-width: 960px) {
+      width: 15px;
+      height: 15px;
+    }
+
+   
   }
 
   p {
@@ -90,11 +146,21 @@ export const Card = styled.div`
     @media (max-width: 1366px) {
       font-size: 0.9rem;
     }
+
+    @media (max-width: 1200px) {
+      font-size: 0.8rem;
+    }
+
   }
 
   @media (max-width: 1366px) {
     padding: 1rem;
   }
+
+  @media (max-width: 1200px) {
+    padding: 0.8rem;
+  }
+
 `;
 
 export const Icon = styled.svg`

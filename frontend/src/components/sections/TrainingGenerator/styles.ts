@@ -19,7 +19,7 @@ export const BackgroundImage = styled.img<{ isVisible: boolean }>`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: ${({ isVisible }) => (isVisible ? 0.3 : 0)};
+  opacity: ${({ isVisible }) => (isVisible ? 0.5 : 0)};
   transition: opacity 1.5s ease-in-out;
   pointer-events: none;
   user-select: none;
@@ -105,7 +105,7 @@ export const FeedbackWrapper = styled.div`
 
 export const FeedbackBox = styled.div`
   display: flex;
-  width: 100%; /* ocupa toda a largura do container */
+  width: 100%;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
@@ -113,27 +113,22 @@ export const FeedbackBox = styled.div`
   padding: 1rem;
   border-radius: 8px;
   background: ${({ theme }) =>
-    theme.title === "dark"
-      ? "rgba(255, 255, 255, 0.1)"
-      : "rgba(0, 255, 0, 0.1)"};
+    theme.title === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 255, 0, 0.1)"};
   color: ${({ theme }) => theme.colors.text};
   font-weight: 500;
 `;
-
 
 export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50%;
   background: ${({ theme }) => (theme.title === "dark" ? "#1e1e1e" : "#fff")};
   padding: 2rem;
   border-radius: 12px;
-  text-align: center;
-  max-width: 100%;
-  width: 550px;
+  gap: 0.5rem;
 
-  /* Transição suave de entrada */
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeIn 0.3s forwards;
@@ -143,10 +138,6 @@ export const Modal = styled.div`
       opacity: 1;
       transform: translateY(0);
     }
-  }
-
-  button {
-    color: ${({ theme }) => theme.colors.buttonColor};
   }
 `;
 
@@ -170,6 +161,25 @@ export const ModalButtons = styled.div`
   justify-content: center;
 `;
 
+export const ModalCheckbox = styled.div`
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  input {
+    width: 16px;
+    height: 16px;
+    accent-color: #68b957;
+  }
+
+  label {
+    font-size: 0.9rem;
+    color: ${({ theme }) => theme.colors.text};
+    cursor: pointer;
+  }
+`;
+
 export const PlanTitle = styled.h1`
   text-align: center;
   font-size: 1.5rem;
@@ -177,9 +187,7 @@ export const PlanTitle = styled.h1`
   margin-bottom: 2rem;
   color: ${({ theme }) => theme.colors.primary};
   background: ${({ theme }) =>
-    theme.title === "dark"
-      ? "rgba(255,255,255,0.05)"
-      : "rgba(255,255,255,0.7)"};
+    theme.title === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.7)"};
   padding: 1rem;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
@@ -187,9 +195,7 @@ export const PlanTitle = styled.h1`
 
 export const DayCard = styled.h2`
   background: ${({ theme }) =>
-    theme.title === "dark"
-      ? "rgba(255,255,255,0.05)"
-      : "rgba(255,255,255,0.6)"};
+    theme.title === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.6)"};
   padding: 1.2rem;
   border-radius: 5px;
   color: ${({ theme }) => theme.colors.text};

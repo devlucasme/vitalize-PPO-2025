@@ -3,11 +3,17 @@ import { About } from "../components/layout/About/About";
 import { ContentWrapper } from "../components/ui/ContentWrapper/ContentWrapper";
 import { Footer } from "../components/layout/Footer/Footer";
 import { Header } from "../components/layout/Header/Header";
+import { useState } from "react";
+import { ReponsiveNavbar } from "../components/layout/ResponsiveNavbar/ResponsiveNavbar";
 
 const Home = () => {
+  // começa fechado
+  const [menuIsVisible, setMenuIsVisible] = useState(false);
+
   return (
     <ContentWrapper>
-      <Header />
+      <ReponsiveNavbar menuIsVisible={menuIsVisible} setMenuIsVisible={setMenuIsVisible}/>
+      <Header menuIsVisible={menuIsVisible} setMenuIsVisible={setMenuIsVisible}/>
       <FeatureCards />
       <About />
       <Footer />

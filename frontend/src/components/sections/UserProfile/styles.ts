@@ -209,7 +209,7 @@ export const MealList = styled.ul`
 export const MealItem = styled.li`
   margin-bottom: 0.6rem;
   padding: 0.6rem 0.8rem;
-  border-radius: 8px;
+  border-radius: 3px;
 
   background-color: ${({ theme }) =>
     theme.title === "dark"

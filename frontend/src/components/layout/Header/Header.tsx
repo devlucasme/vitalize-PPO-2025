@@ -6,8 +6,14 @@ import VitalizeDarkLogo from "../../../assets/vitalize-logo-dark.png";
 import { Navbar } from "../Navbar/Navbar";
 import ReactSwitch from "react-switch";
 import { Link } from "react-router-dom";
+import { Menu } from "lucide-react";
 
-const Header: FC = () => {
+type HeaderProps = {
+    menuIsVisible: boolean;
+    setMenuIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Header: FC<HeaderProps> = ({ menuIsVisible, setMenuIsVisible }) => {
     const { toggleTheme, theme } = useTheme();
     const logo = theme.title === "dark" ? VitalizeDarkLogo : VitalizeLogo;
 
@@ -15,15 +21,12 @@ const Header: FC = () => {
         <S.Header>
             <S.Container>
                 <Link to={"/"}>
-                    <S.VitalizeLogo src={logo} alt="Logo do vitalize" />
+                    <S.VitalizeLogo src={logo} alt="Logo do Vitalize" />
                 </Link>
-                <Navbar />
-                <S.Actions>
-                    <S.ProfileButton>
-                        <Link to={"/user"}>
-                            <S.UserIcon />
-                        </Link>
-                    </S.ProfileButton>
+                <S.DesktopNavbar>
+                    <Navbar />
+                </S.DesktopNavbar>
+                <S.RightArea>
                     <ReactSwitch
                         onChange={toggleTheme}
                         checked={theme.title === "dark"}
@@ -43,7 +46,20 @@ const Header: FC = () => {
                             </S.IconWrapper>
                         }
                     />
-                </S.Actions>
+                    <S.MenuIconWrapper>
+                        {!menuIsVisible && (
+                            <Menu
+                                size={26}
+                                onClick={() => setMenuIsVisible(true)}
+                            />
+                        )}
+                    </S.MenuIconWrapper>
+                    <S.DesktopProfileButton>
+                        <Link to={"/user"}>
+                            <S.UserIcon />
+                        </Link>
+                    </S.DesktopProfileButton>
+                </S.RightArea>
             </S.Container>
         </S.Header>
     );

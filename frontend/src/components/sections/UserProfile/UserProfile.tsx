@@ -31,24 +31,28 @@ const UserProfile: FC = () => {
       localStorage.setItem("user", JSON.stringify(data));
     } catch (err: any) {
       console.error(err);
+      // Se o token for inválido, limpa e volta pro login
+      localStorage.removeItem("token");
       navigate("/login", { replace: true });
     }
   };
 
   useEffect(() => {
-    if (!token) {
-      navigate("/login", { replace: true });
-      return;
-    }
-    fetchUser();
-  }, [token, navigate]);
+    // Só busca os dados se houver token
+    if (token) fetchUser();
+  }, [token]);
+
+  if (!token) {
+    navigate("/login", { replace: true });
+    return null;
+  }
 
   if (!user) return null;
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    navigate("/", { replace: true });
+    navigate("/login", { replace: true });
   };
 
   const handleDeleteAccount = () => {
@@ -58,7 +62,11 @@ const UserProfile: FC = () => {
   const formatDate = (dateStr?: string | null) => {
     if (!dateStr) return "—";
     const date = new Date(dateStr);
-    return date.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" });
+    return date.toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
   };
 
   return (
@@ -114,13 +122,12 @@ const UserProfile: FC = () => {
           </S.TipCard>
         </S.TipsContainer>
       </S.LeftColumn>
+
       <S.RightColumn>
         <S.Card>
           <S.DataGenerate>
             Última Dieta{" "}
-            <span>
-              {formatDate(user.lastDiet?.date)}
-            </span>
+            <span>{formatDate(user.lastDiet?.date)}</span>
           </S.DataGenerate>
           <S.ScrollBox>
             {user.lastDiet?.plan ? (
@@ -140,12 +147,11 @@ const UserProfile: FC = () => {
             )}
           </S.ScrollBox>
         </S.Card>
+
         <S.Card>
           <S.DataGenerate>
             Último Treino{" "}
-            <span>
-              {formatDate(user.lastTraining?.date)}
-            </span>
+            <span>{formatDate(user.lastTraining?.date)}</span>
           </S.DataGenerate>
           <S.ScrollBox>
             {user.lastTraining?.plan ? (

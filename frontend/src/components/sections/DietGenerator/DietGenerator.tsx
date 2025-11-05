@@ -2,7 +2,7 @@ import type { FC } from "react";
 import * as S from "./styles";
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Sparkles, Loader, CheckCircle } from "lucide-react";
+import { Sparkles, Loader } from "lucide-react";
 import { Button } from "../../ui/Button/Button";
 import { useTheme } from "../../../contexts/ThemeContext";
 import type { IDietRequestData } from "../../../services/diet.services";
@@ -24,7 +24,6 @@ const backgroundImages = [
 ];
 
 const DietGenerator: FC = () => {
-  
   const { theme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,15 +37,18 @@ const DietGenerator: FC = () => {
   const [showFormModal, setShowFormModal] = useState(false);
   const controllerRef = useRef<AbortController | null>(null);
 
+  const token = localStorage.getItem("token");
+  const hideKey = token ? `hideDietModal_${token}` : "hideDietModal_guest";
+
   useEffect(() => {
-    const hideDietModal = localStorage.getItem("hideDietModal") === "true";
+    const hideDietModal = localStorage.getItem(hideKey) === "true";
 
     if (!stateData) {
       setShowFormModal(true);
     } else if (!hideDietModal) {
       setShowDietModal(true);
     }
-  }, [stateData]);
+  }, [stateData, hideKey]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,8 +60,11 @@ const DietGenerator: FC = () => {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
     setDontShowAgain(checked);
-    if (checked) localStorage.setItem("hideDietModal", "true");
-    setShowDietModal(!checked);
+    if (checked) {
+      localStorage.setItem(hideKey, "true");
+    } else {
+      localStorage.removeItem(hideKey);
+    }
   };
 
   const startStreaming = async () => {
@@ -73,7 +78,6 @@ const DietGenerator: FC = () => {
     setFeedback(null);
 
     try {
-      const token = localStorage.getItem("token");
       if (!token) {
         navigate("/login");
         return;
@@ -91,13 +95,13 @@ const DietGenerator: FC = () => {
         healthConditions: stateData.health_conditions,
       };
 
-      const response = await generateDiet(requestData, token ?? undefined, controller.signal);
+      const response = await generateDiet(requestData, token, controller.signal);
       setOutput(response.plan);
 
       setFeedback(
         <S.FeedbackWrapper>
           <S.FeedbackBox>
-            <CheckCircle size={20} color={theme.colors.primary} />
+            <S.FeedbackIcon color={theme.colors.primary} />
             <span>Dieta gerada com sucesso! Veja no perfil.</span>
           </S.FeedbackBox>
         </S.FeedbackWrapper>
@@ -107,8 +111,7 @@ const DietGenerator: FC = () => {
         setOutput((prev) => prev + "\n\n[Streaming interrompido]");
         return;
       }
-      setOutput("Erro ao gerar dieta.");
-      console.error(err);
+      setOutput("A geração da dieta foi cancelada.");
     } finally {
       setIsStreaming(false);
       controllerRef.current = null;
@@ -138,12 +141,12 @@ const DietGenerator: FC = () => {
           <S.Modal>
             <S.ModalTitle>Atenção!</S.ModalTitle>
             <S.ModalText>
-              Parece que você ainda não preencheu o formulário.<br />
+              Parece que você ainda não preencheu o formulário.
               Por favor, complete seus dados para gerar a dieta.
             </S.ModalText>
             <S.ModalButtons>
               <Button
-                onClick={() => navigate("/", { replace: true })}
+                onClick={() => navigate("/calculator", { replace: true })}
                 backgroundColor={theme.colors.buttonBackgroundColor}
                 buttonColor={theme.colors.buttonColor}
               >
@@ -153,11 +156,11 @@ const DietGenerator: FC = () => {
           </S.Modal>
         )}
 
-        {showDietModal   && (
+        {showDietModal && (
           <S.Modal>
             <S.ModalTitle>Atenção!</S.ModalTitle>
             <S.ModalText>
-              Você já possui uma dieta gerada. Gerar uma nova irá substituir a anterior.
+              Se já existir uma dieta cadastrada, ela será substituída ao gerar uma nova.
             </S.ModalText>
             <S.ModalCheckbox>
               <input
@@ -171,15 +174,21 @@ const DietGenerator: FC = () => {
               </label>
             </S.ModalCheckbox>
             <S.ModalButtons>
-              <Button onClick={() => setShowDietModal(false)} backgroundColor={theme.colors.buttonBackgroundColor} buttonColor={theme.colors.buttonColor}>
+              <Button
+                onClick={() => setShowDietModal(false)}
+                backgroundColor={theme.colors.buttonBackgroundColor}
+                buttonColor={theme.colors.buttonColor}
+              >
                 Cancelar
               </Button>
-              <Button onClick={handleGenerate} backgroundColor="#68b957">
-                Gerar nova dieta
+              <Button
+                onClick={handleGenerate}
+                backgroundColor="#68b957"
+              >
+                Gerar mesmo assim
               </Button>
             </S.ModalButtons>
           </S.Modal>
-
         )}
 
         {!showFormModal && !showDietModal && (

@@ -21,7 +21,6 @@ const shimmer = keyframes`
   100% { background-position: 100% 50%; }
 `;
 
-/* Container centralizado, fixo e responsivo */
 export const Container = styled.div`
   position: fixed;
   top: 50%;
@@ -35,12 +34,11 @@ export const Container = styled.div`
   box-sizing: border-box;
 `;
 
-/* Formulário principal */
 export const LoginForm = styled.form`
   position: relative;
   background: ${({ theme }) => theme.colors.backgroundShade};
   width: 100%;
-  max-width: 520px; /* tamanho padrão no desktop */
+  max-width: 520px;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   padding: 40px 48px;
@@ -62,7 +60,6 @@ export const LoginForm = styled.form`
     margin: 0 auto;
   }
 
-  /* Responsividade */
   @media (max-width: 660px) {
     max-width: 400px;
     padding: 30px 35px;
@@ -90,7 +87,6 @@ export const LoginForm = styled.form`
   }
 `;
 
-/* Barra de loading */
 export const LoadingBar = styled.div<LoadingBarProps>`
   position: absolute;
   top: 0;
@@ -117,14 +113,12 @@ export const LoadingBar = styled.div<LoadingBarProps>`
         `}
 `;
 
-/* Campo com label */
 export const FieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
 `;
 
-/* Label do campo */
 export const Label = styled.label`
   font-size: 0.9rem;
   font-weight: 500;
@@ -132,7 +126,6 @@ export const Label = styled.label`
   margin-bottom: 4px;
 `;
 
-/* Container do input */
 export const FieldContainer = styled.div<FieldContainerProps>`
   position: relative;
   display: flex;
@@ -149,7 +142,6 @@ export const FieldContainer = styled.div<FieldContainerProps>`
   }
 `;
 
-/* Ícones */
 export const MailIcon = styled(Mail).attrs({ size: 20 })`
   color: ${({ theme }) => theme.colors.text};
   flex-shrink: 0;
@@ -157,7 +149,6 @@ export const MailIcon = styled(Mail).attrs({ size: 20 })`
 
 export const LockIcon = styled(MailIcon).attrs({ as: Lock })``;
 
-/* Input principal */
 export const Input = styled.input`
   border: none;
   outline: none;
@@ -182,7 +173,6 @@ export const Input = styled.input`
   }
 `;
 
-/* Botão para mostrar/ocultar senha */
 export const TogglePasswordButton = styled.button`
   position: absolute;
   right: 8px;
@@ -203,7 +193,6 @@ export const TogglePasswordButton = styled.button`
   }
 `;
 
-/* Container do checkbox */
 export const ContainerCheckbox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -212,7 +201,6 @@ export const ContainerCheckbox = styled.div`
   margin-top: 6px;
 `;
 
-/* Label do remember */
 export const RememberLabel = styled.label`
   display: flex;
   align-items: center;
@@ -225,7 +213,6 @@ export const RememberLabel = styled.label`
   }
 `;
 
-/* Link de esqueci a senha */
 export const ForgotPasswordLink = styled.a`
   color: ${({ theme }) => theme.colors.primary};
   transition: color 0.3s ease;
@@ -236,7 +223,6 @@ export const ForgotPasswordLink = styled.a`
   }
 `;
 
-/* Link de cadastro */
 export const SignUpLink = styled.p`
   margin-top: 10px;
   text-align: center;
@@ -253,15 +239,13 @@ export const SignUpLink = styled.p`
   }
 `;
 
-/* Mensagens de erro */
 export const ErrorMessage = styled.p`
   color: #e57373;
   font-size: 0.825rem;
   margin-top: 2px;
-  min-height: 18px; /* garante espaço mesmo sem erro */
+  min-height: 18px; 
 `;
 
-/* Mensagem de sucesso */
 export const SuccessMessage = styled.p`
   color: #38bd90;
   font-size: 13px;
@@ -269,7 +253,6 @@ export const SuccessMessage = styled.p`
   text-align: center;
 `;
 
-/* Alert de erro */
 export const ErrorAlert = styled.p`
   background-color: rgba(229, 115, 115, 0.1);
   border: 1px solid #e57373;

@@ -13,7 +13,7 @@ import type { IDietAndTrainingData } from "../../../interfaces/DietAndTraining.i
 import { useNavigate } from "react-router-dom";
 
 const Calculator: FC = () => {
-  
+
   const { theme } = useTheme();
   const logo = theme.title === "dark" ? VitalizeDarkLogo : VitalizeLogo;
   const navigate = useNavigate();

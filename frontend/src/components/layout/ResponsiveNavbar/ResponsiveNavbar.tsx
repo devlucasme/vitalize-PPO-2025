@@ -77,10 +77,10 @@ const ReponsiveNavbar: FC<ResponsiveNavbarProps> = ({
             <Link to="/cadastro">Cadastrar</Link>
           </li>
           <li>
-              <Button width="150px" onClick={() => navigate("/user")}>
-                <User size={18} />
-                Perfil
-              </Button>
+            <Button width="150px" onClick={() => navigate("/user")}>
+              <User size={18} />
+              Perfil
+            </Button>
           </li>
         </ul>
       </nav>

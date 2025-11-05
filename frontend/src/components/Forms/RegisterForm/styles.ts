@@ -11,7 +11,6 @@ const fadeIn = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-/* Container centralizado fixo e responsivo */
 export const Container = styled.div`
   position: fixed;
   top: 50%;
@@ -31,7 +30,6 @@ export const Container = styled.div`
   }
 `;
 
-/* Mensagem de feedback (sucesso/erro) */
 export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
   margin-top: 12px;
   padding: 10px 14px;
@@ -43,10 +41,9 @@ export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
   border: 1px solid ${({ type }) => (type === "success" ? "#38bd90" : "#e57373")};
   animation: ${fadeIn} 0.3s ease forwards;
   text-align: center;
-  width: 100%;
+  width: 80%;
 `;
 
-/* Formulário principal */
 export const RegisterForm = styled.form`
   background: ${({ theme }) => theme.colors.backgroundShade};
   width: 100%;
@@ -100,14 +97,12 @@ export const RegisterForm = styled.form`
   }
 `;
 
-/* Wrapper do campo */
 export const FieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
 `;
 
-/* Label */
 export const Label = styled.label`
   font-size: 0.9rem;
   font-weight: 500;
@@ -119,7 +114,6 @@ export const Label = styled.label`
   }
 `;
 
-/* Container do input */
 export const FieldContainer = styled.div<FieldContainerProps>`
   display: flex;
   align-items: center;
@@ -140,7 +134,6 @@ export const FieldContainer = styled.div<FieldContainerProps>`
   }
 `;
 
-/* Ícones */
 export const UserIcon = styled(User).attrs({ size: 20 })`
   color: ${({ theme }) => theme.colors.text};
 `;
@@ -156,7 +149,6 @@ export const LockIcon = styled(Lock).attrs({ size: 20 })`
 export const EyeIcon = styled(Eye).attrs({ size: 18 })``;
 export const EyeOffIcon = styled(EyeOff).attrs({ size: 18 })``;
 
-/* Botão olho */
 export const EyeButton = styled.button`
   position: absolute;
   right: 8px;
@@ -175,7 +167,6 @@ export const EyeButton = styled.button`
   }
 `;
 
-/* Input */
 export const Input = styled.input`
   border: none;
   outline: none;
@@ -203,7 +194,6 @@ export const Input = styled.input`
   }
 `;
 
-/* Checkbox e links */
 export const ContainerCheckbox = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -237,7 +227,6 @@ export const TermsOfUseLink = styled.a`
   }
 `;
 
-/* Link de login */
 export const LoginLink = styled.p`
   margin-top: 10px;
   text-align: center;
@@ -258,7 +247,6 @@ export const LoginLink = styled.p`
   }
 `;
 
-/* Erros */
 export const ErrorMessage = styled.p`
   color: #e57373;
   font-size: 0.8rem;

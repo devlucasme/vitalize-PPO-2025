@@ -12,6 +12,10 @@ export const Main = styled.main`
     height: 110vh;
   }
 
+  @media (max-width: 510px) {
+    height: 130vh;
+  }
+
   @media (max-width: 390px) {
     height: 150vh;
   }
@@ -127,15 +131,12 @@ export const CardLink = styled.div`
     width: 195px;
   }
 
-  /* TELA MUITO PEQUENA */
   @media (max-width: 425px) {
     width: 185px;
-    height: 140px;
-    padding: 1rem 1.2rem;
   }
 
   @media (max-width: 380px) {
-    width: 175px;
+    width: 180px;
   }
 `;
 

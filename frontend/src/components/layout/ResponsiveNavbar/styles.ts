@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 
-/* Container do menu mobile */
 export const Container = styled.div<{ isVisible: boolean }>`
   position: fixed;
   inset: 0;
@@ -31,7 +30,7 @@ export const Container = styled.div<{ isVisible: boolean }>`
   }
 
   a {
-    width: 160px; /* largura fixa igual para todos */
+    width: 160px; 
     font-size: 1.2rem;
     font-weight: 600;
     color: #eee;
@@ -41,12 +40,12 @@ export const Container = styled.div<{ isVisible: boolean }>`
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center; /* centraliza texto e ícone */
+    justify-content: center; 
     gap: 0.5rem;
     transition: transform .3s ease-in-out;
 
     &:hover {
-      transform: scale(1.05); /* apenas scale */
+      transform: scale(1.05); 
     }
   }
 
@@ -58,7 +57,6 @@ export const Container = styled.div<{ isVisible: boolean }>`
       transform: translateY(0px);
     `}
 
-  /* Media queries */
   @media (max-width: 660px) {
     a {
       width: 180px;
@@ -76,7 +74,6 @@ export const Container = styled.div<{ isVisible: boolean }>`
   }
 `;
 
-/* Botão de fechar */
 export const CloseButton = styled.button`
   position: absolute;
   top: 1rem;

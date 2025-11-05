@@ -1,4 +1,3 @@
-// styles.ts
 import styled from "styled-components";
 
 export const WrapperTop = styled.section`
@@ -6,11 +5,16 @@ export const WrapperTop = styled.section`
   justify-content: center;  
   align-items: center;      
   background-color: ${({ theme }) => theme.colors.backgroundDarkShade};
-  padding: 2.8rem;
+  padding: 1.8rem;
+
+  @media (max-width: 1600px) {
+    padding: 1.2rem;
+  }
 
   @media (max-width: 1366px) {
-    padding: 2rem;
+    padding: 1rem;
   }
+
 `;
 
 export const TopContainer = styled.div`
@@ -20,11 +24,18 @@ export const TopContainer = styled.div`
   gap: 95px;
   max-width: 70%;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1450px) {
     flex-direction: column;
     gap: 40px;
+    max-width: 70%;
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  @media (max-width: 720px) {
     max-width: 90%;
   }
+
 `;
 
 export const TextContainer = styled.div`
@@ -43,12 +54,16 @@ export const ImageContainer = styled.div`
   display: flex;
   gap: 20px;
   justify-content: flex-end;
-  height: 300px;
+  height: 280px;
 
   @media (max-width: 1024px) {
     justify-content: center;
+  }
+
+  @media (max-width: 720px) {
     height: auto;
   }
+
 `;
 
 export const Image = styled.img`
@@ -80,8 +95,12 @@ export const Title = styled.h2`
     font-size: 1.6rem;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 720px) {
     font-size: 1.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -103,22 +122,29 @@ export const Text = styled.p`
   @media (max-width: 768px) {
     text-align: center;
     text-align: justify;
+    font-size: 0.86rem;
   }
+
+  @media (max-width: 480px) {
+      font-size: 0.8rem;
+  }
+
+
 `;
 
 export const WrapperFaq = styled.section`
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  padding: 3rem 2rem 5rem; /* adicionei padding-bottom maior */
-  width: 80%;
+  padding: 3rem 2rem 4rem; 
+  width: 90%;
 
   @media (max-width: 1366px) {
     padding: 2rem 1rem 4rem;
   }
 
   @media (max-width: 1024px) {
-    padding: 1.8rem 1rem 3.5rem;
+    padding: 5rem 1rem 3.5rem;
   }
 
   @media (max-width: 768px) {
@@ -175,6 +201,11 @@ export const Question = styled.h3<{ isOpen: boolean }>`
   @media (max-width: 480px) {
     font-size: 0.9rem;
   }
+
+  @media (max-width: 390px) {
+    font-size: 0.8rem;
+  }
+
 `;
 
 export const Answer = styled.p`
@@ -206,6 +237,11 @@ export const Answer = styled.p`
     font-size: 0.8rem;
     padding-right: 0;
   }
+
+  @media (max-width: 390px) {
+    font-size: 0.75rem;
+  }
+
 `;
 
 export const IconWrapper = styled.div<{ isOpen: boolean }>`
@@ -239,4 +275,5 @@ export const IconWrapper = styled.div<{ isOpen: boolean }>`
     width: 18px;
     height: 18px;
   }
+
 `;

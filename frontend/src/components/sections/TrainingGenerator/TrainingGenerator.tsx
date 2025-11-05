@@ -2,7 +2,7 @@ import type { FC } from "react";
 import * as S from "./styles";
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Dumbbell, Loader, CheckCircle } from "lucide-react";
+import { Dumbbell, Loader } from "lucide-react";
 import { Button } from "../../ui/Button/Button";
 import { useTheme } from "../../../contexts/ThemeContext";
 import type { ITrainingRequestData } from "../../../services/training.services";
@@ -24,11 +24,11 @@ const backgroundImages = [
 ];
 
 const TrainingGenerator: FC = () => {
-  
   const { theme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
   const stateData = location.state as IDietAndTrainingData | undefined;
+
   const [output, setOutput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
@@ -38,15 +38,18 @@ const TrainingGenerator: FC = () => {
   const [showFormModal, setShowFormModal] = useState(false);
   const controllerRef = useRef<AbortController | null>(null);
 
+  const token = localStorage.getItem("token");
+  const hideKey = token ? `hideTrainingModal_${token}` : "hideTrainingModal_guest";
+
   useEffect(() => {
-    const hideTrainingModal = localStorage.getItem("hideTrainingModal") === "true";
+    const hideTrainingModal = localStorage.getItem(hideKey) === "true";
 
     if (!stateData) {
       setShowFormModal(true);
     } else if (!hideTrainingModal) {
       setShowTrainingModal(true);
     }
-  }, [stateData]);
+  }, [stateData, hideKey]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,8 +61,11 @@ const TrainingGenerator: FC = () => {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
     setDontShowAgain(checked);
-    if (checked) localStorage.setItem("hideTrainingModal", "true");
-    setShowTrainingModal(!checked);
+    if (checked) {
+      localStorage.setItem(hideKey, "true");
+    } else {
+      localStorage.removeItem(hideKey);
+    }
   };
 
   const startStreaming = async () => {
@@ -73,7 +79,6 @@ const TrainingGenerator: FC = () => {
     setFeedback(null);
 
     try {
-      const token = localStorage.getItem("token");
       if (!token) {
         navigate("/login");
         return;
@@ -97,7 +102,7 @@ const TrainingGenerator: FC = () => {
       setFeedback(
         <S.FeedbackWrapper>
           <S.FeedbackBox>
-            <CheckCircle size={20} color={theme.colors.primary} />
+            <S.FeedbackIcon color={theme.colors.primary} />
             <span>Treino gerado com sucesso! Veja no perfil.</span>
           </S.FeedbackBox>
         </S.FeedbackWrapper>
@@ -107,8 +112,7 @@ const TrainingGenerator: FC = () => {
         setOutput((prev) => prev + "\n\n[Streaming interrompido]");
         return;
       }
-      setOutput("Erro ao gerar treino.");
-      console.error(err);
+      setOutput("A geração do treino foi cancelada.");
     } finally {
       setIsStreaming(false);
       controllerRef.current = null;
@@ -126,6 +130,7 @@ const TrainingGenerator: FC = () => {
     setShowFormModal(false);
     await startStreaming();
   };
+
   return (
     <S.Main>
       {backgroundImages.map((img, index) => (
@@ -137,12 +142,12 @@ const TrainingGenerator: FC = () => {
           <S.Modal>
             <S.ModalTitle>Atenção!</S.ModalTitle>
             <S.ModalText>
-              Parece que você ainda não preencheu o formulário.<br />
+              Parece que você ainda não preencheu o formulário.
               Por favor, complete seus dados para gerar o treino.
             </S.ModalText>
             <S.ModalButtons>
               <Button
-                onClick={() => navigate("/", { replace: true })}
+                onClick={() => navigate("/calculator", { replace: true })}
                 backgroundColor={theme.colors.buttonBackgroundColor}
                 buttonColor={theme.colors.buttonColor}
               >
@@ -151,11 +156,12 @@ const TrainingGenerator: FC = () => {
             </S.ModalButtons>
           </S.Modal>
         )}
+
         {showTrainingModal && (
           <S.Modal>
             <S.ModalTitle>Atenção!</S.ModalTitle>
             <S.ModalText>
-              Você já possui um treino gerado. Gerar um novo irá substituir o anterior.
+              Se já existir um treino cadastrado, ele será substituído ao gerar um novo.
             </S.ModalText>
             <S.ModalCheckbox>
               <input
@@ -164,18 +170,28 @@ const TrainingGenerator: FC = () => {
                 checked={dontShowAgain}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="dontShowTraining">Não mostrar novamente</label>
+              <label htmlFor="dontShowTraining">
+                Não mostrar novamente
+              </label>
             </S.ModalCheckbox>
             <S.ModalButtons>
-              <Button onClick={() => setShowTrainingModal(false)} backgroundColor={theme.colors.buttonBackgroundColor} buttonColor={theme.colors.buttonColor}>
+              <Button
+                onClick={() => setShowTrainingModal(false)}
+                backgroundColor={theme.colors.buttonBackgroundColor}
+                buttonColor={theme.colors.buttonColor}
+              >
                 Cancelar
               </Button>
-              <Button onClick={handleGenerate} backgroundColor="#68b957">
-                Gerar novo treino
+              <Button
+                onClick={handleGenerate}
+                backgroundColor="#68b957"
+              >
+                Gerar mesmo assim
               </Button>
             </S.ModalButtons>
           </S.Modal>
         )}
+
         {!showFormModal && !showTrainingModal && (
           <S.Card>
             <S.ButtonContainer>
@@ -195,6 +211,7 @@ const TrainingGenerator: FC = () => {
                 {isStreaming ? "Cancelar" : "Gerar treino"}
               </Button>
             </S.ButtonContainer>
+
             {stateData && output && (
               <S.Box>
                 <S.ContentBox>

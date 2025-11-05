@@ -21,6 +21,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 90vh;
+  padding: 1rem; 
 `;
 
 export const LoginForm = styled.form`
@@ -47,6 +48,31 @@ export const LoginForm = styled.form`
     color: ${({ theme }) => theme.colors.text};
   }
 
+  @media (max-width: 768px) {
+    padding: 30px 24px;
+    gap: 20px;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 24px 16px;
+    gap: 16px;
+
+    h2 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
 `;
 
 export const LoadingBar = styled.div<LoadingBarProps>`
@@ -83,6 +109,10 @@ export const Label = styled.label`
   font-weight: 500;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 0.6rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const FieldContainer = styled.div<FieldContainerProps>`
@@ -93,11 +123,20 @@ export const FieldContainer = styled.div<FieldContainerProps>`
   border: 1px solid ${({ hasError }) => (hasError ? "#e57373" : "#ccc")};
   gap: 8px;
   transition: border-color 0.2s ease;
+
+  @media (max-width: 480px) {
+    padding: 8px 10px;
+  }
 `;
 
 export const LockIcon = styled(Lock).attrs({ size: 20 })`
   color: ${({ theme }) => theme.colors.text};
   flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    width: 18px;
+    height: 18px;
+  }
 `;
 
 export const Input = styled.input`
@@ -113,12 +152,21 @@ export const Input = styled.input`
     color: ${({ theme }) => theme.colors.text};
     opacity: 0.6;
   }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 12px;
   justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export const FeedbackBox = styled.div`
@@ -127,6 +175,11 @@ export const FeedbackBox = styled.div`
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 10px;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 8px;
+  }
 `;
 
 export const FieldError = styled.span`
@@ -134,4 +187,8 @@ export const FieldError = styled.span`
   font-size: 0.8rem;
   margin-top: 4px;
   display: block;
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
 `;

@@ -42,6 +42,14 @@ export const TopAbout = styled.div`
       font-size: 1.2rem;
     }
 
+    @media (max-width: 720px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.95rem;
+    }
+
   }
 
   p {
@@ -61,12 +69,20 @@ export const TopAbout = styled.div`
     }
 
     @media (max-width: 1200px) {
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     @media (max-width: 960px) {
+      font-size: 0.95rem;
+      width: 80%;
+    }
+
+    @media (max-width: 720px) {
       font-size: 0.9rem;
-      width: 70%;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.85rem;
     }
 
   }

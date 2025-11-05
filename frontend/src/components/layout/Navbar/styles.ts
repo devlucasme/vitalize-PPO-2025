@@ -38,7 +38,6 @@ export const NavList = styled.ul`
     }
   }
 
-  /* Responsivo */
   @media (max-width: 1440px) {
     gap: 3rem;
 

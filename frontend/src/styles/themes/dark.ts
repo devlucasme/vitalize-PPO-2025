@@ -12,5 +12,5 @@ export default {
     borderColor: "#f7fafc22",
     buttonBackgroundColor: "#FCFCFC",
     buttonColor: "#303030"
-  },  
+  },
 };

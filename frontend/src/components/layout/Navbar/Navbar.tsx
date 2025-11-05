@@ -31,6 +31,10 @@ const Navbar: FC = () => {
     }
   };
 
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
   return (
     <nav>
       <S.NavList>
@@ -41,10 +45,10 @@ const Navbar: FC = () => {
           <a href="#sobre" onClick={(e) => handleClick(e, "/", "sobre")}>Sobre</a>
         </li>
         <li>
-          <Link to={"/faq"}>FAQ</Link>
+          <Link to="/faq">FAQ</Link>
         </li>
         <li>
-          <Link to="/login">Entrar</Link>
+          <a onClick={handleLoginClick}>Entrar</a>
         </li>
         <li>
           <Link to="/cadastro">Cadastrar</Link>

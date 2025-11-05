@@ -68,4 +68,9 @@ export const Text = styled.p`
   @media (max-width: 480px) {
     font-size: 0.72rem;
   }
+
+  @media (max-width: 390px) {
+    font-size: 0.7rem;
+  }
+
 `;

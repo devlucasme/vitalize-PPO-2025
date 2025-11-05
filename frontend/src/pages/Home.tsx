@@ -7,7 +7,7 @@ import { useState } from "react";
 import { ReponsiveNavbar } from "../components/layout/ResponsiveNavbar/ResponsiveNavbar";
 
 const Home = () => {
-  // começa fechado
+
   const [menuIsVisible, setMenuIsVisible] = useState(false);
 
   return (

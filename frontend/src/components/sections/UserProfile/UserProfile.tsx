@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import { Button } from "../../ui/Button/Button";
-import { LogOut, Droplets, Dumbbell, BedDouble, Apple } from "lucide-react";
+import { LogOut, AlertTriangle } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { getUserProfile } from "../../../services/user.services";
 
@@ -31,14 +31,12 @@ const UserProfile: FC = () => {
       localStorage.setItem("user", JSON.stringify(data));
     } catch (err: any) {
       console.error(err);
-      // Se o token for inválido, limpa e volta pro login
       localStorage.removeItem("token");
       navigate("/login", { replace: true });
     }
   };
 
   useEffect(() => {
-    // Só busca os dados se houver token
     if (token) fetchUser();
   }, [token]);
 
@@ -81,6 +79,7 @@ const UserProfile: FC = () => {
               <S.MailIcon /> {user.email}
             </p>
           </S.UserContent>
+
           <S.ProfileSection>
             <h3>Dados Pessoais</h3>
             <S.ProfileItem>
@@ -93,6 +92,7 @@ const UserProfile: FC = () => {
               <span>Objetivo</span> <p>{user.objective ?? "—"}</p>
             </S.ProfileItem>
           </S.ProfileSection>
+
           <S.ButtonWrapper>
             <Button backgroundColor="#d3764b" width="70%" onClick={handleLogout}>
               <LogOut size={16} /> Sair da Conta
@@ -102,32 +102,25 @@ const UserProfile: FC = () => {
             </Button>
           </S.ButtonWrapper>
         </S.ProfileContainer>
-        <S.TipsContainer>
-          <h3>Algumas Dicas</h3>
-          <S.TipCard>
-            <Droplets size={18} />
-            <p>Beba pelo menos 2L de água por dia</p>
-          </S.TipCard>
-          <S.TipCard>
-            <Dumbbell size={18} />
-            <p>Treine com consistência semanal</p>
-          </S.TipCard>
-          <S.TipCard>
-            <BedDouble size={18} />
-            <p>Durma entre 7h e 8h todas as noites</p>
-          </S.TipCard>
-          <S.TipCard>
-            <Apple size={18} />
-            <p>Mantenha uma alimentação equilibrada</p>
-          </S.TipCard>
-        </S.TipsContainer>
+
+        {/* Novo Card de Aviso */}
+        <S.WarningContainer>
+          <AlertTriangle size={22} />
+          <div>
+            <h3>Aviso Importante</h3>
+            <p>
+              O <strong>Vitalize</strong> não substitui nenhum profissional de saúde. 
+              Consulte um nutricionista ou médico antes de iniciar qualquer plano 
+              alimentar ou rotina de treinos.
+            </p>
+          </div>
+        </S.WarningContainer>
       </S.LeftColumn>
 
       <S.RightColumn>
         <S.Card>
           <S.DataGenerate>
-            Última Dieta{" "}
-            <span>{formatDate(user.lastDiet?.date)}</span>
+            Última Dieta <span>{formatDate(user.lastDiet?.date)}</span>
           </S.DataGenerate>
           <S.ScrollBox>
             {user.lastDiet?.plan ? (
@@ -150,8 +143,7 @@ const UserProfile: FC = () => {
 
         <S.Card>
           <S.DataGenerate>
-            Último Treino{" "}
-            <span>{formatDate(user.lastTraining?.date)}</span>
+            Último Treino <span>{formatDate(user.lastTraining?.date)}</span>
           </S.DataGenerate>
           <S.ScrollBox>
             {user.lastTraining?.plan ? (

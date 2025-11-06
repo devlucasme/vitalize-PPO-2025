@@ -11,7 +11,7 @@ const features = [
   {
     image: CalculadoraImc,
     title: "Calculadora",
-    description: "Calcule sua dieta e treino",
+    description: "Calcule seu IMC, dieta e treino",
     route: "/calculator"
   },
   {

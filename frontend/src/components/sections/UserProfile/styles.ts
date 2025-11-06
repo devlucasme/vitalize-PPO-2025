@@ -3,7 +3,7 @@ import { User, Mail } from "lucide-react";
 
 export const PageWrapper = styled.div`
   max-width: 70%;
-  margin: 2rem auto;
+  margin: 3rem auto;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -30,7 +30,7 @@ export const ProfileContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.backgroundShade};
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -41,6 +41,19 @@ export const Card = styled(ProfileContainer)`
 
   h3 {
     font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    max-height: 240px;
+    padding: 0.8rem;
+    h3 {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    max-height: 200px;
+    padding: 0.7rem;
   }
 `;
 
@@ -74,9 +87,10 @@ export const UserContent = styled.div`
   padding: 0.6rem;
   background: ${({ theme }) => theme.colors.backgroundDarkShade};
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 
-  h2, p {
+  h2,
+  p {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -94,6 +108,26 @@ export const UserContent = styled.div`
     font-weight: 500;
     color: ${({ theme }) => theme.colors.text};
   }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    h2 {
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.4rem;
+    h2 {
+      font-size: 0.95rem;
+    }
+    p {
+      font-size: 0.85rem;
+    }
+  }
 `;
 
 const IconStyle = css`
@@ -107,8 +141,12 @@ const IconStyle = css`
   margin-right: 1rem;
 `;
 
-export const UserIcon = styled(User)` ${IconStyle} `;
-export const MailIcon = styled(Mail)` ${IconStyle} `;
+export const UserIcon = styled(User)`
+  ${IconStyle}
+`;
+export const MailIcon = styled(Mail)`
+  ${IconStyle}
+`;
 
 export const ProfileSection = styled.section`
   margin-top: 0.8rem;
@@ -126,8 +164,14 @@ export const ProfileItem = styled.div`
   padding: 0.3rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
 
-  span { font-weight: 700; color: ${({ theme }) => theme.colors.text}; }
-  p { color: ${({ theme }) => theme.colors.text}; margin: 0; }
+  span {
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.text};
+  }
+  p {
+    color: ${({ theme }) => theme.colors.text};
+    margin: 0;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -135,47 +179,146 @@ export const ButtonWrapper = styled.div`
   gap: 0.5rem;
   margin-top: 0.5rem;
   flex-wrap: wrap;
-  justify-content: center; 
+  justify-content: center;
 `;
 
-export const TipsContainer = styled(ProfileContainer)`
+export const WarningContainer = styled.div`
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1rem;
+  border-radius: 14px;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) =>
+      theme.title === "dark" ? "#3a3f47" : theme.colors.background},
+    ${({ theme }) =>
+      theme.title === "dark" ? "#2c3038" : theme.colors.background}
+  );
+  border-left: 5px solid #e6a93a;
+  box-shadow: 0 4px 12px
+    ${({ theme }) =>
+      theme.title === "dark"
+        ? "rgba(255, 255, 255, 0.05)"
+        : "rgba(0, 0, 0, 0.08)"};
+  transition: all .3s ease;
+  overflow: hidden;
+  animation: fadeIn .5s ease forwards;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px
+      ${({ theme }) =>
+        theme.title === "dark"
+          ? "rgba(255, 255, 255, 0.08)"
+          : "rgba(0, 0, 0, 0.12)"};
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: #e6a93a;
+    width: 26px;
+    height: 26px;
+    margin-top: 4px;
+    animation: pulse 2s infinite;
+  }
 
   h3 {
-    text-align: center;
-    font-size: 1rem;
+    margin: 0 0 0.6rem 0;
+    font-size: 1.05rem;
     font-weight: 700;
-    margin-bottom: 0.4rem;
+    color: ${({ theme }) =>
+      theme.title === "dark" ? "#ffe69a" : "#cf8b25ff"};
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.text};
+    font-size: 0.95rem;
+    line-height: 1.45;
+    opacity: 0.9;
+  }
+
+  strong {
     color: ${({ theme }) => theme.colors.primary};
   }
 
-  @media (max-width: 768px) {
-    display: none; 
-  }
-`;
-
-export const TipCard = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 0.7rem;
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  border-radius: 10px;
-  background: ${({ theme }) => theme.colors.backgroundDarkShade};
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  svg { color: ${({ theme }) => theme.colors.primary}; }
-  p { margin: 0; color: ${({ theme }) => theme.colors.text}; }
-
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.9;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding: 1rem 0.8rem;
+    h3 {
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
   @media (max-width: 768px) {
-    display: none; 
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 0.9rem;
+    gap: 0.6rem;
+    min-height: 80px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+      line-height: 1.3;
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-left-width: 3px;
+    border-radius: 10px;
+    padding: 0.7rem;
+    gap: 0.5rem;
+    min-height: 70px;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    h3 {
+      font-size: 0.9rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -250,20 +393,40 @@ export const DataGenerate = styled.h3`
 
 export const ResponsiveStyles = css`
   @media (max-width: 1024px) {
-    ${PageWrapper} { max-width: 95%; gap: 1rem; }
+    ${PageWrapper} {
+      max-width: 95%;
+      gap: 1rem;
+    }
   }
 
   @media (max-width: 768px) {
-    ${LeftColumn}, ${RightColumn} { flex: 1 1 100%; }
-    ${TipsContainer}, ${TipCard} { display: none; } 
+    ${LeftColumn},
+    ${RightColumn} {
+      flex: 1 1 100%;
+    }
   }
 
   @media (max-width: 480px) {
-    ${PlanTitle} { font-size: 1rem; padding-bottom: 0.4rem; }
-    ${DayCard} { font-size: 0.9rem; margin: 1rem 0 0.4rem 0; }
-    ${MealTitle} { font-size: 0.85rem; margin: 0.4rem 0 0.3rem 0; }
-    ${MealItem} { padding: 0.4rem 0.5rem; }
-    ${UserContent} h2 { font-size: 1rem; }
-    ${UserContent} p { font-size: 0.9rem; }
+    ${PlanTitle} {
+      font-size: 1rem;
+      padding-bottom: 0.4rem;
+    }
+    ${DayCard} {
+      font-size: 0.9rem;
+      margin: 1rem 0 0.4rem 0;
+    }
+    ${MealTitle} {
+      font-size: 0.85rem;
+      margin: 0.4rem 0 0.3rem 0;
+    }
+    ${MealItem} {
+      padding: 0.4rem 0.5rem;
+    }
+    ${UserContent} h2 {
+      font-size: 1rem;
+    }
+    ${UserContent} p {
+      font-size: 0.9rem;
+    }
   }
 `;

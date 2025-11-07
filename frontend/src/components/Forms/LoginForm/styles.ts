@@ -27,93 +27,62 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  max-height: 90vh; /* ✅ impede ocupar a tela toda */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 1rem;
   box-sizing: border-box;
-
-  @media (max-width: 1366px) {
-    max-height: 85vh;
-  }
-
-  @media (max-width: 1024px) {
-    max-height: 82vh;
-  }
-
-  @media (max-width: 480px) {
-    max-height: none;
-  }
 `;
 
 export const LoginForm = styled.form`
   position: relative;
   background: ${({ theme }) => theme.colors.backgroundShade};
   width: 100%;
-  max-width: 420px; /* ✅ menor para notebook */
+  max-width: 520px;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  padding: 28px 30px; /* ✅ compacto */
+  padding: 40px 48px;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* ✅ menor */
+  gap: 28px;
   overflow: hidden;
   box-sizing: border-box;
 
   h2 {
     text-align: center;
-    font-size: 1.28rem;
-    margin-bottom: 18px;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
   }
 
   img {
-    width: 48px; /* ✅ menor */
+    width: 60px;
     border-radius: 50%;
     margin: 0 auto;
   }
 
-  /* ✅ NOTEBOOK 1366px */
-  @media (max-width: 1366px) {
-    max-width: 390px;
-    padding: 24px 26px;
-    gap: 18px;
+  @media (max-width: 660px) {
+    max-width: 400px;
+    padding: 30px 35px;
 
     h2 {
-      font-size: 1.22rem;
+      font-size: 1.4rem;
     }
 
     img {
-      width: 44px;
+      width: 50px;
     }
   }
 
-  /* ✅ NOTEBOOK 1024px */
-  @media (max-width: 1024px) {
-    max-width: 370px;
-    padding: 22px 24px;
-    gap: 16px;
-
-    h2 {
-      font-size: 1.18rem;
-    }
-
-    img {
-      width: 42px;
-    }
-  }
-
-  /* ✅ CELULAR */
   @media (max-width: 480px) {
     max-width: 95%;
     padding: 20px 15px;
 
     h2 {
-      font-size: 1.15rem;
+      font-size: 1.3rem;
     }
 
     img {
-      width: 40px;
+      width: 45px;
     }
   }
 `;
@@ -155,33 +124,25 @@ export const Label = styled.label`
   font-weight: 500;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 4px;
-
-  @media (max-width: 1366px) {
-    font-size: 0.85rem;
-  }
 `;
 
 export const FieldContainer = styled.div<FieldContainerProps>`
   position: relative;
   display: flex;
   align-items: center;
-  padding: 8px 10px; /* ✅ menor */
+  padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid ${({ hasError }) => (hasError ? "#e57373" : "#ccc")};
-  gap: 6px;
+  gap: 8px;
   transition: border-color 0.2s ease;
 
   &:focus-within {
     border-color: ${({ hasError, theme }) =>
       hasError ? "#e57373" : theme.colors.primary};
   }
-
-  @media (max-width: 1366px) {
-    padding: 7px 9px;
-  }
 `;
 
-export const MailIcon = styled(Mail).attrs({ size: 18 })`
+export const MailIcon = styled(Mail).attrs({ size: 20 })`
   color: ${({ theme }) => theme.colors.text};
   flex-shrink: 0;
 `;
@@ -191,19 +152,16 @@ export const LockIcon = styled(MailIcon).attrs({ as: Lock })``;
 export const Input = styled.input`
   border: none;
   outline: none;
-  font-size: 0.95rem; /* ✅ menor */
+  font-size: 1rem;
   flex: 1;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.text};
   padding-right: 35px;
 
   &::placeholder {
-    font-size: 0.85rem;
-    opacity: 0.6;
-  }
-
-  @media (max-width: 1366px) {
     font-size: 0.9rem;
+    color: ${({ theme }) => theme.colors.text};
+    opacity: 0.6;
   }
 
   &:-webkit-autofill,
@@ -217,7 +175,7 @@ export const Input = styled.input`
 
 export const TogglePasswordButton = styled.button`
   position: absolute;
-  right: 6px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -239,11 +197,8 @@ export const ContainerCheckbox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.85rem;
-
-  @media (max-width: 1366px) {
-    font-size: 0.8rem;
-  }
+  font-size: 0.9rem;
+  margin-top: 6px;
 `;
 
 export const RememberLabel = styled.label`
@@ -269,12 +224,13 @@ export const ForgotPasswordLink = styled.a`
 `;
 
 export const SignUpLink = styled.p`
-  margin-top: 8px;
+  margin-top: 10px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 
   a {
     color: ${({ theme }) => theme.colors.primary};
+    margin-left: 2px;
 
     &:hover {
       text-decoration: underline;
@@ -285,18 +241,15 @@ export const SignUpLink = styled.p`
 
 export const ErrorMessage = styled.p`
   color: #e57373;
-  font-size: 0.8rem;
+  font-size: 0.825rem;
   margin-top: 2px;
-  min-height: 16px;
-
-  @media (max-width: 1366px) {
-    font-size: 0.75rem;
-  }
+  min-height: 18px; 
 `;
 
 export const SuccessMessage = styled.p`
   color: #38bd90;
-  font-size: 0.8rem;
+  font-size: 13px;
+  margin-bottom: 10px;
   text-align: center;
 `;
 

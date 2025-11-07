@@ -14,6 +14,12 @@ export const Main = styled.main`
   min-height: 92vh;
   padding: 1rem;
 
+  /* 🔹 Ajuste para notebooks: reduz altura e centraliza melhor */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    min-height: 88vh;
+    padding: 0.8rem;
+  }
+
   @media (max-width: 480px) {
     height: 100vh;
   }
@@ -61,10 +67,20 @@ export const Card = styled.div`
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   background-color: ${({ theme }) =>
-    theme.title === "dark" ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.6)"};
+    theme.title === "dark"
+      ? "rgba(255,255,255,0.08)"
+      : "rgba(255,255,255,0.6)"};
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  margin: 0 auto;
+
+  /* 🔹 Ajuste fino para notebooks */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    width: 70%;
+    max-height: 500px; /* reduz altura total */
+    padding: 1.6rem; /* leve redução no padding */
+  }
 
   @media (max-width: 1400px) { width: 80%; }
   @media (max-width: 1280px) { width: 85%; }
@@ -87,7 +103,14 @@ export const Box = styled.div`
   max-height: 400px;
   overflow-y: auto;
   background-color: ${({ theme }) =>
-    theme.title === "dark" ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.6)"};
+    theme.title === "dark"
+      ? "rgba(255,255,255,0.05)"
+      : "rgba(255,255,255,0.6)"};
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    max-height: 320px; /* 🔹 reduz altura para eliminar scroll */
+    padding: 1.2rem;
+  }
 
   @media (max-width: 1024px) { padding: 1.2rem; max-height: 350px; }
   @media (max-width: 768px) { padding: 1rem; max-height: 300px; }
@@ -99,6 +122,11 @@ export const ContentBox = styled.div`
   font-size: 0.9rem;
   line-height: 1.6;
   color: ${({ theme }) => theme.colors.text};
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
 
   @media (max-width: 1024px) { font-size: 0.88rem; line-height: 1.5; }
   @media (max-width: 768px) { font-size: 0.85rem; line-height: 1.4; }
@@ -135,7 +163,9 @@ export const FeedbackBox = styled.div`
   padding: 1rem;
   border-radius: 8px;
   background: ${({ theme }) =>
-    theme.title === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,255,0,0.1)"};
+    theme.title === "dark"
+      ? "rgba(255,255,255,0.1)"
+      : "rgba(0,255,0,0.1)"};
   color: ${({ theme }) => theme.colors.text};
   font-weight: 500;
 
@@ -157,6 +187,8 @@ export const FeedbackIcon = styled(CheckCircle)`
   @media (max-width: 768px) { width: 18px; height: 18px; }
   @media (max-width: 480px) { width: 16px; height: 16px; }
 `;
+
+/* ---- restante permanece igual ---- */
 
 export const Modal = styled.div`
   display: flex;

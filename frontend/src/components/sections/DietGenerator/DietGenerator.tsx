@@ -185,7 +185,7 @@ const DietGenerator: FC = () => {
                 onClick={handleGenerate}
                 backgroundColor="#68b957"
               >
-                Gerar mesmo assim
+                Gerar dieta
               </Button>
             </S.ModalButtons>
           </S.Modal>

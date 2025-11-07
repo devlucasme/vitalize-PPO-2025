@@ -60,6 +60,22 @@ export const LoginForm = styled.form`
     margin: 0 auto;
   }
 
+  /* ===== Ajuste notebook (1024px - 1440px) ===== */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    max-width: 460px;
+    padding: 32px 38px;
+    gap: 20px;
+
+    h2 {
+      font-size: 1.45rem;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 55px;
+    }
+  }
+
   @media (max-width: 660px) {
     max-width: 400px;
     padding: 30px 35px;
@@ -243,7 +259,7 @@ export const ErrorMessage = styled.p`
   color: #e57373;
   font-size: 0.825rem;
   margin-top: 2px;
-  min-height: 18px; 
+  min-height: 18px;
 `;
 
 export const SuccessMessage = styled.p`

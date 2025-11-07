@@ -33,6 +33,13 @@ export const FormContainer = styled.form`
   width: 100%;
   min-height: 80vh;
 
+  /* 🔹 Ajuste fino para notebooks */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    align-items: center;
+    padding-top: 1rem;
+    min-height: 70vh;
+  }
+
   @media (max-width: 768px) {
     padding: 1rem;
     min-height: auto;
@@ -54,6 +61,11 @@ export const Wrapper = styled.div`
 
   @media (max-width: 1024px) {
     gap: 1.5rem;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    max-width: 850px;
+    gap: 1rem;
   }
 
   @media (max-width: 768px) {
@@ -96,11 +108,23 @@ export const CalculatorCard = styled.form<CalculatorCardProps>`
   }
 
   img {
-    margin: 0 auto;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
     border-radius: 50%;
     height: 60px;
     width: 60px;
+  }
+
+  /* 🔹 Compactação em notebooks */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    padding: 1.3rem 1.2rem;
+    h2 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    img {
+      height: 52px;
+      width: 52px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -130,6 +154,11 @@ export const InputRow = styled.div`
   gap: 1rem;
   margin-bottom: 0.8rem;
 
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    gap: 0.7rem;
+    margin-bottom: 0.6rem;
+  }
+
   @media (max-width: 480px) {
     flex-direction: column;
     gap: 0.6rem;
@@ -143,13 +172,17 @@ export const InputGroup = styled.div`
 `;
 
 export const Label = styled.label`
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
   font-weight: 600;
   font-size: 0.95rem;
   color: ${({ theme }) => theme.colors.text};
   display: flex;
   align-items: center;
   gap: 0.3rem;
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: 0.85rem;
+  }
 
   @media (max-width: 480px) {
     font-size: 0.85rem;
@@ -160,8 +193,7 @@ export const FieldContainer = styled.div<FieldContainerProps>`
   display: flex;
   align-items: center;
   border: 1px solid
-    ${({ hasError, theme }) =>
-      hasError ? "#e57373" : theme.colors.borderColor};
+    ${({ hasError, theme }) => (hasError ? "#e57373" : theme.colors.borderColor)};
   border-radius: 0.5rem;
   padding: 0.4rem 0.6rem;
   background: ${({ theme }) =>
@@ -172,6 +204,10 @@ export const FieldContainer = styled.div<FieldContainerProps>`
 
   &:focus-within {
     border-color: ${({ theme }) => theme.colors.primary};
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    padding: 0.3rem 0.5rem;
   }
 
   @media (max-width: 480px) {
@@ -191,6 +227,11 @@ export const Input = styled.input`
   &::placeholder {
     color: ${({ theme }) => theme.colors.text};
     opacity: 0.7;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: 0.85rem;
+    padding: 0.35rem;
   }
 
   @media (max-width: 480px) {
@@ -213,6 +254,11 @@ export const Select = styled.select`
     background: ${({ theme }) => theme.colors.background};
   }
 
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: 0.85rem;
+    padding: 0.35rem;
+  }
+
   @media (max-width: 480px) {
     font-size: 0.85rem;
     padding: 0.4rem;
@@ -222,7 +268,7 @@ export const Select = styled.select`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem; 
+  gap: 0.55rem;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -240,6 +286,16 @@ export const ButtonContainer = styled.div`
   button:hover {
     transform: scale(1.03);
     opacity: 0.95;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    margin-top: 0.7rem;
+    gap: 0.45rem;
+    button {
+      min-height: 36px;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.7rem;
+    }
   }
 
   @media (max-width: 768px) {
@@ -287,10 +343,33 @@ export const ResultCard = styled.div`
   max-width: 480px;
   margin: auto;
 
+  /* 🔹 Ajuste para notebooks */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    min-height: 410px; /* ↓ reduz altura para evitar scroll */
+    padding: 1.2rem 1.4rem; /* reduz o padding interno */
+    max-width: 440px; /* ligeiramente mais compacto */
+  }
+
+  @media (max-width: 768px) {
+    min-height: auto;
+    max-width: 400px;
+    padding: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 340px;
+    padding: 1rem;
+  }
+
   h3 {
     text-align: center;
     font-size: 1.3rem;
     margin-bottom: 1rem;
+
+    @media (min-width: 1024px) and (max-width: 1440px) {
+      font-size: 1.15rem;
+      margin-bottom: 0.8rem;
+    }
   }
 
   .imc-value {
@@ -298,8 +377,12 @@ export const ResultCard = styled.div`
     font-weight: bold;
     text-align: center;
     margin-bottom: 0.5rem;
-    color: #38BD90; 
+    color: #38bd90;
 
+    @media (min-width: 1024px) and (max-width: 1440px) {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+    }
   }
 
   p {
@@ -307,6 +390,11 @@ export const ResultCard = styled.div`
     font-size: 1rem;
     margin-bottom: 1.2rem;
     line-height: 1.4;
+
+    @media (min-width: 1024px) and (max-width: 1440px) {
+      font-size: 0.9rem;
+      margin-bottom: 0.9rem;
+    }
   }
 
   table {
@@ -315,10 +403,19 @@ export const ResultCard = styled.div`
     margin-bottom: 1.4rem;
     font-size: 0.95rem;
 
+    @media (min-width: 1024px) and (max-width: 1440px) {
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
     td {
       padding: 0.6rem;
       border: 1px solid ${({ theme }) => theme.colors.borderColor};
       text-align: center;
+
+      @media (min-width: 1024px) and (max-width: 1440px) {
+        padding: 0.45rem;
+      }
     }
 
     tr:nth-child(even) {
@@ -337,48 +434,6 @@ export const ResultCard = styled.div`
         rgba(80, 124, 218, 0.9)
       );
       animation: ${highlightPulse} 2s ease-in-out infinite;
-    }
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    order: 2;
-    max-width: 400px;
-    min-height: 420px;
-    padding: 1.2rem;
-
-    h3 {
-      font-size: 1.15rem;
-    }
-
-    .imc-value {
-      font-size: 2rem;
-    }
-
-    table {
-      font-size: 0.9rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    max-width: 330px;
-    padding: 0.9rem;
-    min-height: 360px;
-
-    h3 {
-      font-size: 1rem;
-    }
-
-    .imc-value {
-      font-size: 1.8rem;
-    }
-
-    table {
-      font-size: 0.85rem;
-
-      td {
-        padding: 0.45rem;
-      }
     }
   }
 `;

@@ -28,6 +28,16 @@ export const Container = styled.div`
     max-width: 90%;
     padding: 0 0.5rem;
   }
+
+  /* Ajuste Notebook */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    padding: 0 1.5rem;
+  }
+
+  /* Ajuste Full HD */
+  @media (min-width: 1600px) {
+    padding: 0 2rem;
+  }
 `;
 
 export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
@@ -37,7 +47,8 @@ export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
   font-weight: 500;
   font-size: 0.85rem;
   color: ${({ type }) => (type === "success" ? "#38bd90" : "#e57373")};
-  background-color: ${({ type }) => (type === "success" ? "rgba(56,189,144,0.1)" : "rgba(229,115,115,0.1)")};
+  background-color: ${({ type }) =>
+    type === "success" ? "rgba(56,189,144,0.1)" : "rgba(229,115,115,0.1)"};
   border: 1px solid ${({ type }) => (type === "success" ? "#38bd90" : "#e57373")};
   animation: ${fadeIn} 0.3s ease forwards;
   text-align: center;
@@ -95,6 +106,36 @@ export const RegisterForm = styled.form`
       width: 42px;
     }
   }
+
+  /* Ajuste Notebook (1366x768) */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    max-width: 460px;
+    padding: 32px 36px;
+    gap: 18px;
+
+    h2 {
+      font-size: 1.45rem;
+    }
+
+    img {
+      width: 58px;
+    }
+  }
+
+  /* Ajuste Full HD (1920x1080) */
+  @media (min-width: 1600px) {
+    max-width: 480px;
+    padding: 36px 40px;
+    gap: 20px;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    img {
+      width: 60px;
+    }
+  }
 `;
 
 export const FieldWrapper = styled.div`
@@ -131,6 +172,16 @@ export const FieldContainer = styled.div<FieldContainerProps>`
 
   @media (max-width: 480px) {
     padding: 8px 10px;
+  }
+
+  /* Ajuste Notebook */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    padding: 9px 11px;
+  }
+
+  /* Ajuste Full HD */
+  @media (min-width: 1600px) {
+    padding: 10px 12px;
   }
 `;
 

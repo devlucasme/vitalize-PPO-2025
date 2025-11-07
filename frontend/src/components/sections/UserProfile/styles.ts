@@ -8,6 +8,13 @@ export const PageWrapper = styled.div`
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
+
+  /* ===== Ajuste notebook (1024px - 1440px) ===== */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    max-width: 80%;
+    margin: 2.5rem auto;
+    gap: 1.2rem;
+  }
 `;
 
 export const LeftColumn = styled.div`
@@ -16,6 +23,10 @@ export const LeftColumn = styled.div`
   flex-direction: column;
   gap: 1rem;
   align-items: stretch;
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    gap: 0.8rem;
+  }
 `;
 
 export const RightColumn = styled.div`
@@ -23,6 +34,10 @@ export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    gap: 1.2rem;
+  }
 `;
 
 export const ProfileContainer = styled.div`
@@ -34,6 +49,11 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    padding: 0.9rem;
+    gap: 0.7rem;
+  }
 `;
 
 export const Card = styled(ProfileContainer)`
@@ -41,6 +61,13 @@ export const Card = styled(ProfileContainer)`
 
   h3 {
     font-size: 1rem;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    max-height: 260px;
+    h3 {
+      font-size: 0.95rem;
+    }
   }
 
   @media (max-width: 768px) {
@@ -109,6 +136,16 @@ export const UserContent = styled.div`
     color: ${({ theme }) => theme.colors.text};
   }
 
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    padding: 0.55rem;
+    h2 {
+      font-size: 1.1rem;
+    }
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
   @media (max-width: 768px) {
     padding: 0.5rem;
     h2 {
@@ -139,6 +176,13 @@ const IconStyle = css`
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   color: #fff;
   margin-right: 1rem;
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    margin-right: 0.8rem;
+  }
 `;
 
 export const UserIcon = styled(User)`
@@ -156,6 +200,14 @@ export const ProfileSection = styled.section`
     margin-bottom: 0.8rem;
     color: ${({ theme }) => theme.colors.primary};
   }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    margin-top: 0.6rem;
+    h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+  }
 `;
 
 export const ProfileItem = styled.div`
@@ -172,6 +224,16 @@ export const ProfileItem = styled.div`
     color: ${({ theme }) => theme.colors.text};
     margin: 0;
   }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    padding: 0.25rem 0;
+    span {
+      font-size: 0.95rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -180,6 +242,11 @@ export const ButtonWrapper = styled.div`
   margin-top: 0.5rem;
   flex-wrap: wrap;
   justify-content: center;
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+  }
 `;
 
 export const WarningContainer = styled.div`
@@ -193,16 +260,16 @@ export const WarningContainer = styled.div`
   background: linear-gradient(
     135deg,
     ${({ theme }) =>
-      theme.title === "dark" ? "#3a3f47" : theme.colors.background},
+    theme.title === "dark" ? "#3a3f47" : theme.colors.background},
     ${({ theme }) =>
-      theme.title === "dark" ? "#2c3038" : theme.colors.background}
+    theme.title === "dark" ? "#2c3038" : theme.colors.background}
   );
   border-left: 5px solid #e6a93a;
   box-shadow: 0 4px 12px
     ${({ theme }) =>
-      theme.title === "dark"
-        ? "rgba(255, 255, 255, 0.05)"
-        : "rgba(0, 0, 0, 0.08)"};
+    theme.title === "dark"
+      ? "rgba(255, 255, 255, 0.05)"
+      : "rgba(0, 0, 0, 0.08)"};
   transition: all .3s ease;
   overflow: hidden;
   animation: fadeIn .5s ease forwards;
@@ -211,9 +278,9 @@ export const WarningContainer = styled.div`
     transform: translateY(-2px);
     box-shadow: 0 6px 14px
       ${({ theme }) =>
-        theme.title === "dark"
-          ? "rgba(255, 255, 255, 0.08)"
-          : "rgba(0, 0, 0, 0.12)"};
+    theme.title === "dark"
+      ? "rgba(255, 255, 255, 0.08)"
+      : "rgba(0, 0, 0, 0.12)"};
   }
 
   svg {
@@ -230,7 +297,7 @@ export const WarningContainer = styled.div`
     font-size: 1.05rem;
     font-weight: 700;
     color: ${({ theme }) =>
-      theme.title === "dark" ? "#ffe69a" : "#cf8b25ff"};
+    theme.title === "dark" ? "#ffe69a" : "#cf8b25ff"};
   }
 
   p {

@@ -69,7 +69,7 @@ const Navbar: FC = () => {
           {openFAQ && (
             <S.DropdownCard>
               <Link to="/faq">Perguntas</Link>
-              <a href="#demonstração">Demonstração</a>
+              <a href="#demonstração" onClick={(e) => handleClick(e, "/", "demonstração")}>Demonstração</a>
             </S.DropdownCard>
           )}
         </li>

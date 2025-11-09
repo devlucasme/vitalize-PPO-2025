@@ -28,6 +28,12 @@ const DietGenerator: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const stateData = location.state as IDietAndTrainingData | undefined;
+
+  // Recupera dados salvos localmente se não vier via state
+  const storedData = localStorage.getItem("userDietTrainingData");
+  const parsedData: IDietAndTrainingData | undefined = storedData ? JSON.parse(storedData) : undefined;
+  const finalData = stateData ?? parsedData;
+
   const [output, setOutput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
@@ -43,12 +49,12 @@ const DietGenerator: FC = () => {
   useEffect(() => {
     const hideDietModal = localStorage.getItem(hideKey) === "true";
 
-    if (!stateData) {
+    if (!finalData) {
       setShowFormModal(true);
     } else if (!hideDietModal) {
       setShowDietModal(true);
     }
-  }, [stateData, hideKey]);
+  }, [finalData, hideKey]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -68,7 +74,7 @@ const DietGenerator: FC = () => {
   };
 
   const startStreaming = async () => {
-    if (!stateData) return;
+    if (!finalData) return;
 
     const controller = new AbortController();
     controllerRef.current = controller;
@@ -84,15 +90,15 @@ const DietGenerator: FC = () => {
       }
 
       const requestData: IDietRequestData = {
-        age: Number(stateData.age),
-        sex: stateData.sex,
-        weightKg: Number(stateData.weight_kg),
-        heightCm: Number(stateData.height_cm),
-        activityLevel: stateData.activity_level,
-        objective: stateData.objective,
-        trainingPlace: stateData.training_place,
-        budGetLevel: stateData.budGet_level,
-        healthConditions: stateData.health_conditions,
+        age: Number(finalData.age),
+        sex: finalData.sex,
+        weightKg: Number(finalData.weight_kg),
+        heightCm: Number(finalData.height_cm),
+        activityLevel: finalData.activity_level,
+        objective: finalData.objective,
+        trainingPlace: finalData.training_place,
+        budGetLevel: finalData.budGet_level,
+        healthConditions: finalData.health_conditions,
       };
 
       const response = await generateDiet(requestData, token, controller.signal);
@@ -210,7 +216,7 @@ const DietGenerator: FC = () => {
                 {isStreaming ? "Cancelar" : "Gerar dieta"}
               </Button>
             </S.ButtonContainer>
-            {stateData && output && (
+            {finalData && output && (
               <S.Box>
                 <S.ContentBox>
                   <ReactMarkdown

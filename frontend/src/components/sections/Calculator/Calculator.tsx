@@ -93,6 +93,9 @@ const Calculator: FC = () => {
       health_conditions: data.health_conditions ?? "Nenhuma",
     };
 
+    // Persistir os dados no localStorage para reutilização nas páginas /diet e /training
+    localStorage.setItem("userDietTrainingData", JSON.stringify(typedData));
+
     navigate(path, { state: typedData });
   };
 

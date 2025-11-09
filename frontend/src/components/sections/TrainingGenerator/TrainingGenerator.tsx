@@ -14,6 +14,7 @@ import RunningImage from "../../../assets/running1.jpg";
 import RunningTwoImage from "../../../assets/running2.jpg";
 import type { IDietAndTrainingData } from "../../../interfaces/DietAndTraining.interface";
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-router-dom";
 
 const backgroundImages = [
   PushUpImage,
@@ -102,8 +103,8 @@ const TrainingGenerator: FC = () => {
       setFeedback(
         <S.FeedbackWrapper>
           <S.FeedbackBox>
-            <S.FeedbackIcon color={theme.colors.primary} />
-            <span>Treino gerado com sucesso! Veja no perfil.</span>
+            <S.FeedbackIcon color={"#219221"} />
+            <span>Treino gerado! <Link to={"/user"}>Veja no perfil.</Link></span>
           </S.FeedbackBox>
         </S.FeedbackWrapper>
       );

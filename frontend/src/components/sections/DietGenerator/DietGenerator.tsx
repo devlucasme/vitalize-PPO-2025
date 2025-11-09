@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import * as S from "./styles";
 import { useEffect, useState, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Sparkles, Loader } from "lucide-react";
 import { Button } from "../../ui/Button/Button";
 import { useTheme } from "../../../contexts/ThemeContext";
@@ -101,8 +101,8 @@ const DietGenerator: FC = () => {
       setFeedback(
         <S.FeedbackWrapper>
           <S.FeedbackBox>
-            <S.FeedbackIcon color={theme.colors.primary} />
-            <span>Dieta gerada com sucesso! Veja no perfil.</span>
+            <S.FeedbackIcon color={"#219221"} />
+            <span>Dieta gerada! <Link to={"/user"}>Veja no perfil.</Link></span>
           </S.FeedbackBox>
         </S.FeedbackWrapper>
       );

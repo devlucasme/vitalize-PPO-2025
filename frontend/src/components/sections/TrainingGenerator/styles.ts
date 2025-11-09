@@ -176,6 +176,15 @@ export const FeedbackBox = styled.div`
     @media (max-width: 480px) { font-size: 0.85rem; }
   }
 
+  a {
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   @media (max-width: 768px) { padding: 0.8rem; gap: 0.4rem; }
   @media (max-width: 480px) { padding: 0.6rem; gap: 0.3rem; }
 `;

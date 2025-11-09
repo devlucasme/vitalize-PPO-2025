@@ -10,6 +10,7 @@ import { useTheme } from "../../../contexts/ThemeContext";
 import { registerValidation } from "../../../validations/validators/register.validation";
 import type { RegisterValidationType } from "../../../validations/protocols/register";
 import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
 import * as S from "./styles";
 
 type FeedbackType = "success" | "error";
@@ -60,6 +61,12 @@ const RegisterForm: FC = () => {
   return (
     <S.Container>
       <S.RegisterForm onSubmit={handleSubmit(onSubmit)}>
+
+        <S.BackLink to="/">
+          <ArrowLeft size={18} />
+          Voltar
+        </S.BackLink>
+
         <img src={logo} alt="Logo do Vitalize" />
         <h2>Criar conta no Vitalize</h2>
 

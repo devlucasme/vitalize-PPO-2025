@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { User, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { shade } from "polished";
+import { Link } from "react-router-dom";
 
 type FieldContainerProps = {
   hasError?: boolean;
@@ -56,6 +57,7 @@ export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
 `;
 
 export const RegisterForm = styled.form`
+  position: relative;
   background: ${({ theme }) => theme.colors.backgroundShade};
   width: 100%;
   max-width: 520px;
@@ -137,6 +139,41 @@ export const RegisterForm = styled.form`
     }
   }
 `;
+
+export const BackLink = styled(Link)`
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => shade(0.2, theme.colors.primary)};
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 660px) {
+    top: 14px;
+    left: 14px;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    top: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+  }
+`;
+
 
 export const FieldWrapper = styled.div`
   display: flex;

@@ -1,6 +1,7 @@
 import styled, { keyframes, css } from "styled-components";
 import { shade } from "polished";
 import { Mail, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type FieldContainerProps = {
   hasError?: boolean;
@@ -33,6 +34,35 @@ export const Container = styled.div`
   padding: 0 1rem;
   box-sizing: border-box;
 `;
+
+export const BackLink = styled(Link)`
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => shade(0.2, theme.colors.primary)};
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 480px) {
+    top: 12px;
+    left: 12px;
+    font-size: 0.85rem;
+  }
+`;
+
 
 export const LoginForm = styled.form`
   position: relative;

@@ -108,6 +108,13 @@ const Calculator: FC = () => {
         {/* FORMULÁRIO */}
         {!imcResult && (
           <S.CalculatorCard>
+
+            <S.BackLink to="/">
+              <ArrowLeft size={18} />
+              Voltar
+            </S.BackLink>
+
+
             <img src={logo} alt="Logo do Vitalize" />
             <h2>Calcule seu IMC e veja sua classificação!</h2>
 

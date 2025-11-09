@@ -1,4 +1,6 @@
 import styled, { keyframes, css } from "styled-components";
+import { Link } from "react-router-dom";
+import { shade } from "polished";
 
 type FieldContainerProps = {
   hasError?: boolean;
@@ -76,6 +78,7 @@ export const Wrapper = styled.div`
 `;
 
 export const CalculatorCard = styled.form<CalculatorCardProps>`
+  position: relative;
   flex: 1 1 50%;
   background: ${({ theme }) => theme.colors.backgroundShade};
   padding: 2rem;
@@ -147,6 +150,55 @@ export const CalculatorCard = styled.form<CalculatorCardProps>`
     }
   }
 `;
+
+export const BackLink = styled(Link)`
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center; 
+  justify-content: center;
+  gap: 6px;
+  color: #cca041;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: color 0.3s ease, transform 0.2s ease;
+
+  svg {
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+  }
+
+  &:hover {
+    color: ${shade(0.15, "#cca041")};
+  }
+
+  @media (max-width: 660px) {
+    top: 14px;
+    left: 14px;
+    font-size: 0.85rem;
+
+    svg {
+      top: -0.5px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    top: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+    gap: 5px;
+
+    svg {
+      top: 0;
+    }
+  }
+`;
+
+
 
 export const InputRow = styled.div`
   display: flex;

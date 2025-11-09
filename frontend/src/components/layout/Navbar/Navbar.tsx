@@ -1,10 +1,13 @@
 import * as S from "./styles";
 import type { FC } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 
 const Navbar: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [openFAQ, setOpenFAQ] = useState(false);
+  const faqRef = useRef<HTMLLIElement>(null);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, id?: string) => {
     e.preventDefault();
@@ -35,6 +38,21 @@ const Navbar: FC = () => {
     navigate("/login");
   };
 
+  const toggleFAQ = () => {
+    setOpenFAQ((prev) => !prev);
+  };
+
+  // Fecha o card ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (faqRef.current && !faqRef.current.contains(event.target as Node)) {
+        setOpenFAQ(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <nav>
       <S.NavList>
@@ -44,9 +62,18 @@ const Navbar: FC = () => {
         <li>
           <a href="#sobre" onClick={(e) => handleClick(e, "/", "sobre")}>Sobre</a>
         </li>
-        <li>
-          <Link to="/faq">FAQ</Link>
+
+        {/* === FAQ Dropdown === */}
+        <li ref={faqRef}>
+          <button onClick={toggleFAQ}>Dúvidas</button>
+          {openFAQ && (
+            <S.DropdownCard>
+              <Link to="/faq">Perguntas</Link>
+              <a href="#demonstração">Demonstração</a>
+            </S.DropdownCard>
+          )}
         </li>
+
         <li>
           <a onClick={handleLoginClick}>Entrar</a>
         </li>

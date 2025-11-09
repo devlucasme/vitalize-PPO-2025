@@ -43,7 +43,7 @@ export const BackLink = styled(Link)`
   align-items: center;
   gap: 6px;
   color: ${({ theme }) => theme.colors.primary};
-  font-weight: 600;
+  font-weight: bold;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease, transform 0.2s ease;
@@ -54,6 +54,7 @@ export const BackLink = styled(Link)`
 
   svg {
     flex-shrink: 0;
+    font-weight: bold;
   }
 
   @media (max-width: 480px) {

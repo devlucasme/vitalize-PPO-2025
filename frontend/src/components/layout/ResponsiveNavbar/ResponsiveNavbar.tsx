@@ -68,7 +68,10 @@ const ReponsiveNavbar: FC<ResponsiveNavbarProps> = ({
             </a>
           </li>
           <li>
-            <Link to="/faq">FAQ</Link>
+            <Link to="/faq">Perguntas</Link>
+          </li>
+          <li>
+            <a href="#demonstração" onClick={(e) => handleClick(e, "/", "demonstração")}>Demonstração</a>
           </li>
           <li>
             <Link to="/login">Entrar</Link>

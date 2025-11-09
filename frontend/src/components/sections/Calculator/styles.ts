@@ -160,7 +160,7 @@ export const BackLink = styled(Link)`
   justify-content: center;
   gap: 6px;
   color: #cca041;
-  font-weight: 600;
+  font-weight: bold;
   text-decoration: none;
   font-size: 0.9rem;
   line-height: 1;
@@ -168,6 +168,7 @@ export const BackLink = styled(Link)`
 
   svg {
     flex-shrink: 0;
+    font-weight: bold;
     position: relative;
     top: -1px;
   }

@@ -112,30 +112,30 @@ export const RegisterForm = styled.form`
   /* Ajuste Notebook (1366x768) */
   @media (min-width: 1024px) and (max-width: 1440px) {
     max-width: 460px;
-    padding: 32px 36px;
-    gap: 18px;
+    padding: 18px 36px;
+    gap: 12px;
 
     h2 {
-      font-size: 1.45rem;
+      font-size: 1.35rem;
     }
 
     img {
-      width: 58px;
+      width: 50px;
     }
   }
 
   /* Ajuste Full HD (1920x1080) */
   @media (min-width: 1600px) {
     max-width: 480px;
-    padding: 36px 40px;
-    gap: 20px;
+    padding: 20px 40px;
+    gap: 15px;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
 
     img {
-      width: 60px;
+      width: 55px;
     }
   }
 `;

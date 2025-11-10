@@ -11,7 +11,7 @@ import {
 
 const Demonstration: FC = () => {
   return (
-    <S.Section id="demonstração">
+    <S.Section id="tutorial">
       <S.Container>
         <S.TopDemo>
           <h2>

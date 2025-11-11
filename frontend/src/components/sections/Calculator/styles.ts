@@ -33,7 +33,7 @@ export const FormContainer = styled.form`
   padding: 2rem 1.5rem;
   background: ${({ theme }) => theme.colors.background};
   width: 100%;
-  min-height: 80vh;
+  height: 80vh;
 
   /* 🔹 Ajuste fino para notebooks */
   @media (min-width: 1024px) and (max-width: 1440px) {
@@ -200,7 +200,6 @@ export const BackLink = styled(Link)`
 `;
 
 
-
 export const InputRow = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -235,6 +234,7 @@ export const Label = styled.label`
 
   @media (min-width: 1024px) and (max-width: 1440px) {
     font-size: 0.85rem;
+    margin-bottom: 0.2rem;
   }
 
   @media (max-width: 480px) {
@@ -399,7 +399,7 @@ export const ResultCard = styled.div`
   /* 🔹 Ajuste para notebooks */
   @media (min-width: 1024px) and (max-width: 1440px) {
     min-height: 410px; /* ↓ reduz altura para evitar scroll */
-    padding: 1.2rem 1.4rem; /* reduz o padding interno */
+    padding: 1rem 1.4rem; /* reduz o padding interno */
     max-width: 440px; /* ligeiramente mais compacto */
   }
 

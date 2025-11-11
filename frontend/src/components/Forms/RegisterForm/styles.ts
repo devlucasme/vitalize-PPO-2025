@@ -53,7 +53,7 @@ export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
   border: 1px solid ${({ type }) => (type === "success" ? "#38bd90" : "#e57373")};
   animation: ${fadeIn} 0.3s ease forwards;
   text-align: center;
-  width: 80%;
+  width: 30%;
 `;
 
 export const RegisterForm = styled.form`
@@ -113,7 +113,7 @@ export const RegisterForm = styled.form`
   @media (min-width: 1024px) and (max-width: 1440px) {
     max-width: 460px;
     padding: 18px 36px;
-    gap: 12px;
+    gap: 10px;
 
     h2 {
       font-size: 1.35rem;

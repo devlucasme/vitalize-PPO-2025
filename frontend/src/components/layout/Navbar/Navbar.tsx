@@ -42,7 +42,6 @@ const Navbar: FC = () => {
     setOpenFAQ((prev) => !prev);
   };
 
-  // Fecha o card ao clicar fora
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (faqRef.current && !faqRef.current.contains(event.target as Node)) {
@@ -63,7 +62,6 @@ const Navbar: FC = () => {
           <a href="#sobre" onClick={(e) => handleClick(e, "/", "sobre")}>Sobre</a>
         </li>
 
-        {/* === FAQ Dropdown === */}
         <li ref={faqRef}>
           <button onClick={toggleFAQ}>Dúvidas</button>
           {openFAQ && (

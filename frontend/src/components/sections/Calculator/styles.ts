@@ -35,7 +35,6 @@ export const FormContainer = styled.form`
   width: 100%;
   height: 80vh;
 
-  /* 🔹 Ajuste fino para notebooks */
   @media (min-width: 1024px) and (max-width: 1440px) {
     align-items: center;
     padding-top: 1rem;
@@ -117,7 +116,6 @@ export const CalculatorCard = styled.form<CalculatorCardProps>`
     width: 60px;
   }
 
-  /* 🔹 Compactação em notebooks */
   @media (min-width: 1024px) and (max-width: 1440px) {
     padding: 1.3rem 1.2rem;
     h2 {
@@ -198,7 +196,6 @@ export const BackLink = styled(Link)`
     }
   }
 `;
-
 
 export const InputRow = styled.div`
   display: flex;
@@ -396,11 +393,10 @@ export const ResultCard = styled.div`
   max-width: 480px;
   margin: auto;
 
-  /* 🔹 Ajuste para notebooks */
   @media (min-width: 1024px) and (max-width: 1440px) {
-    min-height: 410px; /* ↓ reduz altura para evitar scroll */
-    padding: 1rem 1.4rem; /* reduz o padding interno */
-    max-width: 440px; /* ligeiramente mais compacto */
+    min-height: 410px; 
+    padding: 1rem 1.4rem; 
+    max-width: 440px;
   }
 
   @media (max-width: 768px) {

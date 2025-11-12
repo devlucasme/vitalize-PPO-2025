@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import * as S from "./styles";
 import { useEffect, useState, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Dumbbell, Loader } from "lucide-react";
 import { Button } from "../../ui/Button/Button";
 import { useTheme } from "../../../contexts/ThemeContext";
@@ -14,7 +14,6 @@ import RunningImage from "../../../assets/running1.jpg";
 import RunningTwoImage from "../../../assets/running2.jpg";
 import type { IDietAndTrainingData } from "../../../interfaces/DietAndTraining.interface";
 import ReactMarkdown from "react-markdown";
-import { Link } from "react-router-dom";
 
 const backgroundImages = [
   PushUpImage,
@@ -30,9 +29,14 @@ const TrainingGenerator: FC = () => {
   const navigate = useNavigate();
   const stateData = location.state as IDietAndTrainingData | undefined;
 
-  // Recupera dados salvos localmente se não vier via state
-  const storedData = localStorage.getItem("userDietTrainingData");
-  const parsedData: IDietAndTrainingData | undefined = storedData ? JSON.parse(storedData) : undefined;
+  const token = localStorage.getItem("token");
+  const userKey = token ? `userDietTrainingData_${token}` : "userDietTrainingData_guest";
+  const hideKey = token ? `hideTrainingModal_${token}` : "hideTrainingModal_guest";
+
+  const storedData = localStorage.getItem(userKey);
+  const parsedData: IDietAndTrainingData | undefined = storedData
+    ? JSON.parse(storedData)
+    : undefined;
   const finalData = stateData ?? parsedData;
 
   const [output, setOutput] = useState("");
@@ -43,9 +47,6 @@ const TrainingGenerator: FC = () => {
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const [showFormModal, setShowFormModal] = useState(false);
   const controllerRef = useRef<AbortController | null>(null);
-
-  const token = localStorage.getItem("token");
-  const hideKey = token ? `hideTrainingModal_${token}` : "hideTrainingModal_guest";
 
   useEffect(() => {
     const hideTrainingModal = localStorage.getItem(hideKey) === "true";
@@ -109,7 +110,9 @@ const TrainingGenerator: FC = () => {
         <S.FeedbackWrapper>
           <S.FeedbackBox>
             <S.FeedbackIcon color={"#219221"} />
-            <span>Treino gerado! <Link to={"/user"}>Veja no perfil.</Link></span>
+            <span>
+              Treino gerado! <Link to={"/user"}>Veja no perfil.</Link>
+            </span>
           </S.FeedbackBox>
         </S.FeedbackWrapper>
       );
@@ -176,9 +179,7 @@ const TrainingGenerator: FC = () => {
                 checked={dontShowAgain}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="dontShowTraining">
-                Não mostrar novamente
-              </label>
+              <label htmlFor="dontShowTraining">Não mostrar novamente</label>
             </S.ModalCheckbox>
             <S.ModalButtons>
               <Button
@@ -188,10 +189,7 @@ const TrainingGenerator: FC = () => {
               >
                 Cancelar
               </Button>
-              <Button
-                onClick={handleGenerate}
-                backgroundColor="#68b957"
-              >
+              <Button onClick={handleGenerate} backgroundColor="#68b957">
                 Gerar treino
               </Button>
             </S.ModalButtons>

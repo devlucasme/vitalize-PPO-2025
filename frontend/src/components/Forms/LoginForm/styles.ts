@@ -91,7 +91,6 @@ export const LoginForm = styled.form`
     margin: 0 auto;
   }
 
-  /* ===== Ajuste notebook (1024px - 1440px) ===== */
   @media (min-width: 1024px) and (max-width: 1440px) {
     max-width: 460px;
     padding: 32px 38px;
@@ -185,7 +184,7 @@ export const FieldContainer = styled.div<FieldContainerProps>`
 
   &:focus-within {
     border-color: ${({ hasError, theme }) =>
-      hasError ? "#e57373" : theme.colors.primary};
+    hasError ? "#e57373" : theme.colors.primary};
   }
 `;
 

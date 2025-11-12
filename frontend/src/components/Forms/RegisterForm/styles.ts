@@ -30,12 +30,10 @@ export const Container = styled.div`
     padding: 0 0.5rem;
   }
 
-  /* Ajuste Notebook */
   @media (min-width: 1024px) and (max-width: 1440px) {
     padding: 0 1.5rem;
   }
 
-  /* Ajuste Full HD */
   @media (min-width: 1600px) {
     padding: 0 2rem;
   }
@@ -109,7 +107,6 @@ export const RegisterForm = styled.form`
     }
   }
 
-  /* Ajuste Notebook (1366x768) */
   @media (min-width: 1024px) and (max-width: 1440px) {
     max-width: 460px;
     padding: 18px 36px;
@@ -124,7 +121,6 @@ export const RegisterForm = styled.form`
     }
   }
 
-  /* Ajuste Full HD (1920x1080) */
   @media (min-width: 1600px) {
     max-width: 480px;
     padding: 20px 40px;
@@ -205,19 +201,17 @@ export const FieldContainer = styled.div<FieldContainerProps>`
 
   &:focus-within {
     border-color: ${({ hasError, theme }) =>
-      hasError ? "#e57373" : theme.colors.primary};
+    hasError ? "#e57373" : theme.colors.primary};
   }
 
   @media (max-width: 480px) {
     padding: 8px 10px;
   }
 
-  /* Ajuste Notebook */
   @media (min-width: 1024px) and (max-width: 1440px) {
     padding: 9px 11px;
   }
 
-  /* Ajuste Full HD */
   @media (min-width: 1600px) {
     padding: 10px 12px;
   }

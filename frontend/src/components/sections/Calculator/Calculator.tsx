@@ -23,16 +23,20 @@ import { dietTrainingCalculatorValidation } from "../../../validations/validator
 import type { DietTrainingCalculatorValidationType } from "../../../validations/protocols/calculator";
 import type { IDietAndTrainingData } from "../../../interfaces/DietAndTraining.interface";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Calculator: FC = () => {
   const { theme } = useTheme();
   const logo = theme.title === "dark" ? VitalizeDarkLogo : VitalizeLogo;
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+  const userKey = token ? `userDietTrainingData_${token}` : "userDietTrainingData_guest";
+
   const {
     handleSubmit,
     register,
+    setValue,
     formState: { errors },
   } = useForm<DietTrainingCalculatorValidationType>({
     resolver: zodResolver(dietTrainingCalculatorValidation) as any,
@@ -40,6 +44,17 @@ const Calculator: FC = () => {
   });
 
   const [imcResult, setImcResult] = useState<number | null>(null);
+
+  // 🔄 Carregar dados salvos do usuário
+  useEffect(() => {
+    const savedData = localStorage.getItem(userKey);
+    if (savedData) {
+      const parsed = JSON.parse(savedData) as DietTrainingCalculatorValidationType;
+      Object.entries(parsed).forEach(([key, value]) => {
+        setValue(key as keyof DietTrainingCalculatorValidationType, value);
+      });
+    }
+  }, [userKey, setValue]);
 
   const calculateIMC = (data: DietTrainingCalculatorValidationType) => {
     const heightM = Number(data.height_cm) / 100;
@@ -93,9 +108,7 @@ const Calculator: FC = () => {
       health_conditions: data.health_conditions ?? "Nenhuma",
     };
 
-    // Persistir os dados no localStorage para reutilização nas páginas /diet e /training
-    localStorage.setItem("userDietTrainingData", JSON.stringify(typedData));
-
+    localStorage.setItem(userKey, JSON.stringify(typedData));
     navigate(path, { state: typedData });
   };
 
@@ -105,19 +118,16 @@ const Calculator: FC = () => {
   return (
     <S.FormContainer>
       <S.Wrapper>
-        {/* FORMULÁRIO */}
         {!imcResult && (
           <S.CalculatorCard>
-
             <S.BackLink to="/">
               <ArrowLeft size={18} />
               Voltar
             </S.BackLink>
-
-
             <img src={logo} alt="Logo do Vitalize" />
             <h2>Calcule seu IMC e veja sua classificação!</h2>
 
+            {/* ---- Inputs ---- */}
             <S.InputRow>
               <S.InputGroup>
                 <S.Label>
@@ -191,9 +201,7 @@ const Calculator: FC = () => {
                   <Goal size={14} /> Objetivo
                 </S.Label>
                 <S.FieldContainer hasError={!!errors.objective}>
-                  <S.Select
-                    {...register("objective")}
-                  >
+                  <S.Select {...register("objective")}>
                     <option value="">Selecione</option>
                     <option value="Perda de peso">Perda de peso</option>
                     <option value="Hipertrofia">Hipertrofia</option>
@@ -205,7 +213,6 @@ const Calculator: FC = () => {
                 )}
               </S.InputGroup>
             </S.InputRow>
-
 
             <S.InputRow>
               <S.InputGroup>
@@ -276,7 +283,6 @@ const Calculator: FC = () => {
           </S.CalculatorCard>
         )}
 
-        {/* RESULTADO DO IMC */}
         {imcResult && (
           <S.ResultCard>
             <h3>Resultado do IMC</h3>

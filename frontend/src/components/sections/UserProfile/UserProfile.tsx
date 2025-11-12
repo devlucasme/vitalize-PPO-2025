@@ -79,7 +79,6 @@ const UserProfile: FC = () => {
               <S.MailIcon /> {user.email}
             </p>
           </S.UserContent>
-
           <S.ProfileSection>
             <h3>Dados Pessoais</h3>
             <S.ProfileItem>
@@ -92,7 +91,6 @@ const UserProfile: FC = () => {
               <span>Objetivo</span> <p>{user.objective ?? "—"}</p>
             </S.ProfileItem>
           </S.ProfileSection>
-
           <S.ButtonWrapper>
             <Button backgroundColor="#d3764b" width="70%" onClick={handleLogout}>
               <LogOut size={16} /> Sair da Conta
@@ -102,8 +100,6 @@ const UserProfile: FC = () => {
             </Button>
           </S.ButtonWrapper>
         </S.ProfileContainer>
-
-        {/* Novo Card de Aviso */}
         <S.WarningContainer>
           <AlertTriangle size={22} />
           <div>
@@ -116,7 +112,6 @@ const UserProfile: FC = () => {
           </div>
         </S.WarningContainer>
       </S.LeftColumn>
-
       <S.RightColumn>
         <S.Card>
           <S.DataGenerate>
@@ -140,7 +135,6 @@ const UserProfile: FC = () => {
             )}
           </S.ScrollBox>
         </S.Card>
-
         <S.Card>
           <S.DataGenerate>
             Último Treino <span>{formatDate(user.lastTraining?.date)}</span>

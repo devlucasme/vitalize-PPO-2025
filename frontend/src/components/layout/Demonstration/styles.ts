@@ -5,6 +5,10 @@ export const Section = styled.section`
   background-color: ${({ theme }) => theme.colors.background};
   scroll-margin-top: 80px;
 
+  @media (max-width: 1366px) {
+    padding: 4.5rem 1.8rem;
+  }
+
   @media (max-width: 1024px) {
     padding: 4rem 1.5rem;
   }
@@ -37,13 +41,12 @@ export const TopDemo = styled.div`
       color: ${({ theme }) => theme.colors.primary};
     }
 
-    /* === Mantido igual ao TopAbout === */
     @media (max-width: 1366px) {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
     }
 
     @media (max-width: 1200px) {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
 
     @media (max-width: 960px) {
@@ -90,26 +93,32 @@ export const Table = styled.table`
 
       &:first-child {
         text-align: center;
-        width: 100px;
+        width: 80px;
       }
 
-      @media (max-width: 960px) {
+      @media (max-width: 1366px) {
         font-size: 0.95rem;
         padding: 0.9rem;
       }
 
-      @media (max-width: 720px) {
+      @media (max-width: 1200px) {
+        font-size: 0.9rem;
+        padding: 0.85rem;
+      }
+
+      @media (max-width: 1024px) {
         font-size: 0.9rem;
         padding: 0.8rem;
+      }
+
+      @media (max-width: 720px) {
+        font-size: 0.85rem;
+        padding: 0.75rem;
       }
 
       @media (max-width: 480px) {
         font-size: 0.8rem;
         padding: 0.7rem;
-      }
-
-      @media (max-width: 360px) {
-        font-size: 0.75rem;
       }
     }
   }
@@ -130,27 +139,36 @@ export const Table = styled.table`
         padding: 1rem;
         vertical-align: middle;
         font-size: 0.95rem;
+        line-height: 1.4;
+        background-color: ${({ theme }) => theme.colors.backgroundDarkShade};
+        color: ${({ theme }) => theme.colors.text};
 
         &:first-child {
           text-align: center;
+          width: 80px;
         }
 
-        @media (max-width: 960px) {
+        @media (max-width: 1366px) {
           font-size: 0.9rem;
-          padding: 0.9rem;
+          padding: 0.85rem;
         }
 
-        @media (max-width: 720px) {
-          font-size: 0.85rem;
+        @media (max-width: 1200px) {
+          font-size: 0.88rem;
           padding: 0.8rem;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 1024px) {
+          font-size: 0.85rem;
+          padding: 0.75rem;
+        }
+
+        @media (max-width: 720px) {
           font-size: 0.8rem;
           padding: 0.7rem;
         }
 
-        @media (max-width: 360px) {
+        @media (max-width: 480px) {
           font-size: 0.75rem;
           padding: 0.6rem;
         }
@@ -158,21 +176,26 @@ export const Table = styled.table`
     }
 
     svg {
-      color: #f0fff4;
-      width: 25px;
-      height: 25px;
+      color: ${({ theme }) => theme.colors.text};
+      width: 24px;
+      height: 24px;
 
-      @media (max-width: 960px) {
+      @media (max-width: 1366px) {
         width: 23px;
         height: 23px;
       }
 
-      @media (max-width: 720px) {
+      @media (max-width: 1200px) {
+        width: 22px;
+        height: 22px;
+      }
+
+      @media (max-width: 1024px) {
         width: 21px;
         height: 21px;
       }
 
-      @media (max-width: 480px) {
+      @media (max-width: 720px) {
         width: 19px;
         height: 19px;
       }
@@ -192,22 +215,22 @@ export const StepIcon = styled.svg`
   flex-shrink: 0;
   color: ${({ theme }) => theme.colors.primary};
 
-  @media (max-width: 960px) {
+  @media (max-width: 1366px) {
     width: 24px;
     height: 24px;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 1024px) {
     width: 22px;
     height: 22px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 720px) {
     width: 20px;
     height: 20px;
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 480px) {
     width: 18px;
     height: 18px;
   }

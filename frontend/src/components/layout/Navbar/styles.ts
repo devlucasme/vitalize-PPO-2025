@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavList = styled.ul`
   display: flex;
   gap: 4rem;
-  align-items: center; /* garante alinhamento vertical perfeito */
+  align-items: center; 
 
   li {
     position: relative;
@@ -26,7 +26,6 @@ export const NavList = styled.ul`
     justify-content: center;
     cursor: pointer;
 
-    /* barrinha verde padrão */
     &::after {
       content: "";
       position: absolute;
@@ -83,7 +82,7 @@ export const DropdownCard = styled.div`
   min-width: 180px;
   z-index: 100;
   padding: 10px;
-  animation: fadeIn 0.2s ease;
+  animation: fadeIn 0.4s ease;
 
   a {
     padding: 0.45rem 0.8rem;
@@ -98,7 +97,6 @@ export const DropdownCard = styled.div`
     align-items: center;
     transition: background 0.2s ease, opacity 0.2s ease;
 
-    /* remove a barrinha verde do hover */
     &::after {
       display: none !important;
     }

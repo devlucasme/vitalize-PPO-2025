@@ -65,7 +65,6 @@ const DeleteAccount: FC = () => {
         {isLoading && <S.LoadingBar progress={loadingProgress} visible={isLoading} />}
         <h2>Excluir Conta</h2>
         <p>Digite sua senha para confirmar a exclusão da conta. Esta ação é irreversível.</p>
-
         {feedback && (
           <S.FeedbackBox
             style={{
@@ -76,7 +75,6 @@ const DeleteAccount: FC = () => {
             {feedback.message}
           </S.FeedbackBox>
         )}
-
         <S.FieldWrapper>
           <S.Label>Senha</S.Label>
           <S.FieldContainer hasError={!!errors.password}>
@@ -89,7 +87,6 @@ const DeleteAccount: FC = () => {
           </S.FieldContainer>
           {errors.password && <S.FieldError>{errors.password.message}</S.FieldError>}
         </S.FieldWrapper>
-
         <S.ButtonContainer>
           <Button type="submit" backgroundColor="#a83232" disabled={isLoading}>
             Confirmar Exclusão

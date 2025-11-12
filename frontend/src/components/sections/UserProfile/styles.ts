@@ -9,7 +9,6 @@ export const PageWrapper = styled.div`
   gap: 1.5rem;
   justify-content: center;
 
-  /* ===== Ajuste notebook (1024px - 1440px) ===== */
   @media (min-width: 1024px) and (max-width: 1440px) {
     max-width: 80%;
     margin: 2.5rem auto;

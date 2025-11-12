@@ -14,7 +14,6 @@ export const Main = styled.main`
   min-height: 92vh;
   padding: 1rem;
 
-  /* 🔹 Ajuste para notebooks: reduz altura e centraliza melhor */
   @media (min-width: 1024px) and (max-width: 1440px) {
     min-height: 88vh;
     padding: 0.8rem;
@@ -75,11 +74,10 @@ export const Card = styled.div`
   box-shadow: 0 6px 16px rgba(0,0,0,0.2);
   margin: 0 auto;
 
-  /* 🔹 Ajuste fino para notebooks */
   @media (min-width: 1024px) and (max-width: 1440px) {
     width: 70%;
-    max-height: 500px; /* reduz altura total */
-    padding: 1.6rem; /* leve redução no padding */
+    max-height: 500px; 
+    padding: 1.6rem; 
   }
 
   @media (max-width: 1400px) { width: 80%; }
@@ -108,7 +106,7 @@ export const Box = styled.div`
       : "rgba(255,255,255,0.6)"};
 
   @media (min-width: 1024px) and (max-width: 1440px) {
-    max-height: 320px; /* 🔹 reduz altura para eliminar scroll */
+    max-height: 320px; 
     padding: 1.2rem;
   }
 
@@ -196,8 +194,6 @@ export const FeedbackIcon = styled(CheckCircle)`
   @media (max-width: 768px) { width: 18px; height: 18px; }
   @media (max-width: 480px) { width: 16px; height: 16px; }
 `;
-
-/* ---- restante permanece igual ---- */
 
 export const Modal = styled.div`
   display: flex;

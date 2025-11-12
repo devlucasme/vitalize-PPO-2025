@@ -29,8 +29,11 @@ const DietGenerator: FC = () => {
   const navigate = useNavigate();
   const stateData = location.state as IDietAndTrainingData | undefined;
 
-  // Recupera dados salvos localmente se não vier via state
-  const storedData = localStorage.getItem("userDietTrainingData");
+  const token = localStorage.getItem("token");
+  const userKey = token ? `userDietTrainingData_${token}` : "userDietTrainingData_guest";
+  const hideKey = token ? `hideDietModal_${token}` : "hideDietModal_guest";
+
+  const storedData = localStorage.getItem(userKey);
   const parsedData: IDietAndTrainingData | undefined = storedData ? JSON.parse(storedData) : undefined;
   const finalData = stateData ?? parsedData;
 
@@ -42,9 +45,6 @@ const DietGenerator: FC = () => {
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const [showFormModal, setShowFormModal] = useState(false);
   const controllerRef = useRef<AbortController | null>(null);
-
-  const token = localStorage.getItem("token");
-  const hideKey = token ? `hideDietModal_${token}` : "hideDietModal_guest";
 
   useEffect(() => {
     const hideDietModal = localStorage.getItem(hideKey) === "true";
@@ -108,7 +108,9 @@ const DietGenerator: FC = () => {
         <S.FeedbackWrapper>
           <S.FeedbackBox>
             <S.FeedbackIcon color={"#219221"} />
-            <span>Dieta gerada! <Link to={"/user"}>Veja no perfil.</Link></span>
+            <span>
+              Dieta gerada! <Link to={"/user"}>Veja no perfil.</Link>
+            </span>
           </S.FeedbackBox>
         </S.FeedbackWrapper>
       );
@@ -175,9 +177,7 @@ const DietGenerator: FC = () => {
                 checked={dontShowAgain}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="dontShow">
-                Não mostrar novamente
-              </label>
+              <label htmlFor="dontShow">Não mostrar novamente</label>
             </S.ModalCheckbox>
             <S.ModalButtons>
               <Button
@@ -187,10 +187,7 @@ const DietGenerator: FC = () => {
               >
                 Cancelar
               </Button>
-              <Button
-                onClick={handleGenerate}
-                backgroundColor="#68b957"
-              >
+              <Button onClick={handleGenerate} backgroundColor="#68b957">
                 Gerar dieta
               </Button>
             </S.ModalButtons>
@@ -216,6 +213,7 @@ const DietGenerator: FC = () => {
                 {isStreaming ? "Cancelar" : "Gerar dieta"}
               </Button>
             </S.ButtonContainer>
+
             {finalData && output && (
               <S.Box>
                 <S.ContentBox>

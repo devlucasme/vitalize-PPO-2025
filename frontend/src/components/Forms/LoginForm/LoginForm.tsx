@@ -92,21 +92,16 @@ const LoginForm: FC = () => {
         {isLoading && (
           <S.LoadingBar progress={loadingProgress} visible={isLoading} />
         )}
-
-        {/* === Link Voltar === */}
           <S.BackLink to="/">
             <ArrowLeft size={18} />
             Voltar
           </S.BackLink>
-
         <img src={logo} alt="Logo do Vitalize" />
         <h2>Entrar no Vitalize</h2>
-
         {location.state?.message && (
           <S.SuccessMessage>{location.state.message}</S.SuccessMessage>
         )}
         {generalError && <S.ErrorAlert>{generalError}</S.ErrorAlert>}
-
         <S.FieldWrapper>
           <S.Label>E-mail</S.Label>
           <S.FieldContainer hasError={!!errors.email}>
@@ -121,7 +116,6 @@ const LoginForm: FC = () => {
             <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>
           )}
         </S.FieldWrapper>
-
         <S.FieldWrapper>
           <S.Label>Senha</S.Label>
           <S.FieldContainer hasError={!!errors.password}>
@@ -143,7 +137,6 @@ const LoginForm: FC = () => {
             <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>
           )}
         </S.FieldWrapper>
-
         <S.ContainerCheckbox>
           <S.RememberLabel htmlFor="remember-me">
             <S.Input type="checkbox" id="remember-me" />
@@ -153,11 +146,9 @@ const LoginForm: FC = () => {
             Esqueci minha senha
           </S.ForgotPasswordLink>
         </S.ContainerCheckbox>
-
         <Button type="submit" disabled={isSubmitting || isLoading}>
           Entrar
         </Button>
-
         <S.SignUpLink>
           Não tem uma conta? <Link to="/cadastro">Cadastre-se aqui</Link>
         </S.SignUpLink>

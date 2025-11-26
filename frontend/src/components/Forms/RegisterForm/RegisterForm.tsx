@@ -24,7 +24,11 @@ const RegisterForm: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [feedback, setFeedback] = useState<{ type: FeedbackType; message: string } | null>(null);
 
-  const { handleSubmit, register, formState: { errors } } = useForm<RegisterValidationType>({
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<RegisterValidationType>({
     resolver: zodResolver(registerValidation),
     mode: "all",
   });
@@ -65,8 +69,10 @@ const RegisterForm: FC = () => {
           <ArrowLeft size={18} />
           Voltar
         </S.BackLink>
+
         <img src={logo} alt="Logo do Vitalize" />
         <h2>Criar conta no Vitalize</h2>
+
         <S.FieldWrapper>
           <S.Label>Nome Completo</S.Label>
           <S.FieldContainer hasError={!!errors.name}>
@@ -75,6 +81,7 @@ const RegisterForm: FC = () => {
           </S.FieldContainer>
           {errors.name?.message && <S.ErrorMessage>{errors.name.message}</S.ErrorMessage>}
         </S.FieldWrapper>
+
         <S.FieldWrapper>
           <S.Label>E-mail</S.Label>
           <S.FieldContainer hasError={!!errors.email}>
@@ -83,6 +90,7 @@ const RegisterForm: FC = () => {
           </S.FieldContainer>
           {errors.email?.message && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
         </S.FieldWrapper>
+
         <S.FieldWrapper>
           <S.Label>Senha</S.Label>
           <S.FieldContainer hasError={!!errors.password}>
@@ -98,6 +106,7 @@ const RegisterForm: FC = () => {
           </S.FieldContainer>
           {errors.password?.message && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
         </S.FieldWrapper>
+
         <S.FieldWrapper>
           <S.Label>Confirmar Senha</S.Label>
           <S.FieldContainer hasError={!!errors.confirmPassword}>
@@ -115,13 +124,31 @@ const RegisterForm: FC = () => {
             <S.ErrorMessage>{errors.confirmPassword.message}</S.ErrorMessage>
           )}
         </S.FieldWrapper>
+
+        {/* Checkbox com link estilizado */}
+        <S.ContainerCheckbox>
+          <S.TermsLabel htmlFor="terms">
+            <input type="checkbox" id="terms" {...register("terms")} />
+            Aceito os termos de uso{" "}
+          </S.TermsLabel>
+          <S.TermsOfUseLink to="/terms">
+            Ver termos
+          </S.TermsOfUseLink>
+        </S.ContainerCheckbox>
+
+        {errors.terms?.message && (
+          <S.ErrorMessage>{errors.terms.message}</S.ErrorMessage>
+        )}
+
         <Button type="submit" disabled={isLoading}>
           Criar Conta
         </Button>
+
         <S.LoginLink>
           Já tem uma conta? <Link to="/login">Entrar</Link>
         </S.LoginLink>
       </S.RegisterForm>
+
       {feedback && (
         <S.FeedbackMessage type={feedback.type}>{feedback.message}</S.FeedbackMessage>
       )}

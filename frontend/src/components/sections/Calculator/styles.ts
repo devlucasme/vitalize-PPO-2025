@@ -154,10 +154,10 @@ export const BackLink = styled(Link)`
   top: 18px;
   left: 18px;
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   gap: 6px;
-  color: #cca041;
+  color: ${({ theme }) => theme.colors.primary};
   font-weight: bold;
   text-decoration: none;
   font-size: 0.9rem;
@@ -166,34 +166,8 @@ export const BackLink = styled(Link)`
 
   svg {
     flex-shrink: 0;
-    font-weight: bold;
     position: relative;
     top: -1px;
-  }
-
-  &:hover {
-    color: ${shade(0.15, "#cca041")};
-  }
-
-  @media (max-width: 660px) {
-    top: 14px;
-    left: 14px;
-    font-size: 0.85rem;
-
-    svg {
-      top: -0.5px;
-    }
-  }
-
-  @media (max-width: 400px) {
-    top: 10px;
-    left: 10px;
-    font-size: 0.8rem;
-    gap: 5px;
-
-    svg {
-      top: 0;
-    }
   }
 `;
 
@@ -202,22 +176,25 @@ export const InputRow = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 0.8rem;
+  width: 100%;
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    gap: 0.7rem;
-    margin-bottom: 0.6rem;
-  }
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-    gap: 0.6rem;
+  @media (max-width: 768px) {
+    gap: 0.8rem;
   }
 `;
 
 export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 calc(50% - 0.5rem);
+  min-width: 220px;
+  max-width: 100%;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
 `;
 
 export const Label = styled.label`
@@ -227,21 +204,14 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.colors.text};
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    font-size: 0.85rem;
-    margin-bottom: 0.2rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.85rem;
-  }
+  gap: 0.5rem;
+  word-break: break-word;
 `;
 
 export const FieldContainer = styled.div<FieldContainerProps>`
   display: flex;
   align-items: center;
+  width: 100%;
   border: 1px solid
     ${({ hasError, theme }) => (hasError ? "#e57373" : theme.colors.borderColor)};
   border-radius: 0.5rem;
@@ -251,17 +221,10 @@ export const FieldContainer = styled.div<FieldContainerProps>`
       ? "rgba(255, 255, 255, 0.05)"
       : "rgba(0, 0, 0, 0.05)"};
   transition: border 0.2s ease;
+  overflow: hidden;
 
   &:focus-within {
     border-color: ${({ theme }) => theme.colors.primary};
-  }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    padding: 0.3rem 0.5rem;
-  }
-
-  @media (max-width: 480px) {
-    padding: 0.35rem 0.5rem;
   }
 `;
 
@@ -273,20 +236,11 @@ export const Input = styled.input`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.text};
   padding: 0.5rem;
+  min-width: 0; /* evita que o flex item quebre */
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.text};
     opacity: 0.7;
-  }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    font-size: 0.85rem;
-    padding: 0.35rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.85rem;
-    padding: 0.4rem;
   }
 `;
 
@@ -298,20 +252,14 @@ export const Select = styled.select`
   font-size: 0.95rem;
   padding: 0.5rem;
   color: ${({ theme }) => theme.colors.text};
+  min-width: 0;
+  white-space: normal;
+  word-wrap: break-word;
 
   option {
     color: ${({ theme }) => theme.colors.text};
     background: ${({ theme }) => theme.colors.background};
-  }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    font-size: 0.85rem;
-    padding: 0.35rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.85rem;
-    padding: 0.4rem;
+    white-space: normal;
   }
 `;
 
@@ -337,44 +285,12 @@ export const ButtonContainer = styled.div`
     transform: scale(1.03);
     opacity: 0.95;
   }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    margin-top: 0.7rem;
-    gap: 0.45rem;
-    button {
-      min-height: 36px;
-      font-size: 0.85rem;
-      padding: 0.5rem 0.7rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    justify-content: center;
-
-    button {
-      flex: 1 1 48%;
-      font-size: 0.9rem;
-      min-height: 40px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-    align-items: center;
-
-    button {
-      width: 90%;
-      max-width: 260px;
-      min-height: 36px;
-      font-size: 0.85rem;
-    }
-  }
 `;
 
 export const ErrorMessage = styled.span`
   color: #e57373;
   font-size: 0.8rem;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 `;
 
 export const ResultCard = styled.div`
@@ -393,45 +309,22 @@ export const ResultCard = styled.div`
   max-width: 480px;
   margin: auto;
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    min-height: 410px; 
-    padding: 1rem 1.4rem; 
-    max-width: 440px;
-  }
-
-  @media (max-width: 768px) {
-    min-height: auto;
-    max-width: 400px;
-    padding: 1.2rem;
-  }
-
-  @media (max-width: 480px) {
-    max-width: 340px;
-    padding: 1rem;
-  }
-
   h3 {
     text-align: center;
     font-size: 1.3rem;
     margin-bottom: 1rem;
-
-    @media (min-width: 1024px) and (max-width: 1440px) {
-      font-size: 1.15rem;
-      margin-bottom: 0.8rem;
-    }
   }
 
-  .imc-value {
-    font-size: 2.3rem;
-    font-weight: bold;
+  .result {
+    font-size: 1.6rem;
+    font-weight: 900;
     text-align: center;
-    margin-bottom: 0.5rem;
-    color: #38bd90;
-
-    @media (min-width: 1024px) and (max-width: 1440px) {
-      font-size: 2rem;
-      margin-bottom: 0.4rem;
-    }
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #38bd90, #507cda);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 
   p {
@@ -439,10 +332,34 @@ export const ResultCard = styled.div`
     font-size: 1rem;
     margin-bottom: 1.2rem;
     line-height: 1.4;
+  }
 
-    @media (min-width: 1024px) and (max-width: 1440px) {
-      font-size: 0.9rem;
-      margin-bottom: 0.9rem;
+  .combined-description {
+    text-align: justify;
+    line-height: 1.5;
+
+    strong {
+      font-weight: 700;
+    }
+
+    .excellent {
+      color: #38bd90; /* verde – positivo */
+    }
+
+    .alert {
+      color: #f1c232; /* amarelo – aviso leve */
+    }
+
+    .warning {
+      color: #e75a5a; /* vermelho – alerta */
+    }
+
+    .tip {
+      color: #cca041; /* dourado – informação */
+    }
+
+    .neutral {
+      color: #507cda; /* azul – equilíbrio */
     }
   }
 
@@ -452,26 +369,10 @@ export const ResultCard = styled.div`
     margin-bottom: 1.4rem;
     font-size: 0.95rem;
 
-    @media (min-width: 1024px) and (max-width: 1440px) {
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-    }
-
     td {
       padding: 0.6rem;
       border: 1px solid ${({ theme }) => theme.colors.borderColor};
       text-align: center;
-
-      @media (min-width: 1024px) and (max-width: 1440px) {
-        padding: 0.45rem;
-      }
-    }
-
-    tr:nth-child(even) {
-      background: ${({ theme }) =>
-        theme.title === "dark"
-          ? "rgba(255, 255, 255, 0.04)"
-          : "rgba(0, 0, 0, 0.03)"};
     }
 
     tr.highlight {
@@ -484,5 +385,164 @@ export const ResultCard = styled.div`
       );
       animation: ${highlightPulse} 2s ease-in-out infinite;
     }
+  }
+
+  /* 📱 Ajustes de responsividade */
+  @media (max-width: 1024px) {
+    max-width: 420px;
+    padding: 1.6rem 1.2rem;
+    min-height: 460px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 380px;
+    padding: 1.4rem 1rem;
+    min-height: auto;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 330px;
+    padding: 1.2rem 0.8rem;
+    min-height: auto;
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    .result {
+      font-size: 1.4rem;
+      margin-bottom: 1.4rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .combined-description {
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    table {
+      font-size: 0.88rem;
+    }
+  }
+`;
+
+
+export const ResultHeader = styled.div`
+  text-align: center;
+  margin-bottom: 1.4rem;
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .acronym-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.95;
+  line-height: 1.4;
+  margin-bottom: 1.2rem;
+
+  /* Cada linha explicativa (IMC e IAC) */
+  .line {
+    width: 80%;
+    max-width: 380px;
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    background: ${({ theme }) =>
+    theme.title === "dark"
+      ? "rgba(255,255,255,0.05)"
+      : "rgba(0,0,0,0.05)"};
+    text-align: center;
+  }
+
+  /* IMC → verde */
+  .imc {
+    strong {
+      color: #38bd90;
+      font-weight: 900;
+    }
+  }
+
+  /* IAC → azul */
+  .iac {
+    strong {
+      color: #507cda;
+      font-weight: 900;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    .line {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    .line {
+      width: 100%;
+    }
+  }
+}
+
+
+  .dual-values {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+`;
+
+
+export const ValueBox = styled.div<{ color: string }>`
+  flex: 1 1 45%;
+  min-width: 160px;
+  max-width: 220px;
+  background: ${({ color }) =>
+    `linear-gradient(135deg, ${color}cc, ${shade(0.2, color)}cc)`};
+  border-radius: 10px;
+  padding: 0.45rem;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: ${fadeIn} 0.6s ease, ${highlightPulse} 3s ease-in-out infinite;
+
+  strong {
+    display: block;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.3rem;
+  }
+
+  span {
+    font-size: 2.1rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    opacity: 0.95;
+  }
+
+  svg {
+    margin-bottom: 0.4rem;
   }
 `;

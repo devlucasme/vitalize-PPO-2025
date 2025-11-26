@@ -64,8 +64,7 @@ export const RegisterForm = styled.form`
   padding: 40px 48px;
   display: flex;
   flex-direction: column;
-  gap: 26px;
-  box-sizing: border-box;
+  gap: 28px;
 
   h2 {
     text-align: center;
@@ -134,6 +133,12 @@ export const RegisterForm = styled.form`
       width: 55px;
     }
   }
+
+  @media (max-width: 420px) {
+    padding: 15px 30px;
+    gap: 11px;
+  }
+
 `;
 
 export const BackLink = styled(Link)`
@@ -171,7 +176,6 @@ export const BackLink = styled(Link)`
   }
 `;
 
-
 export const FieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -201,7 +205,7 @@ export const FieldContainer = styled.div<FieldContainerProps>`
 
   &:focus-within {
     border-color: ${({ hasError, theme }) =>
-    hasError ? "#e57373" : theme.colors.primary};
+      hasError ? "#e57373" : theme.colors.primary};
   }
 
   @media (max-width: 480px) {
@@ -279,9 +283,10 @@ export const Input = styled.input`
 
 export const ContainerCheckbox = styled.div`
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
   font-size: 0.9rem;
-  margin-top: 4px;
+  margin-top: 8px;
+  gap: 0.3rem;
 
   @media (max-width: 480px) {
     font-size: 0.8rem;
@@ -300,8 +305,11 @@ export const TermsLabel = styled.label`
   }
 `;
 
-export const TermsOfUseLink = styled.a`
+/* ✅ Agora é o Link do react-router-dom, estilizado com cor primária */
+export const TermsOfUseLink = styled(Link)`
   color: ${({ theme }) => theme.colors.primary};
+  font-weight: 500;
+  text-decoration: none;
   transition: color 0.3s ease;
 
   &:hover {
@@ -338,4 +346,9 @@ export const ErrorMessage = styled.p`
   @media (max-width: 480px) {
     font-size: 0.75rem;
   }
+
+  @media (max-width: 360px) {
+    font-size: 0.6rem;
+  }
+
 `;

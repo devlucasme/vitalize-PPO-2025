@@ -105,9 +105,7 @@ const UserProfile: FC = () => {
           <div>
             <h3>Aviso Importante</h3>
             <p>
-              O <strong>Vitalize</strong> não substitui nenhum profissional de saúde. 
-              Consulte um nutricionista ou médico antes de iniciar qualquer plano 
-              alimentar ou rotina de treinos.
+              O <strong>Vitalize</strong> não substitui nenhum profissional de saúde. Antes de iniciar qualquer plano alimentar, rotina de treinos ou prática de exercícios físicos, consulte um nutricionista, médico ou profissional de educação física qualificado.
             </p>
           </div>
         </S.WarningContainer>

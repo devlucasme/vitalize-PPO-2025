@@ -3,19 +3,7 @@ import * as S from "./styles";
 import { Button } from "../../ui/Button/Button";
 import VitalizeLogo from "../../../assets/vitalize-logo-menor.png";
 import VitalizeDarkLogo from "../../../assets/vitalize-logo-menor-dark.png";
-import {
-  Citrus,
-  Dumbbell,
-  User,
-  Calendar,
-  Scale,
-  Ruler,
-  Activity,
-  Home,
-  Wallet,
-  Goal,
-  ArrowLeft,
-} from "lucide-react";
+import { Citrus, Dumbbell, User, Calendar, Scale, Ruler, Activity, Wallet, Goal, ArrowLeft, Percent, Cross } from "lucide-react";
 import { useTheme } from "../../../contexts/ThemeContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,7 +11,7 @@ import { dietTrainingCalculatorValidation } from "../../../validations/validator
 import type { DietTrainingCalculatorValidationType } from "../../../validations/protocols/calculator";
 import type { IDietAndTrainingData } from "../../../interfaces/DietAndTraining.interface";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Calculator: FC = () => {
   const { theme } = useTheme();
@@ -36,7 +24,7 @@ const Calculator: FC = () => {
   const {
     handleSubmit,
     register,
-    setValue,
+    reset,
     formState: { errors },
   } = useForm<DietTrainingCalculatorValidationType>({
     resolver: zodResolver(dietTrainingCalculatorValidation) as any,
@@ -44,24 +32,20 @@ const Calculator: FC = () => {
   });
 
   const [imcResult, setImcResult] = useState<number | null>(null);
+  const [iacResult, setIacResult] = useState<number | null>(null);
 
-  // 🔄 Carregar dados salvos do usuário
-  useEffect(() => {
-    const savedData = localStorage.getItem(userKey);
-    if (savedData) {
-      const parsed = JSON.parse(savedData) as DietTrainingCalculatorValidationType;
-      Object.entries(parsed).forEach(([key, value]) => {
-        setValue(key as keyof DietTrainingCalculatorValidationType, value);
-      });
-    }
-  }, [userKey, setValue]);
-
-  const calculateIMC = (data: DietTrainingCalculatorValidationType) => {
+  // 🧮 Calcular IMC e IAC
+  const calculateIMCeIAC = (data: DietTrainingCalculatorValidationType) => {
     const heightM = Number(data.height_cm) / 100;
     const weight = Number(data.weight_kg);
-    if (!heightM || !weight) return;
+    const hip = Number(data.hip_circumference);
+    if (!heightM || !weight || !hip) return;
+
     const imc = weight / (heightM * heightM);
     setImcResult(Number(imc.toFixed(1)));
+
+    const iac = hip / (heightM * Math.sqrt(heightM)) - 18;
+    setIacResult(Number(iac.toFixed(1)));
   };
 
   const getIMCClassification = (imc: number) => {
@@ -73,25 +57,72 @@ const Calculator: FC = () => {
     return "Obesidade grau III";
   };
 
-  const getIMCDescription = (classification: string) => {
-    switch (classification) {
-      case "Abaixo do peso":
-        return "Seu peso está abaixo do ideal. É importante garantir uma nutrição adequada e saudável.";
-      case "Peso normal":
-        return "Parabéns! Seu peso está dentro da faixa ideal para sua altura.";
-      case "Sobrepeso":
-        return "Você está levemente acima do peso. Pequenos ajustes na dieta e exercícios podem ajudar.";
-      case "Obesidade grau I":
-        return "Risco leve de complicações. Busque equilibrar alimentação e atividade física.";
-      case "Obesidade grau II":
-        return "Risco moderado à saúde. Consulte um profissional para acompanhamento adequado.";
-      case "Obesidade grau III":
-        return "Risco elevado à saúde. É essencial acompanhamento médico e nutricional.";
-      default:
-        return "";
+  const getIACClassification = (iac: number, sex: string) => {
+    if (sex === "Feminino") {
+      if (iac < 21) return "Abaixo do ideal";
+      if (iac <= 32) return "Ideal";
+      if (iac <= 38) return "Levemente acima";
+      return "Alto índice de gordura";
+    } else {
+      if (iac < 8) return "Abaixo do ideal";
+      if (iac <= 20) return "Ideal";
+      if (iac <= 25) return "Levemente acima";
+      return "Alto índice de gordura";
     }
   };
 
+  // 🧩 Descrição combinada IMC + IAC
+  const getCombinedDescription = (imcClass: string, iacClass: string) => {
+    if (!imcClass || !iacClass) return "";
+
+    if (imcClass === "Peso normal" && iacClass === "Ideal") {
+      return `
+      <strong class="excellent">Excelente!</strong> 
+      Seu peso e percentual estimado de gordura estão dentro das faixas ideais. 
+      Continue com seus hábitos atuais para manter o equilíbrio corporal.
+    `;
+    }
+
+    if (imcClass === "Abaixo do peso" && iacClass === "Abaixo do ideal") {
+      return `
+      <strong class="alert">Atenção!</strong> 
+      Seu peso e índice de gordura estão abaixo do ideal. 
+      É importante ajustar sua alimentação e garantir que está consumindo calorias e nutrientes suficientes.
+    `;
+    }
+
+    if (imcClass.includes("Obesidade") || iacClass === "Alto índice de gordura") {
+      return `
+      <strong class="warning">Atenção!</strong> 
+      Seus índices indicam excesso de gordura corporal e possível sobrepeso. 
+      Um acompanhamento nutricional e atividade física regular podem ajudar a melhorar sua composição corporal.
+    `;
+    }
+
+    if (imcClass === "Sobrepeso" && (iacClass === "Levemente acima" || iacClass === "Ideal")) {
+      return `
+      <strong class="tip">Nota:</strong> 
+      Você está levemente acima do peso, mas seu percentual de gordura está em uma faixa razoável. 
+      Pequenos ajustes na dieta e treino já podem gerar bons resultados.
+    `;
+    }
+
+    if (imcClass === "Peso normal" && iacClass === "Levemente acima") {
+      return `
+      <strong class="tip">Importante:</strong> 
+      Seu peso está adequado, mas há um leve acúmulo de gordura corporal. 
+      Reforçar a rotina de treinos e alimentação equilibrada pode otimizar seus resultados.
+    `;
+    }
+
+    return `
+    <strong class="neutral">Equilíbrio:</strong> 
+    Os resultados indicam equilíbrio geral, mas vale acompanhar periodicamente para manter a saúde corporal ideal.
+  `;
+  };
+
+
+  // 💾 Só salva ao gerar dieta ou treino, e reseta depois
   const handleFormSubmit = (
     data: DietTrainingCalculatorValidationType,
     path: string
@@ -101,6 +132,7 @@ const Calculator: FC = () => {
       sex: data.sex,
       weight_kg: Number(data.weight_kg),
       height_cm: Number(data.height_cm),
+      hip_circumference: Number(data.hip_circumference),
       activity_level: data.activity_level,
       objective: data.objective,
       training_place: data.training_place,
@@ -110,22 +142,33 @@ const Calculator: FC = () => {
 
     localStorage.setItem(userKey, JSON.stringify(typedData));
     navigate(path, { state: typedData });
+
+    // 🔁 Limpa o formulário e resultados após salvar
+    reset();
+    setImcResult(null);
+    setIacResult(null);
   };
 
   const classification = imcResult ? getIMCClassification(imcResult) : null;
-  const description = classification ? getIMCDescription(classification) : "";
+  const iacClassification =
+    iacResult && imcResult ? getIACClassification(iacResult, "Masculino") : null;
+
+  const combinedDescription =
+    classification && iacClassification
+      ? getCombinedDescription(classification, iacClassification)
+      : "";
 
   return (
     <S.FormContainer>
       <S.Wrapper>
-        {!imcResult && (
+        {!imcResult && !iacResult && (
           <S.CalculatorCard>
             <S.BackLink to="/">
               <ArrowLeft size={18} />
               Voltar
             </S.BackLink>
             <img src={logo} alt="Logo do Vitalize" />
-            <h2>Calcule seu IMC e veja sua classificação!</h2>
+            <h2>Calcule seu IMC e IAC e veja sua classificação!</h2>
 
             {/* ---- Inputs ---- */}
             <S.InputRow>
@@ -179,20 +222,13 @@ const Calculator: FC = () => {
             <S.InputRow>
               <S.InputGroup>
                 <S.Label>
-                  <Activity size={14} /> Nível de atividade
+                  <Ruler size={14} /> Circunferência do quadril (cm)
                 </S.Label>
-                <S.FieldContainer hasError={!!errors.activity_level}>
-                  <S.Select {...register("activity_level")}>
-                    <option value="">Selecione</option>
-                    <option value="Sedentário">Sedentário</option>
-                    <option value="2x por semana">2x por semana</option>
-                    <option value="3x por semana">3x por semana</option>
-                    <option value="4x por semana">4x por semana</option>
-                    <option value="5x por semana">5x por semana</option>
-                  </S.Select>
+                <S.FieldContainer hasError={!!errors.hip_circumference}>
+                  <S.Input type="number" {...register("hip_circumference")} placeholder="Ex: 80" />
                 </S.FieldContainer>
-                {errors.activity_level && (
-                  <S.ErrorMessage>{errors.activity_level.message}</S.ErrorMessage>
+                {errors.hip_circumference && (
+                  <S.ErrorMessage>{errors.hip_circumference.message}</S.ErrorMessage>
                 )}
               </S.InputGroup>
 
@@ -205,7 +241,10 @@ const Calculator: FC = () => {
                     <option value="">Selecione</option>
                     <option value="Perda de peso">Perda de peso</option>
                     <option value="Hipertrofia">Hipertrofia</option>
-                    <option value="Manter massa muscular">Manter massa muscular</option>
+                    <option value="Manter vida saúdavel">Manter vida saúdavel</option>
+                    <option value="Melhorar desempenho esportivo">Melhorar desempenho esportivo</option>
+                    <option value="Reeducação alimentar">Reeducação alimentar</option>
+                    <option value="Melhorar saúde metabólica">Melhorar saúde metabólica</option>
                   </S.Select>
                 </S.FieldContainer>
                 {errors.objective && (
@@ -217,18 +256,74 @@ const Calculator: FC = () => {
             <S.InputRow>
               <S.InputGroup>
                 <S.Label>
-                  <Home size={14} /> Local de treino
+                  <Dumbbell size={18} /> Tipo de treino
                 </S.Label>
                 <S.FieldContainer hasError={!!errors.training_place}>
                   <S.Select {...register("training_place")}>
                     <option value="">Selecione</option>
-                    <option value="Academia">Academia</option>
+                    <option value="Academia (musculação)">Academia (musculação)</option>
                     <option value="Casa">Casa</option>
                     <option value="Parque">Parque</option>
+                    <option value="Corrida de rua ou esteira">Corrida de rua ou esteira</option>
+                    <option value="Artes marciais">Artes marciais</option>
+                    <option value="Cross training / funcional">Cross training / funcional</option>
+                    <option value="Ciclismo">Ciclismo</option>
+                    <option value="Natação">Natação</option>
+                    <option value="Esportes coletivos (futebol, basquete, etc.)">Esportes coletivos (futebol, basquete, etc.)</option>
                   </S.Select>
                 </S.FieldContainer>
                 {errors.training_place && (
                   <S.ErrorMessage>{errors.training_place.message}</S.ErrorMessage>
+                )}
+              </S.InputGroup>
+
+              <S.InputGroup>
+                <S.Label>
+                  <Activity size={14} /> Nível de atividade
+                </S.Label>
+                <S.FieldContainer hasError={!!errors.activity_level}>
+                  <S.Select {...register("activity_level")}>
+                    <option value="">Selecione</option>
+                    <option value="Sedentário">Sedentário (Nenhum exercício)</option>
+                    <option value="Leve">Leve (3x por semana)</option>
+                    <option value="Intermediário">Intermediário (4x por semana)</option>
+                    <option value="Moderado">Moderado (5x por semana)</option>
+                    <option value="Ativo">Ativo (6x por semana)</option>
+                    <option value="Muito ativo">Muito ativo (Treinos diários intensos)</option>
+                  </S.Select>
+                </S.FieldContainer>
+                {errors.activity_level && (
+                  <S.ErrorMessage>{errors.activity_level.message}</S.ErrorMessage>
+                )}
+              </S.InputGroup>
+            </S.InputRow>
+
+            <S.InputRow>
+              <S.InputGroup>
+                <S.Label> <Cross size={18} /> Condições de saúde</S.Label>
+                <S.FieldContainer hasError={!!errors.health_conditions}>
+                  <S.Select {...register("health_conditions")}>
+                    <option value="">Selecione</option>
+                    <option value="Nenhuma">Nenhuma</option>
+                    <option value="Diabetes">Diabetes</option>
+                    <option value="Hipertensão">Hipertensão</option>
+                    <option value="Intolerância à lactose">Intolerância à lactose</option>
+                    <option value="Doença celíaca (sem glúten)">
+                      Doença celíaca (sem glúten)
+                    </option>
+                    <option value="Obesidade">
+                      Obesidade
+                    </option>
+                    <option value="Colesterol alto">
+                      Colesterol alto
+                    </option>
+                    <option value="Problemas articulares">
+                      Problemas articulares
+                    </option>
+                  </S.Select>
+                </S.FieldContainer>
+                {errors.health_conditions && (
+                  <S.ErrorMessage>{errors.health_conditions.message}</S.ErrorMessage>
                 )}
               </S.InputGroup>
 
@@ -250,72 +345,54 @@ const Calculator: FC = () => {
               </S.InputGroup>
             </S.InputRow>
 
-            <S.InputRow>
-              <S.InputGroup>
-                <S.Label>Condições de saúde</S.Label>
-                <S.FieldContainer hasError={!!errors.health_conditions}>
-                  <S.Select {...register("health_conditions")}>
-                    <option value="">Selecione</option>
-                    <option value="Nenhuma">Nenhuma</option>
-                    <option value="Diabetes">Diabetes</option>
-                    <option value="Hipertensão">Hipertensão</option>
-                    <option value="Intolerância à lactose">Intolerância à lactose</option>
-                    <option value="Doença celíaca (sem glúten)">
-                      Doença celíaca (sem glúten)
-                    </option>
-                  </S.Select>
-                </S.FieldContainer>
-                {errors.health_conditions && (
-                  <S.ErrorMessage>{errors.health_conditions.message}</S.ErrorMessage>
-                )}
-              </S.InputGroup>
-            </S.InputRow>
-
             <S.ButtonContainer>
               <Button
                 type="button"
-                onClick={handleSubmit(calculateIMC)}
-                backgroundColor="#cca041"
+                onClick={handleSubmit(calculateIMCeIAC)}
               >
-                <Scale size={16} /> Calcular IMC
+                <Scale size={16} /> Calcular
               </Button>
             </S.ButtonContainer>
           </S.CalculatorCard>
         )}
 
-        {imcResult && (
+        {imcResult && iacResult && (
           <S.ResultCard>
-            <h3>Resultado do IMC</h3>
-            <div className="imc-value">{imcResult}</div>
-            <p>
-              Classificação: <strong>{classification}</strong>
-            </p>
-            <p>{description}</p>
+            <S.ResultHeader>
+              <h3 className="result">Resultados Corporais</h3>
 
-            <table>
-              <tbody>
-                {[
-                  { label: "Abaixo do peso", min: 0, max: 18.4 },
-                  { label: "Peso normal", min: 18.5, max: 24.9 },
-                  { label: "Sobrepeso", min: 25, max: 29.9 },
-                  { label: "Obesidade grau I", min: 30, max: 34.9 },
-                  { label: "Obesidade grau II", min: 35, max: 39.9 },
-                  { label: "Obesidade grau III", min: 40, max: 99 },
-                ].map((item) => (
-                  <tr
-                    key={item.label}
-                    className={
-                      imcResult >= item.min && imcResult <= item.max ? "highlight" : ""
-                    }
-                  >
-                    <td>{item.label}</td>
-                    <td>
-                      {item.min} – {item.max}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              {/* 🧠 Explicação das siglas */}
+              <div className="acronym-info">
+                <div className="line imc">
+                  <strong>IMC</strong> — Índice de Massa Corporal
+                </div>
+                <div className="line iac">
+                  <strong>IAC</strong> — Índice de Adiposidade Corporal
+                </div>
+              </div>
+
+
+              <div className="dual-values">
+                <S.ValueBox color="#38bd90">
+                  <Scale size={18} />
+                  <strong>IMC</strong>
+                  <span>{imcResult}</span>
+                  <p>{classification}</p>
+                </S.ValueBox>
+
+                <S.ValueBox color="#507cda">
+                  <Percent size={18} />
+                  <strong>IAC</strong>
+                  <span>{iacResult}</span>
+                  <p>{iacClassification}</p>
+                </S.ValueBox>
+              </div>
+            </S.ResultHeader>
+
+            <p
+              className="combined-description"
+              dangerouslySetInnerHTML={{ __html: combinedDescription }}
+            ></p>
 
             <S.ButtonContainer>
               <Button
@@ -335,7 +412,10 @@ const Calculator: FC = () => {
               <Button
                 type="button"
                 backgroundColor="#e77272"
-                onClick={() => setImcResult(null)}
+                onClick={() => {
+                  setImcResult(null);
+                  setIacResult(null);
+                }}
               >
                 <ArrowLeft size={16} /> Voltar para a calculadora
               </Button>

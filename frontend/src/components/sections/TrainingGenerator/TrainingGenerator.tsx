@@ -96,6 +96,7 @@ const TrainingGenerator: FC = () => {
         sex: finalData.sex,
         weightKg: Number(finalData.weight_kg),
         heightCm: Number(finalData.height_cm),
+        hipCircumference: Number(finalData.hip_circumference),
         activityLevel: finalData.activity_level,
         objective: finalData.objective,
         trainingPlace: finalData.training_place,
@@ -118,7 +119,7 @@ const TrainingGenerator: FC = () => {
       );
     } catch (err: any) {
       if (err.name === "AbortError") {
-        setOutput((prev) => prev + "\n\n[Streaming interrompido]");
+        setOutput((prev) => prev + "\ n\n[Streaming interrompido]");
         return;
       }
       setOutput("A geração do treino foi cancelada.");
@@ -151,7 +152,7 @@ const TrainingGenerator: FC = () => {
           <S.Modal>
             <S.ModalTitle>Atenção!</S.ModalTitle>
             <S.ModalText>
-              Parece que você ainda não preencheu o formulário.
+              Parece que você ainda não preencheu a calculadora.
               Por favor, complete seus dados para gerar o treino.
             </S.ModalText>
             <S.ModalButtons>
@@ -160,7 +161,7 @@ const TrainingGenerator: FC = () => {
                 backgroundColor={theme.colors.buttonBackgroundColor}
                 buttonColor={theme.colors.buttonColor}
               >
-                Ir para o formulário
+                Ir para a calculadora
               </Button>
             </S.ModalButtons>
           </S.Modal>

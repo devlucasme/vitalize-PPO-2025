@@ -9,6 +9,7 @@ import { CalculatorPage } from "../pages/Calculator";
 import { DietGeneratorPage } from "../pages/DietGenerator";
 import { TrainingGeneratorPage } from "../pages/TrainingGenerator";
 import { DeleteAccountPage } from "../pages/DeleteAccount";
+import { TermsOfUse } from "../components/sections/TermsOfUse/TermsOfUse";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/faq" element={<FaqPage />} />
+        <Route path="/terms" element={<TermsOfUse />} />
 
         {/* Rotas privadas */}
         <Route

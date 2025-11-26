@@ -18,21 +18,23 @@ model User {
   Training          Training[]
   createAt          DateTime   @default(now()) @map("create_at")
   updateAt          DateTime   @updatedAt @map("update_at")
+
   @@map("users")
 }
 
 model Diet {
-  id            Int    @id @default(autoincrement())
-  userId        Int
-  user          User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  age           Int
-  sex           String
-  weightKg      Float  @map("weight_kg")
-  heightCm      Float  @map("height_cm")
-  activityLevel String @map("activity_level")
-  objective     String
-  trainingPlace String @map("training_place")
-  plan          String
+  id               Int    @id @default(autoincrement())
+  userId           Int
+  user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  age              Int
+  sex              String
+  weightKg         Float  @map("weight_kg")
+  heightCm         Float  @map("height_cm")
+  hipCircumference Float  @map("hip_circumference") @default(0)
+  activityLevel    String @map("activity_level")
+  objective        String
+  trainingPlace    String @map("training_place")
+  plan             String
 
   budGetLevel      String @default("Médio") @map("bud_get_level")
   healthConditions String @default("Nenhuma") @map("health_conditions")
@@ -44,13 +46,14 @@ model Diet {
 }
 
 model Training {
-  id               Int      @id @default(autoincrement())
+  id               Int    @id @default(autoincrement())
   userId           Int
-  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   age              Int
   sex              String
-  weightKg         Float    @map("weight_kg")
-  heightCm         Float    @map("height_cm")
+  weightKg         Float  @map("weight_kg")
+  heightCm         Float  @map("height_cm")
+  hipCircumference Float  @map("hip_circumference") @default(0)
   activityLevel    String   @map("activity_level")
   objective        String
   trainingPlace    String   @map("training_place")

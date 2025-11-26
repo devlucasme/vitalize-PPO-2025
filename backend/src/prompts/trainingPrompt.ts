@@ -23,9 +23,10 @@ export const buildSystemPrompt = () => {
 
 export const buildUserPrompt = (data: DietAndTrainingPlanType) => {
     return [
-        "Use os dados abaixo para gerar o plano alimentar personalizado:",
+        "Use os dados abaixo para gerar o plano de treinamento personalizado:",
         `- Idade: ${data.age} anos`,
         `- Altura: ${data.heightCm} cm`,
+        `- Circunferência do quadril: ${data.hipCircumference} cm`,
         `- Peso: ${data.weightKg} kg`,
         `- Sexo: ${data.sex}`,
         `- Nível de atividade: ${data.activityLevel}`,

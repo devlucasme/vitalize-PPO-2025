@@ -1,145 +1,217 @@
-# 📘 Documento Técnico: Diretrizes de Dieta Personalizada (Orçamento + Condições de Saúde)
+# 📘 Documento Técnico: Diretrizes de Dieta e Treino Personalizado  
+*(Baseado em Objetivo, Tipo de Treino, Orçamento, Condição de Saúde e Gasto Calórico Total – TDEE)*
 
-Este documento serve como referência técnica para gerar **planos alimentares semanais completos e personalizados**, considerando:
+Este documento define as diretrizes técnicas para gerar **planos alimentares e de treinamento personalizados**, com base nos parâmetros validados pelo schema `dietAndTrainingPlan`.
 
-- **Objetivo do usuário:** Perda de peso, Hipertrofia ou Manter massa muscular  
-- **Nível de atividade física**  
-- **Local de treino:** Academia, Casa ou Parque  
-- **Orçamento disponível:** Baixo, Médio ou Alto – fundamental para selecionar alimentos de acordo com recursos financeiros  
-- **Condições de saúde:** Nenhuma, Diabetes, Hipertensão, Intolerância à lactose ou Doença celíaca  
+Cada plano deve ser ajustado conforme:
+- **Idade, sexo, peso, altura e circunferência do quadril**  
+- **Nível de atividade física e objetivo**  
+- **Tipo ou local de treino (ex: academia, casa, corrida, natação, etc.)**  
+- **Orçamento alimentar e condições de saúde**
 
-> Todas as quantidades de alimentos são apresentadas em **gramas (g)**, sem uso de xícaras ou medidas caseiras.
-
----
-
-## 🥗 1. Princípios Gerais da Dieta
-
-- Alimentação variada e equilibrada, baseada em alimentos naturais ou minimamente processados.  
-- Distribuição diária de macronutrientes adaptada ao objetivo do usuário.  
-- Refeições regulares (4 por dia) para controle de fome e glicemia.  
-- Boa hidratação (~30 mL/kg/dia).  
-- Atenção à qualidade dos carboidratos, proteínas e gorduras.  
-- Ajuste calórico conforme objetivo: **déficit**, **manutenção** ou **superávit**.  
-- O **orçamento** deve guiar a escolha dos alimentos, garantindo que a dieta seja acessível e sustentável.
+Todas as quantidades são expressas em **gramas (g)** e devem respeitar o **TDEE (Total Daily Energy Expenditure)** e as **restrições individuais**.
 
 ---
 
-## 💰 2. Faixas de Orçamento Alimentar
+## 🔢 1. Cálculo do Gasto Calórico Total (TDEE)
 
-O orçamento impacta diretamente na escolha dos alimentos.  
-Cada faixa deve priorizar opções que respeitem o custo sem comprometer o valor nutricional.
+O **TDEE (Total Daily Energy Expenditure)** representa o gasto energético diário total, considerando metabolismo basal e nível de atividade física.
 
-| Faixa de Orçamento | Estratégias de Seleção de Alimentos |
-|--------------------|-------------------------------------|
-| **Alto** | Alimentos premium, variedade ampla, frutas exóticas, verduras diversas, cortes nobres de carne, peixes gordurosos, ovos orgânicos, grãos integrais e macarrão integral de qualidade. Maior foco em alimentos ricos em nutrientes e mais sofisticados. |
-| **Médio** | Alimentos de bom custo-benefício: arroz integral ou mistura integral/branco, batata, mandioca, feijão, macarrão simples, frango, carne magra, ovos, frutas e vegetais da estação. Garantir variedade e qualidade sem exagerar nos custos. |
-| **Baixo** | Alimentos simples, baratos e acessíveis: arroz branco, feijão, batata comum, mandioca, macarrão comum, ovos, legumes e verduras locais, frutas regionais. Evitar produtos industrializados caros; priorizar alimentos básicos, nutritivos e econômicos. |
+### 1.1 Etapas do cálculo
 
-> ⚠ Sempre respeitar a faixa de orçamento do usuário.  
-> Se for baixo, a dieta deve buscar fontes simples e econômicas, sem comprometer proteínas, carboidratos complexos e vegetais.
+1. **Taxa Metabólica Basal (TMB)** – Fórmula de Mifflin-St Jeor:  
+   - **Homens:** `TMB = (10 × peso) + (6,25 × altura) - (5 × idade) + 5`  
+   - **Mulheres:** `TMB = (10 × peso) + (6,25 × altura) - (5 × idade) - 161`
 
----
+2. **Multiplicar pela Taxa de Atividade Física (AF):**
 
-## 🧬 3. Diretrizes Nutricionais por Condição de Saúde
+| Nível de Atividade | Descrição | Frequência semanal | Fator AF |
+|--------------------|------------|--------------------|-----------|
+| **Sedentário** | Pouco ou nenhum exercício | 0x | 1.2 |
+| **Leve** | Exercício leve 1–3x por semana | 3x | 1.375 |
+| **Intermediário** | Exercício regular 4x por semana | 4x | 1.45 |
+| **Moderado** | Exercício 5x por semana | 5x | 1.55 |
+| **Ativo** | Exercício intenso 6–7x por semana | 6–7x | 1.725 |
+| **Muito ativo** | Treinos diários intensos ou trabalho físico pesado | 7x+ | 1.9 |
 
-### 3.1 Nenhuma condição específica
-- Seguir recomendações gerais de calorias e macronutrientes.  
-- Refeições balanceadas: proteína, carboidrato de baixo IG e vegetais/frutas.
-- Dependendo do objetivo do usuário, a quantidade dos alimentos podem mudar.
-
-**Exemplo (g):**
-- Café da manhã: 2 ovos mexidos + 50 g de macarrão integral + 100 g de frutas  
-- Almoço: 150 g de arroz integral + 120 g de frango grelhado + 100 g de legumes  
-- Lanche: 50 g de iogurte natural + 30 g de castanhas  
-- Jantar: 150 g de peixe assado + 120 g de batata-doce + 100 g de salada  
+> ⚙️ A IA deve usar o campo `activity_level` para definir **exatamente quantos dias de treino por semana** gerar no plano.  
+> 🧠 Em **frequências menores (3–4 dias/semana)**, incluir **descanso estratégico entre treinos** (ex: Segunda, Terça, Quinta, Sexta).
 
 ---
 
-### 3.2 Diabetes
-- Reduzir açúcares simples e carboidratos refinados.  
-- Priorizar carboidratos complexos e alimentos ricos em fibras.  
-- Monitorar índice e carga glicêmica dos alimentos.  
+3. **Ajuste conforme o objetivo:**
 
-**Exemplo (g):**
-- Café da manhã: 2 ovos mexidos + 50 g de aveia + 100 g de morango  
-- Almoço: 150 g de arroz integral + 120 g de peito de frango + 100 g de brócolis  
-- Lanche: 50 g de iogurte sem lactose + 20 g de nozes  
-- Jantar: 150 g de peixe + 100 g de abóbora + 100 g de couve  
-
----
-
-### 3.3 Hipertensão
-- Reduzir sal e alimentos industrializados.  
-- Priorizar vegetais frescos, frutas e proteínas magras.  
-
-**Exemplo (g):**
-- Café da manhã: 2 ovos mexidos + 50 g de pão integral sem sal + 100 g de mamão  
-- Almoço: 150 g de arroz integral + 120 g de frango grelhado sem sal + 100 g de legumes cozidos  
-- Lanche: 50 g de iogurte natural sem açúcar + 30 g de amêndoas  
-- Jantar: 150 g de filé de peixe + 100 g de abobrinha + 100 g de cenoura  
+| Objetivo | Ajuste Calórico | Estratégia |
+|-----------|----------------|-------------|
+| Perda de peso | TDEE × 0.8 | Déficit de 20% |
+| Hipertrofia | TDEE × 1.1–1.2 | Superávit leve |
+| Manter massa muscular | TDEE × 1.0 | Calorias de manutenção |
+| Manter vida saudável | TDEE × 1.0 | Equilíbrio nutricional |
+| Melhorar desempenho esportivo | TDEE × 1.1 | Superávit otimizado com carboidratos adicionais |
+| Reeducação alimentar | TDEE × 1.0 | Ajuste gradual de hábitos |
+| Melhorar saúde metabólica | TDEE × 0.9 | Déficit leve com foco em qualidade alimentar |
 
 ---
 
-### 3.4 Intolerância à lactose
-- Substituir laticínios por versões **sem lactose** ou alternativas vegetais (leite de soja, amêndoas, coco).  
+## 🥗 2. Princípios Gerais da Dieta
 
-**Exemplo (g):**
-- Café da manhã: 2 ovos mexidos + 50 g de aveia + 100 g de fruta + 150 mL de leite vegetal  
-- Almoço: 150 g de arroz integral + 120 g de carne magra + 100 g de legumes  
-- Lanche: 50 g de iogurte vegetal + 30 g de castanhas  
-- Jantar: 150 g de frango grelhado + 100 g de batata-doce + 100 g de salada  
-
----
-
-### 3.5 Doença celíaca (sem glúten)
-- Evitar trigo, cevada, centeio e derivados.  
-- Usar arroz, milho, mandioca, batata, quinoa e macarrão sem glúten.  
-
-**Exemplo (g):**
-- Café da manhã: 2 ovos mexidos + 50 g de macarrão sem glúten + 100 g de frutas  
-- Almoço: 150 g de arroz + 120 g de frango + 100 g de legumes  
-- Lanche: 50 g de iogurte sem lactose + 30 g de castanhas  
-- Jantar: 150 g de peixe + 100 g de batata-doce + 100 g de abobrinha  
+- Refeições equilibradas com **mínimo de 3 alimentos diferentes** (ideal: 4 ou mais).  
+- Hidratação adequada: **~30 mL/kg/dia**.  
+- Preferir alimentos **in natura** e minimizar ultraprocessados.  
+- Calorias e macronutrientes ajustados com base no **TDEE e orçamento**.  
+- Dieta deve ser **sustentável, prática e personalizada** ao estilo de vida do usuário.  
+- **TODA REFEIÇÃO DEVE CONTER UMA BEBIDA**, ajustada conforme o objetivo e orçamento:  
+  - **Objetivo**: as bebidas ajudam a atingir metas calóricas (ganho, perda, manutenção).  
+  - **Orçamento**: bebidas variam conforme custo (água e café em baixo, sucos naturais em médio, funcionais em alto orçamento).  
 
 ---
 
-## 🍽️ 4. Estrutura de Refeições
+## 💰 3. Faixas de Orçamento Alimentar (com alimentos e bebidas por categoria)
 
-Cada plano deve conter **4 refeições fixas por dia:**
+O sistema deve interpretar o campo `budget_level` para gerar planos alimentares **compatíveis com o poder aquisitivo do usuário**, **sem perda nutricional**.
 
-1. **Café da manhã** – proteína + carboidrato + fruta  
-2. **Almoço** – proteína + carboidrato + legumes/verduras  
-3. **Lanche da tarde** – fruta ou vegetal + proteína leve  
-4. **Jantar** – similar ao almoço, com controle glicêmico
-
-> ⚠ O orçamento do usuário deve sempre guiar a escolha dos alimentos em todas as refeições.
-
----
-
-## ⚖️ 5. Diretrizes Gerais de Macronutrientes
-
-| Macronutriente | Diretrizes Gerais | Ajustes Específicos |
-|----------------|------------------|---------------------|
-| **Proteínas** | 1–2,0 g/kg/dia | Ajustar conforme objetivo (↑ hipertrofia, ↔ manutenção, ↓ emagrecimento). |
-| **Carboidratos** | 45–65% do VET; priorizar complexos | Reduzir refinados; usar IG/CG para diabetes; ajustar 7g/kg/dia (hipertrofia), 3–5g/kg/dia (manutenção), 2–4g/kg/dia (emagrecimento). |
-| **Fibras** | ≥ 25 g/dia ou 14 g/1000 kcal | Aumentar gradualmente; priorizar frutas, legumes e grãos integrais; ↑ para emagrecimento, ↔ manutenção, atenção em hipertrofia. |
-| **Gorduras** | Priorizar mono- e poli-insaturadas | Limitar saturadas; 20–35% do VET (manutenção), até 1g/kg/dia (hipertrofia), menor ingestão em emagrecimento. |
+### 🔍 Regras técnicas:
+- Cada faixa tem **níveis de preço estimados** e **alimentos típicos** encontrados nessa categoria.  
+- A IA deve sempre **preservar o equilíbrio entre proteínas, carboidratos, gorduras e líquidos**.  
+- Quando o orçamento for **baixo**, priorizar **densidade nutricional e hidratação simples** (ex: água, café, chás).  
+- Quando o orçamento for **alto**, incluir **bebidas funcionais e naturais**, que otimizem o desempenho físico.  
 
 ---
 
-## 🧾 6. Notas Finais
+### 💵 **Resumo por faixa**
 
-- Todas as quantidades estão em **gramas (g)**.  
-- Ajustar calorias e macros conforme objetivo: emagrecimento, manutenção ou hipertrofia.  
-- Revisar periodicamente o plano conforme evolução e resposta ao treino.  
-- Respeitar rigorosamente o orçamento para garantir sustentabilidade.  
-- Considerar sempre restrições médicas e preferências individuais.  
+| Faixa | Diretriz | Valor estimado (R$/dia) | Foco nutricional |
+|--------|-----------|-------------------------|------------------|
+| **Baixo** | Alimentação acessível, com foco em praticidade e nutrição básica | 15–25 | Sustentação e baixo custo |
+| **Médio** | Boa variedade e equilíbrio entre qualidade e custo | 25–45 | Qualidade e conveniência |
+| **Alto** | Ingredientes premium e frescos, bebidas naturais e funcionais | 45+ | Qualidade máxima e performance |
 
 ---
 
-## 📚 7. Fontes confiáveis  
-1. Brasil. Ministério da Saúde. *Guia Alimentar para a População Brasileira* (2ª edição). Brasília: Ministério da Saúde, 2014. Disponível em: https://bvsms.saude.gov.br/bvs/publicacoes/guia_alimentar_populacao_brasileira_2ed.pdf  
-2. Brasil. Ministério da Saúde. *Política Nacional de Alimentação e Nutrição (PNAN)*. Brasília: Ministério da Saúde, 2013. Disponível em: https://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_alimentacao_nutricao.pdf  
-3. Brasil. Ministério da Saúde. *Protocolo Clínico e Diretrizes Terapêuticas – Doença Celíaca*. Brasília: Conitec, 2023. Disponível em: https://www.gov.br/conitec/pt-br/midias/consultas/relatorios/2023/20230717_pcdt_doenca-celiaca.pdf  
-4. Sociedade Brasileira de Diabetes. *Diretrizes da Sociedade Brasileira de Diabetes 2024–2025*. São Paulo: SBD, 2024. Disponível em: https://www.diabetes.org.br/profissionais/diretrizes-sbd  
-5. Organização Mundial da Saúde (WHO). *Healthy Diet*. Disponível em: https://www.who.int/news-room/fact-sheets/detail/healthy-diet  
+### 🍗 **Proteínas**
+
+| Faixa | Exemplos |
+|--------|----------|
+| **Baixo** | Ovos, frango (coxa/sobrecoxa), carne moída simples, sardinha em lata, proteína de soja texturizada, fígado bovino. |
+| **Médio** | Peito de frango, patinho moído, atum em lata, iogurte natural, queijo branco, tilápia comum. |
+| **Alto** | Salmão, tilápia premium, carne magra (alcatra, filé mignon), camarão, peito de peru, iogurte proteico. |
+
+---
+
+### 🍚 **Carboidratos**
+
+| Faixa | Exemplos |
+|--------|----------|
+| **Baixo** | Arroz branco, macarrão comum, batata, cuscuz, mandioca, pão francês. |
+| **Médio** | Arroz integral, aveia, pão integral, tapioca, batata-doce, quinoa nacional. |
+| **Alto** | Arroz vermelho, massas sem glúten, couscous marroquino, quinoa importada. |
+
+---
+
+### 🥑 **Gorduras boas**
+
+| Faixa | Exemplos |
+|--------|----------|
+| **Baixo** | Óleo vegetal, amendoim torrado, semente de girassol. |
+| **Médio** | Azeite comum, castanha-do-pará, chia, pasta de amendoim. |
+| **Alto** | Azeite extra virgem, amêndoas, nozes, abacate premium. |
+
+---
+
+### 🥦 **Leguminosas**
+
+| Faixa | Exemplos |
+|--------|----------|
+| **Baixo** | Feijão carioca, lentilha, ervilha seca, grão-de-bico nacional. |
+| **Médio** | Feijão branco, lentilha vermelha, grão-de-bico selecionado. |
+| **Alto** | Mix de leguminosas orgânicas, feijão azuki, lentilha francesa. |
+
+---
+
+### 🍎 **Frutas**
+
+| Faixa | Exemplos |
+|--------|----------|
+| **Baixo** | Banana, maçã, mamão, melancia, laranja. |
+| **Médio** | Morango, manga, pera, uva comum, caqui. |
+| **Alto** | Frutas vermelhas, kiwi, figo, cereja, mirtilo. |
+
+---
+
+### 🥕 **Vegetais**
+
+| Faixa | Exemplos |
+|--------|----------|
+| **Baixo** | Alface, couve, cenoura, tomate, chuchu. |
+| **Médio** | Brócolis, couve-flor, vagem, abóbora, espinafre. |
+| **Alto** | Aspargos, cogumelos, palmito, mix de folhas gourmet. |
+
+---
+
+### 🧀 **Laticínios**
+
+| Faixa | Exemplos |
+|--------|----------|
+| **Baixo** | Leite integral, iogurte simples, queijo processado leve. |
+| **Médio** | Leite semidesnatado, queijos brancos, iogurte integral. |
+| **Alto** | Iogurtes proteicos, kefir, leite vegetal premium (amêndoas, coco). |
+
+---
+
+### ☕ **Bebidas (de acordo com objetivo e orçamento)**
+
+| Faixa | Ganho de Massa / Desempenho | Manutenção / Saúde | Perda de Peso / Déficit |
+|--------|------------------------------|--------------------|--------------------------|
+| **Baixo** | Leite integral, café, água, suco em pó leve. | Água filtrada, café preto, chá simples. | Água, chá verde, café preto sem açúcar. |
+| **Médio** | Suco natural (laranja, uva), leite com aveia, vitaminas caseiras. | Água mineral, sucos diluídos, leite semidesnatado. | Água com limão, chá verde, café coado sem açúcar. |
+| **Alto** | Suco 100% integral, água de coco natural, smoothies proteicos, bebidas funcionais (whey, matcha, kefir). | Água alcalina, chás orgânicos, sucos prensados a frio. | Água de coco leve, chás detox naturais, kombucha. |
+
+> 💧 **Toda refeição deve conter uma bebida condizente com o orçamento e objetivo.**  
+> - **Baixo orçamento:** água, café, chás simples.  
+> - **Médio orçamento:** sucos naturais e leite.  
+> - **Alto orçamento:** sucos integrais, águas funcionais e shakes naturais.  
+>  
+> A bebida complementa o valor calórico e auxilia na hidratação e absorção de nutrientes.
+
+---
+
+## 🍽️ 7. Estrutura de Refeições Diárias (com bebidas)
+
+| Refeição | Composição Ideal | Bebida (por faixa) | Observações |
+|-----------|------------------|--------------------|-------------|
+| **Café da manhã** | Proteína + carboidrato + fruta | Baixo: café preto / Médio: leite + café / Alto: smoothie proteico ou suco integral | Base energética para o dia. |
+| **Almoço** | Proteína + carboidrato + leguminosa + vegetal | Baixo: água / Médio: suco natural / Alto: suco integral ou água de coco | Refeição principal e mais completa. |
+| **Lanche da tarde** | Proteína leve + fruta + oleaginosa | Baixo: chá simples / Médio: leite ou iogurte / Alto: shake leve ou kombucha | Mantém energia e saciedade. |
+| **Jantar** | Proteína + vegetal + carboidrato leve | Baixo: água / Médio: chá relaxante / Alto: suco leve ou leite vegetal | Evitar bebidas muito calóricas à noite. |
+
+> 💧 A IA deve sempre incluir uma bebida **condizente com o objetivo (hipertrofia, cutting, manutenção)** e o **nível de orçamento (baixo, médio, alto)**.  
+> Exemplo:  
+> - Hipertrofia + orçamento alto → smoothie proteico natural.  
+> - Cutting + orçamento médio → chá verde com limão.  
+> - Manutenção + orçamento baixo → café ou água filtrada.  
+
+---
+
+## 🧾 9. Notas Finais
+
+- Medidas expressas em **gramas (g)**.  
+- Planos **personalizados e ajustáveis** conforme evolução e exames.  
+- Cada refeição **deve conter uma bebida** coerente com o orçamento e objetivo.  
+- **Intermediário (4x/semana):** equilíbrio ideal entre estímulo e descanso.  
+- **Em baixo orçamento:** priorizar alimentos simples, água e café como hidratação base.  
+- **Em alto orçamento:** ampliar variedade e adicionar bebidas funcionais.  
+- Reavaliação recomendada a cada **4–6 semanas**.  
+
+---
+
+## 📚 10. Fontes Técnicas
+
+1. **Guia Alimentar para a População Brasileira** – Ministério da Saúde, 2014  
+2. **Diretrizes da Sociedade Brasileira de Diabetes** – SBD, 2024–2025  
+3. **Protocolo Clínico – Doença Celíaca** – Conitec, 2023  
+4. **Guia de Atividade Física para a População Brasileira** – Ministério da Saúde, 2021  
+5. **Sociedade Brasileira de Cardiologia** – Diretrizes sobre Dislipidemias, 2023  
+6. **WHO – Healthy Diet / Physical Activity Initiative** – Organização Mundial da Saúde  
+7. **Mifflin MD, St Jeor ST et al.** (1990). *A new predictive equation for resting energy expenditure in healthy individuals.*
+
+---

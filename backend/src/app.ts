@@ -14,5 +14,5 @@ app.use(router);
 app.use(errorMiddleware);
 
 app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+    console.log(`HTTP server running at http://localhost:3000`);
 })

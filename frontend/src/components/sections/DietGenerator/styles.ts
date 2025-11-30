@@ -53,8 +53,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 1024px) { max-width: 90%; }
-  @media (max-width: 480px) { max-width: 100%; }
+  @media (max-width: 1024px) {
+    max-width: 90%;
+  }
+  
+  @media (max-width: 480px) { 
+    max-width: 100%;
+  }
 `;
 
 export const Card = styled.div`
@@ -80,11 +85,26 @@ export const Card = styled.div`
     padding: 1.6rem; 
   }
 
-  @media (max-width: 1400px) { width: 80%; }
-  @media (max-width: 1280px) { width: 85%; }
-  @media (max-width: 980px) { width: 90%; max-height: 550px; }
-  @media (max-width: 720px) { width: 95%; padding: 1.5rem; max-height: 500px; }
-  @media (max-width: 480px) { width: 100%; padding: 1rem; max-height: 450px; }
+  @media (max-width: 1400px) {
+    width: 80%;
+  }
+  
+  @media (max-width: 1280px) {
+    width: 85%;
+  }
+  
+  @media (max-width: 980px) {
+    width: 90%;
+    max-height: 550px;
+  }
+  
+  @media (max-width: 720px) {
+    width: 95%; padding: 1.5rem; max-height: 500px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 100%; padding: 1rem; max-height: 450px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -110,9 +130,20 @@ export const Box = styled.div`
     padding: 1.2rem;
   }
 
-  @media (max-width: 1024px) { padding: 1.2rem; max-height: 350px; }
-  @media (max-width: 768px) { padding: 1rem; max-height: 300px; }
-  @media (max-width: 480px) { padding: 0.8rem; max-height: none; }
+  @media (max-width: 1024px) { 
+    padding: 1.2rem;
+    max-height: 350px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem; 
+    max-height: 300px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem;
+    max-height: none;
+  }
 `;
 
 export const ContentBox = styled.div`
@@ -126,9 +157,20 @@ export const ContentBox = styled.div`
     line-height: 1.5;
   }
 
-  @media (max-width: 1024px) { font-size: 0.88rem; line-height: 1.5; }
-  @media (max-width: 768px) { font-size: 0.85rem; line-height: 1.4; }
-  @media (max-width: 480px) { font-size: 0.8rem; line-height: 1.35; }
+  @media (max-width: 1024px) {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
 `;
 
 export const LoadingIcon = styled.div`
@@ -170,8 +212,14 @@ export const FeedbackBox = styled.div`
   span {
     font-size: 1rem;
     margin-left: 0.5rem;
-    @media (max-width: 768px) { font-size: 0.9rem; }
-    @media (max-width: 480px) { font-size: 0.85rem; }
+    
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.85rem;
+    }
   }
 
   a {
@@ -183,16 +231,30 @@ export const FeedbackBox = styled.div`
     text-decoration: underline;
   }
 
-  @media (max-width: 768px) { padding: 0.8rem; gap: 0.4rem; }
-  @media (max-width: 480px) { padding: 0.6rem; gap: 0.3rem; }
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+    gap: 0.4rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+    gap: 0.3rem;
+  }
 `;
 
 export const FeedbackIcon = styled(CheckCircle)`
   width: 20px;
   height: 20px;
 
-  @media (max-width: 768px) { width: 18px; height: 18px; }
-  @media (max-width: 480px) { width: 16px; height: 16px; }
+  @media (max-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 16px;
+    height: 16px;
+  }
 `;
 
 export const Modal = styled.div`
@@ -211,15 +273,24 @@ export const Modal = styled.div`
 
   @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
 
-  @media (max-width: 768px) { width: 80%; padding: 1.5rem; }
-  @media (max-width: 480px) { width: 95%; padding: 1rem; }
+  @media (max-width: 768px) {
+    width: 80%;
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 95%;
+    padding: 1rem;
+  }
 `;
 
 export const ModalTitle = styled.h2`
   font-size: 1.5rem;
   color: #ce5244ff;
 
-  @media (max-width: 480px) { font-size: 1.3rem; }
+  @media (max-width: 480px) {
+    font-size: 1.3rem;
+  }
 `;
 
 export const ModalText = styled.p`
@@ -229,7 +300,9 @@ export const ModalText = styled.p`
   text-align: center;
   margin: 1rem 0 0.5rem 0;
 
-  @media (max-width: 480px) { font-size: 0.85rem; }
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;
 
 export const ModalButtons = styled.div`
@@ -238,7 +311,9 @@ export const ModalButtons = styled.div`
   width: 100%;
   justify-content: center;
 
-  @media (max-width: 480px) { flex-direction: column; }
+  @media (max-width: 480px) { 
+    flex-direction: column;
+  }
 `;
 
 export const ModalCheckbox = styled.div`
@@ -258,7 +333,9 @@ export const ModalCheckbox = styled.div`
     color: ${({ theme }) => theme.colors.text};
     cursor: pointer;
 
-    @media (max-width: 480px) { font-size: 0.8rem; }
+    @media (max-width: 480px) { 
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -290,8 +367,15 @@ export const DayCard = styled.h2`
   margin: 2rem 0 1.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 
-  @media (max-width: 768px) { font-size: 1.15rem; padding: 1rem; }
-  @media (max-width: 480px) { font-size: 1rem; padding: 0.7rem; }
+  @media (max-width: 768px) { 
+    font-size: 1.15rem;
+    padding: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 0.7rem;
+  }
 `;
 
 export const MealTitle = styled.h3`
@@ -299,8 +383,14 @@ export const MealTitle = styled.h3`
   color: ${({ theme }) => theme.colors.text};
   margin: 1rem 0 0.5rem;
 
-  @media (max-width: 768px) { font-size: 1rem; margin: 0.8rem 0 0.4rem; }
-  @media (max-width: 480px) { font-size: 0.95rem; }
+  @media (max-width: 768px) { 
+    font-size: 1rem;
+    margin: 0.8rem 0 0.4rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+  }
 `;
 
 export const MealList = styled.ul`
@@ -322,8 +412,13 @@ export const MealItem = styled.li`
     color: ${({ theme }) => theme.colors.primary};
   }
 
-  @media (max-width: 768px) { font-size: 0.9rem; }
-  @media (max-width: 480px) { font-size: 0.85rem; }
+  @media (max-width: 768px) { 
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;
 
 export const Paragraph = styled.p`
@@ -332,6 +427,13 @@ export const Paragraph = styled.p`
   margin: 0.6rem 0 1rem;
   text-align: justify;
 
-  @media (max-width: 768px) { font-size: 0.9rem; margin: 0.5rem 0 0.8rem; }
-  @media (max-width: 480px) { font-size: 0.85rem; margin: 0.4rem 0 0.7rem; }
+  @media (max-width: 768px) { 
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    margin: 0.4rem 0 0.7rem;
+  }
 `;

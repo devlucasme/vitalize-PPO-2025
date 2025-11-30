@@ -37,18 +37,18 @@ export const FormContainer = styled.form`
 
   @media (min-width: 1024px) and (max-width: 1440px) {
     align-items: center;
-    padding-top: 1rem;
     min-height: 70vh;
   }
 
   @media (max-width: 768px) {
     padding: 1rem;
-    min-height: auto;
-    align-items: flex-start;
+    overflow-y: auto;
   }
 
   @media (max-width: 480px) {
     padding: 0.8rem 0.5rem;
+    min-height: 85vh;
+    overflow-y: auto;
   }
 `;
 
@@ -60,19 +60,15 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 950px;
 
-  @media (max-width: 1024px) {
-    gap: 1.5rem;
-  }
-
   @media (min-width: 1024px) and (max-width: 1440px) {
-    max-width: 850px;
     gap: 1rem;
+    max-width: 850px;
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
   }
 `;
 
@@ -116,35 +112,60 @@ export const CalculatorCard = styled.form<CalculatorCardProps>`
     width: 60px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    padding: 1.3rem 1.2rem;
+  @media (max-width: 1600px) {
+    padding: 1.5rem;
+    max-width: 830px;
+
     h2 {
       font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+  }
+
+  @media (max-width: 1368px) {
+    padding: 1rem;
+    max-width: 800px;
+
+    h2 {
+      font-size: 0.95rem;
       margin-bottom: 1rem;
     }
+
     img {
-      height: 52px;
-      width: 52px;
+      height: 48px;
+      width: 48px;
     }
+
   }
 
   @media (max-width: 768px) {
     flex: 1 1 100%;
     max-width: 400px;
-    padding: 1.2rem;
-    margin-top: 0.3rem;
+    padding: 0.8rem;
 
     h2 {
-      font-size: 1.1rem;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    img {
+      height: 45px;
+      width: 45px;
     }
   }
 
   @media (max-width: 480px) {
+    padding: 0.6rem;
     max-width: 340px;
-    padding: 1rem;
 
     h2 {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
   }
 `;
@@ -177,10 +198,6 @@ export const InputRow = styled.div`
   gap: 1rem;
   margin-bottom: 0.8rem;
   width: 100%;
-
-  @media (max-width: 768px) {
-    gap: 0.8rem;
-  }
 `;
 
 export const InputGroup = styled.div`
@@ -190,11 +207,6 @@ export const InputGroup = styled.div`
   min-width: 220px;
   max-width: 100%;
   overflow: hidden;
-
-  @media (max-width: 768px) {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
 `;
 
 export const Label = styled.label`
@@ -206,6 +218,22 @@ export const Label = styled.label`
   align-items: center;
   gap: 0.5rem;
   word-break: break-word;
+
+  @media (max-width: 1600px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 1368px) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
 `;
 
 export const FieldContainer = styled.div<FieldContainerProps>`
@@ -236,12 +264,30 @@ export const Input = styled.input`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.text};
   padding: 0.5rem;
-  min-width: 0; /* evita que o flex item quebre */
+  min-width: 0;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.text};
     opacity: 0.7;
   }
+
+  @media (max-width: 1600px) {
+    padding: 0.4rem;
+  }
+
+  @media (max-width: 1368px) {
+    padding: 0.3rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.1rem;
+  }
+
+
 `;
 
 export const Select = styled.select`
@@ -261,6 +307,23 @@ export const Select = styled.select`
     background: ${({ theme }) => theme.colors.background};
     white-space: normal;
   }
+
+  @media (max-width: 1600px) {
+    padding: 0.4rem;
+  }
+
+   @media (max-width: 1368px) {
+    padding: 0.3rem;
+  }
+
+   @media (max-width: 768px) {
+    padding: 0.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.1rem;
+  }
+
 `;
 
 export const ButtonContainer = styled.div`
@@ -285,12 +348,62 @@ export const ButtonContainer = styled.div`
     transform: scale(1.03);
     opacity: 0.95;
   }
+
+  @media (max-width: 1368px) {
+    button {
+      min-height: 35px;
+      max-width: 185px;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 1368px) {
+    button {
+      min-height: 30px;
+      max-width: 180px;
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    button {
+      min-height: 28px;
+      max-width: 165px;
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    button {
+      min-height: 26px;
+      max-width: 155px;
+      font-size: 0.65rem;
+    }
+  }
+
 `;
 
 export const ErrorMessage = styled.span`
   color: #e57373;
   font-size: 0.8rem;
   margin-top: 0.2rem;
+
+  @media (max-width: 1600px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 1368px) {
+    font-size: 0.6rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.55rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.5rem;
+  }
+
 `;
 
 export const ResultCard = styled.div`
@@ -309,12 +422,6 @@ export const ResultCard = styled.div`
   max-width: 480px;
   margin: auto;
 
-  h3 {
-    text-align: center;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
-
   .result {
     font-size: 1.6rem;
     font-weight: 900;
@@ -332,6 +439,11 @@ export const ResultCard = styled.div`
     font-size: 1rem;
     margin-bottom: 1.2rem;
     line-height: 1.4;
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
+
   }
 
   .combined-description {
@@ -343,23 +455,19 @@ export const ResultCard = styled.div`
     }
 
     .excellent {
-      color: #38bd90; /* verde – positivo */
+      color: #38bd90;
     }
-
     .alert {
-      color: #f1c232; /* amarelo – aviso leve */
+      color: #f1c232;
     }
-
     .warning {
-      color: #e75a5a; /* vermelho – alerta */
+      color: #e75a5a;
     }
-
     .tip {
-      color: #cca041; /* dourado – informação */
+      color: #cca041;
     }
-
     .neutral {
-      color: #507cda; /* azul – equilíbrio */
+      color: #507cda;
     }
   }
 
@@ -387,48 +495,74 @@ export const ResultCard = styled.div`
     }
   }
 
-  /* 📱 Ajustes de responsividade */
-  @media (max-width: 1024px) {
-    max-width: 420px;
-    padding: 1.6rem 1.2rem;
-    min-height: 460px;
+  @media (max-width: 1368px) {
+    max-width: 440px;
+    padding: 1.5rem 1.2rem;
+    min-height: 480px;
+
+    h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .result {
+      font-size: 1.45rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    table {
+      font-size: 0.9rem;
+    }
   }
 
   @media (max-width: 768px) {
     max-width: 380px;
-    padding: 1.4rem 1rem;
+    padding: 1.2rem 1rem;
     min-height: auto;
-  }
 
-  @media (max-width: 480px) {
-    max-width: 330px;
-    padding: 1.2rem 0.8rem;
-    min-height: auto;
     h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     .result {
-      font-size: 1.4rem;
-      margin-bottom: 1.4rem;
+      font-size: 1.35rem;
     }
 
     p {
       font-size: 0.9rem;
-      line-height: 1.45;
+    }
+  }
+
+  @media (max-width: 480px) {
+    max-width: 330px;
+    padding: 1rem 0.8rem;
+    min-height: auto;
+
+    h3 {
+      font-size: 1rem;
     }
 
+    .result {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    p,
     .combined-description {
       font-size: 0.9rem;
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
     table {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
     }
   }
 `;
-
 
 export const ResultHeader = styled.div`
   text-align: center;
@@ -440,76 +574,57 @@ export const ResultHeader = styled.div`
   }
 
   .acronym-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  width: 100%;
-  text-align: center;
-  font-size: 0.9rem;
-  opacity: 0.95;
-  line-height: 1.4;
-  margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    font-size: 0.9rem;
+    opacity: 0.95;
+    line-height: 1.4;
+    margin-bottom: 1.2rem;
 
-  /* Cada linha explicativa (IMC e IAC) */
-  .line {
-    width: 80%;
-    max-width: 380px;
-    border-radius: 8px;
-    padding: 0.4rem 0.6rem;
-    background: ${({ theme }) =>
+    .line {
+      width: 80%;
+      max-width: 380px;
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      background: ${({ theme }) =>
     theme.title === "dark"
       ? "rgba(255,255,255,0.05)"
       : "rgba(0,0,0,0.05)"};
-    text-align: center;
-  }
+      text-align: center;
+    }
 
-  /* IMC → verde */
-  .imc {
-    strong {
+    .imc strong {
       color: #38bd90;
-      font-weight: 900;
     }
-  }
-
-  /* IAC → azul */
-  .iac {
-    strong {
+    .iac strong {
       color: #507cda;
-      font-weight: 900;
+    }
+
+    @media (max-width: 1368px) {
+      font-size: 0.85rem;
+      .line {
+        width: 85%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+      .line {
+        width: 100%;
+      }
     }
   }
-
-  strong {
-    font-weight: 700;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 0.85rem;
-    .line {
-      width: 90%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.8rem;
-    .line {
-      width: 100%;
-    }
-  }
-}
-
 
   .dual-values {
     display: flex;
     justify-content: center;
-    align-items: stretch;
     gap: 1rem;
     flex-wrap: wrap;
   }
 `;
-
 
 export const ValueBox = styled.div<{ color: string }>`
   flex: 1 1 45%;
@@ -527,7 +642,6 @@ export const ValueBox = styled.div<{ color: string }>`
   strong {
     display: block;
     font-size: 1rem;
-    letter-spacing: 0.5px;
     margin-bottom: 0.3rem;
   }
 
@@ -542,7 +656,39 @@ export const ValueBox = styled.div<{ color: string }>`
     opacity: 0.95;
   }
 
-  svg {
-    margin-bottom: 0.4rem;
+  @media (max-width: 1368px) {
+    max-width: 200px;
+
+    span {
+      font-size: 1.9rem;
+    }
+
+    strong {
+      font-size: 0.95rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    max-width: 180px;
+
+    span {
+      font-size: 1.7rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    max-width: 160px;
+
+    span {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
   }
 `;

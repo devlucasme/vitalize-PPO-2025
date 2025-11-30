@@ -41,7 +41,7 @@ const RegisterForm: FC = () => {
       const user = await registerUser(data);
 
       if (!user || !user.id) {
-        setFeedback({ type: "error", message: "Erro ao cadastrar. Tente novamente." });
+        setFeedback({ type: "error", message: "Já existe um usuário com esse email." });
         return;
       }
 
@@ -125,7 +125,6 @@ const RegisterForm: FC = () => {
           )}
         </S.FieldWrapper>
 
-        {/* Checkbox com link estilizado */}
         <S.ContainerCheckbox>
           <S.TermsLabel htmlFor="terms">
             <input type="checkbox" id="terms" {...register("terms")} />

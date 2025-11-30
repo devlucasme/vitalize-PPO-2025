@@ -332,58 +332,63 @@ export const WarningContainer = styled.div`
     }
   }
 
-  @media (max-width: 1024px) {
-    padding: 1rem 0.8rem;
+  @media (max-width: 1368px) {
+    padding: 0.8rem 0.6rem;
+    
     h3 {
-      font-size: 1rem;
-    }
-    p {
       font-size: 0.9rem;
     }
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    padding: 0.9rem;
-    gap: 0.6rem;
-    min-height: 80px;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.4rem;
-    }
-
     p {
-      font-size: 0.85rem;
-      line-height: 1.3;
+      font-size: 0.8rem;
     }
-  }
-
-  @media (max-width: 480px) {
-    border-left-width: 3px;
-    border-radius: 10px;
-    padding: 0.7rem;
-    gap: 0.5rem;
-    min-height: 70px;
 
     svg {
       width: 22px;
       height: 22px;
     }
 
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: justify;
+    align-items: center;
+    padding: 0.7rem;
+    gap: 0.6rem;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
     h3 {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
     }
 
     p {
+      font-size: 0.78rem;
+      max-width: 80%;
+      margin: 0 auto 4px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem;
+    gap: 0.5rem;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    h3 {
       font-size: 0.8rem;
+    }
+
+    p {
+      font-size: 0.75rem;
     }
   }
 `;
@@ -395,6 +400,11 @@ export const PlanTitle = styled.h1`
   color: ${({ theme }) => theme.colors.primary};
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
   padding-bottom: 0.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+
 `;
 
 export const DayCard = styled.h2`
@@ -402,6 +412,11 @@ export const DayCard = styled.h2`
   font-weight: 600;
   margin: 1.2rem 0 0.6rem 0;
   color: ${({ theme }) => theme.colors.text};
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+
 `;
 
 export const MealTitle = styled.h3`
@@ -409,6 +424,11 @@ export const MealTitle = styled.h3`
   font-weight: 600;
   margin: 0.6rem 0 0.4rem 0;
   color: ${({ theme }) => theme.colors.primary};
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
+
 `;
 
 export const MealList = styled.ul`
@@ -417,6 +437,11 @@ export const MealList = styled.ul`
   padding-left: 0.5rem;
   list-style-type: none;
   border-left: 2px solid ${({ theme }) => theme.colors.borderColor};
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
+
 `;
 
 export const MealItem = styled.li`
@@ -437,6 +462,13 @@ export const Paragraph = styled.p`
   margin: 0.6rem 0;
   line-height: 1.4;
   color: ${({ theme }) => theme.colors.text};
+
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+
+
 `;
 
 export const DataNotFound = styled.p`
@@ -445,6 +477,11 @@ export const DataNotFound = styled.p`
   font-size: 1rem;
   font-weight: 600;
   color: #ce5138ff;
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
+
 `;
 
 export const DataGenerate = styled.h3`
@@ -454,45 +491,5 @@ export const DataGenerate = styled.h3`
   span {
     font-weight: 600;
     font-size: 0.9rem;
-  }
-`;
-
-export const ResponsiveStyles = css`
-  @media (max-width: 1024px) {
-    ${PageWrapper} {
-      max-width: 95%;
-      gap: 1rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    ${LeftColumn},
-    ${RightColumn} {
-      flex: 1 1 100%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    ${PlanTitle} {
-      font-size: 1rem;
-      padding-bottom: 0.4rem;
-    }
-    ${DayCard} {
-      font-size: 0.9rem;
-      margin: 1rem 0 0.4rem 0;
-    }
-    ${MealTitle} {
-      font-size: 0.85rem;
-      margin: 0.4rem 0 0.3rem 0;
-    }
-    ${MealItem} {
-      padding: 0.4rem 0.5rem;
-    }
-    ${UserContent} h2 {
-      font-size: 1rem;
-    }
-    ${UserContent} p {
-      font-size: 0.9rem;
-    }
   }
 `;

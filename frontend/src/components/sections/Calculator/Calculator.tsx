@@ -34,7 +34,6 @@ const Calculator: FC = () => {
   const [imcResult, setImcResult] = useState<number | null>(null);
   const [iacResult, setIacResult] = useState<number | null>(null);
 
-  // 🧮 Calcular IMC e IAC
   const calculateIMCeIAC = (data: DietTrainingCalculatorValidationType) => {
     const heightM = Number(data.height_cm) / 100;
     const weight = Number(data.weight_kg);
@@ -71,7 +70,6 @@ const Calculator: FC = () => {
     }
   };
 
-  // 🧩 Descrição combinada IMC + IAC
   const getCombinedDescription = (imcClass: string, iacClass: string) => {
     if (!imcClass || !iacClass) return "";
 
@@ -122,7 +120,6 @@ const Calculator: FC = () => {
   };
 
 
-  // 💾 Só salva ao gerar dieta ou treino, e reseta depois
   const handleFormSubmit = (
     data: DietTrainingCalculatorValidationType,
     path: string
@@ -143,7 +140,6 @@ const Calculator: FC = () => {
     localStorage.setItem(userKey, JSON.stringify(typedData));
     navigate(path, { state: typedData });
 
-    // 🔁 Limpa o formulário e resultados após salvar
     reset();
     setImcResult(null);
     setIacResult(null);
@@ -170,7 +166,6 @@ const Calculator: FC = () => {
             <img src={logo} alt="Logo do Vitalize" />
             <h2>Calcule seu IMC e IAC e veja sua classificação!</h2>
 
-            {/* ---- Inputs ---- */}
             <S.InputRow>
               <S.InputGroup>
                 <S.Label>
@@ -361,7 +356,6 @@ const Calculator: FC = () => {
             <S.ResultHeader>
               <h3 className="result">Resultados Corporais</h3>
 
-              {/* 🧠 Explicação das siglas */}
               <div className="acronym-info">
                 <div className="line imc">
                   <strong>IMC</strong> — Índice de Massa Corporal
@@ -417,7 +411,7 @@ const Calculator: FC = () => {
                   setIacResult(null);
                 }}
               >
-                <ArrowLeft size={16} /> Voltar para a calculadora
+                <ArrowLeft size={16} /> Voltar
               </Button>
             </S.ButtonContainer>
           </S.ResultCard>

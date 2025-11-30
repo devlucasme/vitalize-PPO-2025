@@ -7,7 +7,7 @@ export const Footer = styled.footer`
   border-top: 1px solid ${({ theme }) => theme.colors.borderColor};
   text-align: center;
 
-  @media (max-width: 1366px) {
+  @media (max-width: 1368px) {
     padding: 1.5rem 0.8rem;
   }
 
@@ -53,7 +53,7 @@ export const Text = styled.p`
     color: ${({ theme }) => theme.colors.primary};
   }
 
-  @media (max-width: 1366px) {
+  @media (max-width: 1368px) {
     font-size: 0.82rem;
   }
 

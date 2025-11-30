@@ -24,19 +24,6 @@ export const Container = styled.div`
   justify-content: center;
   padding: 0 1rem;
   box-sizing: border-box;
-
-  @media (max-width: 480px) {
-    max-width: 90%;
-    padding: 0 0.5rem;
-  }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    padding: 0 1.5rem;
-  }
-
-  @media (min-width: 1600px) {
-    padding: 0 2rem;
-  }
 `;
 
 export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
@@ -52,6 +39,11 @@ export const FeedbackMessage = styled.div<{ type: "success" | "error" }>`
   animation: ${fadeIn} 0.3s ease forwards;
   text-align: center;
   width: 30%;
+
+  @media (max-width: 480px) {
+    width: 90%;
+  }
+
 `;
 
 export const RegisterForm = styled.form`
@@ -64,79 +56,57 @@ export const RegisterForm = styled.form`
   padding: 40px 48px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 23px;
 
   h2 {
     text-align: center;
     font-size: 1.5rem;
-    margin-bottom: 18px;
-    font-weight: 600;
+    margin-bottom: 25px;
   }
 
   img {
     width: 60px;
     border-radius: 50%;
-    margin: 0 auto 6px;
+    margin: 0 auto;
   }
 
-  @media (max-width: 660px) {
+  @media (max-width: 1368px){
+    max-width: 460px;
+    padding: 13px 36px;
+    gap: 10px;
+
+    h2 {
+      font-size: 1rem;
+    }
+
+    img {
+      width: 50px;
+    }
+
+  }
+
+  @media (max-width: 720px) {
     max-width: 400px;
     padding: 30px 35px;
 
     h2 {
-      font-size: 1.35rem;
+      font-size: 0.95rem;
     }
 
     img {
-      width: 50px;
+      width: 45px;
     }
   }
 
   @media (max-width: 480px) {
-    padding: 18px 14px;
-    gap: 16px;
+    max-width: 95%;
+    padding: 15px 30px;
+    gap: 12px;
 
     h2 {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       margin-bottom: 12px;
     }
-
-    img {
-      width: 42px;
-    }
-  }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    max-width: 460px;
-    padding: 18px 36px;
-    gap: 10px;
-
-    h2 {
-      font-size: 1.35rem;
-    }
-
-    img {
-      width: 50px;
-    }
-  }
-
-  @media (min-width: 1600px) {
-    max-width: 480px;
-    padding: 20px 40px;
-    gap: 15px;
-
-    h2 {
-      font-size: 1.4rem;
-    }
-
-    img {
-      width: 55px;
-    }
-  }
-
-  @media (max-width: 420px) {
-    padding: 15px 30px;
-    gap: 11px;
   }
 
 `;
@@ -188,8 +158,12 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 4px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 1368px) {
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
   }
 `;
 
@@ -208,17 +182,14 @@ export const FieldContainer = styled.div<FieldContainerProps>`
       hasError ? "#e57373" : theme.colors.primary};
   }
 
+  @media (max-width: 1368px) {
+    padding: 7px 12px;
+  }
+
   @media (max-width: 480px) {
-    padding: 8px 10px;
+    padding: 6px 10px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    padding: 9px 11px;
-  }
-
-  @media (min-width: 1600px) {
-    padding: 10px 12px;
-  }
 `;
 
 export const UserIcon = styled(User).attrs({ size: 20 })`
@@ -276,9 +247,24 @@ export const Input = styled.input`
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text} !important;
   }
 
-  @media (max-width: 480px) {
-    font-size: 0.85rem;
+  @media (max-width: 1368px) {
+    font-size: 0.8rem;
+
+    &::placeholder {
+      font-size: 0.85rem;
+    }
+
   }
+  
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+
+    &::placeholder {
+      font-size: 0.75rem;
+    }
+
+  }
+
 `;
 
 export const ContainerCheckbox = styled.div`
@@ -305,7 +291,6 @@ export const TermsLabel = styled.label`
   }
 `;
 
-/* ✅ Agora é o Link do react-router-dom, estilizado com cor primária */
 export const TermsOfUseLink = styled(Link)`
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 500;
@@ -343,12 +328,11 @@ export const ErrorMessage = styled.p`
   font-size: 0.8rem;
   margin-top: 2px;
 
-  @media (max-width: 480px) {
-    font-size: 0.75rem;
+  @media (max-width: 1368px) {
+    font-size: 0.7rem;
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 480px) {
     font-size: 0.6rem;
   }
-
 `;

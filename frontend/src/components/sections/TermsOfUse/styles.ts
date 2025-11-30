@@ -53,13 +53,12 @@ export const Content = styled.div`
     }
   }
 
-  /* 🔽 Ajustes de responsividade */
   @media (max-width: 768px) {
     padding: 30px 22px;
 
     h1 {
       font-size: 1.5rem;
-      margin-top: 35px; /* garante espaço entre o link de voltar e o título */
+      margin-top: 35px; 
     }
   }
 
@@ -68,14 +67,14 @@ export const Content = styled.div`
 
     h1 {
       font-size: 1.3rem;
-      margin-top: 45px; /* mais espaço em celulares menores */
+      margin-top: 45px;
     }
   }
 
   @media (max-width: 360px) {
     h1 {
       font-size: 1.2rem;
-      margin-top: 55px; /* extra para telas muito pequenas */
+      margin-top: 55px; 
     }
   }
 `;

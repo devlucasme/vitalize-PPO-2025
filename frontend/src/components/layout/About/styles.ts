@@ -30,7 +30,7 @@ export const TopAbout = styled.div`
       color: ${({ theme }) => theme.colors.primary};
     }
 
-    @media (max-width: 1366px) {
+    @media (max-width: 1368px) {
       font-size: 1.7rem;
     }
 

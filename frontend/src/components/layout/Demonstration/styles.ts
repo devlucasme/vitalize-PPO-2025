@@ -5,11 +5,7 @@ export const Section = styled.section`
   background-color: ${({ theme }) => theme.colors.background};
   scroll-margin-top: 80px;
 
-  @media (max-width: 1366px) {
-    padding: 4.5rem 1.8rem;
-  }
-
-  @media (max-width: 1024px) {
+  @media (max-width: 1368px) {
     padding: 4rem 1.5rem;
   }
 
@@ -23,8 +19,17 @@ export const Section = styled.section`
 `;
 
 export const Container = styled.div`
-  max-width: 1100px;
+  max-width: 70%;
   margin: 0 auto;
+
+  @media (max-width: 720px) {
+    max-width: 90%;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
+
 `;
 
 export const TopDemo = styled.div`
@@ -35,30 +40,21 @@ export const TopDemo = styled.div`
     font-size: 2rem;
     font-weight: 500;
     color: ${({ theme }) => theme.colors.text};
-    margin-bottom: 1rem;
 
     strong {
       color: ${({ theme }) => theme.colors.primary};
     }
 
-    @media (max-width: 1366px) {
-      font-size: 1.8rem;
-    }
-
-    @media (max-width: 1200px) {
-      font-size: 1.5rem;
-    }
-
-    @media (max-width: 960px) {
-      font-size: 1.2rem;
+    @media (max-width: 1368px) {
+      font-size: 1.4rem;
     }
 
     @media (max-width: 720px) {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
     @media (max-width: 480px) {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
   }
 `;
@@ -96,29 +92,19 @@ export const Table = styled.table`
         width: 80px;
       }
 
-      @media (max-width: 1366px) {
+      @media (max-width: 1368px) {
         font-size: 0.95rem;
-        padding: 0.9rem;
-      }
-
-      @media (max-width: 1200px) {
-        font-size: 0.9rem;
-        padding: 0.85rem;
-      }
-
-      @media (max-width: 1024px) {
-        font-size: 0.9rem;
-        padding: 0.8rem;
+        padding: 0.6rem;
       }
 
       @media (max-width: 720px) {
         font-size: 0.85rem;
-        padding: 0.75rem;
+        padding: 0.7rem;
       }
 
       @media (max-width: 480px) {
-        font-size: 0.8rem;
-        padding: 0.7rem;
+        font-size: 0.75rem;
+        padding: 0.5rem;
       }
     }
   }
@@ -148,29 +134,29 @@ export const Table = styled.table`
           width: 80px;
         }
 
-        @media (max-width: 1366px) {
+        @media (max-width: 1368px) {
+          padding: 0.8rem;
           font-size: 0.9rem;
-          padding: 0.85rem;
         }
 
-        @media (max-width: 1200px) {
+        /* @media (max-width: 1200px) {
           font-size: 0.88rem;
           padding: 0.8rem;
-        }
+        } */
 
-        @media (max-width: 1024px) {
+        /* @media (max-width: 1024px) {
           font-size: 0.85rem;
           padding: 0.75rem;
-        }
+        } */
 
         @media (max-width: 720px) {
-          font-size: 0.8rem;
           padding: 0.7rem;
+          font-size: 0.8rem;
         }
 
         @media (max-width: 480px) {
-          font-size: 0.75rem;
           padding: 0.6rem;
+          font-size: 0.7rem;
         }
       }
     }
@@ -180,24 +166,19 @@ export const Table = styled.table`
       width: 24px;
       height: 24px;
 
-      @media (max-width: 1366px) {
-        width: 23px;
-        height: 23px;
-      }
-
-      @media (max-width: 1200px) {
+      @media (max-width: 1368px) {
         width: 22px;
         height: 22px;
       }
 
-      @media (max-width: 1024px) {
-        width: 21px;
-        height: 21px;
-      }
-
       @media (max-width: 720px) {
-        width: 19px;
-        height: 19px;
+        width: 20px;
+        height: 20px;
+      }
+      
+      @media (max-width: 480px) {
+        width: 18px;
+        height: 18px;
       }
     }
   }
@@ -214,24 +195,4 @@ export const StepIcon = styled.svg`
   height: 26px;
   flex-shrink: 0;
   color: ${({ theme }) => theme.colors.primary};
-
-  @media (max-width: 1366px) {
-    width: 24px;
-    height: 24px;
-  }
-
-  @media (max-width: 1024px) {
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 720px) {
-    width: 20px;
-    height: 20px;
-  }
-
-  @media (max-width: 480px) {
-    width: 18px;
-    height: 18px;
-  }
 `;

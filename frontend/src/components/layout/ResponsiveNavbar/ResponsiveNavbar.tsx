@@ -54,7 +54,6 @@ const ReponsiveNavbar: FC<ResponsiveNavbarProps> = ({
       <S.CloseButton onClick={() => setMenuIsVisible(false)}>
         <X size={26} />
       </S.CloseButton>
-
       <nav>
         <ul>
           <li>

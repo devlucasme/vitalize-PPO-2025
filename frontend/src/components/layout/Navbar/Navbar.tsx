@@ -61,7 +61,6 @@ const Navbar: FC = () => {
         <li>
           <a href="#sobre" onClick={(e) => handleClick(e, "/", "sobre")}>Sobre</a>
         </li>
-
         <li ref={faqRef}>
           <button onClick={toggleFAQ}>Dúvidas</button>
           {openFAQ && (
@@ -71,7 +70,6 @@ const Navbar: FC = () => {
             </S.DropdownCard>
           )}
         </li>
-
         <li>
           <a onClick={handleLoginClick}>Entrar</a>
         </li>

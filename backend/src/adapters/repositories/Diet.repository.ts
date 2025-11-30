@@ -1,5 +1,5 @@
-import { prisma } from "../../database/prismaClient.js";
-import type { IDiet, IDietRepository } from "../../interfaces/diet.interface.js";
+import { prisma } from "../../database/prismaClient";
+import type { IDiet, IDietRepository } from "../../interfaces/diet.interface";
 
 export class DietRepository implements IDietRepository {
   async createDiet(data: Omit<IDiet, "id" | "createAt" | "updateAt">): Promise<IDiet> {

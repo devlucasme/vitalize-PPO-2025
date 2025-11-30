@@ -1,8 +1,8 @@
 import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import type { JwtPayload } from "jsonwebtoken";
-import { UnauthorizedError } from "../helpers/ApiError.js";
-import { UserUseCase } from "../usecases/User.usecase.js";
+import { UnauthorizedError } from "../helpers/ApiError";
+import { UserUseCase } from "../usecases/User.usecase";
 
 export const auth = (userUseCase: UserUseCase) => {
     return async (req: Request, res: Response, next: NextFunction) => {

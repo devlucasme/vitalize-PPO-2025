@@ -1,6 +1,6 @@
-import { TrainingRepository } from "../adapters/repositories/Training.repository.js";
-import { generateTrainingPlan } from "../agents/trainingOpenAi.js";
-import type { ITraining } from "../interfaces/training.interface.js";
+import { TrainingRepository } from "../adapters/repositories/Training.repository";
+import { generateTrainingPlan } from "../agents/trainingOpenAi";
+import type { ITraining } from "../interfaces/training.interface";
 
 type TrainingInput = Omit<ITraining, "id" | "createAt" | "updateAt" | "userId" | "plan">;
 

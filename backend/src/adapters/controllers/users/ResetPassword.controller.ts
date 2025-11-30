@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
-import { ResetPasswordUseCase } from "../../../usecases/ResetPassword.usecase.js";
-import { BadRequestError } from "../../../helpers/ApiError.js";
+import { ResetPasswordUseCase } from "../../../usecases/ResetPassword.usecase";
+import { BadRequestError } from "../../../helpers/ApiError";
 import crypto from "crypto";
-import type { IResetPassword } from "../../../interfaces/resetPassword.interface.js";
+import type { IResetPassword } from "../../../interfaces/resetPassword.interface";
 
 export class ResetPasswordController {
 

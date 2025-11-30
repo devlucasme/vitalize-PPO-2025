@@ -1,5 +1,5 @@
-import { prisma } from "../../database/prismaClient.js";
-import type { ITraining, ITrainingRepository } from "../../interfaces/training.interface.js";
+import { prisma } from "../../database/prismaClient";
+import type { ITraining, ITrainingRepository } from "../../interfaces/training.interface";
 
 export class TrainingRepository implements ITrainingRepository {
   async createTraining(data: Omit<ITraining, "id" | "createAt" | "updateAt">): Promise<ITraining> {

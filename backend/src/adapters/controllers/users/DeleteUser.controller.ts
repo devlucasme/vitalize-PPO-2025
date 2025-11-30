@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
-import { UserUseCase } from "../../../usecases/User.usecase.js";
-import { BadRequestError, UnauthorizedError } from "../../../helpers/ApiError.js";
+import { UserUseCase } from "../../../usecases/User.usecase";
+import { BadRequestError, UnauthorizedError } from "../../../helpers/ApiError";
 
 export class DeleteUserController {
 

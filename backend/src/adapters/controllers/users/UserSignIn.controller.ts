@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import { UserUseCase } from "../../../usecases/User.usecase.js";
-import type { ILoginUser } from "../../../interfaces/user.interface.js";
-import { BadRequestError } from "../../../helpers/ApiError.js";
+import { UserUseCase } from "../../../usecases/User.usecase";
+import type { ILoginUser } from "../../../interfaces/user.interface";
+import { BadRequestError } from "../../../helpers/ApiError";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 

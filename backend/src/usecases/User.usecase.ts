@@ -1,8 +1,8 @@
-import { UserRepository } from "../adapters/repositories/User.repository.js";
-import { DietRepository } from "../adapters/repositories/Diet.repository.js";
-import { TrainingRepository } from "../adapters/repositories/Training.repository.js";
-import type { ICreateUser, IUser, IUserRepository } from "../interfaces/user.interface.js";
-import { BadRequestError, UnauthorizedError } from "../helpers/ApiError.js";
+import { UserRepository } from "../adapters/repositories/User.repository";
+import { DietRepository } from "../adapters/repositories/Diet.repository";
+import { TrainingRepository } from "../adapters/repositories/Training.repository";
+import type { ICreateUser, IUser, IUserRepository } from "../interfaces/user.interface";
+import { BadRequestError, UnauthorizedError } from "../helpers/ApiError";
 import bcrypt from "bcrypt";
 
 export class UserUseCase {

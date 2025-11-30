@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { auth } from "../middlewares/auth.middleware";
-import { UserSignUpController } from "../adapters/controllers/Users/UserSignUp.controller";
-import { UserSignInController } from "../adapters/controllers/Users/UserSignIn.controller";
-import { UserProfileController } from "../adapters/controllers/Users/UserProfile.controller";
-import { UserUseCase } from "../usecases/User.usecase";
-import { DietPlanController } from "../adapters/controllers/DietAndTraining/DietPlan.controller";
-import { TrainingPlanController } from "../adapters/controllers/DietAndTraining/TrainingPlan.controller";
-import { DeleteUserController } from "../adapters/controllers/Users/DeleteUser.controller";
+import { auth } from "../middlewares/auth.middleware.js";
+import { UserSignUpController } from "../adapters/controllers/Users/UserSignUp.controller.js";
+import { UserSignInController } from "../adapters/controllers/Users/UserSignIn.controller.js";
+import { UserProfileController } from "../adapters/controllers/Users/UserProfile.controller.js";
+import { UserUseCase } from "../usecases/User.usecase.js";
+import { DietPlanController } from "../adapters/controllers/DietAndTraining/DietPlan.controller.js";
+import { TrainingPlanController } from "../adapters/controllers/DietAndTraining/TrainingPlan.controller.js";
+import { DeleteUserController } from "../adapters/controllers/Users/DeleteUser.controller.js";
 
 export const router = Router();
 const userUseCase = new UserUseCase();

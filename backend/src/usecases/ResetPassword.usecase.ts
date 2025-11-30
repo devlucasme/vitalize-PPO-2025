@@ -1,7 +1,7 @@
-import { ResetPasswordRepository } from "../adapters/repositories/ResetPassword.repository";
-import { BadRequestError } from "../helpers/ApiError";
-import type { IResetPassword, IResetPasswordRepository } from "../interfaces/resetPassword.interface";
-import type { IUser } from "../interfaces/user.interface";
+import { ResetPasswordRepository } from "../adapters/repositories/ResetPassword.repository.js";
+import { BadRequestError } from "../helpers/ApiError.js";
+import type { IResetPassword, IResetPasswordRepository } from "../interfaces/resetPassword.interface.js";
+import type { IUser } from "../interfaces/user.interface.js";
 import bcrypt from "bcrypt";
 
 export class ResetPasswordUseCase {

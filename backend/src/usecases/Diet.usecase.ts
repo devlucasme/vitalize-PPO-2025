@@ -1,6 +1,6 @@
-import { DietRepository } from "../adapters/repositories/Diet.repository";
-import { generateDietPlan } from "../agents/dietOpenAi";
-import type { IDiet } from "../interfaces/diet.interface";
+import { DietRepository } from "../adapters/repositories/Diet.repository.js";
+import { generateDietPlan } from "../agents/dietOpenAi.js";
+import type { IDiet } from "../interfaces/diet.interface.js";
 
 type DietInput = Omit<IDiet, "id" | "createAt" | "updateAt" | "plan" | "userId">;
 

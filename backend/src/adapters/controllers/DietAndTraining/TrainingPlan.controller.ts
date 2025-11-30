@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import { dietAndTrainingPlan } from "../../../validations/validators/dietAndTrainingPlan";
-import { BadRequestError } from "../../../helpers/ApiError";
-import { TrainingUseCase } from "../../../usecases/Training.usecase";
+import { dietAndTrainingPlan } from "../../../validations/validators/dietAndTrainingPlan.js";
+import { BadRequestError } from "../../../helpers/ApiError.js";
+import { TrainingUseCase } from "../../../usecases/Training.usecase.js";
 
 export class TrainingPlanController {
   private trainingUseCase = new TrainingUseCase();

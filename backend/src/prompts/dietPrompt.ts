@@ -1,4 +1,4 @@
-import type { DietAndTrainingPlanType } from "../validations/protocols/dietAndTrainingPlan";
+import type { DietAndTrainingPlanType } from "../validations/protocols/dietAndTrainingPlan.js";
 
 export const buildSystemPrompt = () => {
   return [

@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
-import { DietUseCase } from "../../../usecases/Diet.usecase";
-import { TrainingUseCase } from "../../../usecases/Training.usecase";
+import { DietUseCase } from "../../../usecases/Diet.usecase.js";
+import { TrainingUseCase } from "../../../usecases/Training.usecase.js";
 
 export class UserProfileController {
     

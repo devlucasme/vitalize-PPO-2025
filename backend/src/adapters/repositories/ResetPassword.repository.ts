@@ -1,6 +1,6 @@
-import { prisma } from "../../database/prismaClient";
-import type { IResetPasswordRepository, IResetPasswordToken } from "../../interfaces/resetPassword.interface";
-import type { IUser } from "../../interfaces/user.interface";
+import { prisma } from "../../database/prismaClient.js";
+import type { IResetPasswordRepository, IResetPasswordToken } from "../../interfaces/resetPassword.interface.js";
+import type { IUser } from "../../interfaces/user.interface.js";
 
 
 export class ResetPasswordRepository implements IResetPasswordRepository {

@@ -1,4 +1,4 @@
-# 📘 Documento Técnico: Diretrizes de Dieta e Treino Personalizado  
+# Documento Técnico: Diretrizes de Dieta e Treino Personalizado   
 *(Baseado em Objetivo, Tipo de Treino, Orçamento, Condição de Saúde e Gasto Calórico Total – TDEE)*
 
 Este documento define as diretrizes técnicas para gerar **planos alimentares e de treinamento personalizados**, com base nos parâmetros validados pelo schema `dietAndTrainingPlan`.
@@ -13,7 +13,7 @@ Todas as quantidades são expressas em **gramas (g)** e devem respeitar o **TDEE
 
 ---
 
-## 🔢 1. Cálculo do Gasto Calórico Total (TDEE)
+## 1. Cálculo do Gasto Calórico Total (TDEE)
 
 O **TDEE (Total Daily Energy Expenditure)** representa o gasto energético diário total, considerando metabolismo basal e nível de atividade física.
 
@@ -34,8 +34,8 @@ O **TDEE (Total Daily Energy Expenditure)** representa o gasto energético diár
 | **Ativo** | Exercício intenso 6–7x por semana | 6–7x | 1.725 |
 | **Muito ativo** | Treinos diários intensos ou trabalho físico pesado | 7x+ | 1.9 |
 
-> ⚙️ A IA deve usar o campo `activity_level` para definir **exatamente quantos dias de treino por semana** gerar no plano.  
-> 🧠 Em **frequências menores (3–4 dias/semana)**, incluir **descanso estratégico entre treinos** (ex: Segunda, Terça, Quinta, Sexta).
+> A IA deve usar o campo `activity_level` para definir **exatamente quantos dias de treino por semana** gerar no plano.  
+> Em **frequências menores (3–4 dias/semana)**, incluir **descanso estratégico entre treinos** (ex: Segunda, Terça, Quinta, Sexta).
 
 ---
 
@@ -53,7 +53,7 @@ O **TDEE (Total Daily Energy Expenditure)** representa o gasto energético diár
 
 ---
 
-## 🥗 2. Princípios Gerais da Dieta
+## 2. Princípios Gerais da Dieta
 
 - Refeições equilibradas com **mínimo de 3 alimentos diferentes** (ideal: 4 ou mais).  
 - Hidratação adequada: **~30 mL/kg/dia**.  
@@ -62,23 +62,45 @@ O **TDEE (Total Daily Energy Expenditure)** representa o gasto energético diár
 - Dieta deve ser **sustentável, prática e personalizada** ao estilo de vida do usuário.  
 - **TODA REFEIÇÃO DEVE CONTER UMA BEBIDA**, ajustada conforme o objetivo e orçamento:  
   - **Objetivo**: as bebidas ajudam a atingir metas calóricas (ganho, perda, manutenção).  
-  - **Orçamento**: bebidas variam conforme custo (água e café em baixo, sucos naturais em médio, funcionais em alto orçamento).  
+  - **Orçamento**: bebidas variam conforme custo (água e café em baixo, sucos naturais em médio, funcionais em alto orçamento).
 
 ---
 
-## 💰 3. Faixas de Orçamento Alimentar (com alimentos e bebidas por categoria)
+## 3. Impacto das Condições de Saúde (campo `healthConditions`)
+
+A IA deve interpretar a condição de saúde informada e **ajustar a dieta automaticamente** conforme as diretrizes nutricionais reconhecidas.  
+Essas condições exigem **atenção especial**, respeitando recomendações médicas e científicas.  
+
+| Condição | Diretriz Específica |
+|-----------|--------------------|
+| **Nenhuma** | Plano livre, baseado apenas em TDEE, objetivo e orçamento. |
+| **Diabetes** | Controlar carboidratos com **baixo índice glicêmico**, priorizar **fibras, proteínas magras e gorduras boas**. Evitar açúcar simples, sucos industrializados e ultraprocessados. Preferir carboidratos complexos (aveia, batata-doce, arroz integral). |
+| **Hipertensão** | Reduzir sódio (sal, embutidos, enlatados). Priorizar **alimentos ricos em potássio** (banana, abacate, feijão, vegetais verdes). Usar temperos naturais (alho, ervas, limão). |
+| **Intolerância à lactose** | Eliminar leite e derivados comuns. Substituir por **leites vegetais (aveia, amêndoas, coco)** e **iogurtes sem lactose ou vegetais**. Garantir reposição de cálcio por vegetais e sementes. |
+| **Doença celíaca (sem glúten)** | **Excluir totalmente glúten** (trigo, centeio, cevada, aveia comum). Utilizar **arroz, milho, mandioca, batata e quinoa**. Evitar contaminação cruzada. |
+| **Obesidade** | Aplicar **déficit calórico gradual (15–20%)**, alto teor de fibras, proteínas magras e alimentos de baixo índice glicêmico. Reduzir óleos e ultraprocessados. Controlar saciedade e horários fixos. |
+| **Colesterol alto** | Reduzir gorduras saturadas e trans. Incluir **fibras solúveis (aveia, frutas, leguminosas)**, **peixes ricos em ômega-3** e azeite em pequenas quantidades (ou castanhas). Evitar frituras e embutidos. |
+| **Problemas articulares** | Aumentar alimentos **anti-inflamatórios naturais** (peixes, cúrcuma, gengibre, frutas vermelhas). Controlar peso corporal e hidratação. Reduzir alimentos inflamatórios (açúcar, gorduras ruins, álcool). |
+
+> **A IA deve priorizar segurança alimentar e nutricional.**  
+> Nenhum plano deve conter ingredientes proibidos conforme a condição.  
+> Fontes e diretrizes científicas (ver seção 10) **devem ser obrigatoriamente consideradas** durante a geração.
+
+---
+
+## 4. Faixas de Orçamento Alimentar (com alimentos e bebidas por categoria)
 
 O sistema deve interpretar o campo `budget_level` para gerar planos alimentares **compatíveis com o poder aquisitivo do usuário**, **sem perda nutricional**.
 
-### 🔍 Regras técnicas:
+### Regras técnicas:
 - Cada faixa tem **níveis de preço estimados** e **alimentos típicos** encontrados nessa categoria.  
-- A IA deve sempre **preservar o equilíbrio entre proteínas, carboidratos, gorduras e líquidos**.  
+- Deve sempre **preservar o equilíbrio entre proteínas, carboidratos, gorduras e líquidos**.  
 - Quando o orçamento for **baixo**, priorizar **densidade nutricional e hidratação simples** (ex: água, café, chás).  
 - Quando o orçamento for **alto**, incluir **bebidas funcionais e naturais**, que otimizem o desempenho físico.  
 
 ---
 
-### 💵 **Resumo por faixa**
+### **Resumo por faixa**
 
 | Faixa | Diretriz | Valor estimado (R$/dia) | Foco nutricional |
 |--------|-----------|-------------------------|------------------|
@@ -88,7 +110,7 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 
 ---
 
-### 🍗 **Proteínas**
+### **Proteínas**
 
 | Faixa | Exemplos |
 |--------|----------|
@@ -98,7 +120,7 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 
 ---
 
-### 🍚 **Carboidratos**
+### **Carboidratos**
 
 | Faixa | Exemplos |
 |--------|----------|
@@ -108,7 +130,7 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 
 ---
 
-### 🥑 **Gorduras boas**
+### **Gorduras boas**
 
 | Faixa | Exemplos |
 |--------|----------|
@@ -118,7 +140,7 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 
 ---
 
-### 🥦 **Leguminosas**
+### **Leguminosas**
 
 | Faixa | Exemplos |
 |--------|----------|
@@ -128,7 +150,7 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 
 ---
 
-### 🍎 **Frutas**
+### **Frutas**
 
 | Faixa | Exemplos |
 |--------|----------|
@@ -138,7 +160,7 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 
 ---
 
-### 🥕 **Vegetais**
+### **Vegetais**
 
 | Faixa | Exemplos |
 |--------|----------|
@@ -148,7 +170,7 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 
 ---
 
-### 🧀 **Laticínios**
+### **Laticínios**
 
 | Faixa | Exemplos |
 |--------|----------|
@@ -158,24 +180,17 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 
 ---
 
-### ☕ **Bebidas (de acordo com objetivo e orçamento)**
+### **Bebidas (de acordo com objetivo e orçamento)**
 
 | Faixa | Ganho de Massa / Desempenho | Manutenção / Saúde | Perda de Peso / Déficit |
 |--------|------------------------------|--------------------|--------------------------|
-| **Baixo** | Leite integral, café, água, suco em pó leve. | Água filtrada, café preto, chá simples. | Água, chá verde, café preto sem açúcar. |
+| **Baixo** | Leite integral, café, água, suco de frutas | Água filtrada, café preto, chá simples. | Água, chá verde, café preto sem açúcar. |
 | **Médio** | Suco natural (laranja, uva), leite com aveia, vitaminas caseiras. | Água mineral, sucos diluídos, leite semidesnatado. | Água com limão, chá verde, café coado sem açúcar. |
 | **Alto** | Suco 100% integral, água de coco natural, smoothies proteicos, bebidas funcionais (whey, matcha, kefir). | Água alcalina, chás orgânicos, sucos prensados a frio. | Água de coco leve, chás detox naturais, kombucha. |
 
-> 💧 **Toda refeição deve conter uma bebida condizente com o orçamento e objetivo.**  
-> - **Baixo orçamento:** água, café, chás simples.  
-> - **Médio orçamento:** sucos naturais e leite.  
-> - **Alto orçamento:** sucos integrais, águas funcionais e shakes naturais.  
->  
-> A bebida complementa o valor calórico e auxilia na hidratação e absorção de nutrientes.
-
 ---
 
-## 🍽️ 7. Estrutura de Refeições Diárias (com bebidas)
+## 7. Estrutura de Refeições Diárias (com bebidas)
 
 | Refeição | Composição Ideal | Bebida (por faixa) | Observações |
 |-----------|------------------|--------------------|-------------|
@@ -184,34 +199,38 @@ O sistema deve interpretar o campo `budget_level` para gerar planos alimentares 
 | **Lanche da tarde** | Proteína leve + fruta + oleaginosa | Baixo: chá simples / Médio: leite ou iogurte / Alto: shake leve ou kombucha | Mantém energia e saciedade. |
 | **Jantar** | Proteína + vegetal + carboidrato leve | Baixo: água / Médio: chá relaxante / Alto: suco leve ou leite vegetal | Evitar bebidas muito calóricas à noite. |
 
-> 💧 A IA deve sempre incluir uma bebida **condizente com o objetivo (hipertrofia, cutting, manutenção)** e o **nível de orçamento (baixo, médio, alto)**.  
-> Exemplo:  
-> - Hipertrofia + orçamento alto → smoothie proteico natural.  
-> - Cutting + orçamento médio → chá verde com limão.  
-> - Manutenção + orçamento baixo → café ou água filtrada.  
-
 ---
 
-## 🧾 9. Notas Finais
+## 9. Notas Finais
 
 - Medidas expressas em **gramas (g)**.  
 - Planos **personalizados e ajustáveis** conforme evolução e exames.  
 - Cada refeição **deve conter uma bebida** coerente com o orçamento e objetivo.  
-- **Intermediário (4x/semana):** equilíbrio ideal entre estímulo e descanso.  
 - **Em baixo orçamento:** priorizar alimentos simples, água e café como hidratação base.  
 - **Em alto orçamento:** ampliar variedade e adicionar bebidas funcionais.  
+- **Condições de saúde** devem **guiar restrições alimentares obrigatórias** (ex: sem glúten, sem lactose, baixo teor de sódio ou açúcar).  
 - Reavaliação recomendada a cada **4–6 semanas**.  
 
 ---
 
-## 📚 10. Fontes Técnicas
+## 10. Fontes Técnicas (de uso obrigatório pela IA)
 
 1. **Guia Alimentar para a População Brasileira** – Ministério da Saúde, 2014  
 2. **Diretrizes da Sociedade Brasileira de Diabetes** – SBD, 2024–2025  
 3. **Protocolo Clínico – Doença Celíaca** – Conitec, 2023  
 4. **Guia de Atividade Física para a População Brasileira** – Ministério da Saúde, 2021  
-5. **Sociedade Brasileira de Cardiologia** – Diretrizes sobre Dislipidemias, 2023  
+5. **Sociedade Brasileira de Cardiologia – Diretrizes sobre Dislipidemias**, 2023  
 6. **WHO – Healthy Diet / Physical Activity Initiative** – Organização Mundial da Saúde  
-7. **Mifflin MD, St Jeor ST et al.** (1990). *A new predictive equation for resting energy expenditure in healthy individuals.*
+7. **Mifflin MD, St Jeor ST et al.** (1990). *A new predictive equation for resting energy expenditure in healthy individuals.*  
+8. [Diretriz Brasileira para Manejo da Obesidade e Prevenção de Doenças Cardiovasculares – Nutritotal](https://nutritotal.com.br/pro/material/diretriz-brasileira-para-manejo-da-obesidade-e-prevencao-de-doencas-cardiovasculares/)  
+9. [Cuidados Primários em Diabetes – Nutritotal](https://nutritotal.com.br/pro/material/cuidados-primarios-em-diabetes/)  
+10. [Alimentação, Saúde e Meio Ambiente – ABESO / Nutritotal](https://nutritotal.com.br/pro/material/alimentacao-saude-e-meio-ambiente-e-book-abeso/)  
+11. [Diretrizes sobre Controle Glicêmico em Pacientes Críticos – Nutritotal](https://nutritotal.com.br/pro/material/diretrizes-sobre-controle-glicemico-em-pacientes-criticos/)  
+12. [Diretrizes de Micronutrientes da ESPEN – Nutritotal](https://nutritotal.com.br/pro/material/diretrizes-de-micronutrientes-da-espen/)  
+13. [Posicionamento SBC sobre Consumo de Gorduras e Saúde Cardiovascular – Nutritotal](https://nutritotal.com.br/pro/material/sbc-2021-posicionamento-sobre-o-consumo-de-gorduras-e-saude-cardiovascular/)  
+14. [Diretriz Brasileira de Hipertensão Arterial 2025 – Nutritotal](https://nutritotal.com.br/pro/material/diretriz-brasileira-de-hipertensao-arterial-2025/)  
+15. [Caso Clínico Lactosil – Nutritotal](https://nutritotal.com.br/pro/material/caso-clinico-lactosil/)  
+16. [Deficiências Nutricionais Comuns na Doença Celíaca – Nutritotal](https://nutritotal.com.br/pro/deficiaancias-nutricionais-sa-o-comuns-na-doena-a-cela-aca/)  
+17. [Recomendações Dietéticas no Tratamento da Hipercolesterolemia – Nutritotal](https://nutritotal.com.br/pro/quais-as-recomendaa-aues-dieta-ticas-no-tratamento-da-hipercolesterolemia/)  
 
----
+> **A IA deve obrigatoriamente utilizar as fontes acima como base científica** ao gerar qualquer plano alimentar ou de treino relacionado a condições de saúde.

@@ -1,4 +1,4 @@
-import type { DietAndTrainingPlanType } from "../validations/protocols/dietAndTrainingPlan";
+import type { DietAndTrainingPlanType } from "../validations/protocols/dietAndTrainingPlan.js";
 
 export const buildSystemPrompt = () => {
     return [
@@ -13,8 +13,8 @@ export const buildSystemPrompt = () => {
             - Cada dia deve conter: aquecimento, exercícios principais, exercícios acessórios e finalização (core ou cardio opcional).
             - Sempre usar divisões compatíveis (Full Body, Upper/Lower, ABC) conforme frequência semanal.
             - Cada exercício deve conter séries, repetições e tempo de descanso.
-            - Use apenas exercícios que possam ser realizados no local de treino do usuário (academia, casa, parque).
-            - Ajuste o volume e intensidade conforme o objetivo (hipertrofia, emagrecimento ou manutenção).
+            - Use apenas exercícios que possam ser realizados no local de treino do usuário (academia, casa, parque, etc).
+            - Ajuste o volume e intensidade conforme o objetivo.
         Regras extras:
             - Não inclua avisos como "procure um personal trainer".
             - O texto deve ser direto, organizado e fácil de seguir.`

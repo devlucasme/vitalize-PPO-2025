@@ -1,5 +1,5 @@
-import type { ICreateUser, IUser, IUserRepository } from "../../interfaces/user.interface";
-import { prisma } from "../../database/prismaClient";
+import type { ICreateUser, IUser, IUserRepository } from "../../interfaces/user.interface.js";
+import { prisma } from "../../database/prismaClient.js";
 
 export class UserRepository implements IUserRepository {
     async create({ name, email, password }: ICreateUser): Promise<IUser> {

@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "npx tsx watch src/app.ts",
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "docker:deploy": "docker-compose up -d --build",
+    "docker:start": "docker-compose start",
+    "docker:stop": "docker-compose stop"
   },
   "keywords": [],
   "author": "",

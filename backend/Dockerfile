@@ -8,8 +8,10 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build  
+RUN npx prisma generate
+
+RUN npm run build
 
 EXPOSE 3000
 
-CMD ["node", "dist/app.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]

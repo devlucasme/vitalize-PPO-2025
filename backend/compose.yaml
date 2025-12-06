@@ -4,6 +4,7 @@ services:
       context: .  
     image: vitalize_backend:latest
     container_name: objective-shamir
+    restart: unless-stopped
     env_file:
       - ./.env
     ports:

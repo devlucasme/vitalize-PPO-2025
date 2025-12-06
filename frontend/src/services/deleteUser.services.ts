@@ -1,4 +1,4 @@
-import axios from "axios";
+import { $axios } from "./api";
 
 interface IDeleteUserRequest {
   password: string;
@@ -6,7 +6,7 @@ interface IDeleteUserRequest {
 
 export const deleteUserAccount = async (token: string, data: IDeleteUserRequest) => {
   try {
-    const response = await axios.delete("http://localhost:3000/users/delete", {
+    const response = await $axios.delete("/users/delete", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",

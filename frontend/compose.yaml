@@ -1,0 +1,9 @@
+services:
+  frontend:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vite_frontend
+    ports:
+      - "5174:4173"

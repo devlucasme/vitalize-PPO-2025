@@ -1,7 +1,7 @@
-import axios from "axios";
+import { $axios } from "./api";
 
 export async function getUserProfile(token: string) {
-    const response = await axios.get(`http://localhost:3000/users/profile`, {
+    const response = await $axios.get(`/users/profile`, {
         headers: {
             Authorization: `Bearer ${token}`,
         }

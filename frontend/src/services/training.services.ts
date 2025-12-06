@@ -1,4 +1,4 @@
-import axios from "axios";
+import { $axios } from "./api";
 
 export interface ITrainingRequestData {
     age: number;
@@ -17,7 +17,7 @@ export interface ITrainingRequestData {
 }
 
 export async function generateTraining(data: ITrainingRequestData, token?: string, signal?: AbortSignal) {
-    const response = await axios.post(`http://localhost:3000/users/training`, data, {
+    const response = await $axios.post(`/users/training`, data, {
         headers: {
             "Content-Type": "application/json",
             Authorization: token ? `Bearer ${token}` : ""

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { $axios } from "./api";
 
 export interface IDietRequestData {
   age: number;
@@ -21,7 +21,7 @@ export async function generateDiet(
   token?: string,
   signal?: AbortSignal
 ) {
-  const response = await axios.post(`http://localhost:3000/users/diet`, data, {
+  const response = await $axios.post(`/users/diet`, data, {
     headers: {
       "Content-Type": "application/json",
       Authorization: token ? `Bearer ${token}` : ""

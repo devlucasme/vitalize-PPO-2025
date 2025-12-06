@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:deploy": "docker compose up --build -d",
+    "docker:start": "docker compose start",
+    "docker:stop": "docker compose stop"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

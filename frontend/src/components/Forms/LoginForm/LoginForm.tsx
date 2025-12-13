@@ -146,7 +146,7 @@ const LoginForm: FC = () => {
             Esqueci minha senha
           </S.ForgotPasswordLink>
         </S.ContainerCheckbox>
-        <Button type="submit" disabled={isSubmitting || isLoading}>
+        <Button type="submit" disabled={isSubmitting || isLoading} className="button-submit">
           Entrar
         </Button>
         <S.SignUpLink>

@@ -139,7 +139,7 @@ const RegisterForm: FC = () => {
           <S.ErrorMessage>{errors.terms.message}</S.ErrorMessage>
         )}
 
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isLoading} className="button-submit">
           Criar Conta
         </Button>
 

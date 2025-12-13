@@ -345,7 +345,7 @@ const Calculator: FC = () => {
                 type="button"
                 onClick={handleSubmit(calculateIMCeIAC)}
               >
-                <Scale size={16} /> Calcular
+               Calcular
               </Button>
             </S.ButtonContainer>
           </S.CalculatorCard>

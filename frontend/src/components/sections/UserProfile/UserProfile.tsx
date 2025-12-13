@@ -80,7 +80,6 @@ const UserProfile: FC = () => {
             </p>
           </S.UserContent>
           <S.ProfileSection>
-            <h3>Dados Pessoais</h3>
             <S.ProfileItem>
               <span>Peso</span> <p>{user.weight ?? "—"} Kg</p>
             </S.ProfileItem>

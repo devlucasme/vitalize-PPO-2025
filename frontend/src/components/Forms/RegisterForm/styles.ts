@@ -70,9 +70,9 @@ export const RegisterForm = styled.form`
     margin: 0 auto;
   }
 
-  @media (max-width: 1368px){
-    max-width: 460px;
-    padding: 13px 36px;
+  @media (max-width: 1600px) {
+    max-width: 450px;
+    padding: 15px 36px;
     gap: 10px;
 
     h2 {
@@ -83,11 +83,16 @@ export const RegisterForm = styled.form`
       width: 50px;
     }
 
+    .button-submit {
+      padding: 8px;
+    }
+
   }
 
-  @media (max-width: 720px) {
-    max-width: 400px;
-    padding: 30px 35px;
+  @media (max-width: 1368px){
+    max-width: 430px;
+    padding: 13px 36px;
+    gap: 10px;
 
     h2 {
       font-size: 0.95rem;
@@ -96,6 +101,29 @@ export const RegisterForm = styled.form`
     img {
       width: 45px;
     }
+
+    .button-submit {
+      padding: 7px;
+    }
+
+  }
+
+  @media (max-width: 720px) {
+    max-width: 400px;
+    padding: 30px 35px;
+
+    h2 {
+      font-size: 0.9rem;
+    }
+
+    img {
+      width: 45px;
+    }
+
+    .button-submit {
+      padding: 6px;
+    }
+
   }
 
   @media (max-width: 480px) {
@@ -104,7 +132,7 @@ export const RegisterForm = styled.form`
     gap: 12px;
 
     h2 {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       margin-bottom: 12px;
     }
   }
@@ -158,8 +186,12 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 4px;
 
-  @media (max-width: 1368px) {
+  @media (max-width: 1600px){
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 1368px) {
+    font-size: 0.75rem;
   }
 
   @media (max-width: 480px) {
@@ -182,12 +214,16 @@ export const FieldContainer = styled.div<FieldContainerProps>`
       hasError ? "#e57373" : theme.colors.primary};
   }
 
+  @media (max-width: 1600px){
+    padding: 9px 14px;
+  }
+
   @media (max-width: 1368px) {
-    padding: 7px 12px;
+    padding: 8px 13px;
   }
 
   @media (max-width: 480px) {
-    padding: 6px 10px;
+    padding: 7px 12px;
   }
 
 `;
@@ -247,6 +283,17 @@ export const Input = styled.input`
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text} !important;
   }
 
+
+
+  @media (max-width: 1600px) {
+    font-size: 0.85rem;
+
+    &::placeholder {
+      font-size: 0.9rem;
+    }
+
+  }
+
   @media (max-width: 1368px) {
     font-size: 0.8rem;
 
@@ -289,6 +336,15 @@ export const TermsLabel = styled.label`
     accent-color: ${({ theme }) => theme.colors.primary};
     margin-right: 3px;
   }
+
+  @media (max-width: 1600px) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 1368px) {
+    font-size: 0.8rem;
+  }
+
 `;
 
 export const TermsOfUseLink = styled(Link)`
@@ -318,8 +374,16 @@ export const LoginLink = styled.p`
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 1600px) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 1368px) {
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
   }
 `;
 
@@ -327,6 +391,10 @@ export const ErrorMessage = styled.p`
   color: #e57373;
   font-size: 0.8rem;
   margin-top: 2px;
+
+  @media (max-width: 1600px) {
+    font-size: 0.75rem;
+  }
 
   @media (max-width: 1368px) {
     font-size: 0.7rem;

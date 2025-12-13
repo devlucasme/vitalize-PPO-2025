@@ -35,21 +35,21 @@ export const FormContainer = styled.form`
   width: 100%;
   height: 80vh;
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (max-width: 1600px) {
     align-items: center;
-    min-height: 70vh;
   }
 
   @media (max-width: 768px) {
     padding: 1rem;
     overflow-y: auto;
+    align-items: flex-start;
   }
 
   @media (max-width: 480px) {
     padding: 0.8rem 0.5rem;
     min-height: 85vh;
     overflow-y: auto;
-  }
+    }
 `;
 
 export const Wrapper = styled.div`
@@ -60,15 +60,20 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 950px;
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    gap: 1rem;
-    max-width: 850px;
+  @media (max-width: 1600px) {
+    max-width: 800px;
+    gap: 0.85rem;
+  }
+
+  @media (max-width: 1368px) {
+    max-width: 750px;
+    gap: 0.8rem;
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.75rem;
   }
 `;
 
@@ -113,24 +118,7 @@ export const CalculatorCard = styled.form<CalculatorCardProps>`
   }
 
   @media (max-width: 1600px) {
-    padding: 1.5rem;
-    max-width: 830px;
-
-    h2 {
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    img {
-      width: 50px;
-      height: 50px;
-    }
-
-  }
-
-  @media (max-width: 1368px) {
-    padding: 1rem;
-    max-width: 800px;
+    padding: 1.2rem;
 
     h2 {
       font-size: 0.95rem;
@@ -138,8 +126,24 @@ export const CalculatorCard = styled.form<CalculatorCardProps>`
     }
 
     img {
-      height: 48px;
-      width: 48px;
+      width: 47px;
+      height: 47px;
+    }
+
+  }
+
+  @media (max-width: 1368px) {
+    padding: 0.95rem;
+    max-width: 800px;
+
+    h2 {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      height: 45px;
+      width: 45px;
     }
 
   }
@@ -152,11 +156,6 @@ export const CalculatorCard = styled.form<CalculatorCardProps>`
     h2 {
       font-size: 0.85rem;
       margin-bottom: 1.5rem;
-    }
-
-    img {
-      height: 45px;
-      width: 45px;
     }
   }
 
@@ -254,6 +253,15 @@ export const FieldContainer = styled.div<FieldContainerProps>`
   &:focus-within {
     border-color: ${({ theme }) => theme.colors.primary};
   }
+
+  @media (max-width: 1600px) {
+    padding: 0.3rem;
+  }
+
+  @media (max-width: 1368px) {
+    padding: 0.2rem;
+  }
+
 `;
 
 export const Input = styled.input`
@@ -272,14 +280,10 @@ export const Input = styled.input`
   }
 
   @media (max-width: 1600px) {
-    padding: 0.4rem;
-  }
-
-  @media (max-width: 1368px) {
     padding: 0.3rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1368px) {
     padding: 0.2rem;
   }
 
@@ -309,14 +313,10 @@ export const Select = styled.select`
   }
 
   @media (max-width: 1600px) {
-    padding: 0.4rem;
-  }
-
-   @media (max-width: 1368px) {
     padding: 0.3rem;
   }
 
-   @media (max-width: 768px) {
+   @media (max-width: 1368px) {
     padding: 0.2rem;
   }
 
@@ -349,9 +349,17 @@ export const ButtonContainer = styled.div`
     opacity: 0.95;
   }
 
-  @media (max-width: 1368px) {
+  @media (max-width: 1600px) {
     button {
       min-height: 35px;
+      max-width: 190px;
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 1368px) {
+    button {
+      min-height: 32px;
       max-width: 185px;
       font-size: 0.9rem;
     }
@@ -389,7 +397,7 @@ export const ErrorMessage = styled.span`
   margin-top: 0.2rem;
 
   @media (max-width: 1600px) {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   @media (max-width: 1368px) {
@@ -439,11 +447,6 @@ export const ResultCard = styled.div`
     font-size: 1rem;
     margin-bottom: 1.2rem;
     line-height: 1.4;
-
-    @media (max-width: 480px) {
-      font-size: 0.8rem;
-    }
-
   }
 
   .combined-description {
@@ -495,24 +498,37 @@ export const ResultCard = styled.div`
     }
   }
 
-  @media (max-width: 1368px) {
-    max-width: 440px;
-    padding: 1.5rem 1.2rem;
+  @media (max-width: 1600px) {
+    padding: 1.4rem 1.1rem;
     min-height: 480px;
 
-    h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.8rem;
-    }
-
     .result {
-      font-size: 1.45rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
     }
 
     p {
+      font-size: 0.9rem;
+      padding: 0 0.4rem;
+    }
+
+    table {
       font-size: 0.95rem;
-      margin-bottom: 1rem;
+    }
+
+  }
+
+  @media (max-width: 1368px) {
+    max-width: 440px;
+    padding: 1.3rem 1rem;
+    min-height: 470px;
+
+    .result {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+      padding: 0 0.3rem;
     }
 
     table {
@@ -524,42 +540,23 @@ export const ResultCard = styled.div`
     max-width: 380px;
     padding: 1.2rem 1rem;
     min-height: auto;
-
-    h3 {
-      font-size: 1rem;
-    }
-
-    .result {
-      font-size: 1.35rem;
-    }
-
-    p {
-      font-size: 0.9rem;
-    }
   }
 
   @media (max-width: 480px) {
-    max-width: 330px;
-    padding: 1rem 0.8rem;
-    min-height: auto;
-
-    h3 {
-      font-size: 1rem;
-    }
+    max-width: 360px;
+    padding: 0.8rem 0.6rem;
 
     .result {
-      font-size: 1.3rem;
+      font-size: 0.95rem;
       margin-bottom: 1.2rem;
     }
 
-    p,
-    .combined-description {
-      font-size: 0.9rem;
-      line-height: 1.4;
+    p {
+      font-size: 0.8rem;
     }
 
     table {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
   }
 `;
@@ -603,15 +600,26 @@ export const ResultHeader = styled.div`
       color: #507cda;
     }
 
-    @media (max-width: 1368px) {
+    @media (max-width: 1600px) {
       font-size: 0.85rem;
+
       .line {
         width: 85%;
+      }
+
+    }
+
+    @media (max-width: 1368px) {
+      font-size: 0.8rem;
+      
+      .line {
+        width: 80%;
       }
     }
 
     @media (max-width: 480px) {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      
       .line {
         width: 100%;
       }
@@ -656,11 +664,11 @@ export const ValueBox = styled.div<{ color: string }>`
     opacity: 0.95;
   }
 
-  @media (max-width: 1368px) {
-    max-width: 200px;
+  @media (max-width: 1600px) {
+    max-width: 185px;
 
     span {
-      font-size: 1.9rem;
+      font-size: 1.6rem;
     }
 
     strong {
@@ -670,25 +678,46 @@ export const ValueBox = styled.div<{ color: string }>`
     p {
       font-size: 0.85rem;
     }
+
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1368px) {
     max-width: 180px;
 
     span {
-      font-size: 1.7rem;
+      font-size: 1.4rem;
     }
-  }
 
-  @media (max-width: 480px) {
-    max-width: 160px;
-
-    span {
-      font-size: 1.5rem;
+    strong {
+      font-size: 0.9rem;
     }
 
     p {
       font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    max-width: 170px;
+
+    span {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    max-width: 130px;
+
+    span {
+      font-size: 1.1rem;
+    }
+
+    strong {
+      font-size: 0.8rem;
+    }
+
+    p {
+      font-size: 0.75rem;
     }
   }
 `;

@@ -91,32 +91,42 @@ export const LoginForm = styled.form`
     margin: 0 auto;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (max-width: 1600px) {
     max-width: 460px;
-    padding: 32px 38px;
+    padding: 30px 38px;
     gap: 20px;
 
     h2 {
-      font-size: 1.45rem;
+      font-size: 1rem;
       margin-bottom: 20px;
-    }
-
-    img {
-      width: 55px;
-    }
-  }
-
-  @media (max-width: 660px) {
-    max-width: 400px;
-    padding: 30px 35px;
-
-    h2 {
-      font-size: 1.4rem;
     }
 
     img {
       width: 50px;
     }
+
+    .button-submit {
+      padding: 8px;
+    }
+
+  }
+
+  @media (max-width: 1368px) {
+    max-width: 430px;
+    padding: 26px 36px;
+
+    h2 {
+      font-size: 0.95rem;
+    }
+
+    img {
+      width: 45px;
+    }
+
+    .button-submit {
+      padding: 7px;
+    }
+
   }
 
   @media (max-width: 480px) {
@@ -124,11 +134,8 @@ export const LoginForm = styled.form`
     padding: 20px 15px;
 
     h2 {
-      font-size: 1.3rem;
-    }
-
-    img {
-      width: 45px;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
     }
   }
 `;
@@ -290,6 +297,19 @@ export const ErrorMessage = styled.p`
   font-size: 0.825rem;
   margin-top: 2px;
   min-height: 18px;
+
+  @media (max-width: 1600px) {
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 1368px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
+  }
+
 `;
 
 export const SuccessMessage = styled.p`

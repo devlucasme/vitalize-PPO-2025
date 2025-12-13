@@ -8,12 +8,6 @@ export const PageWrapper = styled.div`
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    max-width: 80%;
-    margin: 2.5rem auto;
-    gap: 1.2rem;
-  }
 `;
 
 export const LeftColumn = styled.div`
@@ -22,10 +16,6 @@ export const LeftColumn = styled.div`
   flex-direction: column;
   gap: 1rem;
   align-items: stretch;
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    gap: 0.8rem;
-  }
 `;
 
 export const RightColumn = styled.div`
@@ -33,10 +23,6 @@ export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    gap: 1.2rem;
-  }
 `;
 
 export const ProfileContainer = styled.div`
@@ -48,11 +34,6 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    padding: 0.9rem;
-    gap: 0.7rem;
-  }
 `;
 
 export const Card = styled(ProfileContainer)`
@@ -62,11 +43,16 @@ export const Card = styled(ProfileContainer)`
     font-size: 1rem;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (max-width: 1600px) {
     max-height: 260px;
+    
     h3 {
       font-size: 0.95rem;
     }
+  }
+
+  @media (max-width: 1368px) {
+    max-height: 250px;
   }
 
   @media (max-width: 768px) {
@@ -78,7 +64,7 @@ export const Card = styled(ProfileContainer)`
   }
 
   @media (max-width: 480px) {
-    max-height: 200px;
+    max-height: 220px;
     padding: 0.7rem;
   }
 `;
@@ -135,18 +121,8 @@ export const UserContent = styled.div`
     color: ${({ theme }) => theme.colors.text};
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    padding: 0.55rem;
-    h2 {
-      font-size: 1.1rem;
-    }
-    p {
-      font-size: 0.95rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    padding: 0.5rem;
+  @media (max-width: 1600px) {
+    
     h2 {
       font-size: 1rem;
     }
@@ -155,13 +131,38 @@ export const UserContent = styled.div`
     }
   }
 
-  @media (max-width: 480px) {
-    padding: 0.4rem;
+  @media (max-width: 1368px) {
+    padding: 0.55rem;
+
     h2 {
       font-size: 0.95rem;
     }
+
     p {
       font-size: 0.85rem;
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    
+    h2 {
+      font-size: 0.9rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem;
+    
+    h2 {
+      font-size: 0.85rem;
+    }
+    p {
+      font-size: 0.75rem;
     }
   }
 `;
@@ -176,12 +177,27 @@ const IconStyle = css`
   color: #fff;
   margin-right: 1rem;
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (max-width: 1600px) {
     width: 28px;
     height: 28px;
     padding: 4px;
     margin-right: 0.8rem;
   }
+
+  @media (max-width: 1368px) {
+    width: 26px;
+    height: 26px;
+    padding: 3px;
+    margin-left: 0.7rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 25px;
+    height: 25px;
+    padding: 4px;
+    margin-left: 0.7rem;
+  }
+
 `;
 
 export const UserIcon = styled(User)`
@@ -193,20 +209,6 @@ export const MailIcon = styled(Mail)`
 
 export const ProfileSection = styled.section`
   margin-top: 0.8rem;
-
-  h3 {
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
-    color: ${({ theme }) => theme.colors.primary};
-  }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    margin-top: 0.6rem;
-    h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.6rem;
-    }
-  }
 `;
 
 export const ProfileItem = styled.div`
@@ -224,15 +226,42 @@ export const ProfileItem = styled.div`
     margin: 0;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (max-width: 1600px) {
     padding: 0.25rem 0;
+    
     span {
       font-size: 0.95rem;
     }
+    
     p {
       font-size: 0.9rem;
     }
   }
+  
+  @media (max-width: 1368px) {
+    padding: 0.2rem 0;
+    
+    span {
+      font-size: 0.9rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.15rem 0;
+    
+    span {
+      font-size: 0.85rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+  
 `;
 
 export const ButtonWrapper = styled.div`
@@ -242,10 +271,35 @@ export const ButtonWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    gap: 0.4rem;
-    margin-top: 0.4rem;
+  @media (max-width: 1600px) {
+    margin-top: 0;
+    gap: 0;
+
+    button {
+      padding: 0.5rem;
+    }
+
   }
+  
+  @media (max-width: 1368px) {
+    margin-top: 0;
+    gap: 0;
+
+    button {
+      padding: 0.4rem;
+    }
+
+  }
+  @media (max-width: 480px) {
+    margin-top: 0;
+    gap: 0;
+
+    button {
+      padding: 0.45rem;
+    }
+
+  }
+
 `;
 
 export const WarningContainer = styled.div`
@@ -332,7 +386,7 @@ export const WarningContainer = styled.div`
     }
   }
 
-  @media (max-width: 1368px) {
+  @media (max-width: 1600px) {
     padding: 0.8rem 0.6rem;
     
     h3 {
@@ -349,11 +403,28 @@ export const WarningContainer = styled.div`
 
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1368px) {
+    padding: 0.7rem 0.5rem;
+    
+    h3 {
+      font-size: 0.85rem;
+    }
+    p {
+      font-size: 0.75rem;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+  }
+
+  @media (max-width: 1095px) {
     flex-direction: column;
     text-align: justify;
     align-items: center;
-    padding: 0.7rem;
+    padding: 0.6rem;
     gap: 0.6rem;
 
     svg {
@@ -368,15 +439,40 @@ export const WarningContainer = styled.div`
     }
 
     p {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
+      max-width: 80%;
+      margin: 0 auto 4px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: justify;
+    align-items: center;
+    padding: 0.6rem;
+    gap: 0.6rem;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    h3 {
+      font-size: 0.85rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.75rem;
       max-width: 80%;
       margin: 0 auto 4px;
     }
   }
 
   @media (max-width: 480px) {
-    padding: 0.7rem;
-    gap: 0.5rem;
+    padding: 0.5rem;
+    gap: 0.4rem;
 
     svg {
       width: 18px;
@@ -388,7 +484,7 @@ export const WarningContainer = styled.div`
     }
 
     p {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
   }
 `;
@@ -401,8 +497,17 @@ export const PlanTitle = styled.h1`
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
   padding-bottom: 0.5rem;
 
-  @media (max-width: 480px) {
+
+  @media (max-width: 1600px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 1368px) {
     font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
   }
 
 `;
@@ -413,6 +518,15 @@ export const DayCard = styled.h2`
   margin: 1.2rem 0 0.6rem 0;
   color: ${({ theme }) => theme.colors.text};
 
+  @media (max-width: 1600px) {
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 1368px) {
+    font-size: 0.8rem;
+    
+  }
+  
   @media (max-width: 480px) {
     font-size: 0.9rem;
   }
@@ -425,8 +539,16 @@ export const MealTitle = styled.h3`
   margin: 0.6rem 0 0.4rem 0;
   color: ${({ theme }) => theme.colors.primary};
 
-  @media (max-width: 480px) {
+  @media (max-width: 1600px) {
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 1368px) {
     font-size: 0.85rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
   }
 
 `;
@@ -438,6 +560,14 @@ export const MealList = styled.ul`
   list-style-type: none;
   border-left: 2px solid ${({ theme }) => theme.colors.borderColor};
 
+  @media (max-width: 1600px) {
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 1368px) {
+    font-size: 0.85rem;
+  }
+  
   @media (max-width: 480px) {
     font-size: 0.8rem;
   }
@@ -464,8 +594,16 @@ export const Paragraph = styled.p`
   color: ${({ theme }) => theme.colors.text};
 
 
-  @media (max-width: 480px) {
+  @media (max-width: 1600px) {
     font-size: 0.9rem;
+  }
+  
+  @media (max-width: 1368px) {
+    font-size: 0.85rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
   }
 
 
@@ -478,6 +616,14 @@ export const DataNotFound = styled.p`
   font-weight: 600;
   color: #ce5138ff;
 
+  @media (max-width: 1600px) {
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 1368px) {
+    font-size: 0.85rem;
+  }
+  
   @media (max-width: 480px) {
     font-size: 0.8rem;
   }
@@ -491,5 +637,19 @@ export const DataGenerate = styled.h3`
   span {
     font-weight: 600;
     font-size: 0.9rem;
+  
+    @media (max-width: 1600px) {
+      font-size: 0.85rem;
+    }
+    
+    @media (max-width: 1368px) {
+      font-size: 0.8rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.75rem;
+    }
+
   }
+
 `;
